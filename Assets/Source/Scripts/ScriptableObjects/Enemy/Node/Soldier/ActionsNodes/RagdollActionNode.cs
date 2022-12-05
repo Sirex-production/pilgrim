@@ -1,7 +1,8 @@
 ﻿using Ingame.Behaviour;
 using Leopotam.Ecs;
 using UnityEngine;
-using  Ingame.Support;
+using Support.Extensions;
+
 namespace Ingame.Enemy
 {
     public sealed class RagdollActionNode : ActionNode

@@ -29604,6 +29604,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2167057582685060780, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
+      propertyPath: playerHudData
+      value: 
+      objectReference: {fileID: 11400000, guid: 10bd22dc13fd4484380dd8211fc33c04, type: 2}
+    - target: {fileID: 2167057582685060780, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
+      propertyPath: playerMovementData
+      value: 
+      objectReference: {fileID: 11400000, guid: 69d18ab4a87bc4a30ae2246a9e15c2c1, type: 2}
+    - target: {fileID: 2167057582685060780, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
+      propertyPath: playerInventoryData
+      value: 
+      objectReference: {fileID: 11400000, guid: 59cc258d5313df04d9d8846cf5faf0d3, type: 2}
     - target: {fileID: 2167057582685060782, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
       propertyPath: m_RootOrder
       value: 3

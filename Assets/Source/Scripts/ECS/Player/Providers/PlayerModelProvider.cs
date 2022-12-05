@@ -1,4 +1,6 @@
 ﻿using Ingame.Data.Player;
+using NaughtyAttributes;
+using UnityEngine;
 using Voody.UniLeo;
 using Zenject;
 
@@ -6,12 +8,16 @@ namespace Ingame.Player
 {
     public sealed class PlayerModelProvider : MonoProvider<PlayerModel>
     {
+        [Required, SerializeField] private PlayerMovementData playerMovementData;
+        [Required, SerializeField] private PlayerHudData playerHudData;
+        [Required, SerializeField] private PlayerInventoryData playerInventoryData;
+        
         [Inject]
-        private void Construct(PlayerMovementData injectedPlayerMovementData, PlayerHudData playerHudData, PlayerInventoryData playerInventoryData)
+        private void Construct()
         {
             value = new PlayerModel
             {
-                playerMovementData = injectedPlayerMovementData,
+                playerMovementData = playerMovementData,
                 playerHudData = playerHudData,
                 playerInventoryData = playerInventoryData
             };

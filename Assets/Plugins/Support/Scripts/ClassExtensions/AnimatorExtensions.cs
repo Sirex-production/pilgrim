@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Ingame.Support
+namespace Support.Extensions
 {
-    public static class AnimatorSupporter
+    public static class AnimatorExtensions
     {
         public static bool IsAnimationPlaying(this Animator animator, string animationsName)
         {
