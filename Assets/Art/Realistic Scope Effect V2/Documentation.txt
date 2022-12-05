@@ -1,0 +1,62 @@
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+																		Thank you for purchasing!
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	Setting up this asset is really simple.
+
+	First of all import the package that relates to your render pipeline | URP & HDRP PACKAGES > URP or HDRP (depending on what you want to use)
+																						Just double click and Import!
+
+	Here is a step by step on how to setup a new scope lens
+
+	1: Create new material and assign the RealisticScopeEffect from the shadergraph panel | ShaderGraph > RealisticScopeEffect
+	2: Assign the rendertexture! You can either create a new rendertexture or use the already existing one in the textures folder or just search "rendertexture".
+	3: Assign your reticle texture! Make sure it is transparent otherwise the reticle wont work correctly.
+	4: Tweak the values! The examples provided shows you a accurate setting for a scope and a reflex sight.
+
+	What the values do;
+
+		Depth - How close or far you want the zoom to be. The closer the less in line with the camera it will be (less realistic).
+												  The more the more in line with the camera it will be (more realistic).
+				Setting this value to around 10-20 gets the best result.
+
+		Lens Shadow Depth - Same with Depth but with the Shadow/ EyeRelief. For me, 20 gives the best result.
+	
+		Reticle Depth - Same Thing but with the reticle. Setting 'Use First Focal Plane' to true will set this to be the same as the 'Depth' parameter.
+
+		Reticle Brightness - Brightness of the reticle. Setting this to zero will always make the reticle black.
+
+		Reticle Size - Changes the size of the reticle. Dependent on the Depth/ReticleDepth parameter. The higher the Depth the bigger value this parameter needs.
+
+		InnerRing Size - This is the inner ring of the scope. Making this too big might reach the bounds of the camera. This is where the CameraZoom parameter comes in to provide a fix.
+
+		InnerRing Softness - Sets the fading for the InnerRing.
+
+		Lens Eye Relief Size - Basically the outer ring size. The smaller the more harsher the eye box is.
+
+		Lens Eye Relief Softness - Sets the smmothness for the Eye Relief.
+
+		CameraZoom - Compensation for having the inner ring too big. This is so the shader doesnt render the out of bounds of the camera leading to odd stretching effect.
+
+	5: Your done with the shader! Now onto the script...
+	
+		The script is optional and only works for dual render but provides some key features such as;
+	
+		In game adjustments to reticle brightness,
+		In game zooming (toggle or variable),
+		Setting camera's refresh rate or FPS for added fps.
+		Setting a camera disable threshold for additional optimization.
+
+		The ScopeCamera parameter doesn't need to be assigned before runtime because
+		it will be automatically assigned to the main camera on start or if left empty
+
+		The script is only operational during runtime...
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			Thats all folks! Need additional support? Contact me on discord by either joining my server or adding me directly - https://discord.gg/pYSNNbxdsR | vector#1178
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

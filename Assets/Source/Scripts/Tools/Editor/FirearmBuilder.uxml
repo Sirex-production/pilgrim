@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Label text="Gun Creator" display-tooltip-when-elided="true" enable-rich-text="true" style="-unity-text-align: middle-center; font-size: 32px; margin-bottom: 0; height: 59px; -unity-font-style: bold;" />
+    <ui:Toggle label="Create barrel origin" name="CreateBarrelOrigin" value="true" />
+    <ui:Toggle label="Create surface detector" name="CreateSurfaceDetector" value="true" />
+    <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateButton" style="font-size: 16px; background-color: rgb(70, 101, 66);" />
+    <ui:Button text="Delete components" display-tooltip-when-elided="true" name="DeleteComponents" style="font-size: 16px; height: 23px; background-color: rgb(103, 59, 59);" />
+    <ui:Button text="Bring to player&apos;s hands" display-tooltip-when-elided="true" name="BringToPlayer" style="font-size: 16px; margin-top: 20px;" />
+    <ui:Button text="Bake HUD data" display-tooltip-when-elided="true" enable-rich-text="true" name="BakeHudData" style="font-size: 16px;" />
+</ui:UXML>

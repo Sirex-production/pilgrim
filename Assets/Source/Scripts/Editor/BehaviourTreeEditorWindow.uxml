@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Source/Scripts/Editor/BehaviourTreeEditorWindow.uss?fileID=7433441132597879392&amp;guid=7a7a2eb316ce044478f2fb4c3436747e&amp;type=3#BehaviourTreeEditorWindow" />
+    <uie:Toolbar>
+        <uie:ToolbarMenu display-tooltip-when-elided="true" text="Options" />
+    </uie:Toolbar>
+    <Ingame.Editor.BehaviourSplitView fixed-pane-initial-dimension="300">
+        <ui:VisualElement name="left">
+            <ui:Label text="Inspector View" display-tooltip-when-elided="true" />
+            <Ingame.Editor.BehaviourPanelInspectorView />
+            <ui:VisualElement style="justify-content: flex-end; border-top-width: 250px;">
+                <ui:Label text="Entity Status" display-tooltip-when-elided="true" />
+                <Ingame.Editor.BehaviourPanelStateView style="-unity-slice-top: 25;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right">
+            <ui:Label text="Tree Graph View" display-tooltip-when-elided="true" />
+            <Ingame.Editor.BehaviourTreePanelView focusable="true" name="BehaviourTreePanelView" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </Ingame.Editor.BehaviourSplitView>
+</ui:UXML>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d373f4183cf4cad42ab7ba6f5e2d0f65, type: 3}
+  m_Name: npc_1
+  m_EditorClassIdentifier: 
+  PossibleAnswers:
+  - {fileID: 11400000, guid: b69962dea298910469d3672cea1332c0, type: 2}
+  - {fileID: 11400000, guid: 10c278d3824f8b246ba09c4dbd3d1ec1, type: 2}
+  Lines:
+  - Hello adventure
+  - I need to ask u very important question...
+  - Are u a racist?

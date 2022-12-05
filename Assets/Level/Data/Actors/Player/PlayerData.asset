@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7081f12dcda35d4b9b3f18ab75559f1a, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  walkSpeed: 12
+  crouchWalkSpeed: 6
+  leanWalkSpeed: 9
+  enterCrouchStateSpeed: 6
+  movementAcceleration: 8
+  movementFriction: 12
+  jumpForce: 6
+  pauseBetweenJumps: 0.2
+  enterLeanSpeed: 4
+  leanDistanceOffset: 0.4
+  leanAngleOffset: 12
+  cameraPositionOffsetDuringTheRightLean: 0.1
+  cameraPositionOffsetDuringTheLeftLean: 0.1
+  gravityAcceleration: 20
+  maximumGravitationForce: 40
+  slidingForceModifier: 6
+  sensitivity: 4
+  interactionDistance: 2.5
+  draggableObjectDistance: 2

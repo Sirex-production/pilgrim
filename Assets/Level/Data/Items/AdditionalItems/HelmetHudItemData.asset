@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf56f044c9d24e81989c51b1d2db25f0, type: 3}
+  m_Name: HelmetHudItemData
+  m_EditorClassIdentifier: 
+  canBeUsedAsAim: 0
+  rotationSpeed: 3
+  minMaxRotationAngleX: {x: -50, y: 50}
+  rotationAngleMultiplierX: 10
+  inverseRotationX: 0
+  minMaxRotationAngleY: {x: -50, y: 50}
+  rotationAngleMultiplierY: 20
+  inverseRotationY: 1
+  minMaxRotationAngleZ: {x: 0, y: 0}
+  rotationAngleMultiplierZ: 0
+  inverseRotationZ: 0
+  isItemMovedDueToRotation: 1
+  minMaxMovementOffsetY: {x: -0.1, y: 0.1}
+  moveSpeed: 5
+  aimRotationSpeed: 3
+  minMaxAimRotationAngleX: {x: -5, y: 5}
+  aimRotationAngleMultiplierX: 2
+  inverseAimRotationX: 0
+  minMaxAimRotationAngleY: {x: -5, y: 5}
+  aimRotationAngleMultiplierY: 2
+  inverseAimRotationY: 0
+  minMaxAimRotationAngleZ: {x: 0, y: 0}
+  aimRotationAngleMultiplierZ: 20
+  inverseAimRotationZ: 0
+  minMaxRotationMovementAngleX: {x: -12, y: 12}
+  rotationMovementAngleMultiplierX: 0
+  inverseRotationMovementX: 1
+  minMaxRotationMovementAngleZ: {x: -15, y: 10}
+  rotationMovementAngleMultiplierZ: 5
+  inverseRotationMovementZ: 1
+  minMaxAimRotationMovementAngleX: {x: -5, y: 5}
+  aimRotationMovementAngleMultiplierX: 10
+  inverseAimRotationMovementX: 1
+  minMaxAimRotationMovementAngleY: {x: -5, y: 5}
+  aimRotationMovementAngleMultiplierY: 5
+  inverseAimRotationMovementY: 0
+  maximumClippingOffset: 0.8
+  maximumAimClippingOffset: 0.1
+  clippingMovementSpeed: 3

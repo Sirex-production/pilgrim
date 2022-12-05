@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1dc7f25d5139e8b42a66adc06963f270
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - gunCreatorVisualAsset: {fileID: 9197481963319205126, guid: b5c7745516b05b64a876bcd069f7ef60, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
