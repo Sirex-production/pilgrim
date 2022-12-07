@@ -18724,7 +18724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a245cbe0aa0e46d3a1f5dfd9be29a3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rifleConfig: {fileID: 11400000, guid: f5d73f06302bd0e40878312147a4abc9, type: 2}
+  rifleConfig: {fileID: 11400000, guid: d95e3fb4f32ef6e4289285740d42ea64, type: 2}
 --- !u!114 &1221165682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18737,7 +18737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00a141bce7b4efb8d15e71ec840330c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firearmConfig: {fileID: 11400000, guid: 7f0c195fd8b138c44aa1f280b1a566ee, type: 2}
+  firearmConfig: {fileID: 11400000, guid: e27af090c5df91046879e5134e37083a, type: 2}
   barrelOrigin: {fileID: 1712878828}
 --- !u!114 &1221165683
 MonoBehaviour:
@@ -18792,7 +18792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localPositionInHud: {x: 0.169, y: -0.247, z: 0.498}
   localRotationInHud: {x: -0, y: -0, z: -0, w: 1}
-  itemData: {fileID: 11400000, guid: 5194f9f9ad3bb154b9d6354542f03fc7, type: 2}
+  itemData: {fileID: 11400000, guid: 304491664dbee4043aaa9056832d1d12, type: 2}
 --- !u!114 &1221165687
 MonoBehaviour:
   m_ObjectHideFlags: 0

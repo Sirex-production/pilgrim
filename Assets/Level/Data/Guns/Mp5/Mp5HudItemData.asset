@@ -17,12 +17,12 @@ MonoBehaviour:
   minMaxRotationAngleX: {x: -20, y: 20}
   rotationAngleMultiplierX: 5
   inverseRotationX: 1
-  minMaxRotationAngleY: {x: -25, y: 15}
+  minMaxRotationAngleY: {x: -10, y: 10}
   rotationAngleMultiplierY: 5
   inverseRotationY: 0
   minMaxRotationAngleZ: {x: -10, y: 10}
-  rotationAngleMultiplierZ: 30
-  inverseRotationZ: 0
+  rotationAngleMultiplierZ: 20
+  inverseRotationZ: 1
   isItemMovedDueToRotation: 1
   isItemMovedBackToInitialPosition: 1
   moveToInitialPosSpeed: 10

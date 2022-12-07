@@ -22,7 +22,7 @@ namespace Ingame.Gunplay
                 ref var rifleComponent = ref _rifleShootFilter.Get2(i);
                 ref var timerComponent = ref _rifleShootFilter.Get3(i);
 
-                if (timerComponent.timePassed < rifleComponent.rifleConfig.PauseBetweenShots)
+                if (timerComponent.timePassed < rifleComponent.rifleConfig.PauseBetweenShots || rifleEntity.Has<ShutterIsInDelayPositionTag>())
                     continue;
                 
                 rifleEntity.Get<AwaitingShotTag>();
@@ -49,7 +49,6 @@ namespace Ingame.Gunplay
             }
 
             magazineComponent.currentAmountOfAmmo--;
-            // rifleEntity.Get<BulletIsInChamberTag>();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
