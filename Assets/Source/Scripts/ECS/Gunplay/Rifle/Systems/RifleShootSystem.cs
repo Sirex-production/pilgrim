@@ -54,7 +54,7 @@ namespace Ingame.Gunplay
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void TryToPutShutterInDelayPosition(in EcsEntity rifleEntity)
         {
-            if(!rifleEntity.Has<Ar15Tag>() && !rifleEntity.Has<M14EbrTag>())
+            if(!rifleEntity.Has<Ar15Tag>() && !rifleEntity.Has<M14EbrTag>() && !rifleEntity.Has<KrissVectorTag>())
                 return;
 
             rifleEntity.Get<ShutterIsInDelayPositionTag>();

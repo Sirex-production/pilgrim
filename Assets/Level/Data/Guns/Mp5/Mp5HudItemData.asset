@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Mp5HudItemData
   m_EditorClassIdentifier: 
   canBeUsedAsAim: 1
-  rotationSpeed: 3
+  rotationSpeed: 5
   minMaxRotationAngleX: {x: -20, y: 20}
   rotationAngleMultiplierX: 5
-  inverseRotationX: 1
+  inverseRotationX: 0
   minMaxRotationAngleY: {x: -10, y: 10}
-  rotationAngleMultiplierY: 5
-  inverseRotationY: 0
-  minMaxRotationAngleZ: {x: -10, y: 10}
-  rotationAngleMultiplierZ: 20
-  inverseRotationZ: 1
+  rotationAngleMultiplierY: 15
+  inverseRotationY: 1
+  minMaxRotationAngleZ: {x: -15, y: 10}
+  rotationAngleMultiplierZ: 10
+  inverseRotationZ: 0
   isItemMovedDueToRotation: 1
   isItemMovedBackToInitialPosition: 1
   moveToInitialPosSpeed: 10
-  moveSpeed: 0.1
+  moveSpeed: 10
   minMaxMovementOffsetY: {x: -2, y: 2}
   minMaxMovementOffsetX: {x: -2, y: 2}
   aimRotationSpeed: 3
@@ -42,8 +42,8 @@ MonoBehaviour:
   minMaxRotationMovementAngleX: {x: -12, y: 12}
   rotationMovementAngleMultiplierX: 40
   inverseRotationMovementX: 0
-  minMaxRotationMovementAngleZ: {x: -30, y: 30}
-  rotationMovementAngleMultiplierZ: 15
+  minMaxRotationMovementAngleZ: {x: -50, y: 50}
+  rotationMovementAngleMultiplierZ: 25
   inverseRotationMovementZ: 1
   minMaxAimRotationMovementAngleX: {x: -5, y: 5}
   aimRotationMovementAngleMultiplierX: 10
