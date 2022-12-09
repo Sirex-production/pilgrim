@@ -51,7 +51,7 @@ namespace Ingame.Editor
             container.Add(textElem);
             Add(container);
         }
-//todo refactor it
+ 
         private string UnboxInfo(FieldInfo[] infos,ref EnemyStateModel e)
         {
             var str = "";

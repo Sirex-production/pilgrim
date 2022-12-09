@@ -30,10 +30,10 @@ namespace Ingame.Editor
         {
             VisualElement root = rootVisualElement;
 
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Source/Scripts/Editor/BehaviourTreeEditorWindow.uxml"); 
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Source/Scripts/Tools/BehaviourTree/Editor/BehaviourTreeEditorWindow.uxml"); 
             visualTree.CloneTree(root);
 
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Source/Scripts/Editor/BehaviourTreeEditorWindow.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Source/Scripts/Tools/BehaviourTree/Editor/BehaviourTreeEditorWindow.uss");
        
             root.styleSheets.Add(styleSheet);
 

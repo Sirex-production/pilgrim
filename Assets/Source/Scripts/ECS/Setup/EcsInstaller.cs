@@ -1,4 +1,5 @@
-﻿using Leopotam.Ecs;
+﻿using Ingame.Audio;
+using Leopotam.Ecs;
 using Zenject;
 
 namespace Ingame.DI.Installers
@@ -27,6 +28,8 @@ namespace Ingame.DI.Installers
                 .FromInstance(fixedUpdateSystems)
                 .AsCached()
                 .NonLazy();
+
+            AudioController.World = world;
         }
     }
 }

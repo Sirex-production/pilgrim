@@ -1,6 +1,7 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
+using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -202,6 +203,7 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
+                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())
@@ -218,6 +220,7 @@ namespace Ingame
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
+            
 
             //FixedUpdate
             _fixedUpdateSystem
