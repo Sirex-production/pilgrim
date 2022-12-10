@@ -192,7 +192,7 @@ namespace Ingame.Input
                     inputEntity = _world.NewEntity();
 
                 inputEntity.Get<AimInputEvent>();
-            }
+            }   
             
             WasKeyTapped(_reloadInput, reloadInput, ref _reloadTimer,ref inputEntity, () =>  inputEntity.Get<MagazineSwitchInputEvent>());
             

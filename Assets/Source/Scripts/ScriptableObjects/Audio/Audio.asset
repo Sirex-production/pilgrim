@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Audio
   m_EditorClassIdentifier: 
   audios:
-  - name: test
+  - name: none
     audioWrappers:
     - name: sample0
       audioClip: {fileID: 8300000, guid: 8fcedd5a3bdf1da429aa89315d8cf5a5, type: 3}
@@ -32,6 +32,30 @@ MonoBehaviour:
         priority: 0
         volume: 0
         pitch: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0.01
+  - name: test
+    audioWrappers:
+    - name: none
+      audioClip: {fileID: 8300000, guid: 8fcedd5a3bdf1da429aa89315d8cf5a5, type: 3}
+      audioSettings:
+        priority: 118
+        volume: 0
+        pitch: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0.01
+    - name: sample1
+      audioClip: {fileID: 8300000, guid: 620c917987f4ed84a81252e4e4feede5, type: 3}
+      audioSettings:
+        priority: 52
+        volume: 0.454
+        pitch: 0.884
         loop: 0
         dopplerLevel: 0
         spread: 0

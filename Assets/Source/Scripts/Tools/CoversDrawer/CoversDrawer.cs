@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
  
@@ -98,7 +97,7 @@ namespace Ingame.CoversDrawer
             if (!obj.TryGetComponent<SphereVisualizer>(out var vis))
             {
                 vis = obj.AddComponent<SphereVisualizer>();
-            };
+            }
 
             vis.Color = _color;
             vis.Radius = _radius;

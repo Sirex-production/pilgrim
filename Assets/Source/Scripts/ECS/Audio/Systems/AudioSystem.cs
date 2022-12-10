@@ -172,11 +172,11 @@ namespace Ingame.Audio
             {
                 ref var audioPausedEntity = ref _audioResumeRequestFilter.GetEntity(i);
                 ref var requestAudioComponent = ref _audioResumeRequestFilter.Get1(i);
-                foreach (var j in _audioIsPlayingFilter)
+                foreach (var j in _audioIsPausedFilter)
                 {
-                    ref var audioEntity = ref _audioIsPlayingFilter.GetEntity(j);
-                    ref var audioComponent = ref _audioIsPlayingFilter.Get1(j);
-                    ref var sourceModel= ref _audioIsPlayingFilter.Get2(j);
+                    ref var audioEntity = ref _audioIsPausedFilter.GetEntity(j);
+                    ref var audioComponent = ref _audioIsPausedFilter.Get1(j);
+                    ref var sourceModel= ref _audioIsPausedFilter.Get2(j);
                     if (requestAudioComponent.Name == audioComponent.Name &&
                         requestAudioComponent.Type == audioComponent.Type)
                     {
@@ -187,7 +187,7 @@ namespace Ingame.Audio
                             if(audio3D.Parent != stopAudio3D.Parent)
                                 continue;
                         }
-                        
+
                         sourceModel.AudioSource.Play();
                         audioEntity.Get<AudioIsPlayedTag>();
                         audioEntity.Del<AudioIsPausedTag>();
