@@ -3,6 +3,7 @@ using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.Pool;
+using Zenject;
 
 namespace Ingame.Audio 
 {
@@ -79,13 +80,13 @@ namespace Ingame.Audio
                     {
                         ref var repeatedEntity = ref _audioInAnyStateFilter.GetEntity(k);
                         ref var repeatedAudioComponent = ref _audioInAnyStateFilter.Get1(k);
-                        if (repeatedAudioComponent.Name != audio.Name || repeatedAudioComponent.Type != audio.Type)
+                        if (repeatedAudioComponent.name != audio.name || repeatedAudioComponent.type != audio.type)
                             continue;
-                        if ((repeatedEntity.Has<Audio3DModel>() && audioEntity.Has<Audio3DModel>()))
+                        if ((repeatedEntity.Has<Audio3DTag>() && audioEntity.Has<Audio3DTag>()))
                         {
-                            ref var repeatedAudio3dModel = ref repeatedEntity.Get<Audio3DModel>();
-                            ref var audio3dModel = ref audioEntity.Get<Audio3DModel>();
-                            if (repeatedAudio3dModel.Parent == audio3dModel.Parent)
+                            ref var repeatedAudio3dModel = ref repeatedEntity.Get<TransformModel>();
+                            ref var audio3dModel = ref audioEntity.Get<TransformModel>();
+                            if (repeatedAudio3dModel.transform == audio3dModel.transform)
                             {
                                 shouldRequestBeCancelled = true;
                                 break;
@@ -104,27 +105,27 @@ namespace Ingame.Audio
                 }
                 
                 var audioSource = _pool.Get();
-                audioSource.clip = audioStorage.Audios[audio.Type][audio.Name].Item1;
+                audioSource.clip = audioStorage.audios[audio.type][audio.name].Item1;
                 audioSource.Play();
                 
                 ref var audioIsPlayingModel = ref audioEntity.Get<AudioSourceModel>();
-                audioIsPlayingModel.AudioSource = audioSource;
-                var audioSettings = audioStorage.Audios[audio.Type][audio.Name].Item2;
+                audioIsPlayingModel.audioSource = audioSource;
+                var audioSettings = audioStorage.audios[audio.type][audio.name].Item2;
                 
-                audioIsPlayingModel.AudioSource.priority = audioSettings.Priority;
-                audioIsPlayingModel.AudioSource.volume = audioSettings.Volume;
-                audioIsPlayingModel.AudioSource.pitch = audioSettings.Pitch;
-                audioIsPlayingModel.AudioSource.loop = audioSettings.Loop;
-                audioIsPlayingModel.AudioSource.spatialBlend = audioSettings.SpatialBlend;
-                audioIsPlayingModel.AudioSource.dopplerLevel = audioSettings.DopplerLevel;
-                audioIsPlayingModel.AudioSource.spread = audioSettings.Spread;
-                audioIsPlayingModel.AudioSource.minDistance = audioSettings.MinDistance;
-                audioIsPlayingModel.AudioSource.maxDistance = audioSettings.MaxDistance;
+                audioIsPlayingModel.audioSource.priority = audioSettings.Priority;
+                audioIsPlayingModel.audioSource.volume = audioSettings.Volume;
+                audioIsPlayingModel.audioSource.pitch = audioSettings.Pitch;
+                audioIsPlayingModel.audioSource.loop = audioSettings.Loop;
+                audioIsPlayingModel.audioSource.spatialBlend = audioSettings.SpatialBlend;
+                audioIsPlayingModel.audioSource.dopplerLevel = audioSettings.DopplerLevel;
+                audioIsPlayingModel.audioSource.spread = audioSettings.Spread;
+                audioIsPlayingModel.audioSource.minDistance = audioSettings.MinDistance;
+                audioIsPlayingModel.audioSource.maxDistance = audioSettings.MaxDistance;
                 
-                if (audioEntity.Has<Audio3DModel>())
+                if (audioEntity.Has<Audio3DTag>())
                 {
-                    ref var audio3d = ref audioEntity.Get<Audio3DModel>();
-                    audioSource.gameObject.transform.parent = audio3d.Parent;
+                    ref var audio3d = ref audioEntity.Get<TransformModel>();
+                    audioSource.gameObject.transform.parent = audio3d.transform;
                 }
                 else
                 {
@@ -146,18 +147,18 @@ namespace Ingame.Audio
                     ref var audioEntity = ref _audioIsPlayingFilter.GetEntity(j);
                     ref var audioComponent = ref _audioIsPlayingFilter.Get1(j);
                     ref var sourceModel= ref _audioIsPlayingFilter.Get2(j);
-                    if (requestAudioComponent.Name == audioComponent.Name &&
-                        requestAudioComponent.Type == audioComponent.Type)
+                    if (requestAudioComponent.name == audioComponent.name &&
+                        requestAudioComponent.type == audioComponent.type)
                     {
-                        if (audioPausedEntity.Has<Audio3DModel>() && audioEntity.Has<Audio3DModel>())
+                        if (audioPausedEntity.Has<Audio3DTag>() && audioEntity.Has<Audio3DTag>())
                         {
-                            ref var stopAudio3D = ref audioPausedEntity.Get<Audio3DModel>();
-                            ref var audio3D = ref audioEntity.Get<Audio3DModel>();
-                            if(audio3D.Parent != stopAudio3D.Parent)
+                            ref var stopAudio3D = ref audioPausedEntity.Get<TransformModel>();
+                            ref var audio3D = ref audioEntity.Get<TransformModel>();
+                            if(audio3D.transform != stopAudio3D.transform)
                                 continue;
                         }
                         
-                        sourceModel.AudioSource.Pause();
+                        sourceModel.audioSource.Pause();
                         audioEntity.Get<AudioIsPausedTag>();
                         audioEntity.Del<AudioIsPlayedTag>();
                     }
@@ -177,18 +178,18 @@ namespace Ingame.Audio
                     ref var audioEntity = ref _audioIsPausedFilter.GetEntity(j);
                     ref var audioComponent = ref _audioIsPausedFilter.Get1(j);
                     ref var sourceModel= ref _audioIsPausedFilter.Get2(j);
-                    if (requestAudioComponent.Name == audioComponent.Name &&
-                        requestAudioComponent.Type == audioComponent.Type)
+                    if (requestAudioComponent.name == audioComponent.name &&
+                        requestAudioComponent.type == audioComponent.type)
                     {
-                        if (audioPausedEntity.Has<Audio3DModel>() && audioEntity.Has<Audio3DModel>())
+                        if (audioPausedEntity.Has<Audio3DTag>() && audioEntity.Has<Audio3DTag>())
                         {
-                            ref var stopAudio3D = ref audioPausedEntity.Get<Audio3DModel>();
-                            ref var audio3D = ref audioEntity.Get<Audio3DModel>();
-                            if(audio3D.Parent != stopAudio3D.Parent)
+                            ref var stopAudio3D = ref audioPausedEntity.Get<TransformModel>();
+                            ref var audio3D = ref audioEntity.Get<TransformModel>();
+                            if(audio3D.transform != stopAudio3D.transform)
                                 continue;
                         }
 
-                        sourceModel.AudioSource.Play();
+                        sourceModel.audioSource.Play();
                         audioEntity.Get<AudioIsPlayedTag>();
                         audioEntity.Del<AudioIsPausedTag>();
                     }
@@ -208,19 +209,19 @@ namespace Ingame.Audio
                     ref var audioComponent = ref _audioIsPlayingFilter.Get1(j);
                     ref var sourceModel= ref _audioIsPlayingFilter.Get2(j);
 
-                    if (requestAudioComponent.Name == audioComponent.Name && requestAudioComponent.Type == audioComponent.Type)
+                    if (requestAudioComponent.name == audioComponent.name && requestAudioComponent.type == audioComponent.type)
                     {
-                        if (audioStopEntity.Has<Audio3DModel>() && audioEntity.Has<Audio3DModel>())
+                        if (audioStopEntity.Has<Audio3DTag>() && audioEntity.Has<Audio3DTag>())
                         {
-                            ref var stopAudio3D = ref audioStopEntity.Get<Audio3DModel>();
-                            ref var audio3D = ref audioEntity.Get<Audio3DModel>();
-                            if(audio3D.Parent != stopAudio3D.Parent)
+                            ref var stopAudio3D = ref audioStopEntity.Get<TransformModel>();
+                            ref var audio3D = ref audioEntity.Get<TransformModel>();
+                            if(audio3D.transform != stopAudio3D.transform)
                                 continue;
                         }
-                        sourceModel.AudioSource.Stop();
-                        sourceModel.AudioSource.transform.parent = _transform;
-                        sourceModel.AudioSource.clip = null;
-                        _pool.Release(sourceModel.AudioSource);
+                        sourceModel.audioSource.Stop();
+                        sourceModel.audioSource.transform.parent = _transform;
+                        sourceModel.audioSource.clip = null;
+                        _pool.Release(sourceModel.audioSource);
                         audioEntity.Destroy();
                         break;
                     }
@@ -235,10 +236,10 @@ namespace Ingame.Audio
                 ref var entity = ref _audioIsPlayingFilter.GetEntity(i);
                 ref var sourceModel = ref _audioIsPlayingFilter.Get2(i);
                 
-                if(sourceModel.AudioSource.isPlaying)
+                if(sourceModel.audioSource.isPlaying)
                     continue;
-                sourceModel.AudioSource.clip = null;
-                _pool.Release(sourceModel.AudioSource);
+                sourceModel.audioSource.clip = null;
+                _pool.Release(sourceModel.audioSource);
                 entity.Destroy();
             }
         }
@@ -252,9 +253,9 @@ namespace Ingame.Audio
                 {
                     ref var entity = ref _audioInAnyStateFilter.GetEntity(j);
                     ref var sourceModel = ref _audioInAnyStateFilter.Get2(j);
-                    sourceModel.AudioSource.Stop();
-                    sourceModel.AudioSource.clip = null;
-                    _pool.Release(sourceModel.AudioSource);
+                    sourceModel.audioSource.Stop();
+                    sourceModel.audioSource.clip = null;
+                    _pool.Release(sourceModel.audioSource);
                     entity.Destroy();
                 }
                 eventEntity.Destroy();
@@ -269,7 +270,7 @@ namespace Ingame.Audio
                 {
                     ref var entity = ref _audioIsPlayingFilter.GetEntity(j);
                     ref var sourceModel = ref _audioIsPlayingFilter.Get2(j);
-                   sourceModel.AudioSource.Pause();
+                   sourceModel.audioSource.Pause();
                     
                    entity.Get<AudioIsPausedTag>();
                    entity.Del<AudioIsPlayedTag>();
@@ -286,7 +287,7 @@ namespace Ingame.Audio
                 {
                     ref var entity = ref _audioIsPausedFilter.GetEntity(j);
                     ref var sourceModel = ref _audioIsPausedFilter.Get2(j);
-                    sourceModel.AudioSource.Play();
+                    sourceModel.audioSource.Play();
                     
                     entity.Get<AudioIsPlayedTag>();
                     entity.Del<AudioIsPausedTag>();

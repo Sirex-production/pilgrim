@@ -1,17 +1,22 @@
-﻿using Ingame.Enemy;
-using Leopotam.Ecs;
+﻿using Leopotam.Ecs;
 using UnityEngine;
-using Zenject;
+using Ingame.Movement;
+
 
 namespace Ingame.Audio
 {
-    public static class AudioController
+    public sealed class AudioController
     {
-        public static EcsWorld World;
-        
-        public static void Play(string type, string name, bool allowRepetition = true)
+        private EcsWorld _world;
+
+        public AudioController(EcsWorld world)
         {
-            var newEntity = World.NewEntity();
+            _world = world;
+        }
+
+        public void Play(string type, string name, bool allowRepetition = true)
+        {
+            var newEntity = _world.NewEntity();
             SetUpAudio2DRequest(ref newEntity,type,name);
             newEntity.Get<AudioPlayEvent>();
             if (!allowRepetition)
@@ -20,9 +25,9 @@ namespace Ingame.Audio
             }
         }
         
-        public static void Play3D(string type, string name, Transform transform, bool allowRepetition = true)
+        public void Play3D(string type, string name, Transform transform, bool allowRepetition = true)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio3DRequest(ref newEntity, type, name, transform);
             newEntity.Get<AudioPlayEvent>();
             if (!allowRepetition)
@@ -31,57 +36,57 @@ namespace Ingame.Audio
             }
         }
         
-        public static void Stop(string type, string name)
+        public void Stop(string type, string name)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio2DRequest(ref newEntity,type,name);
             newEntity.Get<AudioStopEvent>();
         }
         
-        public static void Stop3D(string type, string name, Transform transform)
+        public void Stop3D(string type, string name, Transform transform)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio3DRequest(ref newEntity, type, name, transform);
             newEntity.Get<AudioStopEvent>();
         }
-        public static void Pause(string type, string name)
+        public  void Pause(string type, string name)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio2DRequest(ref newEntity,type,name);
             newEntity.Get<AudioPauseEvent>();   
         }
-        public static void Pause3D(string type, string name, Transform transform)
+        public  void Pause3D(string type, string name, Transform transform)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio3DRequest(ref newEntity, type, name, transform);
             newEntity.Get<AudioPauseEvent>(); 
         }
         
-        public static void Resume(string type, string name)
+        public  void Resume(string type, string name)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio2DRequest(ref newEntity,type,name);
             newEntity.Get<AudioResumeEvent>();   
         }
-        public static void Resume3D(string type, string name, Transform transform)
+        public void Resume3D(string type, string name, Transform transform)
         {
-            var newEntity = World.NewEntity();
+            var newEntity = _world.NewEntity();
             SetUpAudio3DRequest(ref newEntity, type, name, transform);
             newEntity.Get<AudioResumeEvent>(); 
         }
 
-        public static void StopAll()
+        public  void StopAll()
         {
-            World.NewEntity().Get<AudioStopEvent>();
+            _world.NewEntity().Get<AudioStopEvent>();
         }
-        public static void PauseAll()
+        public  void PauseAll()
         {
-            World.NewEntity().Get<AudioPauseEvent>();
+            _world.NewEntity().Get<AudioPauseEvent>();
         }
         
-        public static void ResumeAll()
+        public  void ResumeAll()
         {
-            World.NewEntity().Get<AudioResumeEvent>();
+            _world.NewEntity().Get<AudioResumeEvent>();
         }
         public static void ChangeVolume(float f)
         {
@@ -90,14 +95,15 @@ namespace Ingame.Audio
         private static void SetUpAudio2DRequest(ref EcsEntity entity, string type, string name)
         {
             ref var audioRequest =ref entity.Get<AudioComponent>();
-            audioRequest.Name = name;
-            audioRequest.Type = type;
+            audioRequest.name = name;
+            audioRequest.type = type;
         }
         private static void SetUpAudio3DRequest(ref EcsEntity entity, string type, string name,Transform transform)
         {
             SetUpAudio2DRequest(ref entity, type, name);
-            ref var audio3D = ref entity.Get<Audio3DModel>();
-            audio3D.Parent = transform;
+            entity.Get<Audio3DTag>();
+            ref var transformModel = ref entity.Get<TransformModel>();
+            transformModel.transform = transform;
         }
     }
 }

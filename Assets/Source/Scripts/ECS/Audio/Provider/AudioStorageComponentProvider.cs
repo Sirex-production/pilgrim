@@ -13,7 +13,7 @@ namespace Ingame.Audio
         {
 
             Dictionary<string, Dictionary<string, (AudioClip,AudioWrapperSettings)>> dict = new ();
-            foreach (var typeWrapper in value.AudioContainer.Audios)
+            foreach (var typeWrapper in value.audioContainer.Audios)
             {
                 var audioClips = typeWrapper.AudioWrappers.ToDictionary(e=> e.Name, e=>( e.AudioClip, e.AudioSettings));
                 dict.Add(typeWrapper.Name,audioClips);
@@ -21,8 +21,8 @@ namespace Ingame.Audio
             
             value = new AudioStorageModel
             {
-                AudioContainer = value.AudioContainer,
-                Audios = dict
+                audioContainer = value.audioContainer,
+                audios = dict
             };
         }
     }

@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace Ingame.CoversDrawer
 {
-    #if UNITY_EDITOR
+   
     public sealed class SphereVisualizer : MonoBehaviour
     {
+#if UNITY_EDITOR
         public Color Color = Color.white;
         public float Radius = 1;
 
@@ -15,6 +16,7 @@ namespace Ingame.CoversDrawer
             Gizmos.color = Color;
             Gizmos.DrawSphere(this.transform.position,Radius);
         }
+#endif
     }
-    #endif
+
 }

@@ -2,7 +2,7 @@
 {
     public struct AudioComponent
     {
-        public string Type;
-        public string Name;
+        public string type;
+        public string name;
     }
 }

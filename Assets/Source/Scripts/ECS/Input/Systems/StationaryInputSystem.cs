@@ -43,7 +43,6 @@ namespace Ingame.Input
         
         private float _reloadTimer;
         private float _shutterDelayTimer;
- 
         public void Init()
         {
             _movementInputX = _stationaryInputSystem.FPS.MovementX;

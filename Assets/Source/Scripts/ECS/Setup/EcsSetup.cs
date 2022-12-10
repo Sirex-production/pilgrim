@@ -42,6 +42,7 @@ namespace Ingame
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
+        [Inject] private AudioController _audioController;
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -97,7 +98,8 @@ namespace Ingame
         {
             _updateSystems
                 .Inject(_stationaryInput)
-                .Inject(_gameController);
+                .Inject(_gameController)
+                .Inject(_audioController);
         }
 
         private void AddOneFrames()

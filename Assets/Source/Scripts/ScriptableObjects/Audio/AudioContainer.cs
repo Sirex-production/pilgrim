@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Ingame.Audio
 {
     [Serializable]
-    [CreateAssetMenu(menuName = "Ingame/Audio/AudioContainer", fileName = "AudioContainer")]
+    [CreateAssetMenu(menuName = "Ingame/Audio/audioContainer", fileName = "audioContainer")]
     public sealed class AudioContainer : ScriptableObject
     {
         [SerializeField] private List<AudioTypeWrapper> audios;

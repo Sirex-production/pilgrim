@@ -11,12 +11,18 @@ namespace Ingame.DI.Installers
             var world = new EcsWorld();
             var updateSystems = new EcsSystems(world);
             var fixedUpdateSystems = new EcsSystems(world);
+            var audioController = new AudioController(world);
             
             Container.Bind<EcsWorld>()
                 .FromInstance(world)
                 .AsSingle()
                 .NonLazy();
 
+            Container.Bind<AudioController>()
+                .FromInstance(audioController)
+                .AsSingle()
+                .NonLazy();
+            
             Container.Bind<EcsSystems>()
                 .WithId("UpdateSystems")
                 .FromInstance(updateSystems)
@@ -28,8 +34,7 @@ namespace Ingame.DI.Installers
                 .FromInstance(fixedUpdateSystems)
                 .AsCached()
                 .NonLazy();
-
-            AudioController.World = world;
+            
         }
     }
 }

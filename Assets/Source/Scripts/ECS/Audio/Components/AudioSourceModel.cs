@@ -4,6 +4,6 @@ namespace Ingame.Audio
 {
     public struct AudioSourceModel
     {
-        public AudioSource AudioSource;
+        public AudioSource audioSource;
     }
 }

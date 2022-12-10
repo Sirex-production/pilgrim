@@ -24,7 +24,7 @@ namespace Ingame.CoversDrawer
         private void OnEnable()
         {
             _isEnabled = false;
-            _gameobjects = new List<GameObject>();
+            _gameobjects ??= new List<GameObject>();
             var list = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().ToList();
             foreach (var obj in list)
             {
@@ -53,7 +53,7 @@ namespace Ingame.CoversDrawer
             {
                 Remove(obj);
             } 
-            _gameobjects = new List<GameObject>();
+            _gameobjects.Clear();    
         }
         
 
