@@ -40,7 +40,7 @@ namespace Ingame.Data.Hud
         [Foldout("Hud stats (Due to player rotation)"), ShowIf("isItemMovedBackToInitialPosition")]
         [SerializeField] [Range(0, 10)] private float moveToInitialPosSpeed = 3f;
         [Foldout("Hud stats (Due to player rotation)"), ShowIf("isItemMovedDueToRotation")]
-        [SerializeField] [Range(0, 10)] private float moveSpeed = 5f;
+        [SerializeField] [Range(0, 40)] private float moveSpeed = 5f;
         [Foldout("Hud stats (Due to player rotation)")] 
         [SerializeField] [MinMaxSlider(-2, 2)] private Vector2 minMaxMovementOffsetY = new(0, 0);
         [Foldout("Hud stats (Due to player rotation)")] 
