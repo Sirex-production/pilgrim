@@ -1,6 +1,7 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
+using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -41,6 +42,7 @@ namespace Ingame
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
+        [Inject] private AudioController _audioController;
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -96,7 +98,8 @@ namespace Ingame
         {
             _updateSystems
                 .Inject(_stationaryInput)
-                .Inject(_gameController);
+                .Inject(_gameController)
+                .Inject(_audioController);
         }
 
         private void AddOneFrames()
@@ -203,6 +206,7 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
+                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())
@@ -219,6 +223,7 @@ namespace Ingame
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
+            
 
             //FixedUpdate
             _fixedUpdateSystem

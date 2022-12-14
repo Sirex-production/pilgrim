@@ -20,7 +20,7 @@ namespace Ingame.Editor
 
         private string _nameOfDescription = "Description";
         
-        public NodeView(Node node) : base("Assets/Source/Scripts/Editor/View/NodeView.uxml")
+        public NodeView(Node node) : base("Assets/Source/Scripts/Tools/BehaviourTree/Editor/View/NodeView.uxml")
         {
             Node = node;
             this.title = node.name;
