@@ -13,7 +13,6 @@ public class EnemyRendererManager : MonoBehaviour
 
 #if UNITY_EDITOR
     [SerializeField] private bool shouldTexBeVisible = false;
-    //todo Preview
     [SerializeField] 
     [ShowIf("shouldTexBeVisible")]
     private RenderTexture renderTexture;

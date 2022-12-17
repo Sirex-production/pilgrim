@@ -15,6 +15,7 @@ namespace Ingame.Animation
         private readonly EcsFilter<MagazineSwitchInputEvent> _magSwitchEventFilter;
         private readonly EcsFilter<DistortTheShutterInputEvent> _distortShutterEventFilter;
         private readonly EcsFilter<ShutterDelayInputEvent> _shutterDelayEventFilter;
+        private readonly EcsFilter<ShowAmountOfAmmoInputEvent> _showAmountOfAmmoInputEvent;
 
         private const float LAYER_SWITCH_SPEED = 50f;
         private const int DISTORT_SHUTTER_LAYER = 1;
@@ -68,6 +69,15 @@ namespace Ingame.Animation
                     }
                 }
 
+                if (itemAvailableAnimations.HasAnimation(AnimationType.AmmoCheck))
+                {
+                    if (!_showAmountOfAmmoInputEvent.IsEmpty() && hudItemEntity.Has<HudIsInHandsTag>())
+                    {
+                        animator.ResetTrigger("CheckAmmo");
+                        animator.SetTrigger("CheckAmmo");
+                    }
+                }
+                
                 if (itemAvailableAnimations.HasAnimation(AnimationType.ShutterDelayLayer))
                 {
                     float targetWeight = hudItemEntity.Has<ShutterIsInDelayPositionTag>() ? 1f : 0f;

@@ -17,7 +17,7 @@ namespace Ingame.Animation
 		Reload = 1 << 1,
 		DistortTheShutter = 1 << 2,
 		ShutterDelay = 1 << 3,
-		MagazineCheck = 1 << 4,
+		AmmoCheck = 1 << 4,
 		ShutterDelayLayer = 1 << 5
 	}
 }

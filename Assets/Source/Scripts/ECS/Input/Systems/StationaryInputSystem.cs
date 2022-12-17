@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ingame.Audio;
 using Leopotam.Ecs;
 using Support;
 using UnityEngine;
@@ -43,7 +44,6 @@ namespace Ingame.Input
         
         private float _reloadTimer;
         private float _shutterDelayTimer;
- 
         public void Init()
         {
             _movementInputX = _stationaryInputSystem.FPS.MovementX;
@@ -195,7 +195,7 @@ namespace Ingame.Input
                     inputEntity = _world.NewEntity();
 
                 inputEntity.Get<AimInputEvent>();
-            }
+            }   
             
             WasKeyTapped(_reloadInput, reloadInput, ref _reloadTimer,ref inputEntity, () =>  inputEntity.Get<MagazineSwitchInputEvent>());
             
