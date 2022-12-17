@@ -20,6 +20,7 @@ using Ingame.Inventory;
 using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
+using Ingame.Quests;
 using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
@@ -120,7 +121,8 @@ namespace Ingame
                 .OneFrame<OpenInventoryInputEvent>()
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
-                .OneFrame<HideGunInputEvent>();
+                .OneFrame<HideGunInputEvent>()
+                .OneFrame<ShowQuestsInputEvent>();
         }
 
         private void AddSystems()
@@ -172,6 +174,8 @@ namespace Ingame
                 .Add(new ManageEnergyEffectSystem())
                 .Add(new DeathSystem())
                 .Add(new DestroyDeadActorsSystem())
+                //Quests
+                .Add(new CompleteQuestStepSystem())
                 //Interaction
                 .Add(new InteractionSystem())
                 .Add(new LongInteractionSystem())
@@ -209,9 +213,12 @@ namespace Ingame
                 .Add(new EnergyEffectDisplaySystem())
                 .Add(new PlayerPositionSetterSystem())
                 //UI
+                .Add(new UpdateQuestInfoSystem())
+                .Add(new DisplayQuestInfoSystem())
                 .Add(new InteractWithRaycastableUiSystem())
                 .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
+                .Add(new DisplayQuestCompletionSystem())
                 //SupportCommunication
                 .Add(new ProcessMessagesToSupportSystem())
                 //Utils

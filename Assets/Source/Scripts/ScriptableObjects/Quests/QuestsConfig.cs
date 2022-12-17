@@ -3,57 +3,49 @@ using UnityEngine;
 
 namespace Ingame.Quests
 {
+	[CreateAssetMenu(menuName = "Ingame/QuestConfig")]
 	public sealed class QuestsConfig : ScriptableObject
 	{
-		private QuestTree[] _questTrees;
+		[SerializeField] private QuestTree[] questTrees;
+		[SerializeField] private StringIntDictionary nameAliesToTreeIndex;
 
-		public string GetQuestTreeTitle(int treeId)
+		public int GetTreeId(string aliesName)
 		{
-			return _questTrees[treeId].title;
+			if (!nameAliesToTreeIndex.ContainsKey(aliesName))
+				return -1;
+			
+			return nameAliesToTreeIndex[aliesName];
 		}
 
-		public int GetAmountOfStepsForTree(int treeId)
+		public int GetStepsCount(string aliasName)
 		{
-			return _questTrees[treeId].quests.Length;
-		}
-
-		public QuestStep GetQuestStep(in QuestDefinition questDefinition)
-		{
-			return _questTrees[questDefinition.treeId].quests[questDefinition.stepId];
+			int treeId = nameAliesToTreeIndex[aliasName];
+			
+			return questTrees[treeId].questSteps.Length;
 		}
 		
+		public int GetStepsCount(int treeId)
+		{
+			return questTrees[treeId].questSteps.Length;
+		}
+
+		public QuestStep GetQuestStep(string aliasName, int stepId)
+		{
+			int treeId = nameAliesToTreeIndex[aliasName];
+
+			return questTrees[treeId].questSteps[stepId];
+		}
+
 		public QuestStep GetQuestStep(int treeId, int stepId)
 		{
-			return _questTrees[treeId].quests[stepId];
-		}
-	}
-
-	public struct QuestDefinition : IEquatable<QuestDefinition>
-	{
-		public int treeId;
-		public int stepId;
-		
-		public bool Equals(QuestDefinition other)
-		{
-			return treeId == other.treeId && stepId == other.stepId;
-		}
-		
-		public static bool operator ==(QuestDefinition def1, QuestDefinition def2)
-		{
-			return def1.Equals(def2);
-		}
-
-		public static bool operator !=(QuestDefinition def1, QuestDefinition def2)
-		{
-			return !def1.Equals(def2);
+			return questTrees[treeId].questSteps[stepId];
 		}
 	}
 
 	[Serializable]
-	public class QuestTree
+	public struct QuestTree
 	{
-		public string title;
-		public QuestStep[] quests;
+		public QuestStep[] questSteps;
 	}
 
 	[Serializable]
@@ -62,4 +54,7 @@ namespace Ingame.Quests
 		public string title;
 		public string description;
 	}
+
+	[Serializable]
+	public class StringIntDictionary : SerializableDictionary<string, int> { }
 }

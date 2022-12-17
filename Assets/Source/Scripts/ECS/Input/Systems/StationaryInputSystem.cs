@@ -39,6 +39,7 @@ namespace Ingame.Input
         private InputAction _openInventoryInput;
         private InputAction _firstSlotInteraction;
         private InputAction _secondSlotInteraction;
+        private InputAction _showQuestsInput;
         
         private float _reloadTimer;
         private float _shutterDelayTimer;
@@ -72,6 +73,8 @@ namespace Ingame.Input
 
             _firstSlotInteraction = _stationaryInputSystem.FPS.FirstSlotInteraction;
             _secondSlotInteraction = _stationaryInputSystem.FPS.SecondSlotInteraction;
+            _showQuestsInput = _stationaryInputSystem.FPS.ShowQuests;
+            
 
             _distortTheShutterInput.performed += OnDistortTheShutterPerformed;
             _longInteractInput.performed += OnLongInteractPerformed;
@@ -128,6 +131,7 @@ namespace Ingame.Input
             bool openInventoryInput = _openInventoryInput.WasPressedThisFrame();
             bool interactWithFirstSlot = _firstSlotInteraction.WasPressedThisFrame();
             bool interactWithSecondSlot = _secondSlotInteraction.WasPressedThisFrame();
+            bool showQuests = _showQuestsInput.WasPressedThisFrame();
             
             var leanDirection = _leanInput.ReadValue<float>() switch
             {
@@ -267,6 +271,14 @@ namespace Ingame.Input
                     inputEntity = _world.NewEntity();
 
                 inputEntity.Get<ShowAmountOfAmmoInputEvent>();
+            }
+
+            if (showQuests)
+            {
+                if (inputEntity == EcsEntity.Null)
+                    inputEntity = _world.NewEntity();
+
+                inputEntity.Get<ShowQuestsInputEvent>();
             }
 
             _isDistortTheShutterPerformedThisFrame = false;

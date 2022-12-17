@@ -193,6 +193,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShowQuests",
+                    "type": "Button",
+                    "id": "986a2874-026a-4d31-ab16-dc4565f103ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -765,6 +774,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShowAmountOfAmmo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b175c70-f439-4318-a638-225200194fc6",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowQuests",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

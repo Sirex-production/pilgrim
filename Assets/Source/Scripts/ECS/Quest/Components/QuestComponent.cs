@@ -2,6 +2,7 @@
 {
 	public struct QuestComponent
 	{
-		public QuestDefinition questDefinition;
+		public int treeId;
+		public int stepId;
 	}
 }

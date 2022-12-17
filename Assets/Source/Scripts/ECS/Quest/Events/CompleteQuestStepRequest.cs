@@ -2,6 +2,6 @@
 {
 	public struct CompleteQuestStepRequest
 	{
-		public QuestDefinition questDefinition;
+		public int treeId;
 	}
 }
