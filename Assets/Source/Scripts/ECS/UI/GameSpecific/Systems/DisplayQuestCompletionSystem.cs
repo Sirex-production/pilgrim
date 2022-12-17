@@ -20,7 +20,7 @@ namespace Ingame.UI
 				ref var uiGameplayQuestView = ref _uiGameplayQuestViewModelFilter.Get1(i);
 				int treeId = completeQuestStepRequest.treeId;
 
-				uiGameplayQuestView.uiGameplayQuestView.PlayQuestCompletedAnimation();
+				// uiGameplayQuestView.uiGameplayQuestView.PlayQuestCompletedAnimation();
 			}
 		}
 	}
