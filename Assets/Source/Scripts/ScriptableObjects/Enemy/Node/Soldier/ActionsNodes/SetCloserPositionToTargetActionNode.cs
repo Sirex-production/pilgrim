@@ -27,7 +27,7 @@ namespace Ingame.Enemy
             ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
 
             var position = transformModel.transform.position;
-            var dir = (enemyModel.Target.position - position).normalized;
+            var dir = (enemyModel.target.position - position).normalized;
 
             var newPosition = position + dir * stepRange;
             agentModel.Agent.destination = newPosition;

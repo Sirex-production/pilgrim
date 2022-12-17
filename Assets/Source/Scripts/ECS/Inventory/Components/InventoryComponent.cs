@@ -1,4 +1,6 @@
-﻿namespace Ingame.Inventory
+﻿using System;
+
+namespace Ingame.Inventory
 {
     public struct InventoryComponent
     {

@@ -52,7 +52,7 @@ namespace Ingame.Enemy
                 ref var enemyModel = ref Entity.Get<EnemyStateModel>();
                 ref var transform = ref Entity.Get<TransformModel>();
             
-                var lookPos = enemyModel.Target.position - transform.transform.position;
+                var lookPos = enemyModel.target.position - transform.transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
                 transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, rotation, 1.5f);
@@ -65,6 +65,7 @@ namespace Ingame.Enemy
             
             if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
+                _agent.velocity = Vector3.zero;
                 return State.Success;
             }
             

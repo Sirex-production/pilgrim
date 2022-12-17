@@ -12,7 +12,7 @@ namespace Ingame.Enemy
         
         protected override void ActOnStart()
         {
-            _target = Entity.Get<EnemyStateModel>().Target;
+            _target = Entity.Get<EnemyStateModel>().target;
             _transform = Entity.Get<TransformModel>().transform;
         }
 

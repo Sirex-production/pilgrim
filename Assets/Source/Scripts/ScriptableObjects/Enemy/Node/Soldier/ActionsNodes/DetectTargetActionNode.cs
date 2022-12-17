@@ -28,7 +28,7 @@ namespace Ingame.Enemy
         { 
             _transform =  Entity.Get<TransformModel>().transform;
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            _target =  enemyModel.Target;
+            _target =  enemyModel.target;
         
         }
 
@@ -40,7 +40,7 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             
-            if (Entity.Get<EnemyStateModel>().IsTargetDetected)
+            if (Entity.Get<EnemyStateModel>().isTargetDetected)
             {
                 return State.Success;
             }
@@ -80,7 +80,7 @@ namespace Ingame.Enemy
         {
             if (!Physics.Linecast(_transform.position, _target.position, out RaycastHit hit,ignoredLayers,QueryTriggerInteraction.Ignore))
                 return State.Failure;
-            Entity.Get<EnemyStateModel>().IsTargetDetected = true;
+            Entity.Get<EnemyStateModel>().isTargetDetected = true;
             return State.Success;
         }
         

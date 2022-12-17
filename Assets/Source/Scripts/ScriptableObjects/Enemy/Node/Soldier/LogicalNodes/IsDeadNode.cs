@@ -18,7 +18,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            return Entity.Get<EnemyStateModel>().IsDead ? State.Success : State.Failure;
+            return Entity.Get<EnemyStateModel>().isDead ? State.Success : State.Failure;
         }
     }
 }

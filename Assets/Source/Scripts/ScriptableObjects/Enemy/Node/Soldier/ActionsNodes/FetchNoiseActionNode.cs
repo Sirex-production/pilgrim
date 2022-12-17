@@ -19,15 +19,15 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            if (enemyModel.NoisePosition == null)
+            if (enemyModel.noisePosition == null)
             {
                 return State.Failure;
             }
 
             ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
-            agentModel.Agent.destination =  (Vector3) enemyModel.NoisePosition;
-            enemyModel.HasDetectedNoises = false;
-            enemyModel.NoisePosition = null;
+            agentModel.Agent.destination =  (Vector3) enemyModel.noisePosition;
+            enemyModel.hasDetectedNoises = false;
+            enemyModel.noisePosition = null;
             return State.Success;
         }
     }

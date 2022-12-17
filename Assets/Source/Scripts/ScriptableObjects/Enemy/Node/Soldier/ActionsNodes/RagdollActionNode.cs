@@ -1,40 +1,35 @@
 ﻿using Ingame.Behaviour;
+using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 using Support.Extensions;
 
 namespace Ingame.Enemy
 {
-    public sealed class RagdollActionNode : ActionNode
+    public sealed class RagdollActionNode : WaitNode
     {
-        private Animator _animator;
-        private const string ANIMATION_NAME = "RAGDOLL";
         protected override void ActOnStart()
         {
-            _animator = Entity.Get<AnimatorModel>().Animator;
-            _animator.Play(ANIMATION_NAME);
+            ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
+            agentModel.Agent.enabled = false;
+            var weapon = Entity.Get<EnemyWeaponHolderModel>().weapon;
+           
+            if (weapon != null && weapon.TryGetComponent<Rigidbody>(out var rb))
+            {
+                weapon.GetComponent<Collider>().isTrigger = false;
+                weapon.transform.parent = null;
+                rb.useGravity = true;
+            }
+            
+            Entity.Del<EnemyWeaponHolderModel>();
+            base.ActOnStart();
         }
 
         protected override void ActOnStop()
         {
-             
+            Entity.Get<HitBoxCapsuleColliderModel>().capsuleCollider.isTrigger = true;
+            base.ActOnStop();
         }
-
-        protected override State ActOnTick()
-        {
-            //is dying
-            _animator.Play(ANIMATION_NAME);
-            var animationState = _animator.IsAnimationPlaying(ANIMATION_NAME);
-            //animation has ended
-            if (!animationState)
-            {
-                //is already dead
-                ref var enemyStateModel = ref Entity.Get<EnemyStateModel>();
-                enemyStateModel.IsDead = true;
-                enemyStateModel.IsDying = false;
-                return State.Success;
-            }
-            return State.Running;
-        }
+        
     }
 }

@@ -21,6 +21,7 @@ using Ingame.Inventory;
 using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
+using Ingame.SaveLoad;
 using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
@@ -43,6 +44,8 @@ namespace Ingame
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
+        [Inject] private SaveLoadController _saveLoadController;
+        [Inject] private SaveDataContainer _saveDataContainer;
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -97,6 +100,8 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
+                .Inject(_saveDataContainer)
+                .Inject(_saveLoadController)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
                 .Inject(_audioController);
@@ -106,6 +111,7 @@ namespace Ingame
         {
             _updateSystems
                 .OneFrame<DebugRequest>()
+                .OneFrame<JumpInputEvent>()
                 .OneFrame<JumpInputEvent>()
                 .OneFrame<CrouchInputEvent>()
                 .OneFrame<LeanInputRequest>()
@@ -123,7 +129,9 @@ namespace Ingame
                 .OneFrame<OpenInventoryInputEvent>()
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
-                .OneFrame<HideGunInputEvent>();
+                .OneFrame<HideGunInputEvent>()
+                .OneFrame<InteractWithSecondSlotInputEvent>()
+                .OneFrame<InteractWithSecondSlotInputEvent>();
         }
 
         private void AddSystems()
@@ -163,6 +171,7 @@ namespace Ingame
                 //AI
                 .Add(new BehaviourSystem())
                 .Add(new EnemyObstacleDetectionSystem())
+                .Add(new SoldierAnimationSystem())
                 //Anomaly
                 .Add(new AcidWaterSystem())
                 //Health
@@ -222,7 +231,11 @@ namespace Ingame
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
-                .Add(new ExternalEventsRemoverSystem());
+                .Add(new ExternalEventsRemoverSystem())
+                .Add(new SaveLevelProgressSystem())
+                .Add(new SavePlayerProgressSystem())
+                .Add(new LoadLevelProgressSystem())
+                .Add(new LoadPlayerProgressSystem());
             
 
             //FixedUpdate

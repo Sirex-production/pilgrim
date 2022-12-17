@@ -1,15 +1,24 @@
-﻿using Ingame.Behaviour;
+﻿using System;
+using Ingame.Behaviour;
 using Ingame.Health;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Ingame.Enemy
 {
     public class AttackActionNode : ActionNode
     {
-        
+        enum TypeOfAttack
+        {
+            UnfairAccuracy,
+            ProgressiveAccuracy
+        }
+
+        [SerializeField] 
+        private TypeOfAttack typeOfAttack;
         [SerializeField] 
         private float damageOnHit;
         [SerializeField] 
@@ -18,18 +27,21 @@ namespace Ingame.Enemy
         [SerializeField] 
         private float shootIntervalTime = 1.5f;
         [SerializeField] 
-        private LayerMask ignoredLayers;
+        private bool shouldIgnoreObstacles;
 
-        [SerializeField] private bool shouldIgnoreObstacles;
+        private float _minAccuracy = 0.15f;
+        private float _accurencyRate = 0.045f;
         private float _currentIntervalTime;
+        private float _offset = 70f;
         protected override void ActOnStart()
         {
             _currentIntervalTime = shootIntervalTime;
+            Entity.Get<EnemyStateModel>().isAttacking = true;
         }
 
         protected override void ActOnStop()
         {
-          
+            Entity.Get<EnemyStateModel>().isAttacking = false;
         }
         /// <summary>
         /// Try to attack after [shootIntervalTime] time
@@ -39,11 +51,15 @@ namespace Ingame.Enemy
         {
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
             ref var transform = ref Entity.Get<TransformModel>();
+            var targetRotation = Quaternion.LookRotation(enemyModel.target.transform.position - transform.transform.position);
+            targetRotation.x = 0; 
+            targetRotation.z = 0;
+            targetRotation *= quaternion.Euler(0,_offset,0);
             
-            var lookPos = enemyModel.Target.position - transform.transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, rotation, 1.5f);
+            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 1.5f * Time.deltaTime);
+            //var target = transform.transform.LookAt(enemyModel.target);
+            //transform.transform.rotation = Quaternion.Euler(0,transform.transform.rotation.y,0);
+            //transform.transform.rotation *= quaternion.Euler(0,_offset,0);
             //cooldown
             if (_currentIntervalTime>0)
             {
@@ -51,30 +67,30 @@ namespace Ingame.Enemy
                 return State.Running;
             }
             
-            enemyModel.CurrentAmmo -= 1;
+            enemyModel.currentAmmo -= 1;
             
             //hit chance - do miss
-            if (chanceToHit < Random.Range(0f, 1f))
+            if (typeOfAttack == TypeOfAttack.UnfairAccuracy)
             {
-                return State.Failure;
-            }
-            
-           
-
-            //shoot
-            if (shouldIgnoreObstacles)
-            {
-                
-            }
-            if (!Physics.Linecast(transform.transform.position, enemyModel.Target.position, out RaycastHit hit, ignoredLayers, QueryTriggerInteraction.Ignore))
-            {
-                return State.Failure;
+                if (chanceToHit < Random.Range(0f, 1f))
+                {
+                    return State.Failure;
+                }
             }
 
-            if (!hit.transform.root.CompareTag("Player")) return State.Failure;
+            if (typeOfAttack == TypeOfAttack.ProgressiveAccuracy)
+            {
+                var chanceToHit = enemyModel.visibleTargetPixels * _accurencyRate;
+                var totalAcc = Math.Clamp(chanceToHit,_minAccuracy,chanceToHit);
+                if (totalAcc < Random.Range(0f, 1f))
+                {
+                    return State.Failure;
+                }
+            }
             
-            hit.transform.root.TryGetComponent(out EntityReference reference);
-            reference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
+            if (!enemyModel.target.TryGetComponent(out EntityReference targetEntityReference))
+                return State.Failure;
+            targetEntityReference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
             return State.Success;
 
         }

@@ -6,7 +6,7 @@ namespace Ingame.Behaviour
 {
     public sealed class BehaviourSystem : IEcsRunSystem
     {
-        //todo refactor - change a name convention
+        
         /*private readonly EcsFilter<BehaviourAgentModel,BehaviourCheckerTag> _behaviorAgentBeforeInitFilter;
         private readonly EcsFilter<BehaviourAgentModel,BehaviourAgentActiveTag>.Exclude<BehaviourCheckerTag> _behaviorAgentFilter;*/
         private readonly EcsFilter<BehaviourAgentModel,BehaviourCheckerTag,TransformModel> _behaviorAgentBeforeInitFilter;
@@ -19,15 +19,14 @@ namespace Ingame.Behaviour
             foreach (var i in _behaviorAgentBeforeInitFilter)
             { 
                 ref var agent =  ref _behaviorAgentBeforeInitFilter.Get1(i);
-                agent.Tree = agent.OriginalTree.Clone();
                 ref var entity =  ref _behaviorAgentBeforeInitFilter.GetEntity(i);
                 
 #if UNITY_EDITOR
-                UnityEngine.Debug.Log($"{agent.Tree.name} in {entity.ToString()} has been Initialized correctly");         
+                UnityEngine.Debug.Log($"{agent.tree.name} in {entity.ToString()} has been Initialized correctly");         
 #endif
                
                 //Inject
-                agent.Tree.InjectWorld(_world);
+                agent.tree.InjectWorld(_world);
                 
                 //Modify Components
                 entity.Get<BehaviourAgentActiveTag>();
@@ -42,12 +41,12 @@ namespace Ingame.Behaviour
                 ref var entity = ref _behaviorAgentFilter.GetEntity(i);
               
                 if (!transform.transform.gameObject.TryGetComponent(out EntityReference reference)) continue;
-                if (reference.Entity == null)
+                if (reference.Entity == null || reference.Entity == EcsEntity.Null)
                 {
                     continue;
                 }
-                agent.Tree.Entity = reference.Entity;
-                agent.Tree.InjectEntity(reference.Entity);
+                agent.tree.Entity = reference.Entity;
+                agent.tree.InjectEntity(reference.Entity);
                 entity.Del<BehaviourAgentActiveTag>();
             }
             //Run
@@ -55,7 +54,7 @@ namespace Ingame.Behaviour
             {
                 ref var agent =  ref _behaviorAgentRunFilter.Get1(i);
                 ref var entity = ref _behaviorAgentRunFilter.GetEntity(i);
-                if (agent.Tree.Tick() != Node.State.Running)
+                if (agent.tree.Tick() != Node.State.Running)
                 {
                     entity.Del<BehaviourAgentActiveTag>();
                 } 
@@ -64,19 +63,19 @@ namespace Ingame.Behaviour
             /*foreach (var i in _behaviorAgentBeforeInitFilter)
             { 
                 ref var agent =  ref _behaviorAgentBeforeInitFilter.Get1(i);
-                agent.Tree = agent.Tree.Clone();
+                agent.tree = agent.tree.Clone();
                 ref var entity =  ref _behaviorAgentBeforeInitFilter.GetEntity(i);
                 
                 #if UNITY_EDITOR
-                    UnityEngine.Debug.Log($"{agent.Tree.name} in {entity.ToString()} has been Initialized correctly");         
+                    UnityEngine.Debug.Log($"{agent.tree.name} in {entity.ToString()} has been Initialized correctly");         
                 #endif
                
                 //Inject
-                agent.Tree.Entity = entity;
-                agent.Tree.InjectEntity(entity);
-                agent.Tree.InjectWorld(_world);
+                agent.tree.Entity = entity;
+                agent.tree.InjectEntity(entity);
+                agent.tree.InjectWorld(_world);
               
-                //if (!agent.Tree.Init()) continue;
+                //if (!agent.tree.Init()) continue;
                 //Modify Components
                 entity.Get<BehaviourAgentActiveTag>();
                 entity.Del<BehaviourCheckerTag>();*/
@@ -87,8 +86,8 @@ namespace Ingame.Behaviour
             {
                 ref var agent =  ref _behaviorAgentBeforeInitFilter.Get1(i);
                 ref var entity = ref _behaviorAgentBeforeInitFilter.GetEntity(i);
-                UnityEngine.Debug.Log(agent.Tree.Entity.ToString());
-                if (agent.Tree.Tick() != Node.State.Running)
+                UnityEngine.Debug.Log(agent.tree.Entity.ToString());
+                if (agent.tree.Tick() != Node.State.Running)
                 {
                    
                     entity.Del<BehaviourAgentActiveTag>();

@@ -14,7 +14,7 @@ namespace Ingame.CoversDrawer
         private bool _isEnabled;
 
         
-        [MenuItem("Editor/Covers/CoversDrawer")]
+        [MenuItem("Editor/covers/CoversDrawer")]
         public static void Init()
         {
             var window = (CoversDrawer)EditorWindow.GetWindow(typeof(CoversDrawer));
@@ -99,8 +99,8 @@ namespace Ingame.CoversDrawer
                 vis = obj.AddComponent<SphereVisualizer>();
             }
 
-            vis.Color = _color;
-            vis.Radius = _radius;
+            vis.color = _color;
+            vis.radius = _radius;
         }
 
         private void Remove(GameObject obj)
