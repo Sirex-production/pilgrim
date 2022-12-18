@@ -14,10 +14,10 @@ namespace Ingame.SaveLoad
             if(_saveFilter.IsEmpty())
                 return;
             var index = SceneManager.GetActiveScene().buildIndex;
-            _saveDataContainer.level = new LevelData(){level = index};
+            _saveDataContainer.levelPersistence.Value= new LevelPersistenceData(index);
 
-            var save = BinarySerializer.SerializeData(_saveDataContainer);
-            PlayerPrefs.SetString("save", save);
+            var save = BinarySerializer.SerializeData<>(_saveDataContainer.levelPersistence.Value);
+            PlayerPrefs.SetString(SaveDataContainer.LEVEL_PERSISTANCE_NAME, save);
             PlayerPrefs.Save();
             
             _saveFilter.GetEntity(0).Destroy();

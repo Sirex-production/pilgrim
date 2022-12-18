@@ -6,7 +6,7 @@ namespace Ingame.SaveLoad
 {
     public static class BinarySerializer
     {
-        public static string SerializeData(SaveDataContainer saveData)
+        public static string SerializeData<T>(T saveData)
         {
             using var stream = new MemoryStream();
             var formatter = new BinaryFormatter();
@@ -16,7 +16,7 @@ namespace Ingame.SaveLoad
         }
 
 
-        public static SaveDataContainer DeserializeData(string serializedSaveData)
+        public static T DeserializeData<T>(string serializedSaveData)
         {
             var serializedBytesData = Convert.FromBase64String(serializedSaveData);
 
@@ -24,7 +24,7 @@ namespace Ingame.SaveLoad
             var formatter = new BinaryFormatter();
             var deserializedSaveData = formatter.Deserialize(stream);
 
-            return (SaveDataContainer) deserializedSaveData;
+            return (T) deserializedSaveData;
         }
     }
 }

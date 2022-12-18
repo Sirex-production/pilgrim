@@ -56,10 +56,8 @@ namespace Ingame.Enemy
             targetRotation.z = 0;
             targetRotation *= quaternion.Euler(0,_offset,0);
             
-            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 1.5f * Time.deltaTime);
-            //var target = transform.transform.LookAt(enemyModel.target);
-            //transform.transform.rotation = Quaternion.Euler(0,transform.transform.rotation.y,0);
-            //transform.transform.rotation *= quaternion.Euler(0,_offset,0);
+            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 7.5f * Time.deltaTime);
+          
             //cooldown
             if (_currentIntervalTime>0)
             {

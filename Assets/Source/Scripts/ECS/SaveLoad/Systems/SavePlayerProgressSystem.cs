@@ -19,19 +19,24 @@ namespace Ingame.SaveLoad
         {
             if(_savePlayerFilter.IsEmpty())
                 return;
-
-            _saveDataContainer.player ??= new PlayerData();
-            
-            _saveDataContainer.player.health = _playerHealthFilter.Get1(0).currentHealth;
+         
+            _saveDataContainer.playerPersistence.Value.Health = _playerHealthFilter.Get1(0).currentHealth;
             
             var inventory =  _inventoryFilter.Get1(0);
-            _saveDataContainer.player.inventory = inventory;
+            _saveDataContainer.playerPersistence.Value.Inventory = new InventoryPersistenceData(inventory.currentNumberOfAdrenaline, 
+                inventory.currentNumberOfBandages, 
+                inventory.currentNumberOfInhalators, 
+                inventory.currentNumberOfMorphine, 
+                inventory.currentNumberOfCreamTubes, 
+                inventory.currentNumberOfEnergyDrinks
+                );
+            
         
             //ammo weapon
-            //_saveDataContainer.player.
+            
 
-            var encData = BinarySerializer.SerializeData(_saveDataContainer);
-            PlayerPrefs.SetString("save",encData);
+            var encData = BinarySerializer.SerializeData(_saveDataContainer.playerPersistence.Value);
+            PlayerPrefs.SetString(SaveDataContainer.PLAYER_PERSISTANCE_NAME,encData);
             PlayerPrefs.Save();
             _savePlayerFilter.GetEntity(0).Destroy();
         }

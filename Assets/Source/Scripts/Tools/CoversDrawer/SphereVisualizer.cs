@@ -13,8 +13,8 @@ namespace Ingame.CoversDrawer
  
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color;
-            Gizmos.DrawSphere(this.transform.position,Radius);
+            Gizmos.color = color;
+            Gizmos.DrawSphere(this.transform.position,radius);
         }
 #endif
     }

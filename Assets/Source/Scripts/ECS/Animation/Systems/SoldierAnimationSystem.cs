@@ -63,8 +63,7 @@ namespace Ingame.Animation
             var velocity = (Time.deltaTime > 1e-5f) ? new Vector2(groundDeltaX,groundDeltaZ) / Time.deltaTime : Vector2.zero;
             bool shouldMove= velocity.magnitude > 0.025f &&
                              navMeshAgentModel.Agent.remainingDistance > navMeshAgentModel.Agent.radius;
-                
-            velocity = velocity.normalized;
+            
             animator.SetFloat(_moveX,shouldMove?velocity.x:0);
             animator.SetFloat(_moveZ,shouldMove?velocity.y:0);
             animator.SetBool(_isCrouching,enemyStateModel.isCrouching);

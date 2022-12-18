@@ -2,6 +2,7 @@
 using Ingame.Behaviour;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -52,10 +53,11 @@ namespace Ingame.Enemy
                 ref var enemyModel = ref Entity.Get<EnemyStateModel>();
                 ref var transform = ref Entity.Get<TransformModel>();
             
-                var lookPos = enemyModel.target.position - transform.transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, rotation, 1.5f);
+                var targetRotation = Quaternion.LookRotation(enemyModel.target.transform.position - transform.transform.position);
+                targetRotation.x = 0; 
+                targetRotation.z = 0;
+                transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 1.5f);
+                
             }
             
             if (_agent.pathPending)

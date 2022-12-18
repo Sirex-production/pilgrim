@@ -15,19 +15,13 @@ namespace Ingame.SaveLoad
         {
             if(_loadLevelFilter.IsEmpty())
             return;
-            var encData = PlayerPrefs.GetString("save", null);
-            if (encData == null)
+
+            if (!_saveDataContainer.levelPersistence.WasModified || _saveDataContainer.levelPersistence.Value == null)
             {
                 _loadLevelFilter.GetEntity(0).Destroy();
                 return;
             }
-
-            var decData= BinarySerializer.DeserializeData(encData);
-            if (decData.level !=null )
-            {
-                _saveDataContainer.level ??= new LevelData();
-                _saveDataContainer.level.level  = decData.level.level;
-            }
+            //system that gives a scene-changer an index
             
             _loadLevelFilter.GetEntity(0).Destroy();
         }
