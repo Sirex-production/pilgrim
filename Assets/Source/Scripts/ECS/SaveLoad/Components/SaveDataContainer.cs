@@ -13,15 +13,20 @@ namespace Ingame.SaveLoad
         public const string LEVEL_PERSISTANCE_NAME = "level_save";
         public const string PLAYER_PERSISTANCE_NAME = "player_save";
         
-        public DataPersistenceWrapper<LevelPersistenceData> levelPersistence;
-        public DataPersistenceWrapper<PlayerData> playerPersistence;
-        public SaveDataContainer()
+        private DataPersistenceWrapper<LevelPersistenceData> levelPersistence;
+        private DataPersistenceWrapper<PlayerData> playerPersistence;
+
+        public DataPersistenceWrapper<LevelPersistenceData> LevelPersistence => levelPersistence;
+
+        public DataPersistenceWrapper<PlayerData> PlayerPersistence => playerPersistence;
+
+        public void Init()
         {
             levelPersistence = TryToLoadData<LevelPersistenceData>(LEVEL_PERSISTANCE_NAME);
             playerPersistence = TryToLoadData<PlayerData>(PLAYER_PERSISTANCE_NAME);
         }
 
-        private DataPersistenceWrapper<T> TryToLoadData<T>(string name) where T : new()
+        private DataPersistenceWrapper<T> TryToLoadData<T>(string name) where T : class, new()
         {
             var encData = PlayerPrefs.GetString(name, null);
             if (encData == null)
@@ -30,7 +35,7 @@ namespace Ingame.SaveLoad
             }
 
             var value = BinarySerializer.DeserializeData<T>(encData);
-            return new DataPersistenceWrapper<T>(true,value);
+            return value == null ? new DataPersistenceWrapper<T>(false,new T()) : new DataPersistenceWrapper<T>(true,value);
         }
     }
 

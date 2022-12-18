@@ -45,7 +45,7 @@ namespace Ingame
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
         [Inject] private SaveLoadController _saveLoadController;
-        [Inject] private SaveDataContainer _saveDataContainer;
+        SaveDataContainer _saveDataContainer;
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -58,9 +58,11 @@ namespace Ingame
 #endif
             
             EcsPhysicsEvents.ecsWorld = _world;
-            
             _updateSystems.ConvertScene();
-
+            
+            _saveDataContainer = new SaveDataContainer();
+            _saveDataContainer.Init();
+            
             AddInjections();
             AddOneFrames();
             AddSystems();

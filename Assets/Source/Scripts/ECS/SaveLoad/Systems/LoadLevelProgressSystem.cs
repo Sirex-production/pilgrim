@@ -16,7 +16,7 @@ namespace Ingame.SaveLoad
             if(_loadLevelFilter.IsEmpty())
             return;
 
-            if (!_saveDataContainer.levelPersistence.WasModified || _saveDataContainer.levelPersistence.Value == null)
+            if (!_saveDataContainer.LevelPersistence.WasModified || _saveDataContainer.LevelPersistence.Value == null)
             {
                 _loadLevelFilter.GetEntity(0).Destroy();
                 return;

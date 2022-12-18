@@ -14,9 +14,9 @@ namespace Ingame.SaveLoad
             if(_saveFilter.IsEmpty())
                 return;
             var index = SceneManager.GetActiveScene().buildIndex;
-            _saveDataContainer.levelPersistence.Value= new LevelPersistenceData(index);
+            _saveDataContainer.LevelPersistence.Value= new LevelPersistenceData(index);
 
-            var save = BinarySerializer.SerializeData<>(_saveDataContainer.levelPersistence.Value);
+            var save = BinarySerializer.SerializeData(_saveDataContainer.LevelPersistence.Value);
             PlayerPrefs.SetString(SaveDataContainer.LEVEL_PERSISTANCE_NAME, save);
             PlayerPrefs.Save();
             

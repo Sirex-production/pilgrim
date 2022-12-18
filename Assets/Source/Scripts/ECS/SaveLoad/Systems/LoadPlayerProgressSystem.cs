@@ -20,18 +20,18 @@ namespace Ingame.SaveLoad
             if(_loadPlayerFilter.IsEmpty())
                 return;
             
-            if (!_saveDataContainer.playerPersistence.WasModified || _saveDataContainer.playerPersistence.Value ==null)
+            if (!_saveDataContainer.PlayerPersistence.WasModified || _saveDataContainer.PlayerPersistence.Value ==null)
             {
                 _loadPlayerFilter.GetEntity(0).Destroy();
                 return;
             }
             
             ref var health = ref _playerHealthFilter.Get1(0);
-            health.currentHealth = _saveDataContainer.playerPersistence.Value.Health;
+            health.currentHealth = _saveDataContainer.PlayerPersistence.Value.Health;
 
-            if(_saveDataContainer.playerPersistence.Value.Inventory != null){
+            if(_saveDataContainer.PlayerPersistence.Value.Inventory != null){
                 ref var inventory = ref _inventoryFilter.Get1(0);
-                var newInventory = _saveDataContainer.playerPersistence.Value.Inventory;
+                var newInventory = _saveDataContainer.PlayerPersistence.Value.Inventory;
                 inventory.currentNumberOfAdrenaline = newInventory.CurrentNumberOfAdrenaline;
                 inventory.currentNumberOfInhalators = newInventory.CurrentNumberOfBandages;
                 inventory.currentNumberOfBandages = newInventory.CurrentNumberOfInhalators;

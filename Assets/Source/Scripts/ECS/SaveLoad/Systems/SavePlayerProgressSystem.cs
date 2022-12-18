@@ -20,10 +20,10 @@ namespace Ingame.SaveLoad
             if(_savePlayerFilter.IsEmpty())
                 return;
          
-            _saveDataContainer.playerPersistence.Value.Health = _playerHealthFilter.Get1(0).currentHealth;
+            _saveDataContainer.PlayerPersistence.Value.Health = _playerHealthFilter.Get1(0).currentHealth;
             
             var inventory =  _inventoryFilter.Get1(0);
-            _saveDataContainer.playerPersistence.Value.Inventory = new InventoryPersistenceData(inventory.currentNumberOfAdrenaline, 
+            _saveDataContainer.PlayerPersistence.Value.Inventory = new InventoryPersistenceData(inventory.currentNumberOfAdrenaline, 
                 inventory.currentNumberOfBandages, 
                 inventory.currentNumberOfInhalators, 
                 inventory.currentNumberOfMorphine, 
@@ -35,7 +35,7 @@ namespace Ingame.SaveLoad
             //ammo weapon
             
 
-            var encData = BinarySerializer.SerializeData(_saveDataContainer.playerPersistence.Value);
+            var encData = BinarySerializer.SerializeData(_saveDataContainer.PlayerPersistence.Value);
             PlayerPrefs.SetString(SaveDataContainer.PLAYER_PERSISTANCE_NAME,encData);
             PlayerPrefs.Save();
             _savePlayerFilter.GetEntity(0).Destroy();

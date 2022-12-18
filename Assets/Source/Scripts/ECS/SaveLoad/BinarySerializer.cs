@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using ModestTree;
 
 namespace Ingame.SaveLoad
 {
@@ -16,8 +17,12 @@ namespace Ingame.SaveLoad
         }
 
 
-        public static T DeserializeData<T>(string serializedSaveData)
+        public static T DeserializeData<T>(string serializedSaveData) where T : class
         {
+            if (serializedSaveData == null || serializedSaveData.IsEmpty())
+            {
+                return null;
+            }
             var serializedBytesData = Convert.FromBase64String(serializedSaveData);
 
             using var stream = new MemoryStream(serializedBytesData);
