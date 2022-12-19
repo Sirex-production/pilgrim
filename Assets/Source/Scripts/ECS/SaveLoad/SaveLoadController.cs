@@ -1,5 +1,4 @@
 ﻿using Leopotam.Ecs;
-using UnityEngine;
 
 namespace Ingame.SaveLoad
 {
@@ -12,22 +11,19 @@ namespace Ingame.SaveLoad
             _world = world;
         }
 
-        public void LoadLevel()
+        public void Load()
         {
-            _world.NewEntity().Get<LoadLevelProgressEvent>();
-        }
-        public void LoadPlayer()
-        {
-            _world.NewEntity().Get<LoadPlayerProgressEvent>();
+            _world.NewEntity().Get<LoadProgressEvent>();
         }
 
-        public void SaveLevel()
+        public void Clear()
         {
-            _world.NewEntity().Get<SaveLevelProgressEvent>();
+            _world.NewEntity().Get<ClearProgressEvent>();
         }
-        public void SavePlayer()
+        
+        public void Save()
         {
-            _world.NewEntity().Get<SavePlayerProgressEvent>();
+            _world.NewEntity().Get<SaveProgressEvent>();
         }
     }
 }

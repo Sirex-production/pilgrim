@@ -1,6 +1,6 @@
 ﻿namespace Ingame.SaveLoad
 {
-    public struct LoadPlayerProgressEvent
+    public struct LoadProgressEvent
     {
         
     }

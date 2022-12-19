@@ -45,7 +45,7 @@ namespace Ingame
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
         [Inject] private SaveLoadController _saveLoadController;
-        SaveDataContainer _saveDataContainer;
+        PersistenceDataController _persistenceDataController;
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -60,9 +60,8 @@ namespace Ingame
             EcsPhysicsEvents.ecsWorld = _world;
             _updateSystems.ConvertScene();
             
-            _saveDataContainer = new SaveDataContainer();
-            _saveDataContainer.Init();
-            
+            _persistenceDataController = new PersistenceDataController();
+            _persistenceDataController.Init();
             AddInjections();
             AddOneFrames();
             AddSystems();
@@ -102,7 +101,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
-                .Inject(_saveDataContainer)
+                .Inject(_persistenceDataController)
                 .Inject(_saveLoadController)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
@@ -234,11 +233,9 @@ namespace Ingame
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem())
-                .Add(new SaveLevelProgressSystem())
-                .Add(new SavePlayerProgressSystem())
-                .Add(new LoadLevelProgressSystem())
-                .Add(new LoadPlayerProgressSystem());
-            
+                .Add(new SaveProgressSystem())
+                .Add(new LoadProgressSystem());
+
 
             //FixedUpdate
             _fixedUpdateSystem

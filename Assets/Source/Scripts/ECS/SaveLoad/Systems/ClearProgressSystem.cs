@@ -12,8 +12,7 @@ namespace Ingame.SaveLoad
             {
                 return;
             }
-            PlayerPrefs.SetString(SaveDataContainer.LEVEL_PERSISTANCE_NAME,null);
-            PlayerPrefs.SetString(SaveDataContainer.PLAYER_PERSISTANCE_NAME,null);
+            PlayerPrefs.SetString(PersistenceDataController.DATA_PERSISTANCE_NAME,null);
             PlayerPrefs.Save();
             _clearFilter.GetEntity(0).Destroy();
         }
