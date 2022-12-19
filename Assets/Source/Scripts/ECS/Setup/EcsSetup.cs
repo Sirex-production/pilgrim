@@ -6,10 +6,8 @@ using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
 using Ingame.Debuging;
- 
 using Ingame.Dialog;
 using Ingame.Effects;
- 
 using Ingame.Gunplay;
 using Ingame.Health;
 using Ingame.Hud;
@@ -44,8 +42,8 @@ namespace Ingame
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
-        [Inject] private SaveLoadController _saveLoadController;
-        PersistenceDataController _persistenceDataController;
+        [Inject] private SaveLoadService _saveLoadService;
+        
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -56,12 +54,10 @@ namespace Ingame
 #if UNITY_EDITOR
             _ecsProfiler = new EcsProfiler(_world, new EcsWorldDebugListener(), _updateSystems, _fixedUpdateSystem);
 #endif
-            
+
             EcsPhysicsEvents.ecsWorld = _world;
             _updateSystems.ConvertScene();
-            
-            _persistenceDataController = new PersistenceDataController();
-            _persistenceDataController.Init();
+
             AddInjections();
             AddOneFrames();
             AddSystems();
@@ -101,8 +97,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
-                .Inject(_persistenceDataController)
-                .Inject(_saveLoadController)
+                .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
                 .Inject(_audioController);
@@ -232,11 +227,8 @@ namespace Ingame
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
-                .Add(new ExternalEventsRemoverSystem())
-                .Add(new SaveProgressSystem())
-                .Add(new LoadProgressSystem());
-
-
+                .Add(new ExternalEventsRemoverSystem());
+            
             //FixedUpdate
             _fixedUpdateSystem
                  //Input   

@@ -13,8 +13,8 @@ namespace Ingame.DI.Installers
             var updateSystems = new EcsSystems(world);
             var fixedUpdateSystems = new EcsSystems(world);
             var audioController = new AudioController(world);
-            var saveLoadController = new SaveLoadController(world);
-        
+            var saveLoadService = new SaveLoadService();
+
             Container.Bind<EcsWorld>()
                 .FromInstance(world)
                 .AsSingle()
@@ -25,9 +25,9 @@ namespace Ingame.DI.Installers
                 .AsSingle()
                 .NonLazy();
             
-            Container.Bind<SaveLoadController>()
-                .FromInstance(saveLoadController)
-                .AsSingle()
+            Container.BindInterfacesAndSelfTo<SaveLoadService>()
+                .FromInstance(saveLoadService)
+                .AsCached()
                 .NonLazy();
             
             Container.Bind<EcsSystems>()
@@ -41,7 +41,6 @@ namespace Ingame.DI.Installers
                 .FromInstance(fixedUpdateSystems)
                 .AsCached()
                 .NonLazy();
-            
         }
     }
 }
