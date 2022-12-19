@@ -195,9 +195,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShowQuests",
+                    "name": "ShowActiveQuest",
                     "type": "Button",
                     "id": "986a2874-026a-4d31-ab16-dc4565f103ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowAllQuests",
+                    "type": "Button",
+                    "id": "4a3f2c40-1bc8-4741-98e9-72bb69a794ce",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -784,7 +793,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShowQuests",
+                    "action": "ShowActiveQuest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36c6f01a-567e-4095-930f-f6f79fa6873d",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Hold(duration=0.4)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowAllQuests",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

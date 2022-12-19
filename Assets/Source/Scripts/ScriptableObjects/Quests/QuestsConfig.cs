@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Ingame.Quests
@@ -6,52 +7,50 @@ namespace Ingame.Quests
 	[CreateAssetMenu(menuName = "Ingame/QuestConfig")]
 	public sealed class QuestsConfig : ScriptableObject
 	{
-		[SerializeField] private QuestTree[] questTrees;
+		[SerializeField] private Quest[] quests;
 		[SerializeField] private StringIntDictionary nameAliesToTreeIndex;
 
-		public int GetTreeId(string aliesName)
+		public string[] GetQuestStepDescriptions(string alies)
 		{
-			if (!nameAliesToTreeIndex.ContainsKey(aliesName))
-				return -1;
-			
-			return nameAliesToTreeIndex[aliesName];
-		}
-
-		public int GetStepsCount(string aliasName)
-		{
-			int treeId = nameAliesToTreeIndex[aliasName];
-			
-			return questTrees[treeId].questSteps.Length;
+			return GetQuestStepDescriptions(nameAliesToTreeIndex[alies]);
 		}
 		
-		public int GetStepsCount(int treeId)
+		public string[] GetQuestStepDescriptions(int questId)
 		{
-			return questTrees[treeId].questSteps.Length;
+			return quests[questId].steps.Select(step => step.description).ToArray();
 		}
 
-		public QuestStep GetQuestStep(string aliasName, int stepId)
+		public string GetQuestTitle(string alies)
 		{
-			int treeId = nameAliesToTreeIndex[aliasName];
-
-			return questTrees[treeId].questSteps[stepId];
+			return GetQuestTitle(nameAliesToTreeIndex[alies]);
+		}
+		
+		public string GetQuestTitle(int questId)
+		{
+			return quests[questId].title;
 		}
 
-		public QuestStep GetQuestStep(int treeId, int stepId)
+		public int GetStepsCount(string alies)
 		{
-			return questTrees[treeId].questSteps[stepId];
+			return GetStepsCount(nameAliesToTreeIndex[alies]);
+		}
+		
+		public int GetStepsCount(int questId)
+		{
+			return quests[questId].steps.Length;
 		}
 	}
 
 	[Serializable]
-	public struct QuestTree
+	public struct Quest
 	{
-		public QuestStep[] questSteps;
+		public string title;
+		public QuestStep[] steps;
 	}
 
 	[Serializable]
 	public struct QuestStep
 	{
-		public string title;
 		public string description;
 	}
 

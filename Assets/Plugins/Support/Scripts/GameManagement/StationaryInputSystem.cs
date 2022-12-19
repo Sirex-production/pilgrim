@@ -219,9 +219,18 @@ namespace Support
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ShowQuests"",
+                    ""name"": ""ShowActiveQuest"",
                     ""type"": ""Button"",
                     ""id"": ""986a2874-026a-4d31-ab16-dc4565f103ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowAllQuests"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a3f2c40-1bc8-4741-98e9-72bb69a794ce"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -808,7 +817,18 @@ namespace Support
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShowQuests"",
+                    ""action"": ""ShowActiveQuest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36c6f01a-567e-4095-930f-f6f79fa6873d"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": ""Hold(duration=0.4)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowAllQuests"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -840,7 +860,8 @@ namespace Support
             m_FPS_SecondSlotInteraction = m_FPS.FindAction("SecondSlotInteraction", throwIfNotFound: true);
             m_FPS_DropGun = m_FPS.FindAction("DropGun", throwIfNotFound: true);
             m_FPS_HideGun = m_FPS.FindAction("HideGun", throwIfNotFound: true);
-            m_FPS_ShowQuests = m_FPS.FindAction("ShowQuests", throwIfNotFound: true);
+            m_FPS_ShowActiveQuest = m_FPS.FindAction("ShowActiveQuest", throwIfNotFound: true);
+            m_FPS_ShowAllQuests = m_FPS.FindAction("ShowAllQuests", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -921,7 +942,8 @@ namespace Support
         private readonly InputAction m_FPS_SecondSlotInteraction;
         private readonly InputAction m_FPS_DropGun;
         private readonly InputAction m_FPS_HideGun;
-        private readonly InputAction m_FPS_ShowQuests;
+        private readonly InputAction m_FPS_ShowActiveQuest;
+        private readonly InputAction m_FPS_ShowAllQuests;
         public struct FPSActions
         {
             private @StationaryInput m_Wrapper;
@@ -947,7 +969,8 @@ namespace Support
             public InputAction @SecondSlotInteraction => m_Wrapper.m_FPS_SecondSlotInteraction;
             public InputAction @DropGun => m_Wrapper.m_FPS_DropGun;
             public InputAction @HideGun => m_Wrapper.m_FPS_HideGun;
-            public InputAction @ShowQuests => m_Wrapper.m_FPS_ShowQuests;
+            public InputAction @ShowActiveQuest => m_Wrapper.m_FPS_ShowActiveQuest;
+            public InputAction @ShowAllQuests => m_Wrapper.m_FPS_ShowAllQuests;
             public InputActionMap Get() { return m_Wrapper.m_FPS; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1020,9 +1043,12 @@ namespace Support
                     @HideGun.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnHideGun;
                     @HideGun.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnHideGun;
                     @HideGun.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnHideGun;
-                    @ShowQuests.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowQuests;
-                    @ShowQuests.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowQuests;
-                    @ShowQuests.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowQuests;
+                    @ShowActiveQuest.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowActiveQuest;
+                    @ShowActiveQuest.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowActiveQuest;
+                    @ShowActiveQuest.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowActiveQuest;
+                    @ShowAllQuests.started -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowAllQuests;
+                    @ShowAllQuests.performed -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowAllQuests;
+                    @ShowAllQuests.canceled -= m_Wrapper.m_FPSActionsCallbackInterface.OnShowAllQuests;
                 }
                 m_Wrapper.m_FPSActionsCallbackInterface = instance;
                 if (instance != null)
@@ -1090,9 +1116,12 @@ namespace Support
                     @HideGun.started += instance.OnHideGun;
                     @HideGun.performed += instance.OnHideGun;
                     @HideGun.canceled += instance.OnHideGun;
-                    @ShowQuests.started += instance.OnShowQuests;
-                    @ShowQuests.performed += instance.OnShowQuests;
-                    @ShowQuests.canceled += instance.OnShowQuests;
+                    @ShowActiveQuest.started += instance.OnShowActiveQuest;
+                    @ShowActiveQuest.performed += instance.OnShowActiveQuest;
+                    @ShowActiveQuest.canceled += instance.OnShowActiveQuest;
+                    @ShowAllQuests.started += instance.OnShowAllQuests;
+                    @ShowAllQuests.performed += instance.OnShowAllQuests;
+                    @ShowAllQuests.canceled += instance.OnShowAllQuests;
                 }
             }
         }
@@ -1120,7 +1149,8 @@ namespace Support
             void OnSecondSlotInteraction(InputAction.CallbackContext context);
             void OnDropGun(InputAction.CallbackContext context);
             void OnHideGun(InputAction.CallbackContext context);
-            void OnShowQuests(InputAction.CallbackContext context);
+            void OnShowActiveQuest(InputAction.CallbackContext context);
+            void OnShowAllQuests(InputAction.CallbackContext context);
         }
     }
 }

@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febaa864cc5441fab5c1becde1898c34, type: 3}
   m_Name: QuestConfig
   m_EditorClassIdentifier: 
-  questTrees:
-  - questSteps:
-    - title: Tree hunter
-      description: Find tree
-  - questSteps:
-    - title: Sample
-      description: Sample
+  quests:
+  - title: Quest 0
+    steps:
+    - description: Step 0-0
+    - description: Step 0-1
+    - description: Step 0-2
+  - title: Quest 1
+    steps:
+    - description: Step 2-0
+    - description: Step 2-1
   nameAliesToTreeIndex:
     m_keys:
     - FindTree

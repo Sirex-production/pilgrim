@@ -29,6 +29,7 @@ using Ingame.UI.Raycastable;
 using Ingame.Utils;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
+using NaughtyAttributes;
 using Support;
 using UnityEngine;
 using Voody.UniLeo;
@@ -38,12 +39,15 @@ namespace Ingame
 {
     public sealed class EcsSetup : MonoBehaviour
     {
+        [Required, SerializeField] private QuestsConfig questsConfig;
+        
         [Inject] private GameController _gameController;
         [Inject] private StationaryInput _stationaryInput;
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
+        
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -100,7 +104,8 @@ namespace Ingame
             _updateSystems
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
-                .Inject(_audioController);
+                .Inject(_audioController)
+                .Inject(questsConfig);
         }
 
         private void AddOneFrames()
@@ -125,7 +130,8 @@ namespace Ingame
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
                 .OneFrame<HideGunInputEvent>()
-                .OneFrame<ShowQuestsInputEvent>();
+                .OneFrame<ShowActiveQuestInputEvent>()
+                .OneFrame<ShowAllQuestsInputEvent>();
         }
 
         private void AddSystems()
@@ -217,12 +223,11 @@ namespace Ingame
                 .Add(new EnergyEffectDisplaySystem())
                 .Add(new PlayerPositionSetterSystem())
                 //UI
-                .Add(new UpdateQuestInfoSystem())
-                .Add(new DisplayQuestInfoSystem())
                 .Add(new InteractWithRaycastableUiSystem())
+                .Add(new UpdateQuestUiSystem())
                 .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
-                .Add(new DisplayQuestCompletionSystem())
+                .Add(new DisplayQuestInfoSystem())
                 //SupportCommunication
                 .Add(new ProcessMessagesToSupportSystem())
                 //Utils

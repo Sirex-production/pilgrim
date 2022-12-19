@@ -1,8 +1,10 @@
-﻿namespace Ingame.Quests
+﻿using Support;
+
+namespace Ingame.Quests
 {
 	public struct QuestComponent
 	{
-		public int treeId;
-		public int stepId;
+		public int questId;
+		public Bitset32 completedSteps;
 	}
 }

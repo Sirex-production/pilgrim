@@ -1,42 +1,54 @@
-﻿using Leopotam.Ecs;
+﻿using System.Runtime.CompilerServices;
+using Leopotam.Ecs;
+using Support;
 
 namespace Ingame.Quests
 {
 	public sealed class CompleteQuestStepSystem : IEcsRunSystem
 	{
 		private readonly EcsWorld _world;
+		private readonly QuestsConfig _questsConfig;
 		
 		private readonly EcsFilter<QuestComponent> _questFilter;
-		private readonly EcsFilter<QuestConfigModel> _questConfigFilter;
-		private readonly EcsFilter<CompleteQuestStepRequest> _completeQuestRequestFilter;
-		
+		private readonly EcsFilter<CompleteQuestStepsRequest> _completeQuestStepRequestFilter;
+
 		public void Run()
 		{
-			if(_completeQuestRequestFilter.IsEmpty() || _questConfigFilter.IsEmpty())
+			if(_completeQuestStepRequestFilter.IsEmpty())
 				return;
-
-			var questConfig = _questConfigFilter.Get1(0).questsConfig;
-			ref var completeQuestRequest = ref _completeQuestRequestFilter.Get1(0);
-			ref var completeQuestEntity = ref _completeQuestRequestFilter.GetEntity(0);
-
+			
+			ref var requestEntity = ref _completeQuestStepRequestFilter.GetEntity(0);
+			ref var completeQuestStepRequest = ref _completeQuestStepRequestFilter.Get1(0);
+			
 			foreach (var i in _questFilter)
 			{
+				ref var questEntity = ref _questFilter.GetEntity(i);
 				ref var questComp = ref _questFilter.Get1(i);
 
-				if(completeQuestRequest.treeId != questComp.treeId)
+				if(questComp.questId != completeQuestStepRequest.questId)
 					continue;
-				
-				int amountOfStepsInTree = questConfig.GetStepsCount(completeQuestRequest.treeId);
 
-				if (questComp.stepId + 1 >= amountOfStepsInTree)
-					_world.NewEntity().Get<QuestTreeIsCompltedRequest>().treeId = completeQuestRequest.treeId;
-				else
-					questComp.stepId++;
+				questComp.completedSteps |= completeQuestStepRequest.stepsToComplete;
 
-				_world.NewEntity().Get<UpdateQuestViewsEvent>();
+				if (AreAllStepsCompleted(questComp.completedSteps, _questsConfig.GetStepsCount(questComp.questId)))
+					questEntity.Get<CompletedQuestTag>();
+
+				_world.NewEntity().Get<QuestsAreUpdatedEvent>();
 			}
 			
-			completeQuestEntity.Del<CompleteQuestStepRequest>();
+			requestEntity.Del<CompleteQuestStepsRequest>();
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		private bool AreAllStepsCompleted(in Bitset32 completedStepsBitset, in int amountOfSteps)
+		{
+			for (int i = 0; i < amountOfSteps; i++)
+			{
+				if (completedStepsBitset[i] == false)
+					return false;
+			}
+
+			return true;
 		}
 	}
 }

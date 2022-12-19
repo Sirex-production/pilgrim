@@ -7,46 +7,35 @@ namespace Ingame.Quests
 {
 	public sealed class QuestInitializer : MonoBehaviour
 	{
-		[Serializable]
-		private struct QuestInitData
-		{
-			public int treeId;
-			public int stepId;
-		}
-
-		[SerializeField] private QuestInitData[] initialQuests;
-		[SerializeField] private int idOfActiveQuest;
-
+		[SerializeField] private int[] questIdsToInitialize;
+		[SerializeField] private int idOfActiveQuest = 0;
+		
 		private EcsWorld _world;
-
+		
 		[Inject]
-		private void Construct(EcsWorld world)
+		public void Construct(EcsWorld world)
 		{
 			_world = world;
-			
-			for (int i = 0; i < initialQuests.Length; i++)
-			{
-				var questInitData = initialQuests[i];
-				var questEntity = _world.NewEntity();
-				ref var questComponent = ref questEntity.Get<QuestComponent>();
-
-				questComponent.treeId = questInitData.treeId;
-				questComponent.stepId = questInitData.stepId;
-				
-				if (i == idOfActiveQuest) 
-					questEntity.Get<ActiveQuestTag>();
-			}
 		}
 
-		private void OnValidate()
+		private void Start()
 		{
-			if (initialQuests == null || initialQuests.Length < 1)
+			InitializeQuests();
+		}
+
+		private void InitializeQuests()
+		{
+			foreach (int questId in questIdsToInitialize)
 			{
-				idOfActiveQuest = -1;
-				return;
+				var questEntity = _world.NewEntity(); 
+				
+				questEntity.Get<QuestComponent>().questId = questId;
+
+				if (questId == idOfActiveQuest)
+					questEntity.Get<ActiveQuestTag>();
 			}
 
-			idOfActiveQuest = Mathf.Clamp(idOfActiveQuest, 0, initialQuests.Length);
+			_world.NewEntity().Get<QuestsAreUpdatedEvent>();
 		}
 	}
 }
