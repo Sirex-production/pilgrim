@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbd0f215f403134081d14282b442b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questsConfig: {fileID: 11400000, guid: e914c3b3d1afce04db1091c5940cdf7a, type: 2}
 --- !u!1 &2021379597
 GameObject:
   m_ObjectHideFlags: 0

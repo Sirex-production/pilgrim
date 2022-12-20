@@ -30,7 +30,7 @@ namespace Ingame.Editor
             this.AddManipulator(new RectangleSelector());
             
             var styleSheet =
-                AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Source/Scripts/Editor/BehaviourTreeEditorWindow.uss");
+                AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Source/Scripts/Tools/BehaviourTree/Editor/BehaviourTreeEditorWindow.uss");
                 this.styleSheets.Add(styleSheet);
         }
         

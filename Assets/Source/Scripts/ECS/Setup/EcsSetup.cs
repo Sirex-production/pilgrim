@@ -1,6 +1,7 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
+using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -20,6 +21,7 @@ using Ingame.Inventory;
 using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
+using Ingame.Quests;
 using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
@@ -27,6 +29,7 @@ using Ingame.UI.Raycastable;
 using Ingame.Utils;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
+using NaughtyAttributes;
 using Support;
 using UnityEngine;
 using Voody.UniLeo;
@@ -36,11 +39,15 @@ namespace Ingame
 {
     public sealed class EcsSetup : MonoBehaviour
     {
+        [Required, SerializeField] private QuestsConfig questsConfig;
+        
         [Inject] private GameController _gameController;
         [Inject] private StationaryInput _stationaryInput;
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
+        [Inject] private AudioController _audioController;
+        
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -96,7 +103,9 @@ namespace Ingame
         {
             _updateSystems
                 .Inject(_stationaryInput)
-                .Inject(_gameController);
+                .Inject(_gameController)
+                .Inject(_audioController)
+                .Inject(questsConfig);
         }
 
         private void AddOneFrames()
@@ -120,7 +129,9 @@ namespace Ingame
                 .OneFrame<OpenInventoryInputEvent>()
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
-                .OneFrame<HideGunInputEvent>();
+                .OneFrame<HideGunInputEvent>()
+                .OneFrame<ShowActiveQuestInputEvent>()
+                .OneFrame<ShowAllQuestsInputEvent>();
         }
 
         private void AddSystems()
@@ -172,6 +183,8 @@ namespace Ingame
                 .Add(new ManageEnergyEffectSystem())
                 .Add(new DeathSystem())
                 .Add(new DestroyDeadActorsSystem())
+                //Quests
+                .Add(new CompleteQuestStepSystem())
                 //Interaction
                 .Add(new InteractionSystem())
                 .Add(new LongInteractionSystem())
@@ -189,8 +202,9 @@ namespace Ingame
                 .Add(new HudRecoilSystem())
                 .Add(new HudItemAnimationSystem())
                 .Add(new Ar15ReloadSystem())
-                .Add(new Mp5ReloadSystem())
                 .Add(new M14EbrReloadSystem())
+                .Add(new Mp5ReloadSystem())
+                .Add(new KrissVectorReloadSystem())
                 //Dialog
                 .Add(new DialogSystem())
                 .Add(new DialogCutDownDialogSystem())
@@ -202,6 +216,7 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
+                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())
@@ -209,8 +224,10 @@ namespace Ingame
                 .Add(new PlayerPositionSetterSystem())
                 //UI
                 .Add(new InteractWithRaycastableUiSystem())
+                .Add(new UpdateQuestUiSystem())
                 .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
+                .Add(new DisplayQuestInfoSystem())
                 //SupportCommunication
                 .Add(new ProcessMessagesToSupportSystem())
                 //Utils
@@ -218,6 +235,7 @@ namespace Ingame
                 .Add(new DebugSystem())
                 .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
+            
 
             //FixedUpdate
             _fixedUpdateSystem

@@ -121,7 +121,7 @@ namespace Ingame.Hud
         private Vector3 GetLocalPositionOffsetDueToPlayerRotation(HudItemData itemData, in Vector2 deltaRotation)
         {
             Vector3 positionOffset = Vector3.zero;
-            positionOffset.x += -deltaRotation.x * itemData.MoveSpeed;
+            positionOffset.x += -deltaRotation.x * itemData.MoveSpeed * Time.deltaTime;
 
             if (itemData.IsItemMovedBackToInitialPosition) 
                 positionOffset.x = Mathf.Lerp(positionOffset.x, 0, itemData.MoveToInitialPosSpeed * Time.deltaTime);

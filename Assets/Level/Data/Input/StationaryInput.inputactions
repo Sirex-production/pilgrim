@@ -193,6 +193,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ShowActiveQuest",
+                    "type": "Button",
+                    "id": "986a2874-026a-4d31-ab16-dc4565f103ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowAllQuests",
+                    "type": "Button",
+                    "id": "4a3f2c40-1bc8-4741-98e9-72bb69a794ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -562,7 +580,7 @@
                 {
                     "name": "",
                     "id": "56a5a5b8-8128-4a4e-9068-cd164fa2492b",
-                    "path": "<Keyboard>/y",
+                    "path": "<Keyboard>/t",
                     "interactions": "Hold(duration=0.4)",
                     "processors": "",
                     "groups": "",
@@ -765,6 +783,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShowAmountOfAmmo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b175c70-f439-4318-a638-225200194fc6",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowActiveQuest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36c6f01a-567e-4095-930f-f6f79fa6873d",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Hold(duration=0.4)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowAllQuests",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Ingame.Audio;
 using Leopotam.Ecs;
 using Support;
 using UnityEngine;
@@ -9,14 +10,15 @@ namespace Ingame.Input
 {
     public sealed class StationaryInputSystem : IEcsRunSystem, IEcsInitSystem
     {
-        private const float TAP_INTO_HOLD_TIME_THRESHOLD = 0.4f; 
+        private const float TAP_INTO_HOLD_TIME_THRESHOLD = 0.4f;
         private EcsWorld _world;
         private StationaryInput _stationaryInputSystem;
 
-        private bool _isDistortTheShutterPerformedThisFrame = false; 
+        private bool _isDistortTheShutterPerformedThisFrame = false;
         private bool _isLongInteractPerformedThisFrame = false;
         private bool _isDropGunInputWasPerformedThisFrame = false;
-        private bool _isShowAmmountOfAmmoWasPerformedThisFrame = false;
+        private bool _isShowAmountOfAmmoWasPerformedThisFrame = false;
+        private bool _isShowAllQuestsWasPerformedThisFrame = false;
         private float timePassedFromLastLeanInputRequest;
 
         private InputAction _movementInputX;
@@ -39,18 +41,21 @@ namespace Ingame.Input
         private InputAction _openInventoryInput;
         private InputAction _firstSlotInteraction;
         private InputAction _secondSlotInteraction;
-        
+        private InputAction _showActiveQuestInput;
+        private InputAction _showAllQuestsInput;
+
         private float _reloadTimer;
         private float _shutterDelayTimer;
- 
+        private float _showActiveQuestsTimer;
+
         public void Init()
         {
             _movementInputX = _stationaryInputSystem.FPS.MovementX;
             _movementInputY = _stationaryInputSystem.FPS.MovementY;
-            
+
             _rotationInputX = _stationaryInputSystem.FPS.RotationX;
             _rotationInputY = _stationaryInputSystem.FPS.RotationY;
-            
+
             _jumpInput = _stationaryInputSystem.FPS.Jump;
             _crouchInput = _stationaryInputSystem.FPS.Crouch;
             _leanInput = _stationaryInputSystem.FPS.Lean;
@@ -72,26 +77,29 @@ namespace Ingame.Input
 
             _firstSlotInteraction = _stationaryInputSystem.FPS.FirstSlotInteraction;
             _secondSlotInteraction = _stationaryInputSystem.FPS.SecondSlotInteraction;
+            _showActiveQuestInput = _stationaryInputSystem.FPS.ShowActiveQuest;
+            _showAllQuestsInput = _stationaryInputSystem.FPS.ShowAllQuests;
+
 
             _distortTheShutterInput.performed += OnDistortTheShutterPerformed;
             _longInteractInput.performed += OnLongInteractPerformed;
             _dropGunInput.performed += OnDropGunInputPerformed;
             _showAmountOfAmmoInput.performed += OnAmountOfAmmoInputPerformed;
-            
+            _showAllQuestsInput.performed += OnShowAllQuestsInputPerformed;
         }
 
-      
+
         private void OnDistortTheShutterPerformed(InputAction.CallbackContext callbackContext)
         {
-            if(callbackContext.canceled || callbackContext.duration < .05f)
+            if (callbackContext.canceled || callbackContext.duration < .05f)
                 return;
 
             _isDistortTheShutterPerformedThisFrame = true;
         }
-        
+
         private void OnLongInteractPerformed(InputAction.CallbackContext callbackContext)
         {
-            if(callbackContext.canceled || callbackContext.duration < .05f)
+            if (callbackContext.canceled || callbackContext.duration < .05f)
                 return;
 
             _isLongInteractPerformedThisFrame = true;
@@ -99,18 +107,26 @@ namespace Ingame.Input
 
         private void OnDropGunInputPerformed(InputAction.CallbackContext callbackContext)
         {
-            if(callbackContext.canceled || callbackContext.duration < .05f)
+            if (callbackContext.canceled || callbackContext.duration < .05f)
                 return;
 
             _isDropGunInputWasPerformedThisFrame = true;
         }
-        
+
         private void OnAmountOfAmmoInputPerformed(InputAction.CallbackContext callbackContext)
         {
-            if(callbackContext.canceled || callbackContext.duration < .05f)
+            if (callbackContext.canceled || callbackContext.duration < .05f)
                 return;
 
-            _isShowAmmountOfAmmoWasPerformedThisFrame = true;
+            _isShowAmountOfAmmoWasPerformedThisFrame = true;
+        }
+
+        private void OnShowAllQuestsInputPerformed(InputAction.CallbackContext callbackContext)
+        {
+            if (callbackContext.canceled || callbackContext.duration < .05f)
+                return;
+            
+            _isShowAllQuestsWasPerformedThisFrame = true;
         }
 
         public void Run()
@@ -128,7 +144,8 @@ namespace Ingame.Input
             bool openInventoryInput = _openInventoryInput.WasPressedThisFrame();
             bool interactWithFirstSlot = _firstSlotInteraction.WasPressedThisFrame();
             bool interactWithSecondSlot = _secondSlotInteraction.WasPressedThisFrame();
-            
+            bool showActiveQuests = _showActiveQuestInput.WasPressedThisFrame();
+
             var leanDirection = _leanInput.ReadValue<float>() switch
             {
                 < 0 => LeanDirection.Left,
@@ -192,8 +209,8 @@ namespace Ingame.Input
 
                 inputEntity.Get<AimInputEvent>();
             }
-            
-            WasKeyTapped(_reloadInput, reloadInput, ref _reloadTimer,ref inputEntity, () =>  inputEntity.Get<MagazineSwitchInputEvent>());
+
+            ReceiveTapInput(_reloadInput, reloadInput, ref _reloadTimer, ref inputEntity, () => inputEntity.Get<MagazineSwitchInputEvent>());
             
             if (_isDistortTheShutterPerformedThisFrame)
             {
@@ -202,8 +219,8 @@ namespace Ingame.Input
 
                 inputEntity.Get<DistortTheShutterInputEvent>();
             }
-            
-            WasKeyTapped(_shutterDelayInput,shutterDelayInput ,ref _shutterDelayTimer ,ref inputEntity,() =>  inputEntity.Get<ShutterDelayInputEvent>());
+
+            ReceiveTapInput(_shutterDelayInput, shutterDelayInput, ref _shutterDelayTimer, ref inputEntity, () => inputEntity.Get<ShutterDelayInputEvent>());
             
             if (interactInput)
             {
@@ -261,40 +278,54 @@ namespace Ingame.Input
                 inputEntity.Get<DropWeaponInputEvent>();
             }
 
-            if (_isShowAmmountOfAmmoWasPerformedThisFrame)
+            if (_isShowAmountOfAmmoWasPerformedThisFrame)
             {
                 if (inputEntity == EcsEntity.Null)
                     inputEntity = _world.NewEntity();
 
                 inputEntity.Get<ShowAmountOfAmmoInputEvent>();
             }
+            
+            if (_isShowAllQuestsWasPerformedThisFrame)
+            {
+                if (inputEntity == EcsEntity.Null)
+                    inputEntity = _world.NewEntity();
 
+                inputEntity.Get<ShowAllQuestsInputEvent>();
+            }
+
+            ReceiveTapInput(_showActiveQuestInput, showActiveQuests, ref _showActiveQuestsTimer, ref inputEntity, () => inputEntity.Get<ShowActiveQuestInputEvent>());
+            
             _isDistortTheShutterPerformedThisFrame = false;
             _isLongInteractPerformedThisFrame = false;
             _isDropGunInputWasPerformedThisFrame = false;
-            _isShowAmmountOfAmmoWasPerformedThisFrame = false;
+            _isShowAmountOfAmmoWasPerformedThisFrame = false;
+            _isShowAllQuestsWasPerformedThisFrame = false;
         }
-        
-        private void WasKeyTapped(InputAction input,bool wasPressedThisFrame,ref float timer,ref EcsEntity entity , Action action)
+
+        private void ReceiveTapInput(InputAction input, bool wasPressedThisFrame, ref float timer, ref EcsEntity entity, Action action)
         {
             if (wasPressedThisFrame)
             {
                 timer = 0;
             }
-            
+
             if (input.IsPressed())
             {
                 timer += Time.deltaTime;
             }
 
-            if (!input.WasReleasedThisFrame()) return;
-            
-            if (timer <TAP_INTO_HOLD_TIME_THRESHOLD )
+            if (!input.WasReleasedThisFrame()) 
+                return;
+
+            if (timer < TAP_INTO_HOLD_TIME_THRESHOLD)
             {
                 if (entity == EcsEntity.Null)
                     entity = _world.NewEntity();
+                
                 action?.Invoke();
             }
+
             timer = 0;
         }
     }

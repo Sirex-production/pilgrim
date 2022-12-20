@@ -1,6 +1,7 @@
 ﻿using Ingame.Animation;
 using Ingame.Hud;
 using Ingame.Inventory;
+using Ingame.Quests;
 using Ingame.SupportCommunication;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
@@ -28,6 +29,8 @@ namespace Ingame.Utils
         private readonly EcsFilter<PerformDistortShutterAnimationCallbackEvent> _performDistortShutterAnimationCallbackFilter;
         private readonly EcsFilter<PerformMagazineSwitchAnimationCallback> _performMagazineSwitchCallbackFilter;
         private readonly EcsFilter<PerformShutterDelayAnimationCallbackEvent> _performShutterDelayCallbackFilter;
+        //Quest
+        private readonly EcsFilter<QuestsAreUpdatedEvent> _questsAreUpdatedEventFilter;
 
         public void Run()
         {
@@ -107,6 +110,12 @@ namespace Ingame.Utils
             {
                 ref var eventEntity = ref _performShutterDelayCallbackFilter.GetEntity(i);
                 eventEntity.Del<PerformShutterDelayAnimationCallbackEvent>();
+            }
+
+            foreach (var i in _questsAreUpdatedEventFilter)
+            {
+                ref var eventEntity = ref _questsAreUpdatedEventFilter.GetEntity(i);
+                eventEntity.Del<QuestsAreUpdatedEvent>();
             }
         }
     }

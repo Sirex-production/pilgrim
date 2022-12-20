@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Ingame.Gunplay
 {
-	public class Mp5ReloadSystem : IEcsRunSystem
+	public sealed class Mp5ReloadSystem : IEcsRunSystem
 	{
 		private EcsWorld _world;
 		
@@ -22,8 +22,8 @@ namespace Ingame.Gunplay
 		{
 			bool isShutterDistortion = !_distortShutterAnimFilter.IsEmpty(); 
 			bool isShutterDelay = !_shutterDelayAnimFilter.IsEmpty(); 
-			bool isMagSwitch = !_magazineSwitchAnimFilter.IsEmpty(); 
-			
+			bool isMagSwitch = !_magazineSwitchAnimFilter.IsEmpty();
+
 			if(!isShutterDistortion && !isShutterDelay && !isMagSwitch)
 				return;
 			
@@ -49,7 +49,7 @@ namespace Ingame.Gunplay
 		{
 			if(!mp5Entity.Has<AwaitsShutterDistortionTag>())
 				return;
-			
+
 			mp5Entity.Del<AwaitsShutterDistortionTag>();
 			mp5Entity.Get<ShutterIsInDelayPositionTag>();
 		}
