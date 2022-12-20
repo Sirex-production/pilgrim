@@ -115,35 +115,4 @@ namespace Ingame.SaveLoad
         public List<Type> savedTypes;
         public List<string> storedTypes;
     }
-
-    [Serializable]
-    public sealed class PlayerPersistentData
-    {
-        public float hp;
-
-        public override string ToString()
-        {
-            return $"{hp}";
-        }
-    }
-    
-    [Serializable]
-    public sealed class LevelPersistentData
-    {
-        public int currentLevel;
-    }
-    
-    
-    [Serializable]
-    public class X
-    {
-        public int i = 1;
-    }
-
-    [Serializable]
-    public class Y
-    {
-        public double j = 1d;
-    }
-    
 }
