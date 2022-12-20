@@ -92,7 +92,7 @@ namespace Ingame.Editor
                     {
                         if (entity.Entity !=null && entity.Entity.Has<BehaviourAgentModel>())
                         {
-                            tree = entity.Entity.Get<BehaviourAgentModel>().Tree;
+                            tree = entity.Entity.Get<BehaviourAgentModel>().tree;
                             _stateView.UpdateEntityInfo(tree);
                         }
                     }
@@ -148,7 +148,7 @@ namespace Ingame.Editor
             if (_treePanelView.Tree == null)
             {
                 #if UNITY_EDITOR
-                    UnityEngine.Debug.LogError("Tree can not be saved, ensure such a tree exists!!!");
+                    UnityEngine.Debug.LogError("tree can not be saved, ensure such a tree exists!!!");
                 #endif
                 return;
             }

@@ -23,8 +23,14 @@ namespace Ingame.Behaviour
         {
             if (_timer<=0f)
             {
+                if (Child.Tick()== State.Running)
+                {
+                    Child.Abort();
+                }
                 return State.Success;
             }
+
+            Child.Tick();
             _timer -= Time.deltaTime;
             return State.Running;
         }

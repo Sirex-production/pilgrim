@@ -27,7 +27,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var target = ref Entity.Get<EnemyStateModel>().Target;
+            ref var target = ref Entity.Get<EnemyStateModel>().target;
             ref var that = ref Entity.Get<TransformModel>().transform;
             if (target==null)
             {

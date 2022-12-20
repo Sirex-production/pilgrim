@@ -1,4 +1,5 @@
-﻿using Ingame.Movement;
+﻿using Ingame.Enemy;
+using Ingame.Movement;
 using Ingame.Player;
 using Ingame.SupportCommunication;
 using Leopotam.Ecs;
@@ -9,7 +10,7 @@ namespace Ingame.Health
     public class DestroyDeadActorsSystem : IEcsRunSystem
     {
         private readonly EcsWorld _world;
-        private readonly EcsFilter<HealthComponent, TransformModel, DeathTag> _deadActorsFilter;
+        private readonly EcsFilter<HealthComponent, TransformModel, DeathTag>.Exclude<EnemyStateModel> _deadActorsFilter;
 
         public void Run()
         {

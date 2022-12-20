@@ -43,10 +43,10 @@ namespace Ingame.Systems
             
                 //1st phase of player recognition
                 var visibilityOfPlayer = GetNumberOfPixelsOfPLayer(camera.Camera, environment, all);
-                model.VisibleTagretPixels = visibilityOfPlayer;
+                model.visibleTargetPixels = visibilityOfPlayer;
                 if (visibilityOfPlayer>=_pixelDetectionThreshold)
                 {
-                    model.IsTargetDetected = true;
+                    model.isTargetDetected = true;
                     _enemyFilter.GetEntity(enemy).Del<EnemyUseCameraRequest>();
                     continue;
                 }
@@ -56,7 +56,7 @@ namespace Ingame.Systems
                 var percentageVision = GetPercentageVisibilityOfPixelsOfPLayer(camera.Camera, player, visibilityOfPlayer);
                 if (percentageVision >= _percentageDetectionThreshold)
                 {
-                    model.IsTargetDetected = true;
+                    model.isTargetDetected = true;
                 }
                 _enemyFilter.GetEntity(enemy).Del<EnemyUseCameraRequest>();
             }
