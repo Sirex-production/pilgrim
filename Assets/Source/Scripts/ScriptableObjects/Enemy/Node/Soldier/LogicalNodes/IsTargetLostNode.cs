@@ -17,7 +17,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            return Entity.Get<EnemyStateModel>().HasLostTarget ? State.Success : State.Failure;
+            return Entity.Get<EnemyStateModel>().hasLostTarget ? State.Success : State.Failure;
         }
     }
 }

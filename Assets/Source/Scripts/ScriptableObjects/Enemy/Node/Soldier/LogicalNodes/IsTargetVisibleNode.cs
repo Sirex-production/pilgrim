@@ -55,7 +55,7 @@ namespace Ingame.Enemy
           
 
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            return thresholdOfVisibility <= enemyModel.VisibleTagretPixels ? State.Success : State.Failure; 
+            return thresholdOfVisibility <= enemyModel.visibleTargetPixels ? State.Success : State.Failure; 
         }
         
         private State ActOnLineCasting()
@@ -63,7 +63,7 @@ namespace Ingame.Enemy
             ref var transformModel = ref Entity.Get<TransformModel>();
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
 
-            if (!Physics.Linecast(transformModel.transform.position, enemyModel.Target.position, out var hit,
+            if (!Physics.Linecast(transformModel.transform.position, enemyModel.target.position, out var hit,
                     ignoredLayers, QueryTriggerInteraction.Ignore)) return State.Success;
 
             if (!hit.collider.transform.root.TryGetComponent<EntityReference>(out var entityReference))

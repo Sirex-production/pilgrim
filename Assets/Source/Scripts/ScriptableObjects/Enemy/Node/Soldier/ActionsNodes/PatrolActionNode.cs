@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ingame.Animation;
 using Ingame.Behaviour;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -39,7 +40,6 @@ namespace Ingame.Enemy
             _agent.speed = speed;
             _agent.stoppingDistance = stoppingDistance;
             _agent.isStopped = false;
-            _animator = Entity.Get<AnimatorModel>().Animator;
 
         }
 
@@ -58,8 +58,7 @@ namespace Ingame.Enemy
             {
                 return State.Failure;
             }
-      
-            // _animator.Play("WALK_FORWARD");
+            
             if (_agent.pathPending)
             {
                 return State.Running; 

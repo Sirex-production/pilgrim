@@ -22,7 +22,7 @@ namespace Ingame.Gunplay
                 if (!TryPerformRaycast(firearmComponent.barrelOrigin.position, firearmComponent.barrelOrigin.forward, out RaycastHit hit))
                     continue;
 
-                if(!TryApplyDamage(hit.collider.gameObject, firearmComponent.firearmConfig.Damage))
+                if(!TryApplyDamage(hit.collider.gameObject, firearmComponent.firearmConfig.Damage) && !TryApplyDamage(hit.transform.root.gameObject, firearmComponent.firearmConfig.Damage) )
                     continue;
             }
         }

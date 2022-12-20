@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Behaviour
 {
     [Serializable]
     public struct BehaviourAgentModel
     {
-        [HideInInspector]
-        public BehaviourTree Tree;
+        [FormerlySerializedAs("Tree")] [HideInInspector]
+        public BehaviourTree tree;
 
         [SerializeField]
         private BehaviourTree originalTree;

@@ -49,27 +49,27 @@ namespace Ingame.Systems
                {
                    if (enter.collider.gameObject.layer == LayerMask.NameToLayer(TRANPARENT_OBSTACLE_NAME))
                    {
-                       enemyStateModel.TransparentCovers ??= new HashSet<Transform>();
-                       enemyStateModel.TransparentCovers.Add(enter.collider.transform);
+                       enemyStateModel.transparentCovers ??= new HashSet<Transform>();
+                       enemyStateModel.transparentCovers.Add(enter.collider.transform);
                    
                    }
                    else
                    {
-                       enemyStateModel.Covers ??= new HashSet<Transform>();
-                       enemyStateModel.Covers.Add(enter.collider.transform);
+                       enemyStateModel.covers ??= new HashSet<Transform>();
+                       enemyStateModel.covers.Add(enter.collider.transform);
                    }
                }
                else
                {
                    if (enter.collider.gameObject.layer == LayerMask.NameToLayer(TRANPARENT_OBSTACLE_NAME))
                    {
-                       enemyStateModel.UndefinedTransparentCovers ??= new HashSet<Transform>();
-                       enemyStateModel.UndefinedTransparentCovers.Add(enter.collider.transform);
+                       enemyStateModel.undefinedTransparentCovers ??= new HashSet<Transform>();
+                       enemyStateModel.undefinedTransparentCovers.Add(enter.collider.transform);
                    }
                    else
                    {
-                       enemyStateModel.UndefinedCovers ??= new HashSet<Transform>();
-                       enemyStateModel.UndefinedCovers.Add(enter.collider.transform);
+                       enemyStateModel.undefinedCovers ??= new HashSet<Transform>();
+                       enemyStateModel.undefinedCovers.Add(enter.collider.transform);
                     
                    }
                }
@@ -110,24 +110,24 @@ namespace Ingame.Systems
                {
                    if (exit.collider.gameObject.layer == LayerMask.NameToLayer(TRANPARENT_OBSTACLE_NAME))
                    {
-                       enemyStateModel.TransparentCovers.Remove(exit.collider.transform);
+                       enemyStateModel.transparentCovers.Remove(exit.collider.transform);
                    
                    }
                    else
                    {
-                       enemyStateModel.Covers.Remove(exit.collider.transform);
+                       enemyStateModel.covers.Remove(exit.collider.transform);
                    }
                }
                else
                {
                    if (exit.collider.gameObject.layer == LayerMask.NameToLayer(TRANPARENT_OBSTACLE_NAME))
                    {
-                       enemyStateModel.UndefinedTransparentCovers.Remove(exit.collider.transform);
+                       enemyStateModel.undefinedTransparentCovers.Remove(exit.collider.transform);
                    
                    }
                    else
                    {
-                       enemyStateModel.UndefinedCovers.Remove(exit.collider.transform);
+                       enemyStateModel.undefinedCovers.Remove(exit.collider.transform);
                    }
                }
         

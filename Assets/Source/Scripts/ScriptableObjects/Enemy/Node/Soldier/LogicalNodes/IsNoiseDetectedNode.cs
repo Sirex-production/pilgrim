@@ -16,7 +16,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            return Entity.Get<EnemyStateModel>().HasDetectedNoises ? State.Success : State.Failure;
+            return Entity.Get<EnemyStateModel>().hasDetectedNoises ? State.Success : State.Failure;
         }
     }
 }

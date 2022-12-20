@@ -26,7 +26,7 @@ namespace Ingame.Enemy
             ref var health = ref Entity.Get<HealthComponent>();
             if (health.currentHealth<=0)
             {
-                Entity.Get<EnemyStateModel>().IsDying = true;
+                Entity.Get<EnemyStateModel>().isDying = true;
             }
             return health.currentHealth > healthThreshold * health.initialHealth ? State.Failure : State.Success;
         }

@@ -6,10 +6,8 @@ using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
 using Ingame.Debuging;
- 
 using Ingame.Dialog;
 using Ingame.Effects;
- 
 using Ingame.Gunplay;
 using Ingame.Health;
 using Ingame.Hud;
@@ -22,6 +20,7 @@ using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
 using Ingame.Quests;
+using Ingame.SaveLoad;
 using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
@@ -47,7 +46,8 @@ namespace Ingame
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
-        
+        [Inject] private SaveLoadService _saveLoadService;
+
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
 #endif
@@ -58,9 +58,8 @@ namespace Ingame
 #if UNITY_EDITOR
             _ecsProfiler = new EcsProfiler(_world, new EcsWorldDebugListener(), _updateSystems, _fixedUpdateSystem);
 #endif
-            
+
             EcsPhysicsEvents.ecsWorld = _world;
-            
             _updateSystems.ConvertScene();
 
             AddInjections();
@@ -102,6 +101,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
+                .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
                 .Inject(_audioController)
@@ -112,6 +112,7 @@ namespace Ingame
         {
             _updateSystems
                 .OneFrame<DebugRequest>()
+                .OneFrame<JumpInputEvent>()
                 .OneFrame<JumpInputEvent>()
                 .OneFrame<CrouchInputEvent>()
                 .OneFrame<LeanInputRequest>()
@@ -171,6 +172,7 @@ namespace Ingame
                 //AI
                 .Add(new BehaviourSystem())
                 .Add(new EnemyObstacleDetectionSystem())
+                .Add(new SoldierAnimationSystem())
                 //Anomaly
                 .Add(new AcidWaterSystem())
                 //Health
@@ -236,7 +238,6 @@ namespace Ingame
                 .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
             
-
             //FixedUpdate
             _fixedUpdateSystem
                  //Input   

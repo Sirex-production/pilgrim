@@ -22,7 +22,7 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             ref var enemy = ref Entity.Get<EnemyStateModel>();
-            return enemy.CurrentAmmo <= minAmmoPercentage*enemy.MaxAmmo? State.Success : State.Failure;
+            return enemy.currentAmmo <= minAmmoPercentage*enemy.maxAmmo? State.Success : State.Failure;
         }
     }
 }
