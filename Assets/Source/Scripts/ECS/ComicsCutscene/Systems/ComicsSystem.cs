@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Leopotam.Ecs;
 
 namespace Ingame.ComicsCutscene
@@ -24,13 +25,20 @@ namespace Ingame.ComicsCutscene
                 ref var skipEntity = ref _skipPageEventFilter.GetEntity(0);
                 
             }
-           
-          
- 
+            
         }
         private void OnBack(ref ComicsContainerModel comics, ref CurrentComicsComponent currentComics)
         {
-            if()
+            if(_backPageEventFilter.IsEmpty())
+                return;
+            
+            if(string.IsNullOrWhiteSpace(currentComics.id))
+                return;
+          
+            if(currentComics.page <=0)
+                return;
+            
+            currentComics.page--;
         }
         
         private void OnPlay(ref ComicsContainerModel comics, ref CurrentComicsComponent currentComics)
@@ -38,10 +46,19 @@ namespace Ingame.ComicsCutscene
             if(_playPlayComicsRequestEventFilter.IsEmpty())
                 return;
             
+            ref var request = ref _playPlayComicsRequestEventFilter.Get1(0);
+            
+            if(!comics.comics.ContainsKey(request.id))
+                return;
+          
+            currentComics.page = 0;
+            currentComics.id = request.id;
         }
         private void OnSkip(ref ComicsContainerModel comics, ref CurrentComicsComponent currentComics)
         {
-            if()
+            if(_skipPageEventFilter.IsEmpty())
+                return;
+            //comics
         }
     }
 }

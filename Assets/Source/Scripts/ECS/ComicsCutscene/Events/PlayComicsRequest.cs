@@ -2,6 +2,6 @@
 {
     public struct PlayComicsRequest
     {
-        
+        public string id;
     }
 }
