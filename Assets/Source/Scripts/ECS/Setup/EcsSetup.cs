@@ -5,6 +5,7 @@ using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
+using Ingame.Comics;
 using Ingame.Debuging;
 using Ingame.Dialog;
 using Ingame.Effects;
@@ -47,6 +48,7 @@ namespace Ingame
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
         [Inject] private AudioController _audioController;
         [Inject] private SaveLoadService _saveLoadService;
+        [Inject] private ComicsService _comicsService;
 
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
@@ -105,7 +107,8 @@ namespace Ingame
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
                 .Inject(_audioController)
-                .Inject(questsConfig);
+                .Inject(questsConfig)
+                .Inject(_comicsService);
         }
 
         private void AddOneFrames()

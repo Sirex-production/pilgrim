@@ -1,4 +1,5 @@
 ﻿using Ingame.Audio;
+using Ingame.Comics;
 using Ingame.SaveLoad;
 using Leopotam.Ecs;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Ingame.DI.Installers
             var fixedUpdateSystems = new EcsSystems(world);
             var audioController = new AudioController(world);
             var saveLoadService = new SaveLoadService();
+            var comicsService = new ComicsService(world);
 
             Container.Bind<EcsWorld>()
                 .FromInstance(world)
@@ -22,6 +24,11 @@ namespace Ingame.DI.Installers
 
             Container.Bind<AudioController>()
                 .FromInstance(audioController)
+                .AsSingle()
+                .NonLazy();
+            
+            Container.Bind<ComicsService>()
+                .FromInstance(comicsService)
                 .AsSingle()
                 .NonLazy();
             
