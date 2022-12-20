@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Ingame.SaveLoad
 {
@@ -6,6 +7,7 @@ namespace Ingame.SaveLoad
     {
         public string SerializeData<T>(T saveData);
         public T DeserializeData<T>(string serializedSaveData) where T : class;
+        public dynamic DynamicDeserializeTo(string serializedSaveData, Type type);
     }
     
     public sealed class JsonSerializer : ISerializer
@@ -24,6 +26,16 @@ namespace Ingame.SaveLoad
             var result = JsonUtility.FromJson<T>(serializedSaveData);
             
             return result;
+        }
+
+        public dynamic DynamicDeserializeTo(string serializedSaveData, Type type)
+        {
+            var method = this.GetType().GetMethod("DeserializeData");
+            if (method == null) return null;
+            var generic = method.MakeGenericMethod(type);
+            var result = generic.Invoke(this, new object[] {serializedSaveData});
+            return result;
+
         }
     }
 }
