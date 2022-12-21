@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ingame.ComicsCutscene;
 using Leopotam.Ecs;
 using NaughtyAttributes;
 using UnityEngine;
@@ -17,23 +18,23 @@ namespace Ingame.Comics
 
         public void Play(string name)
         {
-            
+             var entity = _world.NewEntity();
+             ref var request = ref entity.Get<PlayComicsRequest>();
+             request.id = name;
         }
         public void Skip()
         {
-            
+            _world.NewEntity().Get<SkipComicsEvent>();
         }
         public void Next()
-        {
-            
+        { 
+            _world.NewEntity().Get<NextPageEvent>();
         }
-        private class CurrentComics
-        {
-            public ComicsData comicsData;
-            public int page;
+        
+        public void Back()
+        { 
+            _world.NewEntity().Get<BackPageEvent>();
         }
-
-     
     }
 
    

@@ -1,6 +1,6 @@
 ﻿namespace Ingame.ComicsCutscene
 {
-    public struct SkipPageEvent
+    public struct SkipComicsEvent
     {
         
     }

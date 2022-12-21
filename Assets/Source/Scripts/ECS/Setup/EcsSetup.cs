@@ -6,6 +6,7 @@ using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
 using Ingame.Comics;
+using Ingame.ComicsCutscene;
 using Ingame.Debuging;
 using Ingame.Dialog;
 using Ingame.Effects;
@@ -146,7 +147,8 @@ namespace Ingame
                 .Add(new TransformModelInitSystem())
                 .Add(new PlayerInitSystem())
                 .Add(new AppearanceUpdateInitSystem())
-                .Add(new DeltaMovementInitializeSystem());
+                .Add(new DeltaMovementInitializeSystem())
+                .Add(new ComicsViewSystem());
 
             //Update
             _updateSystems
@@ -233,6 +235,9 @@ namespace Ingame
                 .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
+                //comics
+                .Add(new ComicsViewSystem())
+                .Add(new ComicsSystem())
                 //SupportCommunication
                 .Add(new ProcessMessagesToSupportSystem())
                 //Utils

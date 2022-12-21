@@ -1,6 +1,6 @@
 ﻿namespace Ingame.ComicsCutscene
 {
-    public struct CloseUiComicsEvent
+    public struct ComicsHasChangedEvent
     {
         
     }

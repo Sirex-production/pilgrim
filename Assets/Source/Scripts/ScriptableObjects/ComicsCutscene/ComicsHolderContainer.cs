@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Ingame.Comics
@@ -31,6 +32,7 @@ namespace Ingame.Comics
     public sealed class ComicsPage
     {
         [SerializeField] 
+        [Required]
         private Sprite page;
 
         public Sprite Page => page;

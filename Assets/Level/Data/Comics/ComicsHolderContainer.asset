@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: ComicsHolderContainer
   m_EditorClassIdentifier: 
   comics:
-  - name: 
+  - name: null
     pages: []
-  - name: ComicsB
-    pages: []
-  - name: 
+  - name: ComicsA
     pages:
-    - page: {fileID: 0}
+    - page: {fileID: 21300000, guid: f705d236b5a57134b83a1bdac3251a44, type: 3}
+    - page: {fileID: 21300000, guid: a04ecc9d5e12d5d449077414eb86635e, type: 3}
+    - page: {fileID: 21300000, guid: 6fac4e39926fd9c4ca2ba4416160a857, type: 3}
+    - page: {fileID: 21300000, guid: 8d98ab6168c3e91439339f1908b8fe97, type: 3}
