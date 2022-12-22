@@ -1215,6 +1215,7 @@ MonoBehaviour:
   Children:
   - {fileID: -734170880658419973}
   - {fileID: -3408671376385058632}
+  - {fileID: 7042791969576838342}
 --- !u!114 &1693278040883172597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,7 +1549,6 @@ MonoBehaviour:
   Position: {x: -1158.0002, y: 2201.125}
   Description: TAKE COVER
   Children:
-  - {fileID: 7042791969576838342}
   - {fileID: 7439588013370015713}
   - {fileID: 9160257324339335971}
   - {fileID: -6776048723630099928}
@@ -1913,9 +1913,9 @@ MonoBehaviour:
   m_Name: RandomFailureNode
   m_EditorClassIdentifier: 
   Guid: 511cff61638e0f44daa8c501f89b477e
-  Position: {x: -1438, y: 2593}
+  Position: {x: -1565.9998, y: 2028.4204}
   Description: 
-  failureRate: 0.31
+  failureRate: 0.6
 --- !u!114 &7370638173204515024
 MonoBehaviour:
   m_ObjectHideFlags: 0
