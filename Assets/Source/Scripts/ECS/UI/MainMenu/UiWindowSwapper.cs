@@ -25,6 +25,9 @@ namespace Ingame.UI.MainMenu
 		private void Awake()
 		{
 			_mainMenuService.OnWindowChangeRequested += OnWindowChangeRequested;
+
+			foreach (var windowTransform in windows) 
+				windowTransform.SetGameObjectInactive();
 			
 			HideAllWindows();
 		}
