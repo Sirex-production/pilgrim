@@ -1,8 +1,6 @@
 ﻿using System;
 using Ingame.Behaviour;
-using Ingame.Movement;
 using Leopotam.Ecs;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,10 +9,13 @@ namespace Ingame.Enemy
     [Serializable]
     public class RepositionActionNode : ActionNode
     {
+        [SerializeField] private float minDistanceBetweenEnemyAndPlayer = 6;
         private NavMeshAgent _agent;
+        private Transform _target;
         protected override void ActOnStart()
         {
             _agent = Entity.Get<NavMeshAgentModel>().Agent;
+            _target = Entity.Get<EnemyStateModel>().target;
             _agent.isStopped = false;
         }
 
@@ -35,11 +36,11 @@ namespace Ingame.Enemy
             #if UNITY_EDITOR
                 UnityEngine.Debug.DrawLine(_agent.transform.position,_agent.destination,Color.green);
             #endif
-            if (_agent != null && _agent.isStopped )
+            if (_agent != null && _agent.isStopped)
             {
                 _agent.isStopped = false;
             }
-
+            
             if (_agent.pathPending)
             {
                 return State.Running; 
@@ -50,7 +51,11 @@ namespace Ingame.Enemy
                 _agent.velocity = Vector3.zero;
                 return State.Success;
             }
-            
+            if(_target !=null && Vector3.SqrMagnitude(_agent.transform.position-_target.position)<minDistanceBetweenEnemyAndPlayer*minDistanceBetweenEnemyAndPlayer)
+            {
+                _agent.velocity = Vector3.zero;
+                return State.Success;
+            }
             return _agent.pathStatus == NavMeshPathStatus.PathInvalid ? State.Failure : State.Running;
         }
     }

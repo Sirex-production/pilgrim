@@ -19,6 +19,7 @@ namespace Ingame.Enemy
                 weapon.GetComponent<Collider>().isTrigger = false;
                 weapon.transform.parent = null;
                 rb.useGravity = true;
+                rb.isKinematic = false;
             }
             
             Entity.Del<EnemyWeaponHolderModel>();

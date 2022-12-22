@@ -37,6 +37,26 @@ MonoBehaviour:
   chanceToHit: 0.81
   shootIntervalTime: 1
   shouldIgnoreObstacles: 1
+--- !u!114 &-8485321930683889767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79973e4bac4f4dafb6f74936915dbd09, type: 3}
+  m_Name: AttackActionNode
+  m_EditorClassIdentifier: 
+  Guid: 9830c1f6d7068dd408ee58ea0fc2238b
+  Position: {x: -875, y: 2784}
+  Description: 
+  typeOfAttack: 1
+  damageOnHit: 17.42
+  chanceToHit: 0.9
+  shootIntervalTime: 1
+  shouldIgnoreObstacles: 1
 --- !u!114 &-8400375008989760523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +117,7 @@ MonoBehaviour:
   m_Name: IsTargetVisibleNode
   m_EditorClassIdentifier: 
   Guid: b6c93f0c44c33344794d7a896c1723b1
-  Position: {x: -1645.0002, y: 3144.125}
+  Position: {x: -1677, y: 3248}
   Description: 
   type: 0
   thresholdOfVisibility: 3
@@ -213,6 +233,24 @@ MonoBehaviour:
   chanceToHit: 0.86
   shootIntervalTime: 1
   shouldIgnoreObstacles: 1
+--- !u!114 &-7298778928909902019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b5840557365954792bf635f7e039ab, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  Guid: 13f77585f3bd04449bfb4c3c0ecd7acc
+  Position: {x: 468, y: 2540.0674}
+  Description: 
+  Children:
+  - {fileID: 1016125652018352671}
+  - {fileID: 7583767724681376552}
 --- !u!114 &-7216184966238769662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +313,7 @@ MonoBehaviour:
   m_Name: CrouchActionNode
   m_EditorClassIdentifier: 
   Guid: 54ccd4f7753d4b645ae62c82918ff054
-  Position: {x: -865.99994, y: 2579}
+  Position: {x: -1003.00006, y: 2685}
   Description: 
 --- !u!114 &-6500868671626458034
 MonoBehaviour:
@@ -310,7 +348,7 @@ MonoBehaviour:
   m_Name: ObserveActionNode
   m_EditorClassIdentifier: 
   Guid: fe4d703943e35654482f2387d2b583d7
-  Position: {x: -1009, y: 3176}
+  Position: {x: -1002.00006, y: 3272}
   Description: 
   delayDuration: 0.2
 --- !u!114 &-6016219896920491382
@@ -328,6 +366,7 @@ MonoBehaviour:
   Guid: 03e63b582d30a4e4bac1a12f7ff6cf8b
   Position: {x: -479.99997, y: 1733.0002}
   Description: 
+  minDistanceBetweenEnemyAndPlayer: 6
   visibility: 4
   distance: 8
 --- !u!114 &-5551368325004850795
@@ -392,7 +431,7 @@ MonoBehaviour:
   m_Name: StopMovementActionNode
   m_EditorClassIdentifier: 
   Guid: aca219595664ef24eb7cc5139f58bffa
-  Position: {x: -1859.0002, y: 2337.125}
+  Position: {x: -1906.9683, y: 2353}
   Description: 
 --- !u!114 &-5103145248085784921
 MonoBehaviour:
@@ -587,6 +626,23 @@ MonoBehaviour:
   Position: {x: -1270.0001, y: 77.999954}
   Description: 
   child: {fileID: 5796900872876215210}
+--- !u!114 &-3260628202132971735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36971510e5aaec4da04733d33579cf1, type: 3}
+  m_Name: TimeOutNode
+  m_EditorClassIdentifier: 
+  Guid: 3e85e5c11815a914ebb20240ea60a471
+  Position: {x: -867, y: 2612}
+  Description: 
+  child: {fileID: -8485321930683889767}
+  duration: 2
 --- !u!114 &-3234007521780550226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +710,7 @@ MonoBehaviour:
   m_Name: RandomSetPositionActionNode
   m_EditorClassIdentifier: 
   Guid: 7489c2f2715cb61438cdc00bd79c087a
-  Position: {x: 488, y: 2720}
+  Position: {x: 634.1575, y: 2697}
   Description: 
   range: {x: 2.34, y: 3.64}
 --- !u!114 &-2528588548601984766
@@ -670,10 +726,10 @@ MonoBehaviour:
   m_Name: IsTargetVisibleNode
   m_EditorClassIdentifier: 
   Guid: 8ed5b952a3aa42f4bb08986154b95724
-  Position: {x: -1917.0002, y: 2920.125}
+  Position: {x: -1899.0001, y: 3015.9995}
   Description: 
   type: 0
-  thresholdOfVisibility: 4
+  thresholdOfVisibility: 2
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -834,6 +890,24 @@ MonoBehaviour:
   Position: {x: 308.00003, y: 2885}
   Description: 
   range: {x: 5.71, y: 5.16}
+--- !u!114 &-274157074014279038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38718032076f4d4a8392c57803294e11, type: 3}
+  m_Name: RandomSelectorNode
+  m_EditorClassIdentifier: 
+  Guid: 427c024e277c5954c9c78e2c15c900bc
+  Position: {x: -327.99997, y: 2840.9998}
+  Description: 
+  Children:
+  - {fileID: 527092173185204960}
+  - {fileID: 6107110827561436522}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +1036,12 @@ MonoBehaviour:
   - {fileID: -6016219896920491382}
   - {fileID: 7437388244946111489}
   - {fileID: -2062499045920432087}
+  - {fileID: -8485321930683889767}
+  - {fileID: -3260628202132971735}
+  - {fileID: 1016125652018352671}
+  - {fileID: -7298778928909902019}
+  - {fileID: -274157074014279038}
+  - {fileID: 6107110827561436522}
 --- !u!114 &99420560264176434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,7 +1105,7 @@ MonoBehaviour:
   m_Name: ReloadActionNode
   m_EditorClassIdentifier: 
   Guid: e5d0738d35f9280459d18118b021d1da
-  Position: {x: -287, y: 2877}
+  Position: {x: -394.50003, y: 2989}
   Description: 
   delayDuration: 6.2
 --- !u!114 &629511999895346331
@@ -1048,6 +1128,22 @@ MonoBehaviour:
   chanceToHit: 0.77
   shootIntervalTime: 0.3
   shouldIgnoreObstacles: 1
+--- !u!114 &1016125652018352671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadbf726470247f7a5a79d45695041f7, type: 3}
+  m_Name: RandomFailureNode
+  m_EditorClassIdentifier: 
+  Guid: d76b58df207292a4f8dbb007d338d031
+  Position: {x: 316, y: 2745}
+  Description: 
+  failureRate: 0.3
 --- !u!114 &1064824093267723236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,6 +1179,7 @@ MonoBehaviour:
   Guid: 0e57d7a92962fe942aec4b5799e6fbee
   Position: {x: 1786.4875, y: 2109.9998}
   Description: 
+  minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &1274321858896061351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,7 +1247,7 @@ MonoBehaviour:
   Position: {x: 413, y: 2361}
   Description: 
   Children:
-  - {fileID: 7583767724681376552}
+  - {fileID: -7298778928909902019}
   - {fileID: 5780975177881663449}
 --- !u!114 &1961063315864333253
 MonoBehaviour:
@@ -1165,7 +1262,7 @@ MonoBehaviour:
   m_Name: AttackActionNode
   m_EditorClassIdentifier: 
   Guid: 7734c0bef01118d4fbae6e0871584a86
-  Position: {x: -1702.0002, y: 2976.0005}
+  Position: {x: -1710.0001, y: 3024.0002}
   Description: 
   typeOfAttack: 1
   damageOnHit: 12
@@ -1252,7 +1349,7 @@ MonoBehaviour:
   m_Name: ReloadActionNode
   m_EditorClassIdentifier: 
   Guid: d7ee8defc81be224c985f4a8d210b1bf
-  Position: {x: -1201.0002, y: 3148.125}
+  Position: {x: -1208, y: 3280}
   Description: 
   delayDuration: 3
 --- !u!114 &3250481166578125875
@@ -1432,8 +1529,9 @@ MonoBehaviour:
   m_Name: RepositionActionNode
   m_EditorClassIdentifier: 
   Guid: a124a56a28f0d954bbd3545a9a964bf1
-  Position: {x: 773, y: 2727}
+  Position: {x: 909.28253, y: 2713}
   Description: 
+  minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &4254157175714987026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,6 +1552,7 @@ MonoBehaviour:
   - {fileID: 7439588013370015713}
   - {fileID: 9160257324339335971}
   - {fileID: -6776048723630099928}
+  - {fileID: -3260628202132971735}
   - {fileID: -8123499438566501811}
   - {fileID: -3869582885126191551}
 --- !u!114 &4580665565711934851
@@ -1488,7 +1587,7 @@ MonoBehaviour:
   Position: {x: -133, y: 2625}
   Description: 
   Children:
-  - {fileID: 527092173185204960}
+  - {fileID: -274157074014279038}
   - {fileID: 3666568658664115769}
   - {fileID: -5551368325004850795}
   - {fileID: -596382550029239521}
@@ -1679,7 +1778,7 @@ MonoBehaviour:
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
   Guid: 5813a72aa60507c47a3a2cb52c496c67
-  Position: {x: 605, y: 2555}
+  Position: {x: 806.00006, y: 2553}
   Description: 
   Children:
   - {fileID: -2629144791852755389}
@@ -1699,6 +1798,22 @@ MonoBehaviour:
   Guid: e4482f86b74628648a96dc47c79a03ab
   Position: {x: -1333, y: 434.99997}
   Description: 
+--- !u!114 &6107110827561436522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472fa13bfbfe4a4ab452bda3a53ff18d, type: 3}
+  m_Name: ObserveActionNode
+  m_EditorClassIdentifier: 
+  Guid: f90f961fe931d0e48a38d0ca6c9b9831
+  Position: {x: -218.54749, y: 2997}
+  Description: 
+  delayDuration: 1
 --- !u!114 &6149850728236389135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,7 +1845,7 @@ MonoBehaviour:
   Position: {x: -927, y: 2989}
   Description: 
   type: 0
-  thresholdOfVisibility: 9
+  thresholdOfVisibility: 4
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1798,7 +1913,7 @@ MonoBehaviour:
   m_Name: RandomFailureNode
   m_EditorClassIdentifier: 
   Guid: 511cff61638e0f44daa8c501f89b477e
-  Position: {x: -1471.0002, y: 2587.0005}
+  Position: {x: -1438, y: 2593}
   Description: 
   failureRate: 0.31
 --- !u!114 &7370638173204515024
@@ -1882,7 +1997,7 @@ MonoBehaviour:
   m_Name: FindCoverPointActionNode
   m_EditorClassIdentifier: 
   Guid: 972cd1ac3125f6047a899c6fc7cc82c1
-  Position: {x: -1269.0002, y: 2597.125}
+  Position: {x: -1405.5, y: 2708}
   Description: 
   typeOfCover: 0
   typeOfCoverSpot: 0
@@ -1900,7 +2015,7 @@ MonoBehaviour:
   m_Name: ReloadActionNode
   m_EditorClassIdentifier: 
   Guid: 516aabc9a5bfd254a94503d599e02df2
-  Position: {x: 307.99997, y: 2657.0005}
+  Position: {x: 466.5, y: 2737}
   Description: 
   delayDuration: 3
 --- !u!114 &7588680184337730240
@@ -1931,7 +2046,7 @@ MonoBehaviour:
   m_Name: AttackActionNode
   m_EditorClassIdentifier: 
   Guid: 25405fd3af2e19c4892cd3c077088ea0
-  Position: {x: -1438, y: 3156}
+  Position: {x: -1438, y: 3264}
   Description: 
   typeOfAttack: 1
   damageOnHit: 12
@@ -2081,8 +2196,9 @@ MonoBehaviour:
   m_Name: TakeCoverActionNode
   m_EditorClassIdentifier: 
   Guid: 36254cc6f2f8914418a63c830f3c6cd5
-  Position: {x: -1055.0004, y: 2589.125}
+  Position: {x: -1185.3997, y: 2708}
   Description: 
+  minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &9177700881776079488
 MonoBehaviour:
   m_ObjectHideFlags: 0
