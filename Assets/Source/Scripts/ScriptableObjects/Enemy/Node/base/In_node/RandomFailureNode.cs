@@ -19,7 +19,7 @@ namespace Ingame.Behaviour
 
         protected override State ActOnTick()
         {
-            return Random.Range(0f, 1f) >= failureRate ? State.Success : State.Failure;
+            return Random.Range(0f, 1f) < failureRate ? State.Success : State.Failure;
         }
     }
 }
