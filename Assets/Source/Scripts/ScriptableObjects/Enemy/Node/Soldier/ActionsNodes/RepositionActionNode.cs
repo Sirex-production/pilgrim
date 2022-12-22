@@ -11,15 +11,6 @@ namespace Ingame.Enemy
     [Serializable]
     public class RepositionActionNode : ActionNode
     {
-        private enum TypeOfReposition
-        {
-            LookAtPoint,
-            LookAtTarget
-        }
-
-        [SerializeField] 
-        private TypeOfReposition _typeOfReposition;
-        
         private NavMeshAgent _agent;
         protected override void ActOnStart()
         {
@@ -48,18 +39,7 @@ namespace Ingame.Enemy
             {
                 _agent.isStopped = false;
             }
-            if (_typeOfReposition == TypeOfReposition.LookAtTarget)
-            {
-                ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-                ref var transform = ref Entity.Get<TransformModel>();
-            
-                var targetRotation = Quaternion.LookRotation(enemyModel.target.transform.position - transform.transform.position);
-                targetRotation.x = 0; 
-                targetRotation.z = 0;
-                transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 1.5f);
-                
-            }
-            
+
             if (_agent.pathPending)
             {
                 return State.Running; 

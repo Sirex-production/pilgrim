@@ -4,7 +4,7 @@ using Leopotam.Ecs;
 
 namespace Ingame.Enemy
 {
-    public sealed class IsDyingNode : ActionNode
+    public sealed class NullifyTakenDamageActionNode : ActionNode
     {
         protected override void ActOnStart()
         {
@@ -13,14 +13,16 @@ namespace Ingame.Enemy
 
         protected override void ActOnStop()
         {
-            
+             
         }
 
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref  Entity.Get<EnemyStateModel>();
-            enemyModel.isDying =  Entity.Get<HealthComponent>().currentHealth<2;
-            return enemyModel.isDying ? State.Success : State.Failure;
+            Entity.Get<EnemyStateModel>().isTakingDamage = false;
+            ref var health = ref Entity.Get<HealthComponent>();
+            health.initialHealth = health.currentHealth;
+            
+            return State.Success;
         }
     }
 }

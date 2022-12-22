@@ -240,13 +240,13 @@ namespace Ingame
             
             //FixedUpdate
             _fixedUpdateSystem
-                 //Input   
+                //Input   
                 .Add(new PlayerInputToMovementConvertSystem())
-                 //Utils
-                 .Add(new DeltaMovementCalculationSystem())
-                 //Hud
-                 .Add(new CameraBobbingSystem())
-                 //Movement
+                //Utils
+                .Add(new DeltaMovementCalculationSystem())
+                //Hud
+                .Add(new CameraBobbingSystem())
+                //Movement
                 .Add(new FrictionSystem())
                 .Add(new SlidingSystem())
                 .Add(new GravitationSystem())
@@ -255,9 +255,10 @@ namespace Ingame
                 .Add(new LeanSystem())
                 .Add(new CameraLeanSystem())
                 .Add(new MovementSystem())
-                 //NoiseDetection
-                 .Add(new NoiseDetectionSystem())
-                 .Add(new SharedCameraDetectionSystem());
+                //NoiseDetection
+                .Add(new NoiseDetectionSystem())
+                .Add(new SharedCameraDetectionSystem());
+
         }
     }
 }

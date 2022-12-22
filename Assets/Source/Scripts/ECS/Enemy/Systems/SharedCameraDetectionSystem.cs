@@ -36,7 +36,7 @@ namespace Ingame.Systems
                 //set camera position
                 camera.Camera.transform.parent = transform.transform;
                 camera.Camera.transform.localPosition = new Vector3(0, ENEMY_HEIGHT, 0);
-                camera.Camera.transform.localRotation = Quaternion.Euler(0,0,0);
+                camera.Camera.transform.localRotation = Quaternion.Euler(0,-45,0);
            
                 var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment);
                 var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer);

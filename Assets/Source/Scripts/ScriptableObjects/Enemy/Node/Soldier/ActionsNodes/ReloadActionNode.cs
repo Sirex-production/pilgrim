@@ -15,7 +15,9 @@ namespace Ingame.Enemy
         protected override void ActOnStop()
         {
             base.ActOnStop();
-            Entity.Get<EnemyStateModel>().isReloading = false;
+            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            enemyModel.isReloading = false;
+            enemyModel.currentAmmo = enemyModel.maxAmmo;
         }
         
     }

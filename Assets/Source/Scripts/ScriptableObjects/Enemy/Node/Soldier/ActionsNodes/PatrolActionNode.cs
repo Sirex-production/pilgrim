@@ -12,9 +12,6 @@ namespace Ingame.Enemy
 {
     public sealed class PatrolActionNode : ActionNode
     {
-
-        [SerializeField] private float speed;
-        [SerializeField] private float stoppingDistance;
         
         private int _wayPointIndex = -1;
         private Transform _point;
@@ -29,6 +26,7 @@ namespace Ingame.Enemy
             
             if (waypoints == null || waypoints.Count <=0)
             {
+                Entity.Get<EnemyStateModel>().isPatrolling = false;
                 _stopPatrolling = true;
                 return;
             }
@@ -37,9 +35,8 @@ namespace Ingame.Enemy
             
           
             _agent.destination = _point.position;
-            _agent.speed = speed;
-            _agent.stoppingDistance = stoppingDistance;
             _agent.isStopped = false;
+            Entity.Get<EnemyStateModel>().isPatrolling = true;
 
         }
 
@@ -49,6 +46,8 @@ namespace Ingame.Enemy
             {
                 return;
             }
+
+            Entity.Get<EnemyStateModel>().isPatrolling = false;
             _agent.isStopped = true;
         }
 

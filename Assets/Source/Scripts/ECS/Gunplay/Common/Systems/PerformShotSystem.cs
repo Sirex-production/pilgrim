@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Ingame.Enemy;
 using Ingame.Health;
 using Leopotam.Ecs;
 using Support;
@@ -9,7 +10,7 @@ namespace Ingame.Gunplay
     public sealed class PerformShotSystem : IEcsRunSystem
     {
         private readonly EcsFilter<FirearmComponent, AwaitingShotTag> _shootingFirearmFilter;
-
+        private readonly EcsWorld _world;
         public void Run()
         {
             foreach (var i in _shootingFirearmFilter)
@@ -18,7 +19,7 @@ namespace Ingame.Gunplay
                 ref var firearmComponent = ref _shootingFirearmFilter.Get1(i);
                 
                 firearmEntity.Del<AwaitingShotTag>();
-
+                _world.CreateNoiseEvent(firearmComponent.barrelOrigin.position);
                 if (!TryPerformRaycast(firearmComponent.barrelOrigin.position, firearmComponent.barrelOrigin.forward, out RaycastHit hit))
                     continue;
 

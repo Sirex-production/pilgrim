@@ -22,9 +22,10 @@ namespace Ingame.Enemy
             }
             
             Entity.Del<EnemyWeaponHolderModel>();
-            base.ActOnStart();
         }
-
+        
+        
+        
         protected override void ActOnStop()
         {
             Entity.Get<HitBoxCapsuleColliderModel>().capsuleCollider.isTrigger = true;
