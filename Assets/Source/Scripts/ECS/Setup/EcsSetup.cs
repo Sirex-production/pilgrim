@@ -40,7 +40,6 @@ namespace Ingame
     {
         [Required, SerializeField] private QuestsConfig questsConfig;
         
-        [Inject] private GameController _gameController;
         [Inject] private StationaryInput _stationaryInput;
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
@@ -103,7 +102,6 @@ namespace Ingame
             _updateSystems
                 .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
-                .Inject(_gameController)
                 .Inject(_audioController)
                 .Inject(questsConfig);
         }
@@ -231,7 +229,6 @@ namespace Ingame
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 //SupportCommunication
-                .Add(new ProcessMessagesToSupportSystem())
                 //Utils
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
