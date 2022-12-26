@@ -68,7 +68,7 @@ namespace Ingame.UI.Loading
                 _loadingAnimationSequence.Kill();
             
             screenParentCanvasGroup.DOFade(0, fadeAnimationDuration)
-                .OnComplete(this.SetGameObjectInactive);
+                .OnComplete(screenParentCanvasGroup.SetGameObjectInactive);
         }
         
         private void ShowLoadingAnimation()

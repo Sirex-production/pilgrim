@@ -5,7 +5,6 @@ namespace Ingame.UI.MainMenu
 		None = -1,
 		Game = 0,
 		Developers = 1,
-		Exit = 2,
-		Settings = 3
+		Exit = 2
 	}
 }

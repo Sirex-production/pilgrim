@@ -21,7 +21,6 @@ using Ingame.Movement;
 using Ingame.Player;
 using Ingame.Quests;
 using Ingame.SaveLoad;
-using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
 using Ingame.UI.Raycastable;
@@ -40,12 +39,32 @@ namespace Ingame
     {
         [Required, SerializeField] private QuestsConfig questsConfig;
         
-        [Inject] private StationaryInput _stationaryInput;
-        [Inject] private EcsWorld _world;
-        [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
-        [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
-        [Inject] private AudioController _audioController;
-        [Inject] private SaveLoadService _saveLoadService;
+        private StationaryInput _stationaryInput;
+        private EcsWorld _world;
+        private SaveLoadService _saveLoadService;
+        private AudioController _audioController;
+
+        private EcsSystems _updateSystems;
+        private EcsSystems _fixedUpdateSystem;
+        
+        [Inject]
+        private void Construct
+        (
+            StationaryInput stationaryInputSystem,
+            EcsWorld world, 
+            SaveLoadService saveLoadService,
+            AudioController audioController,
+            [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
+            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
+        )
+        {
+            _stationaryInput = stationaryInputSystem;
+            _world = world;
+            _saveLoadService = saveLoadService;
+            _audioController = audioController;
+            _updateSystems = updateSystem;
+            _fixedUpdateSystem = fixedUpdateSystem;
+        }
 
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
@@ -225,14 +244,12 @@ namespace Ingame
                 //UI
                 .Add(new InteractWithRaycastableUiSystem())
                 .Add(new UpdateQuestUiSystem())
-                .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
-                .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
             
             //FixedUpdate
