@@ -11,7 +11,7 @@ namespace Ingame.Player
         
         private readonly EcsFilter<PlayerModel, CharacterControllerModel> _playerFilter;
         private readonly EcsFilter<CrouchInputEvent> _crouchInputFilter;
-
+        
         public void Run()
         {
             if(_crouchInputFilter.IsEmpty())
