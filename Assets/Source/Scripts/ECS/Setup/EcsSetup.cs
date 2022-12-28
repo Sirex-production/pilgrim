@@ -46,9 +46,7 @@ namespace Ingame
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
-        [Inject] private IAudioService _audio ;
         [Inject] private SaveLoadService _saveLoadService;
-        [Inject] private ComicsService _comicsService;
 
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
@@ -106,9 +104,7 @@ namespace Ingame
                 .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
-                .Inject(_audio)
-                .Inject(questsConfig)
-                .Inject(_comicsService);
+                .Inject(questsConfig);
         }
 
         private void AddOneFrames()
