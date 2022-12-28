@@ -14,7 +14,7 @@ namespace Ingame.Systems
         private readonly EcsFilter<CameraComponent,SharedCameraModel> _cameraFilter;
         
         private int _width=32, _height=32;
-        private int _pixelDetectionThreshold = 10;
+        private int _pixelDetectionThreshold = 4;
         [Range(0,1)]
         private float _percentageDetectionThreshold = 0.15f;
         public void Run()
@@ -36,7 +36,7 @@ namespace Ingame.Systems
                 //set camera position
                 camera.Camera.transform.parent = transform.transform;
                 camera.Camera.transform.localPosition = new Vector3(0, ENEMY_HEIGHT, 0);
-                camera.Camera.transform.localRotation = Quaternion.Euler(0,0,0);
+                camera.Camera.transform.localRotation = Quaternion.Euler(0,-45,0);
            
                 var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment);
                 var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer);

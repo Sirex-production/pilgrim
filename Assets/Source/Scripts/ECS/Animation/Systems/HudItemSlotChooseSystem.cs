@@ -18,6 +18,9 @@ namespace Ingame.Animation
 
         public void Init()
         {
+            if(_itemsContainerFilter.IsEmpty())
+                return;
+            
             ref var itemsContainerComponent = ref _itemsContainerFilter.Get1(0);
             ref var itemsContainerAnimator = ref _itemsContainerFilter.Get2(0);
 

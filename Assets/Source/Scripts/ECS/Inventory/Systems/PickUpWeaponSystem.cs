@@ -129,6 +129,7 @@ namespace Ingame.Inventory
 			weaponTransformModel.initialLocalRotation = weaponHudItemModel.localRotationInHud; 
 			weaponTransform.localPosition = weaponHudItemModel.localPositionInHud;
 			weaponTransform.localRotation = weaponHudItemModel.localRotationInHud;
+			weaponTransform.localScale = new Vector3(1, 1, 1);
 			
 			weaponTransform.gameObject.SetLayerToAllChildrenAndSelf(hudLayerIndex);
 			weaponTransform.SetGameObjectInactive();

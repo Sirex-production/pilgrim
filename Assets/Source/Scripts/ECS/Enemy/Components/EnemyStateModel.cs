@@ -12,12 +12,12 @@ namespace Ingame.Enemy
         public bool isDying;
         public bool isDead;
         public bool isTakingDamage;
-        public float lastRememberedHP;
-        public float currentRememberedHP;
         
         [Header("Attack")] 
         public bool isAttacking;
         public bool isReloading;
+        public bool isPatrolling;
+        public bool isHiding;
         public int maxAmmo;
         public int currentAmmo;
         
