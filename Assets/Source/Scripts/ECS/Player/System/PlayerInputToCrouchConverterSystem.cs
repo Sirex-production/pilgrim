@@ -7,7 +7,7 @@ namespace Ingame.Player
 {
     public sealed class PlayerInputToCrouchConverterSystem : IEcsRunSystem
     {
-        private const float ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE = 1.05f;
+        private const float ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE = 0.825f;
         
         private readonly EcsFilter<PlayerModel, CharacterControllerModel> _playerFilter;
         private readonly EcsFilter<CrouchInputEvent> _crouchInputFilter;
@@ -24,7 +24,7 @@ namespace Ingame.Player
                 ref var playerCharacterControllerModel = ref _playerFilter.Get2(i);
                 ref var playerCrouchRequest = ref playerEntity.Get<ChangeCharacterControllerHeightRequest>();
                 var playerData = playerModel.playerMovementData;
-
+                
                 if (playerModel.isCrouching && CheckIfPlayerCanStand(playerCharacterControllerModel))
                     playerModel.isCrouching = false;
                 else
