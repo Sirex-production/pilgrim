@@ -2,28 +2,31 @@
 using Ingame.Comics;
 using Ingame.SaveLoad;
 using Leopotam.Ecs;
+using UnityEngine;
 using Zenject;
 
 namespace Ingame.DI.Installers
 {
     public class EcsInstaller : MonoInstaller
     {
+        public int c;
+        public AudioService audioService;
+        public ComicsService comicsService;
         public override void InstallBindings()
         {
             var world = new EcsWorld();
             var updateSystems = new EcsSystems(world);
             var fixedUpdateSystems = new EcsSystems(world);
-            var audioController = new AudioController(world);
             var saveLoadService = new SaveLoadService();
-            var comicsService = new ComicsService(world);
+         
 
             Container.Bind<EcsWorld>()
                 .FromInstance(world)
                 .AsSingle()
                 .NonLazy();
 
-            Container.Bind<AudioController>()
-                .FromInstance(audioController)
+            Container.Bind<IAudioService>()
+                .FromInstance(audioService)
                 .AsSingle()
                 .NonLazy();
             

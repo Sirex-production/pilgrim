@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Ingame.Audio;
 using Leopotam.Ecs;
 using Support;
 using UnityEngine;
@@ -47,7 +45,7 @@ namespace Ingame.Input
         private float _reloadTimer;
         private float _shutterDelayTimer;
         private float _showActiveQuestsTimer;
-
+        
         public void Init()
         {
             _movementInputX = _stationaryInputSystem.FPS.MovementX;
@@ -198,7 +196,7 @@ namespace Ingame.Input
             {
                 if (inputEntity == EcsEntity.Null)
                     inputEntity = _world.NewEntity();
-
+                
                 inputEntity.Get<ShootInputEvent>();
             }
 
@@ -206,7 +204,7 @@ namespace Ingame.Input
             {
                 if (inputEntity == EcsEntity.Null)
                     inputEntity = _world.NewEntity();
-
+             
                 inputEntity.Get<AimInputEvent>();
             }
 

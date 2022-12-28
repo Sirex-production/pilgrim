@@ -1,5 +1,4 @@
 ﻿using Ingame.Animation;
-using Ingame.ComicsCutscene;
 using Ingame.Hud;
 using Ingame.Inventory;
 using Ingame.Quests;

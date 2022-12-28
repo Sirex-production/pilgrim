@@ -6,7 +6,6 @@ using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
 using Ingame.Comics;
-using Ingame.ComicsCutscene;
 using Ingame.Debuging;
 using Ingame.Dialog;
 using Ingame.Effects;
@@ -47,7 +46,7 @@ namespace Ingame
         [Inject] private EcsWorld _world;
         [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
         [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
-        [Inject] private AudioController _audioController;
+        [Inject] private IAudioService _audio ;
         [Inject] private SaveLoadService _saveLoadService;
         [Inject] private ComicsService _comicsService;
 
@@ -107,7 +106,7 @@ namespace Ingame
                 .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
                 .Inject(_gameController)
-                .Inject(_audioController)
+                .Inject(_audio)
                 .Inject(questsConfig)
                 .Inject(_comicsService);
         }
@@ -147,8 +146,7 @@ namespace Ingame
                 .Add(new TransformModelInitSystem())
                 .Add(new PlayerInitSystem())
                 .Add(new AppearanceUpdateInitSystem())
-                .Add(new DeltaMovementInitializeSystem())
-                .Add(new ComicsViewSystem());
+                .Add(new DeltaMovementInitializeSystem());
 
             //Update
             _updateSystems
@@ -223,7 +221,6 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
-                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())
@@ -235,9 +232,6 @@ namespace Ingame
                 .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
-                //comics
-                .Add(new ComicsViewSystem())
-                .Add(new ComicsSystem())
                 //SupportCommunication
                 .Add(new ProcessMessagesToSupportSystem())
                 //Utils
