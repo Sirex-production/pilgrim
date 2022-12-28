@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace Ingame.SaveLoad
 {
     [Serializable]
-    public sealed class SaveLoadService : IInitializable
+    public sealed class SaveLoadService
     {
         private const string TYPES_KEY = "Types";
         
@@ -75,11 +74,16 @@ namespace Ingame.SaveLoad
             }
         }
 
+        public bool HasData<T>() where T : class, new()
+        {
+            return _persistentDataDictionary.ContainsKey(typeof(T));
+        }
+
         public void SetData<T>(T data) where T : class, new()
         {
             var type = typeof(T);
 
-            if (_persistentDataDictionary.ContainsKey(type))
+            if (HasData<T>())
             {
                 _persistentDataDictionary[type] = data;
                 _cachedDataDictionary[type] = true;
@@ -96,7 +100,7 @@ namespace Ingame.SaveLoad
         
         public T GetData<T>() where T : class, new()
         {
-            if (!_persistentDataDictionary.ContainsKey(typeof(T)))
+            if(!HasData<T>())
             {
                 var data = new T();
                 SetData(data);

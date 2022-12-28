@@ -31,8 +31,12 @@ namespace Ingame.Enemy
 
         [SerializeField] 
         private TypeOfCover typeOfCover;
+        
         [SerializeField] 
         private TypeOfCoverSpot typeOfCoverSpot;
+
+        [SerializeField] 
+        private float maximumDistanceToFindCover = 5;
 
         private NavMeshPath _shortestPath ;
         private float _minDistance;
@@ -103,7 +107,7 @@ namespace Ingame.Enemy
                     break;
             }
             //checks if cover is determined
-            if (_minDistance>=float.MaxValue)
+            if (_minDistance>=float.MaxValue || _minDistance<maximumDistanceToFindCover)
             {
                 return State.Failure;
             }
@@ -139,7 +143,6 @@ namespace Ingame.Enemy
                 //undefined cover
                 if (!hasDeterminedPoints)
                 {
-                    //var size = transform.GetComponent<Renderer>().bounds.size
                     points.Add(transform.position+(transform.position-target.position).normalized);
                 }
                 //defined cover

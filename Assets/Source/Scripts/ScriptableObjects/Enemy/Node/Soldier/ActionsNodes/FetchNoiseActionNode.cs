@@ -26,7 +26,6 @@ namespace Ingame.Enemy
 
             ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
             agentModel.Agent.destination =  (Vector3) enemyModel.noisePosition;
-            enemyModel.hasDetectedNoises = false;
             enemyModel.noisePosition = null;
             return State.Success;
         }

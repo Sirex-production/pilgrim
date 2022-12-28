@@ -19,12 +19,14 @@ namespace Ingame.Enemy
                 weapon.GetComponent<Collider>().isTrigger = false;
                 weapon.transform.parent = null;
                 rb.useGravity = true;
+                rb.isKinematic = false;
             }
             
             Entity.Del<EnemyWeaponHolderModel>();
-            base.ActOnStart();
         }
-
+        
+        
+        
         protected override void ActOnStop()
         {
             Entity.Get<HitBoxCapsuleColliderModel>().capsuleCollider.isTrigger = true;

@@ -32,7 +32,7 @@ namespace Ingame.Enemy
         private float _minAccuracy = 0.15f;
         private float _accurencyRate = 0.045f;
         private float _currentIntervalTime;
-        private float _offset = 70f;
+      
         protected override void ActOnStart()
         {
             _currentIntervalTime = shootIntervalTime;
@@ -50,14 +50,7 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var transform = ref Entity.Get<TransformModel>();
-            var targetRotation = Quaternion.LookRotation(enemyModel.target.transform.position - transform.transform.position);
-            targetRotation.x = 0; 
-            targetRotation.z = 0;
-            targetRotation *= quaternion.Euler(0,_offset,0);
-            
-            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, targetRotation, 7.5f * Time.deltaTime);
-          
+
             //cooldown
             if (_currentIntervalTime>0)
             {
@@ -78,8 +71,8 @@ namespace Ingame.Enemy
 
             if (typeOfAttack == TypeOfAttack.ProgressiveAccuracy)
             {
-                var chanceToHit = enemyModel.visibleTargetPixels * _accurencyRate;
-                var totalAcc = Math.Clamp(chanceToHit,_minAccuracy,chanceToHit);
+                float chanceToHit = enemyModel.visibleTargetPixels * _accurencyRate;
+                float totalAcc = Math.Clamp(chanceToHit,_minAccuracy,this.chanceToHit);
                 if (totalAcc < Random.Range(0f, 1f))
                 {
                     return State.Failure;

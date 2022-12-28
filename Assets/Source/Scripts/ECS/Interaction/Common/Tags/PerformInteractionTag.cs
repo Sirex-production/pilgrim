@@ -1,4 +1,4 @@
 ﻿namespace Ingame.Interaction.Common
 {
-    internal struct PerformInteractionTag { }
+    public struct PerformInteractionTag { }
 }

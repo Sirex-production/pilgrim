@@ -2,6 +2,7 @@
 using Ingame.Health;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Ingame.Animation
@@ -17,7 +18,7 @@ namespace Ingame.Animation
         private static readonly float _rigWeight = 0.555f;
         private static readonly int _iKLeftHandWeight = Animator.StringToHash("IKLeftHandWeight");
         private readonly EcsFilter<AnimatorModel,EnemyStateModel,NavMeshAgentModel, TransformModel> _soldierAnimationFilter;
-       
+        private float _offset = 70f;
 
         public void Run()
         {
@@ -28,11 +29,21 @@ namespace Ingame.Animation
                 ref var animatorModel = ref _soldierAnimationFilter.Get1(i);
                 ref var enemyStateModel = ref _soldierAnimationFilter.Get2(i);
                 ref var navMeshAgentModel = ref _soldierAnimationFilter.Get3(i);
-                
+                ref var transform = ref entity.Get<TransformModel>();
                 PerformMovementAnimations(ref entity, ref navMeshAgentModel, ref enemyStateModel,ref animatorModel);
                 PerformAimingAnimations(ref entity,ref animatorModel,ref enemyStateModel, ref navMeshAgentModel);
                 PerformDieAnimations(ref entity, ref animatorModel,ref enemyStateModel);
+                
+                if(enemyStateModel.isDead|| enemyStateModel.isDying || !enemyStateModel.isTargetDetected || enemyStateModel.isHiding || enemyStateModel.isPatrolling)
+                    continue;
+                
+                var targetRotation = Quaternion.LookRotation(enemyStateModel.target.transform.position - transform.transform.position);
+                targetRotation.x = 0; 
+                targetRotation.z = 0;
+                targetRotation *= quaternion.Euler(0,_offset,0);
 
+                transform.transform.rotation =
+                    Quaternion.Slerp(transform.transform.rotation, targetRotation, 7.5f * Time.deltaTime);
             }             
         }
 
@@ -47,6 +58,8 @@ namespace Ingame.Animation
                 
             var indexAim = animatorModel.animator.GetLayerIndex("Aim Layer");
             animatorModel.animator.SetLayerWeight(indexAim, 0f);
+
+          
         }
         
         private void PerformMovementAnimations(ref EcsEntity entity,ref NavMeshAgentModel navMeshAgentModel,ref EnemyStateModel enemyStateModel, ref AnimatorModel animatorModel)
@@ -57,10 +70,11 @@ namespace Ingame.Animation
                 
             var worldDeltaPosition =
                 navMeshAgentModel.Agent.nextPosition - transformModel.transform.position;
+            worldDeltaPosition.y = 0;
             var groundDeltaX = Vector3.Dot(transformModel.transform.right, worldDeltaPosition);
             var groundDeltaZ = Vector3.Dot(transformModel.transform.forward, worldDeltaPosition);
                 
-            var velocity = (Time.deltaTime > 1e-5f) ? new Vector2(groundDeltaX,groundDeltaZ) / Time.deltaTime : Vector2.zero;
+            var velocity = (Time.deltaTime > 1e-4f) ? new Vector2(groundDeltaX,groundDeltaZ) / Time.deltaTime : Vector2.zero;
             bool shouldMove= velocity.magnitude > 0.025f &&
                              navMeshAgentModel.Agent.remainingDistance > navMeshAgentModel.Agent.radius;
             

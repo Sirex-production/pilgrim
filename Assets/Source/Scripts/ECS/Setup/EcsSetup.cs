@@ -21,7 +21,6 @@ using Ingame.Movement;
 using Ingame.Player;
 using Ingame.Quests;
 using Ingame.SaveLoad;
-using Ingame.SupportCommunication;
 using Ingame.Systems;
 using Ingame.UI;
 using Ingame.UI.Raycastable;
@@ -40,13 +39,32 @@ namespace Ingame
     {
         [Required, SerializeField] private QuestsConfig questsConfig;
         
-        [Inject] private GameController _gameController;
-        [Inject] private StationaryInput _stationaryInput;
-        [Inject] private EcsWorld _world;
-        [Inject(Id = "UpdateSystems")] private EcsSystems _updateSystems;
-        [Inject(Id = "FixedUpdateSystems")] private EcsSystems _fixedUpdateSystem;
-        [Inject] private AudioController _audioController;
-        [Inject] private SaveLoadService _saveLoadService;
+        private StationaryInput _stationaryInput;
+        private EcsWorld _world;
+        private SaveLoadService _saveLoadService;
+        private AudioController _audioController;
+
+        private EcsSystems _updateSystems;
+        private EcsSystems _fixedUpdateSystem;
+        
+        [Inject]
+        private void Construct
+        (
+            StationaryInput stationaryInputSystem,
+            EcsWorld world, 
+            SaveLoadService saveLoadService,
+            AudioController audioController,
+            [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
+            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
+        )
+        {
+            _stationaryInput = stationaryInputSystem;
+            _world = world;
+            _saveLoadService = saveLoadService;
+            _audioController = audioController;
+            _updateSystems = updateSystem;
+            _fixedUpdateSystem = fixedUpdateSystem;
+        }
 
 #if UNITY_EDITOR
         private EcsProfiler _ecsProfiler;
@@ -103,7 +121,6 @@ namespace Ingame
             _updateSystems
                 .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
-                .Inject(_gameController)
                 .Inject(_audioController)
                 .Inject(questsConfig);
         }
@@ -227,26 +244,23 @@ namespace Ingame
                 //UI
                 .Add(new InteractWithRaycastableUiSystem())
                 .Add(new UpdateQuestUiSystem())
-                .Add(new DisplayAimDotOnInteractionSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 //SupportCommunication
-                .Add(new ProcessMessagesToSupportSystem())
                 //Utils
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
-                .Add(new UpdateSettingsSystem())
                 .Add(new ExternalEventsRemoverSystem());
             
             //FixedUpdate
             _fixedUpdateSystem
-                 //Input   
+                //Input   
                 .Add(new PlayerInputToMovementConvertSystem())
-                 //Utils
-                 .Add(new DeltaMovementCalculationSystem())
-                 //Hud
-                 .Add(new CameraBobbingSystem())
-                 //Movement
+                //Utils
+                .Add(new DeltaMovementCalculationSystem())
+                //Hud
+                .Add(new CameraBobbingSystem())
+                //Movement
                 .Add(new FrictionSystem())
                 .Add(new SlidingSystem())
                 .Add(new GravitationSystem())
@@ -255,9 +269,10 @@ namespace Ingame
                 .Add(new LeanSystem())
                 .Add(new CameraLeanSystem())
                 .Add(new MovementSystem())
-                 //NoiseDetection
-                 .Add(new NoiseDetectionSystem())
-                 .Add(new SharedCameraDetectionSystem());
+                //NoiseDetection
+                .Add(new NoiseDetectionSystem())
+                .Add(new SharedCameraDetectionSystem());
+
         }
     }
 }
