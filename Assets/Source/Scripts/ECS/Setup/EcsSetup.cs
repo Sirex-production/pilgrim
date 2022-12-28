@@ -1,7 +1,6 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
-using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -41,9 +40,6 @@ namespace Ingame
     
         private StationaryInput _stationaryInput;
         private EcsWorld _world;
-        private SaveLoadService _saveLoadService;
-        //private AudioService _audioService;
-
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
         
@@ -51,17 +47,13 @@ namespace Ingame
         private void Construct
         (
             StationaryInput stationaryInputSystem,
-            EcsWorld world, 
-            SaveLoadService saveLoadService,
-           // AudioService audioController,
+            EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
             [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
         )
         {
             _stationaryInput = stationaryInputSystem;
             _world = world;
-            _saveLoadService = saveLoadService;
-            //_audioService = audioController;
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
         }
@@ -119,9 +111,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
-                .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
-                //.Inject(_audioService)
                 .Inject(questsConfig);
         }
 
