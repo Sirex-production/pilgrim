@@ -411,8 +411,10 @@ MonoBehaviour:
   loginButton: {fileID: 1892781302}
   loginButtonCanvasGroup: {fileID: 1892781305}
   loginIconCanvasGroup: {fileID: 1946271886}
+  initializationTextCanvasGroup: {fileID: 1767740759}
   textAnimation: {fileID: 781697086}
   loginAnimationDuration: 0.8
+  delayBeforeShowingLoginAfterInitializationAnimation: 2
   initialLoginElementsYOffset: 100
   loadSceneIndex: 1
   initializationText: '***Sirex OS***
@@ -482,8 +484,8 @@ MonoBehaviour:
   targetGO: {fileID: 1767740755}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 1
-  easeType: 1
+  duration: 5
+  easeType: 8
   easeCurve:
     serializedVersion: 2
     m_Curve:
@@ -496,6 +498,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.5134022
+      value: 0.020231742
+      inSlope: 0.07678216
+      outSlope: 0.07678216
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.69904417
+    - serializedVersion: 3
+      time: 0.88507926
+      value: 0.7356178
+      inSlope: 3.5211709
+      outSlope: 3.5211709
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.050256535
+      outWeight: 0.27486268
     - serializedVersion: 3
       time: 1
       value: 1
@@ -749,6 +769,7 @@ GameObject:
   - component: {fileID: 1767740758}
   - component: {fileID: 1767740757}
   - component: {fileID: 1767740756}
+  - component: {fileID: 1767740759}
   m_Layer: 0
   m_Name: Text - Initialization
   m_TagString: Untagged
@@ -873,6 +894,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -120, y: -120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1767740759
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767740755}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1892781300
 GameObject:
   m_ObjectHideFlags: 0
