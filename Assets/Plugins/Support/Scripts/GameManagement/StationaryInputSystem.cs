@@ -833,6 +833,74 @@ namespace Support
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Comics"",
+            ""id"": ""a07a6f08-cab3-4e74-bbde-8441e55a7486"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""01ce1077-6294-475a-99e8-6500e7aacc21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ccfe4f2-d0c2-451b-a9d1-ae8315bf88fc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f3ca6b9-786e-48cd-aeaf-03eab57ab50b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b78c7606-c096-4643-b50e-74fde406aa3f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f9a635f-1f3f-43d6-88ad-11d26618d866"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ed5742a-ff72-4cb8-8907-e3ff1413ffdd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -862,6 +930,11 @@ namespace Support
             m_FPS_HideGun = m_FPS.FindAction("HideGun", throwIfNotFound: true);
             m_FPS_ShowActiveQuest = m_FPS.FindAction("ShowActiveQuest", throwIfNotFound: true);
             m_FPS_ShowAllQuests = m_FPS.FindAction("ShowAllQuests", throwIfNotFound: true);
+            // Comics
+            m_Comics = asset.FindActionMap("Comics", throwIfNotFound: true);
+            m_Comics_Next = m_Comics.FindAction("Next", throwIfNotFound: true);
+            m_Comics_Back = m_Comics.FindAction("Back", throwIfNotFound: true);
+            m_Comics_Skip = m_Comics.FindAction("Skip", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1126,6 +1199,55 @@ namespace Support
             }
         }
         public FPSActions @FPS => new FPSActions(this);
+
+        // Comics
+        private readonly InputActionMap m_Comics;
+        private IComicsActions m_ComicsActionsCallbackInterface;
+        private readonly InputAction m_Comics_Next;
+        private readonly InputAction m_Comics_Back;
+        private readonly InputAction m_Comics_Skip;
+        public struct ComicsActions
+        {
+            private @StationaryInput m_Wrapper;
+            public ComicsActions(@StationaryInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Next => m_Wrapper.m_Comics_Next;
+            public InputAction @Back => m_Wrapper.m_Comics_Back;
+            public InputAction @Skip => m_Wrapper.m_Comics_Skip;
+            public InputActionMap Get() { return m_Wrapper.m_Comics; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ComicsActions set) { return set.Get(); }
+            public void SetCallbacks(IComicsActions instance)
+            {
+                if (m_Wrapper.m_ComicsActionsCallbackInterface != null)
+                {
+                    @Next.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Next.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Next.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Back.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Back.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Back.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Skip.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                    @Skip.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                    @Skip.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                }
+                m_Wrapper.m_ComicsActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Next.started += instance.OnNext;
+                    @Next.performed += instance.OnNext;
+                    @Next.canceled += instance.OnNext;
+                    @Back.started += instance.OnBack;
+                    @Back.performed += instance.OnBack;
+                    @Back.canceled += instance.OnBack;
+                    @Skip.started += instance.OnSkip;
+                    @Skip.performed += instance.OnSkip;
+                    @Skip.canceled += instance.OnSkip;
+                }
+            }
+        }
+        public ComicsActions @Comics => new ComicsActions(this);
         public interface IFPSActions
         {
             void OnMovementX(InputAction.CallbackContext context);
@@ -1151,6 +1273,12 @@ namespace Support
             void OnHideGun(InputAction.CallbackContext context);
             void OnShowActiveQuest(InputAction.CallbackContext context);
             void OnShowAllQuests(InputAction.CallbackContext context);
+        }
+        public interface IComicsActions
+        {
+            void OnNext(InputAction.CallbackContext context);
+            void OnBack(InputAction.CallbackContext context);
+            void OnSkip(InputAction.CallbackContext context);
         }
     }
 }

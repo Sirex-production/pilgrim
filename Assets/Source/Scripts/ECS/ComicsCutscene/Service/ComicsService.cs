@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Support;
 using UnityEngine;
+using Zenject;
 
 
 namespace Ingame.Comics
@@ -23,12 +25,13 @@ namespace Ingame.Comics
         
         private Dictionary<string, ComicsData> _comics;
         private CurrentComics _currentComics = new CurrentComics();
-  
+        
         private void Awake()
         {
             _comics = comicsHolderContainer.Pages.ToDictionary(i => i.Name);
+   
         }
-
+        
         public void Play(string name)
         {
           if(!_comics.ContainsKey(name))

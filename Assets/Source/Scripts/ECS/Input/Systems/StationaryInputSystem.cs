@@ -11,7 +11,7 @@ namespace Ingame.Input
         private const float TAP_INTO_HOLD_TIME_THRESHOLD = 0.4f;
         private EcsWorld _world;
         private StationaryInput _stationaryInputSystem;
-
+        
         private bool _isDistortTheShutterPerformedThisFrame = false;
         private bool _isLongInteractPerformedThisFrame = false;
         private bool _isDropGunInputWasPerformedThisFrame = false;
