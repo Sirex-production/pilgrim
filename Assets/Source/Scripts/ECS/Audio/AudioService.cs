@@ -25,7 +25,7 @@ namespace Ingame.Audio
         public void Resume3D(string type, string name, Transform transform);
     }
 
-    public interface IAudioService  : IAudio3DService,IAudio2DService
+    public interface IAudioMixerController 
     {
         public void StopAll();
         public void PauseAll();
@@ -36,7 +36,7 @@ namespace Ingame.Audio
             AudioListener.volume = f;
         }
     }
-    public class AudioService : MonoBehaviour, IAudioService, IInitializable
+    public class AudioService : MonoBehaviour, IAudioMixerController, IAudio3DService,IAudio2DService, IInitializable
     {
 
         [SerializeField] 
