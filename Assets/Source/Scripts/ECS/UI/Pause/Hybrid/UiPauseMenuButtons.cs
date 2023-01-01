@@ -1,4 +1,6 @@
-﻿using Ingame.UI.Settings;
+﻿using Ingame.Input;
+using Ingame.UI.Settings;
+using Leopotam.Ecs;
 using NaughtyAttributes;
 using Support;
 using UnityEngine;
@@ -18,17 +20,19 @@ namespace Ingame.UI.Pause
 		
 		[BoxGroup("Loading options")]
 		[SerializeField] [Scene] private int sceneToLoadOnExit;
-
+		
 		private PauseMenuService _pauseMenuService;
 		private LevelManagementService _levelManagementService;
 		private UiSettingsService _uiSettingsService;
+		private EcsWorld _world;
 		
 		[Inject]
-		private void Construct(PauseMenuService pauseMenuService, LevelManagementService levelManagementService, UiSettingsService uiSettingsService)
+		private void Construct(PauseMenuService pauseMenuService, LevelManagementService levelManagementService, UiSettingsService uiSettingsService, EcsWorld world)
 		{
 			_pauseMenuService = pauseMenuService;
 			_levelManagementService = levelManagementService;
-			_uiSettingsService = uiSettingsService;;
+			_uiSettingsService = uiSettingsService;
+			_world = world;
 		}
 
 		private void Awake()
@@ -47,6 +51,7 @@ namespace Ingame.UI.Pause
 
 		private void OnResumeButtonClicked()
 		{
+			_world.NewEntity().Get<EnableFpsInputEvent>();	
 			_pauseMenuService.RequestToHidePauseMenu();
 		}
 		

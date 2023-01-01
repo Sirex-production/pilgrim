@@ -5,6 +5,7 @@ namespace Ingame.UI.Pause
 {
 	public sealed class OpenHidePauseMenuSystem : IEcsRunSystem
 	{
+		private readonly EcsWorld _world;
 		private readonly EcsFilter<PauseMenuServiceModel> _pauseMenuServiceFilter;
 		private readonly EcsFilter<PauseInputEvent> _openPauseMenuInputEvent;
 
@@ -17,10 +18,16 @@ namespace Ingame.UI.Pause
 			{
 				var pauseMenuService = _pauseMenuServiceFilter.Get1(i).pauseMenuService;
 
-				if(pauseMenuService.IsOpened)
+				if (pauseMenuService.IsOpened)
+				{
+					_world.NewEntity().Get<EnableFpsInputEvent>();
 					pauseMenuService.RequestToHidePauseMenu();
+				}
 				else
+				{
+					_world.NewEntity().Get<DisableFpsInputEvent>();
 					pauseMenuService.RequestToShowPauseMenu();
+				}
 			}
 		}
 	}

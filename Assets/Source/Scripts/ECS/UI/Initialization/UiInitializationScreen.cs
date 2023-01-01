@@ -2,6 +2,7 @@
 using DG.Tweening;
 using NaughtyAttributes;
 using Support;
+using Support.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,6 +11,9 @@ namespace Ingame.UI.Initialization
 {
 	public sealed class UiInitializationScreen : MonoBehaviour
 	{
+		[BoxGroup("Developer options")]
+		[SerializeField] private bool isIntroAnimationSkipped = false;
+
 		[BoxGroup("References")]
 		[Required, SerializeField] private Button loginButton;
 		[BoxGroup("References")]
@@ -63,14 +67,34 @@ namespace Ingame.UI.Initialization
 		
 		private void Start()
 		{
-			textAnimation.CreateTween();
-			textAnimation.DOPlay();
+			if (isIntroAnimationSkipped)
+				DisplayLoginView();
+			else
+				PlayIntroAnimation();
 		}
 
 		private void OnDestroy()
 		{
 			loginButton.onClick.RemoveListener(OnLoginButtonClicked);
 			textAnimation.onComplete.RemoveListener(OnTextInitializationAnimationFinished);
+		}
+
+		private void PlayIntroAnimation()
+		{
+			textAnimation.CreateTween();
+			textAnimation.DOPlay();
+		}
+
+		private void DisplayLoginView()
+		{
+			loginIconCanvasGroup.SetGameObjectActive();
+			loginButtonCanvasGroup.SetGameObjectActive();
+			
+			loginIconCanvasGroup.alpha = 1f;
+			loginButtonCanvasGroup.alpha = 1f;
+			
+			loginButtonCanvasGroup.transform.localPosition = _initialLoginButtonLocalPos;
+			loginIconCanvasGroup.transform.localPosition = _initialLoginIconLocalPos;
 		}
 
 		private void OnLoginButtonClicked()

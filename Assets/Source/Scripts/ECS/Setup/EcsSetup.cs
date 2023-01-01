@@ -170,6 +170,7 @@ namespace Ingame
                 .Add(new BehaviourBinderSystem())
                 //Input
                 .Add(new StationaryInputSystem())
+                .Add(new EnableOrDisableInputMapsSystem())
                 .Add(new PlayerInputToRotationConverterSystem())
                 .Add(new PlayerHudInputToRotationConverterSystem())
                 .Add(new PlayerInputToCrouchConverterSystem())

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Ingame.UI.Settings;
 using NaughtyAttributes;
+using Support;
 using Support.Extensions;
 using UnityEngine;
 using Zenject;
@@ -17,7 +18,7 @@ namespace Ingame.UI.Pause
 
 		private PauseMenuService _pauseMenuService;
 		private UiSettingsService _uiSettingsService;
-		
+
 		[Inject]
 		private void Construct(PauseMenuService pauseMenuService, UiSettingsService uiSettingsService)
 		{
