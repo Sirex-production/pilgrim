@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Data.Player
 {
@@ -24,6 +25,9 @@ namespace Ingame.Data.Player
         [BoxGroup("Movement (Jumping)")]
         [SerializeField][Min(0)] private float pauseBetweenJumps = .5f;
         
+        [BoxGroup("Movement (Crouching)")]
+        [SerializeField][Range(0, 1)] private float additionalHeightMultiplierToCheckObstaclesAbove = 0.825f;
+
         [BoxGroup("Movement (Lean)"), Space]
         [SerializeField] [Range(0, 20)] private float enterLeanSpeed = 5f;
         [BoxGroup("Movement (Lean)")]
@@ -62,6 +66,8 @@ namespace Ingame.Data.Player
         public float JumpForce => jumpForce;
         public float PauseBetweenJumps => pauseBetweenJumps;
 
+        public float AdditionalHeightMultiplierToCheckObstaclesAbove => additionalHeightMultiplierToCheckObstaclesAbove;
+        
         public float EnterLeanSpeed => enterLeanSpeed;
         public float LeanDistanceOffset => leanDistanceOffset;
         public float LeanAngleOffset => leanAngleOffset;
