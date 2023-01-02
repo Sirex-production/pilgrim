@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6dd483192084674a65b3c11a43f11e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIntroAnimationSkipped: 1
+  isIntroAnimationSkipped: 0
   loginButton: {fileID: 1892781302}
   loginButtonCanvasGroup: {fileID: 1892781305}
   loginIconCanvasGroup: {fileID: 1946271886}
