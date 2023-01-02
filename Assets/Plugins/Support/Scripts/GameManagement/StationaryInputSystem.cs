@@ -833,6 +833,34 @@ namespace Support
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""24cb0590-4ce8-47f5-a782-00ed4ccc7dd0"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9321e1cd-15ea-410d-8676-24c77ae2f96d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e4380344-905c-401e-b0eb-1758702eb1b0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -862,6 +890,9 @@ namespace Support
             m_FPS_HideGun = m_FPS.FindAction("HideGun", throwIfNotFound: true);
             m_FPS_ShowActiveQuest = m_FPS.FindAction("ShowActiveQuest", throwIfNotFound: true);
             m_FPS_ShowAllQuests = m_FPS.FindAction("ShowAllQuests", throwIfNotFound: true);
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1126,6 +1157,39 @@ namespace Support
             }
         }
         public FPSActions @FPS => new FPSActions(this);
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private IUIActions m_UIActionsCallbackInterface;
+        private readonly InputAction m_UI_Pause;
+        public struct UIActions
+        {
+            private @StationaryInput m_Wrapper;
+            public UIActions(@StationaryInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Pause => m_Wrapper.m_UI_Pause;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void SetCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterface != null)
+                {
+                    @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                }
+                m_Wrapper.m_UIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
+                }
+            }
+        }
+        public UIActions @UI => new UIActions(this);
         public interface IFPSActions
         {
             void OnMovementX(InputAction.CallbackContext context);
@@ -1151,6 +1215,10 @@ namespace Support
             void OnHideGun(InputAction.CallbackContext context);
             void OnShowActiveQuest(InputAction.CallbackContext context);
             void OnShowAllQuests(InputAction.CallbackContext context);
+        }
+        public interface IUIActions
+        {
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Ingame.Settings
     }
     
     [Serializable]
-    public sealed record SettingsData
+    public sealed class SettingsData
     {
         public int maxFps = 144;
         public float sensitivity = 1f;

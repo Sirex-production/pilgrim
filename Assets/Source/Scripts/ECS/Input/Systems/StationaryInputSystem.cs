@@ -43,6 +43,7 @@ namespace Ingame.Input
         private InputAction _secondSlotInteraction;
         private InputAction _showActiveQuestInput;
         private InputAction _showAllQuestsInput;
+        private InputAction _pauseInput;
 
         private float _reloadTimer;
         private float _shutterDelayTimer;
@@ -80,6 +81,7 @@ namespace Ingame.Input
             _showActiveQuestInput = _stationaryInputSystem.FPS.ShowActiveQuest;
             _showAllQuestsInput = _stationaryInputSystem.FPS.ShowAllQuests;
 
+            _pauseInput = _stationaryInputSystem.UI.Pause;
 
             _distortTheShutterInput.performed += OnDistortTheShutterPerformed;
             _longInteractInput.performed += OnLongInteractPerformed;
@@ -145,6 +147,7 @@ namespace Ingame.Input
             bool interactWithFirstSlot = _firstSlotInteraction.WasPressedThisFrame();
             bool interactWithSecondSlot = _secondSlotInteraction.WasPressedThisFrame();
             bool showActiveQuests = _showActiveQuestInput.WasPressedThisFrame();
+            bool pause = _pauseInput.WasPerformedThisFrame();
 
             var leanDirection = _leanInput.ReadValue<float>() switch
             {
@@ -295,7 +298,15 @@ namespace Ingame.Input
             }
 
             ReceiveTapInput(_showActiveQuestInput, showActiveQuests, ref _showActiveQuestsTimer, ref inputEntity, () => inputEntity.Get<ShowActiveQuestInputEvent>());
-            
+
+            if (pause)
+            {
+                if (inputEntity == EcsEntity.Null)
+                    inputEntity = _world.NewEntity();
+
+                inputEntity.Get<PauseInputEvent>();
+            }
+
             _isDistortTheShutterPerformedThisFrame = false;
             _isLongInteractPerformedThisFrame = false;
             _isDropGunInputWasPerformedThisFrame = false;

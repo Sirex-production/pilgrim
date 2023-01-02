@@ -23,6 +23,7 @@ using Ingame.Quests;
 using Ingame.SaveLoad;
 using Ingame.Systems;
 using Ingame.UI;
+using Ingame.UI.Pause;
 using Ingame.UI.Raycastable;
 using Ingame.Utils;
 using LeoEcsPhysics;
@@ -149,7 +150,8 @@ namespace Ingame
                 .OneFrame<InteractWithSecondSlotInputEvent>()
                 .OneFrame<HideGunInputEvent>()
                 .OneFrame<ShowActiveQuestInputEvent>()
-                .OneFrame<ShowAllQuestsInputEvent>();
+                .OneFrame<ShowAllQuestsInputEvent>()
+                .OneFrame<PauseInputEvent>();
         }
 
         private void AddSystems()
@@ -168,6 +170,7 @@ namespace Ingame
                 .Add(new BehaviourBinderSystem())
                 //Input
                 .Add(new StationaryInputSystem())
+                .Add(new EnableOrDisableInputMapsSystem())
                 .Add(new PlayerInputToRotationConverterSystem())
                 .Add(new PlayerHudInputToRotationConverterSystem())
                 .Add(new PlayerInputToCrouchConverterSystem())
@@ -246,6 +249,7 @@ namespace Ingame
                 .Add(new UpdateQuestUiSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
+                .Add(new OpenHidePauseMenuSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new TimeSystem())
