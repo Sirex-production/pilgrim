@@ -1,7 +1,6 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
-using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -23,6 +22,7 @@ using Ingame.Quests;
 using Ingame.SaveLoad;
 using Ingame.Systems;
 using Ingame.UI;
+using Ingame.UI.Pause;
 using Ingame.UI.Raycastable;
 using Ingame.Utils;
 using LeoEcsPhysics;
@@ -38,12 +38,9 @@ namespace Ingame
     public sealed class EcsSetup : MonoBehaviour
     {
         [Required, SerializeField] private QuestsConfig questsConfig;
-        
+    
         private StationaryInput _stationaryInput;
         private EcsWorld _world;
-        private SaveLoadService _saveLoadService;
-        private AudioController _audioController;
-
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
         
@@ -51,17 +48,13 @@ namespace Ingame
         private void Construct
         (
             StationaryInput stationaryInputSystem,
-            EcsWorld world, 
-            SaveLoadService saveLoadService,
-            AudioController audioController,
+            EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
             [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
         )
         {
             _stationaryInput = stationaryInputSystem;
             _world = world;
-            _saveLoadService = saveLoadService;
-            _audioController = audioController;
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
         }
@@ -119,9 +112,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
-                .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
-                .Inject(_audioController)
                 .Inject(questsConfig);
         }
 
@@ -149,7 +140,8 @@ namespace Ingame
                 .OneFrame<InteractWithSecondSlotInputEvent>()
                 .OneFrame<HideGunInputEvent>()
                 .OneFrame<ShowActiveQuestInputEvent>()
-                .OneFrame<ShowAllQuestsInputEvent>();
+                .OneFrame<ShowAllQuestsInputEvent>()
+                .OneFrame<PauseInputEvent>();
         }
 
         private void AddSystems()
@@ -168,6 +160,7 @@ namespace Ingame
                 .Add(new BehaviourBinderSystem())
                 //Input
                 .Add(new StationaryInputSystem())
+                .Add(new EnableOrDisableInputMapsSystem())
                 .Add(new PlayerInputToRotationConverterSystem())
                 .Add(new PlayerHudInputToRotationConverterSystem())
                 .Add(new PlayerInputToCrouchConverterSystem())
@@ -235,7 +228,6 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
-                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())
@@ -246,6 +238,7 @@ namespace Ingame
                 .Add(new UpdateQuestUiSystem())
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
+                .Add(new OpenHidePauseMenuSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new TimeSystem())

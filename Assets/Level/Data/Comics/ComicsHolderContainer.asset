@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d869f49bb1f8454db9717d0110ff4907, type: 3}
+  m_Name: ComicsHolderContainer
+  m_EditorClassIdentifier: 
+  comics:
+  - name: null
+    pages: []
+  - name: ComicsA
+    pages:
+    - page: {fileID: 21300000, guid: 4ac814b44eea50b4fa8bfe5f7089ede1, type: 3}
+    - page: {fileID: 21300000, guid: 3a4a33130233f044cb5bf525dfd42abe, type: 3}
+    - page: {fileID: 21300000, guid: 62d8ff85c593b924cba2bd29838f44ec, type: 3}
+    - page: {fileID: 21300000, guid: 6d746ff74b4240f4192ccdce31ee0a28, type: 3}
+    - page: {fileID: 21300000, guid: 017a33893a6d95047bed6e27c5d69dce, type: 3}
+    - page: {fileID: 21300000, guid: 7fe3f44bcc8ed5e4aa284313a4d459ee, type: 3}
