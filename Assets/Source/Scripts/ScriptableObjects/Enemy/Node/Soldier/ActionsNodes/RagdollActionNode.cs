@@ -1,4 +1,5 @@
 ﻿using Ingame.Behaviour;
+using Ingame.Interaction.Common;
 using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -13,13 +14,21 @@ namespace Ingame.Enemy
             ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
             agentModel.Agent.enabled = false;
             var weapon = Entity.Get<EnemyWeaponHolderModel>().weapon;
-           
-            if (weapon != null && weapon.TryGetComponent<Rigidbody>(out var rb))
+            
+            if(weapon == null)
+               return;
+            
+            if ( weapon.TryGetComponent<Rigidbody>(out var rb))
             {
                 weapon.GetComponent<Collider>().isTrigger = false;
                 weapon.transform.parent = null;
                 rb.useGravity = true;
                 rb.isKinematic = false;
+            }
+
+            if (weapon.TryGetComponent<EntityReference>(out var entityReference))
+            {
+                entityReference.Entity.Get<InteractiveTag>();
             }
             
             Entity.Del<EnemyWeaponHolderModel>();
