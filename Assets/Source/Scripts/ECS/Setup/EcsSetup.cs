@@ -1,7 +1,6 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
-using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -39,12 +38,9 @@ namespace Ingame
     public sealed class EcsSetup : MonoBehaviour
     {
         [Required, SerializeField] private QuestsConfig questsConfig;
-        
+    
         private StationaryInput _stationaryInput;
         private EcsWorld _world;
-        private SaveLoadService _saveLoadService;
-        private AudioController _audioController;
-
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
         
@@ -52,17 +48,13 @@ namespace Ingame
         private void Construct
         (
             StationaryInput stationaryInputSystem,
-            EcsWorld world, 
-            SaveLoadService saveLoadService,
-            AudioController audioController,
+            EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
             [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
         )
         {
             _stationaryInput = stationaryInputSystem;
             _world = world;
-            _saveLoadService = saveLoadService;
-            _audioController = audioController;
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
         }
@@ -120,9 +112,7 @@ namespace Ingame
         private void AddInjections()
         {
             _updateSystems
-                .Inject(_saveLoadService)
                 .Inject(_stationaryInput)
-                .Inject(_audioController)
                 .Inject(questsConfig);
         }
 
@@ -238,7 +228,6 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //Effects
-                .Add(new AudioSystem())
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
                 .Add(new GasChokeDisplaySystem())

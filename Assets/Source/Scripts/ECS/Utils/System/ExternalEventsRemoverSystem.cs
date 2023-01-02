@@ -109,6 +109,7 @@ namespace Ingame.Utils
                 ref var eventEntity = ref _questsAreUpdatedEventFilter.GetEntity(i);
                 eventEntity.Del<QuestsAreUpdatedEvent>();
             }
+            
         }
     }
 }
