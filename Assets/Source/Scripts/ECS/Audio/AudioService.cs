@@ -36,29 +36,48 @@ namespace Ingame.Audio
             AudioListener.volume = f;
         }
     }
-    public class AudioService : MonoBehaviour, IAudioMixerController, IAudio3DService,IAudio2DService, IInitializable
+
+
+    public sealed class AudioService : MonoBehaviour, IAudioMixerController, IAudio3DService,IAudio2DService
     {
+        private struct RuntimeAudioUnit  
+        {
+            private string _audioTypeName;
+            private string _audioClipName;
 
+            public RuntimeAudioUnit(string audioTypeName, string audioClipName)
+            {
+                _audioTypeName = audioTypeName;
+                _audioClipName = audioClipName;
+            }
+
+            public string AudioTypeName => _audioTypeName;
+            public string AudioClipName => _audioClipName;
+        }
+        
         [SerializeField] 
-        private AudioContainer audioContainer;
+        private AudioConfig audioConfig;
 
-        private Dictionary<string, Dictionary<string, (AudioClip, AudioWrapperSettings)>> _storedAudios;
+        private Dictionary<string, Dictionary<string, RuntimeAudioData>> _storedAudios;
         private ObjectPool<AudioSource> _pool;
         
         private Dictionary<(string, string, GameObject), Queue<AudioSource>> _played3dAudioSources = new();
-        private Dictionary<(string, string), Queue<AudioSource>> _played2dAudioSources  = new();
+        private Dictionary<(string , string ), Queue<AudioSource>> _played2dAudioSources  = new();
         
-        private Dictionary<(string, string, GameObject), Queue<AudioSource>> _paused3dAudioSources = new();
+        private Dictionary<(string , string , GameObject), Queue<AudioSource>> _paused3dAudioSources = new();
         private Dictionary<(string, string), Queue<AudioSource>> _paused2dAudioSources = new();
         
-        public void Initialize(){}
+      
         public void Awake()
         {
-            Dictionary<string, Dictionary<string, (AudioClip,AudioWrapperSettings)>> dict = new ();
-            foreach (var typeWrapper in audioContainer.Audios)
+            Dictionary<string, Dictionary<string, RuntimeAudioData>> dict = new ();
+            
+            foreach (var typeWrapper in audioConfig.Audios)
             {
-                var audioClips = typeWrapper.AudioWrappers.ToDictionary(e=> e.Name, e=>( e.AudioClip, e.AudioSettings));
-                dict.Add(typeWrapper.Name,audioClips);
+                Dictionary<string, RuntimeAudioData> dic = typeWrapper.AudioWrappers.ToDictionary(e=> e.Name,
+                    e=> new RuntimeAudioData( e.AudioClip, e.AudioSettings));
+                
+                dict.Add(typeWrapper.AudioTypeName,dic);
             }
             _storedAudios = dict;
             
@@ -70,7 +89,7 @@ namespace Ingame.Audio
             );
         }
         
-        private void FixedUpdate()
+        private void Update()
         {
             RemoveStoppedAudioSources(ref _played3dAudioSources);
             RemoveStoppedAudioSources(ref _played2dAudioSources);
@@ -132,10 +151,10 @@ namespace Ingame.Audio
         private AudioSource GetAndSetupAudioSource(string type, string name,Transform parent)
         {
             var audioOption = _storedAudios[type][name];
-            var audioSettings = audioOption.Item2;
+            var audioSettings = audioOption.AudioSettings;
 
             var audio = _pool.Get();
-            audio.clip = audioOption.Item1;
+            audio.clip = audioOption.AudioClip;
             audio.priority = audioSettings.Priority;
             audio.volume = audioSettings.Volume;
             audio.pitch = audioSettings.Pitch;
@@ -260,6 +279,7 @@ namespace Ingame.Audio
         {
             if(!_paused2dAudioSources.ContainsKey((type,name))
                || _paused2dAudioSources[(type,name)].Count<=0)
+                
                 return;
             
             var audio = _paused2dAudioSources[(type, name)].Dequeue();
@@ -323,6 +343,21 @@ namespace Ingame.Audio
             {
                 Resume(key.Item1,key.Item2);
             }
+        }
+        
+        private sealed class RuntimeAudioData
+        {
+            private AudioClip _audioClip;
+            private AudioWrapperSettings _audioSettings;
+            
+            public RuntimeAudioData(AudioClip audioClip, AudioWrapperSettings audioSettings)
+            {
+                _audioClip = audioClip;
+                _audioSettings = audioSettings;
+            }
+
+            public AudioClip AudioClip => _audioClip;
+            public AudioWrapperSettings AudioSettings => _audioSettings;
         }
     }
 }

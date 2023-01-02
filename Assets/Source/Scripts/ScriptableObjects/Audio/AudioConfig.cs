@@ -7,7 +7,7 @@ namespace Ingame.Audio
 {
     [Serializable]
     [CreateAssetMenu(menuName = "Ingame/Audio/audioContainer", fileName = "audioContainer")]
-    public sealed class AudioContainer : ScriptableObject
+    public sealed class AudioConfig : ScriptableObject
     {
         [SerializeField] private List<AudioTypeWrapper> audios;
 
@@ -17,11 +17,11 @@ namespace Ingame.Audio
     [Serializable]
     public sealed class AudioTypeWrapper
     {
-        [SerializeField] private string name;
+        [SerializeField] private string audioTypeName;
         [SerializeField] private List<AudioWrapper> audioWrappers;
         
         public List<AudioWrapper> AudioWrappers => audioWrappers;
-        public string Name => name;
+        public string AudioTypeName => audioTypeName;
     }
     
  

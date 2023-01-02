@@ -21,7 +21,7 @@ namespace Ingame.Comics
         private LevelManagementService _levelManagementService;
 
         [Inject]
-        private void Constructor(StationaryInput input, ComicsService comicsService, LevelManagementService levelManagementService)
+        private void Construct(StationaryInput input, ComicsService comicsService, LevelManagementService levelManagementService)
         {
             _input = input;
             _comicsService = comicsService;

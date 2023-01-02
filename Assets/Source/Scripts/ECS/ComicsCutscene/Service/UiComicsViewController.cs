@@ -1,6 +1,7 @@
 ﻿using System;
 using NaughtyAttributes;
 using Support;
+using Support.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -16,7 +17,7 @@ namespace Ingame.Comics
         private ComicsService _comicsService;
         
         [Inject]
-        private void Constructor(ComicsService comicsService )
+        private void Construct(ComicsService comicsService )
         {
             _comicsService = comicsService;
         }
@@ -31,7 +32,7 @@ namespace Ingame.Comics
             _comicsService.onOpen += ExposeComics;
             _comicsService.onPageChanged += UpdateComics;
             
-            comicsImage.gameObject.SetActive(false);
+            comicsImage.SetGameObjectInactive();
             
         }
         
@@ -49,12 +50,12 @@ namespace Ingame.Comics
         
         private void HideComics()
         {
-            comicsImage.gameObject.SetActive(false);
+            comicsImage.SetGameObjectInactive();
         }
         
         private void ExposeComics()
         {
-            comicsImage.gameObject.SetActive(true);
+            comicsImage.SetGameObjectActive();
         }
     }
 }

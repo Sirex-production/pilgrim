@@ -187,6 +187,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2135620045}
     m_Modifications:
+    - target: {fileID: 400751312442044039, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: comicsHolderConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 890b52e29bec1744dafecfe0c32d8be4, type: 2}
     - target: {fileID: 3797335910423356169, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_Name
       value: Serivce - UI - Comics

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Ingame.Comics
 {
     [CreateAssetMenu(menuName = "Ingame/Comics/ComicsHolderContainer",fileName = "ComicsHolderContainer")]
-    public sealed class ComicsHolderContainer : ScriptableObject
+    public sealed class ComicsHolderConfig : ScriptableObject
     {
         [SerializeField] 
         private List<ComicsData> comics;

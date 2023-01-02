@@ -10,14 +10,14 @@ namespace Ingame.Comics
 {
     public sealed class ComicsService : MonoBehaviour
     {
-        private class CurrentComics
+        private sealed class CurrentComics
         {
             public ComicsData comicsData;
             public int currentPage = 0;
         }
         
         [SerializeField]
-        private ComicsHolderContainer comicsHolderContainer;
+        private ComicsHolderConfig comicsHolderConfig;
 
         public event Action onPageChanged;
         public event Action onClose;
@@ -28,7 +28,7 @@ namespace Ingame.Comics
         
         private void Awake()
         {
-            _comics = comicsHolderContainer.Pages.ToDictionary(i => i.Name);
+            _comics = comicsHolderConfig.Pages.ToDictionary(i => i.Name);
    
         }
         
