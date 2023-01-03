@@ -20,6 +20,7 @@ MonoBehaviour:
   movementFriction: 12
   jumpForce: 6
   pauseBetweenJumps: 0.2
+  additionalHeightMultiplierToCheckObstaclesAbove: 0.825
   enterLeanSpeed: 4
   leanDistanceOffset: 0.4
   leanAngleOffset: 12
