@@ -266,13 +266,13 @@ Material:
     - _Color0: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive2Colour: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissiveColour: {r: 1, g: 0.8626035, b: 0.22000003, a: 0}
+    - _EmissiveColour: {r: 0.42352942, g: 0.40392157, b: 0.2901961, a: 0}
     - _FrostingColour: {r: 0.6037736, g: 0.5465179, b: 0.0768957, a: 0}
     - _GustHighlight: {r: 0.1132075, g: 0.1132075, b: 0.1132075, a: 0}
     - _GustSmoothing: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _LeafBaseColour: {r: 0.51876795, g: 0.5803922, b: 0, a: 0}
-    - _LeafNoiseColour: {r: 0.759, g: 0.5559554, b: 0, a: 0}
-    - _LeafNoiseLargeColour: {r: 0.44705883, g: 0.2794033, b: 0, a: 0}
+    - _LeafBaseColour: {r: 0.4245283, g: 0.40549475, b: 0.29036134, a: 0}
+    - _LeafNoiseColour: {r: 0.42352942, g: 0.40392157, b: 0.2901961, a: 0}
+    - _LeafNoiseLargeColour: {r: 0.42352942, g: 0.40392157, b: 0.2901961, a: 0}
     - _LeafTint: {r: 0.07843138, g: 0.02015968, b: 0, a: 0}
     - _SnowColour: {r: 1, g: 0.7995496, b: 0.16509432, a: 0}
     - _Tint: {r: 0, g: 0, b: 0, a: 0}
