@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_Name: DetectTargetActionNode
   m_EditorClassIdentifier: 
   Guid: 35c97a79aca3027458c686de5d1d6528
-  Position: {x: -910, y: 408}
+  Position: {x: -903, y: 411}
   Description: 
   typeOfDetection: 1
   detectionRange: 60
