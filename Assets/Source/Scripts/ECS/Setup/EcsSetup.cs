@@ -18,6 +18,7 @@ using Ingame.Inventory;
 using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
+using Ingame.QuestInventory;
 using Ingame.Quests;
 using Ingame.SaveLoad;
 using Ingame.Systems;
@@ -227,6 +228,8 @@ namespace Ingame
                 .Add(new UpdateBackpackItemsAppearanceSystem())
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
+                //QuestInventory
+                .Add(new ItemsSystem())
                 //Effects
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
