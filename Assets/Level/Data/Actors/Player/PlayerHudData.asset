@@ -19,6 +19,6 @@ MonoBehaviour:
   headBobbingStrengthZ: 0.003
   hudBobbingLerpingSpeed: 10
   hudBobbingSpeedModifier: 6
-  hudBobbingPositionStrengthY: 0.002
-  hudBobbingRotationStrengthZ: 0.05
+  hudBobbingPositionStrengthY: 0.001
+  hudBobbingRotationStrengthZ: 0.015
   recoilStabilizationSpeed: 10
