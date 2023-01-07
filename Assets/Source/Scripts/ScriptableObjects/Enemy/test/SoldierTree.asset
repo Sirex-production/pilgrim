@@ -2088,7 +2088,7 @@ MonoBehaviour:
   Description: 
   typeOfDetection: 1
   detectionRange: 60
-  detectionAngle: 90
+  detectionAngle: 160
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 0
