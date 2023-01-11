@@ -25,6 +25,7 @@ using Ingame.UI;
 using Ingame.UI.Pause;
 using Ingame.UI.Raycastable;
 using Ingame.Utils;
+using Ingame.VFX;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
 using NaughtyAttributes;
@@ -209,6 +210,7 @@ namespace Ingame
                 .Add(new LadderSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
+                .Add(new PlayMuzzleFlashEffectSystem())
                 .Add(new CreateRecoilRequestSystem())
                 .Add(new PerformShotSystem())
                 .Add(new HudRecoilSystem())

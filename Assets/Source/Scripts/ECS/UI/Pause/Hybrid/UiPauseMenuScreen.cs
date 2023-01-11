@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using Ingame.UI.Settings;
 using NaughtyAttributes;
-using Support;
 using Support.Extensions;
 using UnityEngine;
 using Zenject;

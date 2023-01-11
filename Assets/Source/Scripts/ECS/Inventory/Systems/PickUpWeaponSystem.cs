@@ -43,7 +43,8 @@ namespace Ingame.Inventory
 				if(!TryActivatingHands(weaponEntity))
 					continue;
 				
-				TryPlacingWeaponInHands(weaponEntity, hudItemTransform);
+				if(!TryPlacingWeaponInHands(weaponEntity, hudItemTransform))
+					continue;
 			}
 		}
 
@@ -133,6 +134,16 @@ namespace Ingame.Inventory
 			
 			weaponTransform.gameObject.SetLayerToAllChildrenAndSelf(hudLayerIndex);
 			weaponTransform.SetGameObjectInactive();
+
+			if (weaponEntity.Has<OverrideLayerOnPickupAndDropComponent>())
+			{
+				ref var overrideLayersComp = ref weaponEntity.Get<OverrideLayerOnPickupAndDropComponent>();
+				var gameObjectsWithOverridenLayer = overrideLayersComp.gameObjects;
+				int layerOnPickUp = overrideLayersComp.layerToAssignOnPickup;
+
+				foreach (var go in gameObjectsWithOverridenLayer) 
+					go.SetLayerToAllChildrenAndSelf(layerOnPickUp);
+			}
 
 			return true;
 		}
