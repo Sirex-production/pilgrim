@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65923028cc9841d79504ecae47a7bfd1, type: 3}
   m_Name: PlayerHudData
   m_EditorClassIdentifier: 
-  headBobbingLerpingSpeed: 4
-  headBobbingSpeedModifier: 2.5
+  headBobbingLerpingSpeed: 2
+  headBobbingSpeedModifier: 4
   headBobbingStrengthX: 0
   headBobbingStrengthY: 0.005
   headBobbingStrengthZ: 0.003
-  hudBobbingLerpingSpeed: 10
+  hudBobbingLerpingSpeed: 4
   hudBobbingSpeedModifier: 6
   hudBobbingPositionStrengthY: 0.001
-  hudBobbingRotationStrengthZ: 0.015
+  hudBobbingRotationStrengthZ: 0.03
   recoilStabilizationSpeed: 10
