@@ -42,9 +42,8 @@ namespace Ingame.Inventory
 				
 				if(!TryActivatingHands(weaponEntity))
 					continue;
-				
-				if(!TryPlacingWeaponInHands(weaponEntity, hudItemTransform))
-					continue;
+
+				PlaceWeaponInHands(weaponEntity, hudItemTransform);
 			}
 		}
 
@@ -117,7 +116,7 @@ namespace Ingame.Inventory
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private bool TryPlacingWeaponInHands(in EcsEntity weaponEntity, in TransformModel hudItemContainerTransformModel)
+		private void PlaceWeaponInHands(in EcsEntity weaponEntity, in TransformModel hudItemContainerTransformModel)
 		{
 			ref var weaponHudItemModel = ref weaponEntity.Get<HudItemModel>();
 			ref var weaponTransformModel = ref weaponEntity.Get<TransformModel>();
@@ -144,8 +143,6 @@ namespace Ingame.Inventory
 				foreach (var go in gameObjectsWithOverridenLayer) 
 					go.SetLayerToAllChildrenAndSelf(layerOnPickUp);
 			}
-
-			return true;
 		}
 	}
 }

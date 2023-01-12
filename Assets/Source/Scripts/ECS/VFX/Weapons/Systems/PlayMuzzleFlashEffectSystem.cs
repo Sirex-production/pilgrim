@@ -12,9 +12,14 @@ namespace Ingame.VFX
 			foreach (var i in _shootingWeaponFilter)
 			{
 				ref var particles = ref _shootingWeaponFilter.Get1(i);
-				
-				foreach (var particleSystem in particles.particleSystems) 
+
+				foreach (var particleSystem in particles.particleSystems)
+				{
+					if(particleSystem == null)
+						continue;
+					
 					particleSystem.Play();
+				}
 			}
 		}
 	}
