@@ -4,6 +4,7 @@ using Ingame.Anomaly;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
+using Ingame.ConfigProvision;
 using Ingame.Debuging;
 using Ingame.Dialog;
 using Ingame.Effects;
@@ -25,6 +26,7 @@ using Ingame.UI;
 using Ingame.UI.Pause;
 using Ingame.UI.Raycastable;
 using Ingame.Utils;
+using Ingame.VFX;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
 using NaughtyAttributes;
@@ -43,6 +45,7 @@ namespace Ingame
         private EcsWorld _world;
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
+        private ConfigProviderService _configProviderService;
         
         [Inject]
         private void Construct
@@ -50,13 +53,15 @@ namespace Ingame
             StationaryInput stationaryInputSystem,
             EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
-            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
+            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem,
+            ConfigProviderService configProviderService
         )
         {
             _stationaryInput = stationaryInputSystem;
             _world = world;
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
+            _configProviderService = configProviderService;
         }
 
 #if UNITY_EDITOR
@@ -113,7 +118,8 @@ namespace Ingame
         {
             _updateSystems
                 .Inject(_stationaryInput)
-                .Inject(questsConfig);
+                .Inject(questsConfig)
+                .Inject(_configProviderService);
         }
 
         private void AddOneFrames()
@@ -209,8 +215,10 @@ namespace Ingame
                 .Add(new LadderSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
+                .Add(new PlayMuzzleFlashEffectSystem())
                 .Add(new CreateRecoilRequestSystem())
                 .Add(new PerformShotSystem())
+                .Add(new PlaceBulletEffectsOnTheSurfaceSystem())
                 .Add(new HudRecoilSystem())
                 .Add(new HudItemAnimationSystem())
                 .Add(new Ar15ReloadSystem())
@@ -241,6 +249,7 @@ namespace Ingame
                 .Add(new OpenHidePauseMenuSystem())
                 //SupportCommunication
                 //Utils
+                .Add(new PutDecalsBackToPoolSystem())
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
                 .Add(new ExternalEventsRemoverSystem());

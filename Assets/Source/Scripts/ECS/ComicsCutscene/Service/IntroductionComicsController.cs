@@ -1,4 +1,5 @@
 ﻿using System;
+using NaughtyAttributes;
 using Support;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,7 @@ namespace Ingame.Comics
         private string nameOfComics;
 
         [SerializeField] 
-        [Min(0)] 
+        [Scene] 
         private int indexOfScene; 
         
         private StationaryInput _input;
