@@ -3390,6 +3390,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 19879842, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19879844, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19879846, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19879848, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1376087194193966, guid: a7730127594a3ad46a512f70521a6446, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3411,6 +3427,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 198144830813525940, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198144830813525940, guid: a7730127594a3ad46a512f70521a6446, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.1
       objectReference: {fileID: 0}
@@ -3429,6 +3449,10 @@ PrefabInstance:
     - target: {fileID: 198144830813525940, guid: a7730127594a3ad46a512f70521a6446, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.a
       value: 0.1882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 198216899553213098, guid: a7730127594a3ad46a512f70521a6446, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7730127594a3ad46a512f70521a6446, type: 3}

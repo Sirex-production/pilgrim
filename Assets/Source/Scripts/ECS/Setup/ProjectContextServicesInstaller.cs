@@ -1,3 +1,4 @@
+using Ingame.ConfigProvision;
 using Ingame.SaveLoad;
 using Ingame.Settings;
 using NaughtyAttributes;
@@ -13,6 +14,8 @@ namespace Ingame
         [Required, SerializeField] private LevelManagementService levelManagementService;
         [BoxGroup("Services")]
         [Required, SerializeField] private GameSettingsService gameSettingsService;
+        [BoxGroup("Services")]
+        [Required, SerializeField] private ConfigProviderService configProviderService;
 
         public override void InstallBindings()
         {
@@ -20,6 +23,7 @@ namespace Ingame
             InstallSaveLoadService();
             InstallLevelManagementService();
             InstallGameSettingsService();
+            InstallConfigProviderService();
         }
 
         private void InstallStationaryInput()
@@ -56,6 +60,14 @@ namespace Ingame
         {
             Container.Bind<GameSettingsService>()
                 .FromInstance(gameSettingsService)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void InstallConfigProviderService()
+        {
+            Container.Bind<ConfigProviderService>()
+                .FromInstance(configProviderService)
                 .AsSingle()
                 .NonLazy();
         }

@@ -8,12 +8,10 @@ namespace Ingame {
         {
             foreach (var i in _filter)
             {
-
                 ref var entity = ref _filter.GetEntity(i);
                 ref var reference = ref _filter.Get1(i);
                 reference.entityReference.Entity = entity;
                 entity.Del<InitializeEntityReferenceRequest>();
-             
             }
         }
     }
