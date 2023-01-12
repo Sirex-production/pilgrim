@@ -11,8 +11,7 @@ namespace Ingame.QuestInventory
         [Inject]
         private void Construct()
         {
-            List<InventorySlot> slots = new();
-            GetAllItemsSlots(this.transform, ref slots);
+            List<InventorySlot> slots = ModifyListOfAllItemsSlots(this.transform,  new());
             var dic = new Dictionary<PickableItemConfig, List<Transform>>();
 
             foreach (var slot in slots)
@@ -32,16 +31,18 @@ namespace Ingame.QuestInventory
             }; 
         }
 
-        private void GetAllItemsSlots(Transform trans, ref List<InventorySlot> listOfSlots)
+        private List<InventorySlot> ModifyListOfAllItemsSlots(Transform trans,  List<InventorySlot> listOfSlots)
         {
             foreach (Transform child in trans)
             {
-                if (!child.TryGetComponent<InventorySlot>(out var slot)) continue;
-                UnityEngine.Debug.Log(trans);
-                
+                if (!child.TryGetComponent<InventorySlot>(out var slot)) 
+                    continue;
+
                 listOfSlots.Add(slot);
-                GetAllItemsSlots(child, ref listOfSlots);
+                ModifyListOfAllItemsSlots(child,  listOfSlots);
             }
+
+            return listOfSlots;
         }
     }
 }
