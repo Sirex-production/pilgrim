@@ -42,7 +42,11 @@ namespace Ingame.Data.Hud
         [Foldout("Hud stats (Due to player rotation)"), ShowIf("isItemMovedDueToRotation")]
         [SerializeField] [Range(0, 40)] private float moveSpeed = 5f;
         [Foldout("Hud stats (Due to player rotation)")] 
+        [SerializeField] private bool isMovedVertically = false;
+        [Foldout("Hud stats (Due to player rotation)")] 
         [SerializeField] [MinMaxSlider(-2, 2)] private Vector2 minMaxMovementOffsetY = new(0, 0);
+        [Foldout("Hud stats (Due to player rotation)")] 
+        [SerializeField] private bool isMovedHorizontally = false;
         [Foldout("Hud stats (Due to player rotation)")] 
         [SerializeField] [MinMaxSlider(-2, 2)] private Vector2 minMaxMovementOffsetX = new(0, 0);
 
@@ -151,7 +155,9 @@ namespace Ingame.Data.Hud
         public bool IsItemMovedBackToInitialPosition => isItemMovedBackToInitialPosition;
         public float MoveToInitialPosSpeed => moveToInitialPosSpeed;
         public float MoveSpeed => moveSpeed;
+        public bool IsMovedVertically => isMovedVertically;
         public Vector2 MinMaxMovementOffsetY => minMaxMovementOffsetY;
+        public bool IsMovedHorizontally => isMovedHorizontally;
         public Vector2 MinMaxMovementOffsetX => minMaxMovementOffsetX;
 
 
