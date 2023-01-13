@@ -1,6 +1,6 @@
 ﻿namespace Ingame.QuestInventory
 {
-    public struct OccupiedInventorySlot
+    public struct OccupiedInventorySlotTag
     {
         
     }

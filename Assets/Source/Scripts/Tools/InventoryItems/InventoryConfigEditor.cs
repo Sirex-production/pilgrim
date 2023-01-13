@@ -7,31 +7,65 @@ using UnityEngine;
 
 namespace Ingame.InventoryItems
 {
-    [CustomEditor(typeof(InventoryConfig))]
+#if UNITY_EDITOR
+    [CustomEditor(typeof(InventoryConfig),true)]
     public sealed class InventoryConfigEditor : Editor
     {
+        private string _feedback = "Empty";
+        private Color _colorOfFeedback = Color.black;
+        private InventoryConfig _config;
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            DisplayFeedbackAboutInventoryConfig();
+            using (new GUILayout.HorizontalScope())
+            {
+                GUI.contentColor = _colorOfFeedback;
+                GUILayout.Label(_feedback);
+            }
         }
-    
+
+        private void OnEnable()
+        {
+            _config = target as InventoryConfig;
+
+            _config.onValidateData -= AdjustFeedbackAboutInventoryConfig;
+            _config.onValidateData += AdjustFeedbackAboutInventoryConfig;
+
+            AdjustFeedbackAboutInventoryConfig();
+        }
         
-        private void DisplayFeedbackAboutInventoryConfig()
+        private void OnValidate()
+        {
+            if (_config != null)
+            {
+                _config.onValidateData -= AdjustFeedbackAboutInventoryConfig;
+            }
+            
+            _config = target as InventoryConfig;
+            
+            _config.onValidateData -= AdjustFeedbackAboutInventoryConfig;
+            _config.onValidateData += AdjustFeedbackAboutInventoryConfig;
+        }
+        
+        private void OnDestroy()
+        {
+            if(_config==null)
+                return;
+            
+            _config.onValidateData -= AdjustFeedbackAboutInventoryConfig;
+        }
+
+
+        private void AdjustFeedbackAboutInventoryConfig()
         {
             var config = target as InventoryConfig;
             
             bool isNumberOfItemsValid =IsNumberOfItemsValid(config);
             bool isNumberOfNamesValid = IsNumberOfNamesValid(config);
             
-            using (new GUILayout.HorizontalScope())
-            {
-                GUI.contentColor = isNumberOfItemsValid&&isNumberOfNamesValid? Color.green: Color.red;
-                
-                string message = !isNumberOfItemsValid ? "The element is repeated" :
-                    !isNumberOfNamesValid ? "Two or more items have the same itemName" : "List is valid";
-                GUILayout.Label(message);
-            }
+            _colorOfFeedback = isNumberOfItemsValid&&isNumberOfNamesValid? Color.green: Color.red;
+            _feedback = !isNumberOfItemsValid ? "The element is repeated" :
+                !isNumberOfNamesValid ? "Two or more items have the same itemName" : "List is valid";
         }
 
         private bool IsNumberOfItemsValid(InventoryConfig config)
@@ -53,10 +87,6 @@ namespace Ingame.InventoryItems
 
             return true;
         }
-        
-        private void OnValidate()
-        {
-            DisplayFeedbackAboutInventoryConfig();
-        }
     }
+#endif
 }

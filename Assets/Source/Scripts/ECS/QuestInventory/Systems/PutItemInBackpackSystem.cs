@@ -1,46 +1,21 @@
-﻿using Ingame.Interaction.Common;
+﻿using System.Runtime.CompilerServices;
+using Ingame.Interaction.Common;
 using Ingame.Movement;
 using Leopotam.Ecs;
-using UnityEngine;
 
-
-namespace Ingame.QuestInventory 
+namespace Ingame.QuestInventory
 {
-    public sealed class ItemsSystem : IEcsRunSystem
+    public sealed class PutItemInBackpackSystem : IEcsRunSystem
     {
         private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
-        private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel,PickedUpItemTag> _useItemFilter;
         private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
         
         public void Run()
         {
             ProcessPickUpItem();
-            ProcessUsageOfItem();
         }
         
-        private void ProcessUsageOfItem()
-        {
-            foreach (var i in _useItemFilter)
-            {
-                ref var entity = ref _useItemFilter.GetEntity(i);
-                ref var transformModel = ref _useItemFilter.Get2(i);
-
-                if (transformModel.transform.TryGetComponent<UsableItem>(out var usableItem))
-                {
-                    usableItem.Use();          
-                }
-
-                if (entity.Has<ConsumableItemTag>())
-                {
-                    Object.Destroy( transformModel.transform.gameObject);
-                    entity.Destroy();
-                    continue;
-                }
-                
-                entity.Del<PerformInteractionTag>();
-            }
-        }
-        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ProcessPickUpItem()
         {
             foreach (var i in _pickItemFilter)
@@ -55,9 +30,9 @@ namespace Ingame.QuestInventory
 
                 if (!backpack.slots.ContainsKey(itemModel.itemConfig))
                 {
-                    #if UNITY_EDITOR
-                        UnityEngine.Debug.LogWarning($"{backpack} does not have a slot that corresponds to the item :{itemModel.itemConfig}");
-                    #endif
+#if UNITY_EDITOR
+                    UnityEngine.Debug.LogWarning($"{backpack} does not have a slot that corresponds to the item :{itemModel.itemConfig}");
+#endif
                     entity.Del<PerformInteractionTag>();
                     continue;
                 }
@@ -66,10 +41,10 @@ namespace Ingame.QuestInventory
                 foreach (var transform in slots)
                 {
                     if(!transform.TryGetComponent<EntityReference>(out var entityReference) 
-                       || entityReference.Entity.Has<OccupiedInventorySlot>())
+                       || entityReference.Entity.Has<OccupiedInventorySlotTag>())
                         continue;
                     
-                    entityReference.Entity.Get<OccupiedInventorySlot>();
+                    entityReference.Entity.Get<OccupiedInventorySlotTag>();
                     transformModel.transform.position = transform.position;
                     entity.Get<PickedUpItemTag>();
                     entity.Del<PerformInteractionTag>();

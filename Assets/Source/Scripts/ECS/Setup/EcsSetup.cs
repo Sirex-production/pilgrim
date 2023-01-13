@@ -229,7 +229,8 @@ namespace Ingame
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
                 //QuestInventory
-                .Add(new ItemsSystem())
+                .Add(new PutItemInBackpackSystem())
+                .Add(new UseItemSystem())
                 //Effects
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())

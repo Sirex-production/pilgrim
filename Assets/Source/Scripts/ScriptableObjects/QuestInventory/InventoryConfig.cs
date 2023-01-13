@@ -10,7 +10,16 @@ namespace Ingame.QuestInventory
     public sealed class InventoryConfig : ScriptableObject
     {
         [SerializeField] private List<PickableItemConfig > items;
-        
+#if UNITY_EDITOR
+        public event Action onValidateData;
+#endif
         public ReadOnlyCollection<PickableItemConfig> Items => items.AsReadOnly();
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            onValidateData?.Invoke();
+        }
+#endif
     }
 }
