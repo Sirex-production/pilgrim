@@ -5,11 +5,11 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
+    smallestOccluder: 1
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 9d9252cfc1b86ae4cbde9f9de4e5862b
+  m_OcclusionCullingData: {fileID: 36300000, guid: 71a6f52be64c3724eb60e11e82f89366, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -710,11 +710,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: c61974af9bd0bb342876cc2a0e57d39d, type: 2}
-  m_TreeDistance: 150
-  m_TreeBillboardDistance: 100
-  m_TreeCrossFadeLength: 30
+  m_TreeDistance: 180
+  m_TreeBillboardDistance: 40
+  m_TreeCrossFadeLength: 126.6
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 60
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 25
   m_SplatMapDistance: 80
@@ -21108,7 +21108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953555547369922686, guid: d3e7e5afa46fa7a4e81d1f8baf6a2930, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e7e5afa46fa7a4e81d1f8baf6a2930, type: 3}
