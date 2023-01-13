@@ -1,4 +1,5 @@
-﻿using System;
+#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ingame.QuestInventory;
@@ -7,7 +8,6 @@ using UnityEngine;
 
 namespace Ingame.InventoryItems
 {
-#if UNITY_EDITOR
     [CustomEditor(typeof(InventoryConfig),true)]
     public sealed class InventoryConfigEditor : Editor
     {
@@ -88,5 +88,5 @@ namespace Ingame.InventoryItems
             return true;
         }
     }
-#endif
 }
+#endif
