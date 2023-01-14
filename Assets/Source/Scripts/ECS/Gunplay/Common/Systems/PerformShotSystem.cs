@@ -1,7 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 using Ingame.Breakable;
 using Ingame.Enemy;
+using Ingame.Extensions;
 using Ingame.Health;
+using Ingame.VFX;
 using Leopotam.Ecs;
 using Support;
 using UnityEngine;
@@ -10,8 +12,9 @@ namespace Ingame.Gunplay
 {
     public sealed class PerformShotSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<FirearmComponent, AwaitingShotTag> _shootingFirearmFilter;
         private readonly EcsWorld _world;
+        private readonly EcsFilter<FirearmComponent, AwaitingShotTag> _shootingFirearmFilter;
+
         public void Run()
         {
             foreach (var i in _shootingFirearmFilter)
@@ -23,7 +26,9 @@ namespace Ingame.Gunplay
                 _world.CreateNoiseEvent(firearmComponent.barrelOrigin.position);
                 if (!TryPerformRaycast(firearmComponent.barrelOrigin.position, firearmComponent.barrelOrigin.forward, out RaycastHit hit))
                     continue;
-
+                
+                SendVfxRequest(hit.point, hit.normal, hit.transform.tag);
+                
                 if(!TryApplyDamage(hit.collider.gameObject, firearmComponent.firearmConfig.Damage) && !TryApplyDamage(hit.transform.root.gameObject, firearmComponent.firearmConfig.Damage) )
                     continue;
             }
@@ -61,6 +66,17 @@ namespace Ingame.Gunplay
             appliedDamageComponent.damageToDeal = damage;
 
             return true;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void SendVfxRequest(in Vector3 hitPos, in Vector3 surfaceNormalDirection, in string surfaceTag)
+        {
+            _world.SendSignal(new PlaceBulletVfxRequest
+            {
+                position = hitPos,
+                surfaceNormalDirection = surfaceNormalDirection,
+                surfaceTag = surfaceTag
+            });
         }
     }
 }

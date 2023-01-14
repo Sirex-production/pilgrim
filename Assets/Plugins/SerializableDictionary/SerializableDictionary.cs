@@ -93,7 +93,7 @@ public class SerializableDictionary<TKey, TValue> : SerializableDictionaryBase<T
 	}
 }
 
-public static class SerializableDictionary
+public class SerializableDictionary
 {
 	public class Storage<T>
 	{

@@ -4,6 +4,7 @@ using Ingame.Anomaly;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
+using Ingame.ConfigProvision;
 using Ingame.Debuging;
 using Ingame.Dialog;
 using Ingame.Effects;
@@ -18,13 +19,15 @@ using Ingame.Inventory;
 using Ingame.Ladder;
 using Ingame.Movement;
 using Ingame.Player;
+using Ingame.QuestInventory;
 using Ingame.Quests;
-using Ingame.SaveLoad;
+using Ingame.Settings;
 using Ingame.Systems;
 using Ingame.UI;
 using Ingame.UI.Pause;
 using Ingame.UI.Raycastable;
 using Ingame.Utils;
+using Ingame.VFX;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
 using NaughtyAttributes;
@@ -43,6 +46,8 @@ namespace Ingame
         private EcsWorld _world;
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
+        private ConfigProviderService _configProviderService;
+        private GameSettingsService _gameSettingsService;
         
         [Inject]
         private void Construct
@@ -50,13 +55,17 @@ namespace Ingame
             StationaryInput stationaryInputSystem,
             EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
-            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem
+            [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem,
+            ConfigProviderService configProviderService, 
+            GameSettingsService gameSettingsService
         )
         {
             _stationaryInput = stationaryInputSystem;
             _world = world;
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
+            _configProviderService = configProviderService;
+            _gameSettingsService = gameSettingsService;
         }
 
 #if UNITY_EDITOR
@@ -113,7 +122,9 @@ namespace Ingame
         {
             _updateSystems
                 .Inject(_stationaryInput)
-                .Inject(questsConfig);
+                .Inject(questsConfig)
+                .Inject(_configProviderService)
+                .Inject(_gameSettingsService);
         }
 
         private void AddOneFrames()
@@ -152,7 +163,8 @@ namespace Ingame
                 .Add(new TransformModelInitSystem())
                 .Add(new PlayerInitSystem())
                 .Add(new AppearanceUpdateInitSystem())
-                .Add(new DeltaMovementInitializeSystem());
+                .Add(new DeltaMovementInitializeSystem())
+                .Add(new InitializeCursorSystem());
 
             //Update
             _updateSystems
@@ -209,8 +221,10 @@ namespace Ingame
                 .Add(new LadderSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
+                .Add(new PlayMuzzleFlashEffectSystem())
                 .Add(new CreateRecoilRequestSystem())
                 .Add(new PerformShotSystem())
+                .Add(new PlaceBulletEffectsOnTheSurfaceSystem())
                 .Add(new HudRecoilSystem())
                 .Add(new HudItemAnimationSystem())
                 .Add(new Ar15ReloadSystem())
@@ -227,6 +241,9 @@ namespace Ingame
                 .Add(new UpdateBackpackItemsAppearanceSystem())
                 .Add(new UpdateAmmoBoxViewSystem())
                 .Add(new InteractWithBackpackItemSystem())
+                //QuestInventory
+                .Add(new PutItemInBackpackSystem())
+                .Add(new UseItemSystem())
                 //Effects
                 .Add(new HealthDisplaySystem())
                 .Add(new BleedingDisplaySystem())
@@ -239,8 +256,10 @@ namespace Ingame
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 .Add(new OpenHidePauseMenuSystem())
+                .Add(new ShowHideInteractIconSystem())
                 //SupportCommunication
                 //Utils
+                .Add(new PutDecalsBackToPoolSystem())
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
                 .Add(new ExternalEventsRemoverSystem());
