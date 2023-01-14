@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Ingame.Breakable;
 using Ingame.Enemy;
 using Ingame.Extensions;
 using Ingame.Health;
@@ -53,6 +54,11 @@ namespace Ingame.Gunplay
             if(!gameObject.TryGetComponent(out EntityReference entityReference))
                 return false;
 
+            if (entityReference.Entity.Has<BreakableModel>())
+            {
+                entityReference.Entity.Get<BreakableShouldBeDestroyedTag>();
+            }
+            
             if(!entityReference.Entity.Has<HealthComponent>())
                 return false;
 

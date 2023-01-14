@@ -103,6 +103,8 @@ Material:
     - Depth: 1
     - EyeBox_Size: 1
     - EyeBox_Softness: 0.3
+    - InnerRing_Size: 1
+    - InnerRing_Softness: 0.3
     - Lens_Eye_Relief_Size: 1
     - Lens_Eye_Relief_Softness: 2.9
     - Lens_Shadow_Depth: 2
@@ -130,6 +132,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5

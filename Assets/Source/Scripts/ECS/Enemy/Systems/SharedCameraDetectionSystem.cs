@@ -1,4 +1,5 @@
-﻿using Ingame.Enemy;
+﻿using System.Collections.Generic;
+using Ingame.Enemy;
 using Ingame.Movement;
 using Leopotam.Ecs;
 using Unity.Burst;
@@ -19,6 +20,9 @@ namespace Ingame.Systems
         //MUST BE only one shared camera!!!
         private readonly EcsFilter<CameraComponent, SharedCameraModel> _cameraFilter;
 
+        private Dictionary<EcsEntity, Texture2D> _cashedTexturesForEnvironment = new ();
+        private Dictionary<EcsEntity, Texture2D> _cashedTexturesForAll = new ();
+        
         public void Run()
         {
             if (_cameraFilter.IsEmpty() || _cameraFilter.IsEmpty())
@@ -31,6 +35,8 @@ namespace Ingame.Systems
             
             foreach (var enemy in _enemyFilter)
             {
+                
+                ref var enemyEntity = ref _enemyFilter.GetEntity(enemy);
                 ref var model = ref _enemyFilter.Get1(enemy);
                 ref var transform = ref _enemyFilter.Get2(enemy);
                 var cameraTransform = camera.Camera.transform;
@@ -40,8 +46,18 @@ namespace Ingame.Systems
                 cameraTransform.localPosition = new Vector3(0, ENEMY_HEIGHT, 0);
                 camera.Camera.transform.LookAt(model.target);
            
-                var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment);
-                var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer);
+               
+
+                if (!_cashedTexturesForEnvironment.ContainsKey(enemyEntity))
+                    _cashedTexturesForEnvironment.Add(enemyEntity, new Texture2D(DETECTION_TEXTURE_WIDTH, DETECTION_TEXTURE_HEIGHT, TextureFormat.RGBA32, false));
+                
+                var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment, _cashedTexturesForEnvironment[enemyEntity]);
+                
+                if (!_cashedTexturesForAll.ContainsKey(enemyEntity))
+                    _cashedTexturesForAll.Add(enemyEntity, new Texture2D(DETECTION_TEXTURE_WIDTH, DETECTION_TEXTURE_HEIGHT, TextureFormat.RGBA32, false));
+                
+                var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer, _cashedTexturesForAll[enemyEntity]);
+                
                 var visibilityOfPlayer = GetNumberOfPixelsOfPLayer(environment, all);
                 
                 model.visibleTargetPixels = visibilityOfPlayer;
@@ -77,10 +93,8 @@ namespace Ingame.Systems
             return amountOfDifferentPixels;
         }
 
-        private Texture2D GetRenderTexture(Camera camera, LayerMask mask)
+        private Texture2D GetRenderTexture(Camera camera, LayerMask mask, Texture2D texture)
         {
-            var texture = new Texture2D(DETECTION_TEXTURE_WIDTH, DETECTION_TEXTURE_HEIGHT, TextureFormat.RGBA32, false);
-            
             camera.cullingMask = mask;
             camera.gameObject.SetActive(true);
             camera.Render();
