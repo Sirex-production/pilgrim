@@ -6,29 +6,22 @@ using UnityEngine;
 
 namespace Ingame.Enemy
 {
+    public enum TypeOfDetection
+    {
+        RayCast,
+        PhotoScanning
+    }
+    
     public class DetectTargetActionNode : ActionNode
     {
-        private enum TypeOfDetection
-        {
-            RayCast,
-            PhotoScanning
-        }
-
         [SerializeField] private TypeOfDetection typeOfDetection;
         [SerializeField] private float detectionRange = 45f;
         [SerializeField] private float detectionAngle = 55;
-       
-        [ShowIf("IsRayCastDetectionUsed")]
-        [SerializeField] private LayerMask ignoredLayers;
         
-        private Transform _transform;
-        private Transform _target;
         private float _time;
         protected override void ActOnStart()
         { 
-            _transform =  Entity.Get<TransformModel>().transform;
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            _target =  enemyModel.target;
+         
         
         }
 
@@ -39,6 +32,9 @@ namespace Ingame.Enemy
     
         protected override State ActOnTick()
         {
+            var enemyTransform =  Entity.Get<TransformModel>().transform;
+            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            var target =  enemyModel.target;
             
             if (Entity.Get<EnemyStateModel>().isTargetDetected)
             {
@@ -46,41 +42,51 @@ namespace Ingame.Enemy
             }
             
             //range
-            if ((_target.position - _transform.position).sqrMagnitude > detectionRange * detectionRange)
+            var distance = Vector3.Distance(target.position, enemyTransform.position);
+            if (distance > detectionRange)
             {
                 return State.Failure;
             }
 
             //Angle
-            var dir = _target.position - _transform.position;
+            var dir = target.position - enemyTransform.position;
             dir.y = 0;
-            var deltaAngle = Vector3.Angle(dir, _transform.forward);
+            var deltaAngle = Vector3.Angle(dir, enemyTransform.forward);
             if (deltaAngle >= detectionAngle || deltaAngle < 0)
             {
                 return State.Failure;
             }
 
             var state = State.Failure;
-            switch (typeOfDetection)
-            {
-                case TypeOfDetection.RayCast:
-                    state = GetPlayerStateFromRayCast();
-                    break;
-                
-                case TypeOfDetection.PhotoScanning:
-                    state = GetPlayerStateFromPhotoScanning();
-                    break;
-            }
-      
-
+            
+            if (typeOfDetection == TypeOfDetection.RayCast)
+                return GetPlayerStateFromRayCast(target, enemyTransform, distance+1, ref enemyModel);
+            
+            if (typeOfDetection == TypeOfDetection.PhotoScanning) 
+                return GetPlayerStateFromPhotoScanning();
+            
             return state;
         }
 
-        private State GetPlayerStateFromRayCast()
+        private State GetPlayerStateFromRayCast(Transform target, Transform enemy, float distance, ref EnemyStateModel enemyStateModel) 
         {
-            if (!Physics.Linecast(_transform.position, _target.position, out RaycastHit hit,ignoredLayers,QueryTriggerInteraction.Ignore))
+            var direction = (target.position - enemy.position).normalized;
+
+            var hits = Physics.RaycastAll(enemy.position, direction, distance);
+
+            if (hits.Length == 0)
                 return State.Failure;
-            Entity.Get<EnemyStateModel>().isTargetDetected = true;
+            
+            foreach (var hit in hits)
+            {
+                var root = hit.collider.transform.root;
+                if (!root.CompareTag("Player") && root != enemy)
+                    return State.Failure;
+            }
+
+            enemyStateModel.isTargetDetected = true;
+            enemyStateModel.isTargetVisible = true;
+       
             return State.Success;
         }
         

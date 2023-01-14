@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18770617, g: 0.20971172, b: 0.24528301, a: 1}
+  m_IndirectSpecularColor: {r: 0.1863269, g: 0.20972958, b: 0.24522316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1836,7 +1836,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalScale.x
@@ -1852,19 +1852,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 115.71
+      value: 962.151
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.01
+      value: 1.344
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 227.57
+      value: 368.15204
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7138043
+      value: 0.47623378
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1872,7 +1872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7003453
+      value: 0.87931865
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1884,12 +1884,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 88.909
+      value: 123.121
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 302713060410911145, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
+      propertyPath: value.originalTree
+      value: 
+      objectReference: {fileID: 11400000, guid: da7befc161e35a9429dcd687b5c0cae6, type: 2}
     - target: {fileID: 302713060410911185, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: initialActorHealth
       value: 175
@@ -1900,7 +1904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 644606548070461211, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
@@ -4625,7 +4629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 122124724}
   - component: {fileID: 122124725}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (3)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -4640,7 +4644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122124723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.59, y: 21.73, z: -182.61}
+  m_LocalPosition: {x: 827.41504, y: 21.73, z: -158.63399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18268,7 +18272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464715458}
   - component: {fileID: 464715459}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (4)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -18283,7 +18287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464715457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.907, y: 21.73, z: -181.495}
+  m_LocalPosition: {x: 820.732, y: 21.73, z: -157.51898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19825,7 +19829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520792717}
   - component: {fileID: 520792718}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (9)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -19840,7 +19844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520792716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.2, y: 24.29, z: -163.397}
+  m_LocalPosition: {x: 884.025, y: 24.29, z: -139.42099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22505,7 +22509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 595866191}
   - component: {fileID: 595866192}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (10)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -22520,7 +22524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595866190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.461, y: 24.29, z: -163.397}
+  m_LocalPosition: {x: 879.286, y: 24.29, z: -139.42099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26045,7 +26049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692495850}
   - component: {fileID: 692495851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (7)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -26060,7 +26064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692495849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.945, y: 20.15, z: -172.106}
+  m_LocalPosition: {x: 861.77, y: 20.15, z: -148.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28478,7 +28482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 735241422}
   - component: {fileID: 735241423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (6)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -28493,7 +28497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735241421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.907, y: 21.73, z: -187.96}
+  m_LocalPosition: {x: 820.732, y: 21.73, z: -163.984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31529,7 +31533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 819108658}
   - component: {fileID: 819108659}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -31544,7 +31548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819108657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.002, y: 24.149, z: -189.924}
+  m_LocalPosition: {x: 894.77, y: 16.587, z: -176.606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36477,7 +36481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 990843163}
   - component: {fileID: 990843164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (2)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -36492,7 +36496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990843162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.25, y: 24.364, z: -218.68}
+  m_LocalPosition: {x: 881.075, y: 24.364, z: -194.70398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48117,7 +48121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 268468380800988577, guid: bf8c765ad4e7e5442874423eae27eec1, type: 3}
       propertyPath: m_LocalScale.x
@@ -56345,7 +56349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527485031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 74.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60048,7 +60052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632007666}
   - component: {fileID: 1632007667}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (5)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -60063,7 +60067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632007665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.22, y: 21.73, z: -186.68}
+  m_LocalPosition: {x: 827.045, y: 21.73, z: -162.70398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63892,7 +63896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765016184}
   - component: {fileID: 1765016185}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (1)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -63907,7 +63911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765016183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 81.43, y: 24.364, z: -218.023}
+  m_LocalPosition: {x: 886.255, y: 24.364, z: -194.04698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66959,7 +66963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1854050690}
   - component: {fileID: 1854050691}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cover (8)
   m_TagString: CoverPoint
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -66974,7 +66978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854050689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.663, y: 20.15, z: -166.427}
+  m_LocalPosition: {x: 860.48804, y: 20.15, z: -142.45099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -25,7 +25,7 @@ namespace Ingame.Enemy
         public bool isTargetDetected;
         public Transform target;
         public int visibleTargetPixels;
-        public int totalTargetPixels;
+        public bool isTargetVisible;
         public bool shouldSearchForTarget;
         public bool hasDetectedNoises;
         public bool hasLostTarget;
