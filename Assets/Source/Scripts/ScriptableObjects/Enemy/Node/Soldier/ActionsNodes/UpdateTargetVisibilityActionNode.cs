@@ -9,6 +9,9 @@ namespace Ingame.Enemy
     {
         [SerializeField] 
         private TypeOfDetection typeOfDetection = TypeOfDetection.PhotoScanning;
+        
+        [SerializeField] 
+        private Vector3 headPosition = new Vector3(0,0.4f,0);
         protected override void ActOnStart()
         {
             if(typeOfDetection == TypeOfDetection.PhotoScanning)
@@ -37,8 +40,20 @@ namespace Ingame.Enemy
             var enemy = Entity.Get<TransformModel>().transform;
             var target = enemyStateModel.target;
             var distance = Vector3.Distance(enemy.position, target.position);
+
+            var state = GetPlayerStateFromRayCast(target.position, enemy, distance, ref enemyStateModel);
             
-            var direction = (target.position - enemy.position).normalized;
+            if (state == State.Failure)
+            {
+                state = GetPlayerStateFromRayCast(target.position + headPosition, enemy, distance, ref enemyStateModel);
+            }
+
+            return state;
+        }
+        
+        private State GetPlayerStateFromRayCast(Vector3 target, Transform enemy, float distance, ref EnemyStateModel enemyStateModel) 
+        {
+            var direction = (target - enemy.position).normalized;
 
             var hits = Physics.RaycastAll(enemy.position, direction, distance);
 
@@ -56,6 +71,7 @@ namespace Ingame.Enemy
                     enemyStateModel.isTargetVisible = false;
                     return State.Failure;
                 }
+                   
             }
             
             enemyStateModel.isTargetVisible = true;

@@ -14,9 +14,17 @@ namespace Ingame.Enemy
     
     public class DetectTargetActionNode : ActionNode
     {
-        [SerializeField] private TypeOfDetection typeOfDetection;
-        [SerializeField] private float detectionRange = 45f;
-        [SerializeField] private float detectionAngle = 55;
+        [SerializeField] 
+        private TypeOfDetection typeOfDetection;
+        
+        [SerializeField] 
+        private float detectionRange = 45f;
+        
+        [SerializeField] 
+        private float detectionAngle = 55;
+        
+        [SerializeField] 
+        private Vector3 headPosition = new Vector3(0,0.4f,0);
         
         private float _time;
         protected override void ActOnStart()
@@ -60,17 +68,23 @@ namespace Ingame.Enemy
             var state = State.Failure;
             
             if (typeOfDetection == TypeOfDetection.RayCast)
-                return GetPlayerStateFromRayCast(target, enemyTransform, distance+1, ref enemyModel);
+            {
+                state = GetPlayerStateFromRayCast(target.position, enemyTransform, distance+1, ref enemyModel);
+                return state == State.Failure ? GetPlayerStateFromRayCast(target.position+ headPosition, enemyTransform, distance+1, ref enemyModel) : state;
+            }
             
-            if (typeOfDetection == TypeOfDetection.PhotoScanning) 
+            if (typeOfDetection == TypeOfDetection.PhotoScanning)
+            {
                 return GetPlayerStateFromPhotoScanning();
+            }
+              
             
             return state;
         }
 
-        private State GetPlayerStateFromRayCast(Transform target, Transform enemy, float distance, ref EnemyStateModel enemyStateModel) 
+        private State GetPlayerStateFromRayCast(Vector3 target, Transform enemy, float distance, ref EnemyStateModel enemyStateModel) 
         {
-            var direction = (target.position - enemy.position).normalized;
+            var direction = (target - enemy.position).normalized;
 
             var hits = Physics.RaycastAll(enemy.position, direction, distance);
 
