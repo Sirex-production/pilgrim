@@ -21,7 +21,7 @@ using Ingame.Movement;
 using Ingame.Player;
 using Ingame.QuestInventory;
 using Ingame.Quests;
-using Ingame.SaveLoad;
+using Ingame.Settings;
 using Ingame.Systems;
 using Ingame.UI;
 using Ingame.UI.Pause;
@@ -47,6 +47,7 @@ namespace Ingame
         private EcsSystems _updateSystems;
         private EcsSystems _fixedUpdateSystem;
         private ConfigProviderService _configProviderService;
+        private GameSettingsService _gameSettingsService;
         
         [Inject]
         private void Construct
@@ -55,7 +56,8 @@ namespace Ingame
             EcsWorld world,
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
             [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem,
-            ConfigProviderService configProviderService
+            ConfigProviderService configProviderService, 
+            GameSettingsService gameSettingsService
         )
         {
             _stationaryInput = stationaryInputSystem;
@@ -63,6 +65,7 @@ namespace Ingame
             _updateSystems = updateSystem;
             _fixedUpdateSystem = fixedUpdateSystem;
             _configProviderService = configProviderService;
+            _gameSettingsService = gameSettingsService;
         }
 
 #if UNITY_EDITOR
@@ -120,7 +123,8 @@ namespace Ingame
             _updateSystems
                 .Inject(_stationaryInput)
                 .Inject(questsConfig)
-                .Inject(_configProviderService);
+                .Inject(_configProviderService)
+                .Inject(_gameSettingsService);
         }
 
         private void AddOneFrames()
@@ -159,7 +163,8 @@ namespace Ingame
                 .Add(new TransformModelInitSystem())
                 .Add(new PlayerInitSystem())
                 .Add(new AppearanceUpdateInitSystem())
-                .Add(new DeltaMovementInitializeSystem());
+                .Add(new DeltaMovementInitializeSystem())
+                .Add(new InitializeCursorSystem());
 
             //Update
             _updateSystems
@@ -251,6 +256,7 @@ namespace Ingame
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 .Add(new OpenHidePauseMenuSystem())
+                .Add(new ShowHideInteractIconSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new PutDecalsBackToPoolSystem())

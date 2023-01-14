@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Ingame.Settings;
 using Ingame.UI.Settings;
 using NaughtyAttributes;
 using Support.Extensions;
@@ -17,12 +18,14 @@ namespace Ingame.UI.Pause
 
 		private PauseMenuService _pauseMenuService;
 		private UiSettingsService _uiSettingsService;
+		private GameSettingsService _gameSettingsService;
 
 		[Inject]
-		private void Construct(PauseMenuService pauseMenuService, UiSettingsService uiSettingsService)
+		private void Construct(PauseMenuService pauseMenuService, UiSettingsService uiSettingsService, GameSettingsService gameSettingsService)
 		{
 			_pauseMenuService = pauseMenuService;
 			_uiSettingsService = uiSettingsService;
+			_gameSettingsService = gameSettingsService;
 		}
 
 		private void Awake()
@@ -51,6 +54,8 @@ namespace Ingame.UI.Pause
 			pauseCanvasGroup.DOFade(1, showHideAnimationDuration);
 			pauseCanvasGroup.transform.DOScale(Vector3.one, showHideAnimationDuration)
 				.SetEase(Ease.OutBack);
+
+			_gameSettingsService.IsCursorEnabled = true;
 		}
 
 		private void OnPauseMenuHideRequested()
@@ -63,6 +68,8 @@ namespace Ingame.UI.Pause
 			pauseCanvasGroup.DOFade(0, showHideAnimationDuration);
 			pauseCanvasGroup.transform.DOScale(Vector3.zero, showHideAnimationDuration)
 				.OnComplete(()=> pauseCanvasGroup.SetGameObjectInactive());
+			
+			_gameSettingsService.IsCursorEnabled = false;
 		}
 	}
 }

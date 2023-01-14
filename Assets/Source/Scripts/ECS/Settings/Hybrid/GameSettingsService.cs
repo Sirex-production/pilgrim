@@ -13,12 +13,27 @@ namespace Ingame.Settings
         [ReadOnly, SerializeField] private SettingsData _currentSettingsData = new();
         private SaveLoadService _saveLoadService;
 
+        private bool _isCursorEnabled;
+        
         public SettingsData CurrentSettingsData => _currentSettingsData;
+
+        public bool IsCursorEnabled
+        {
+            set
+            {
+                _isCursorEnabled = value;
+
+                Cursor.visible = _isCursorEnabled;
+                Cursor.lockState = _isCursorEnabled ? CursorLockMode.Confined : CursorLockMode.Locked;
+            }
+            get => _isCursorEnabled;
+        }
 
         [Inject]
         private void Construct(SaveLoadService saveLoadService)
         {
             _saveLoadService = saveLoadService;
+            IsCursorEnabled = true;
         }
 
         private void Start()
