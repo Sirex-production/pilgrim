@@ -26,6 +26,7 @@ namespace Ingame.Comics
         private float _frequencyOfLettersAppearance = 0.08f;
         private bool _isDoTweenOccupied = false;
         private string _comicsCurrentText = "";
+        
         [Inject]
         private void Construct(ComicsService comicsService )
         {

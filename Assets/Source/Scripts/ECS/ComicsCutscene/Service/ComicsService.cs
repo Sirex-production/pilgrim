@@ -124,7 +124,9 @@ namespace Ingame.Comics
             }
             
             _currentComics.currentPageIndex--;
-            _currentComics.currentTextIndex = 0;
+            
+            var sentences = _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions;
+            _currentComics.currentTextIndex = (sentences == null || sentences.Count <= 0) ? 0 : sentences.Count - 1;
             
             onPageChanged?.Invoke();
             onTextChanged?.Invoke();
