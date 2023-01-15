@@ -35,6 +35,10 @@ namespace Ingame.Comics
         [Required]
         private Sprite page;
 
+        [SerializeField] 
+        private List<string> textsIntroductions;
+
+        public ReadOnlyCollection<string> TextsIntroductions => textsIntroductions.AsReadOnly();
         public Sprite Page => page;
     }
 }

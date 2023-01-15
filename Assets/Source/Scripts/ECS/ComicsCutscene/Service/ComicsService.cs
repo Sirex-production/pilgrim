@@ -13,13 +13,15 @@ namespace Ingame.Comics
         private sealed class CurrentComics
         {
             public ComicsData comicsData;
-            public int currentPage = 0;
+            public int currentPageIndex = 0;
+            public int currentTextIndex = 0;
         }
         
         [SerializeField]
         private ComicsHolderConfig comicsHolderConfig;
 
         public event Action onPageChanged;
+        public event Action onTextChanged;
         public event Action onClose;
         public event Action onOpen;
         
@@ -29,8 +31,32 @@ namespace Ingame.Comics
         private void Awake()
         {
             _comics = comicsHolderConfig.Pages.ToDictionary(i => i.Name);
-   
         }
+        
+        private bool TryToChangeText(int pageIncremental)
+        {
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions == null)
+                return false;
+
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <= 0)
+            {
+                _currentComics.currentTextIndex = 0;
+                return false;
+            }
+
+            _currentComics.currentTextIndex += pageIncremental;
+            
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <=
+                _currentComics.currentTextIndex || _currentComics.currentTextIndex < 0)
+            {
+                _currentComics.currentTextIndex = 0;
+                return false;
+            }
+
+            onTextChanged?.Invoke();
+            return true;
+        }
+        
         
         public void Play(string name)
         {
@@ -38,10 +64,12 @@ namespace Ingame.Comics
               return;
           
           _currentComics.comicsData = _comics[name];
-          _currentComics.currentPage = 0;
+          _currentComics.currentPageIndex = 0;
+          _currentComics.currentTextIndex = 0;
           
           onOpen?.Invoke();
           onPageChanged?.Invoke();
+          onTextChanged?.Invoke();
         }
         
         public void Skip()
@@ -50,7 +78,9 @@ namespace Ingame.Comics
                 return;
             
             _currentComics.comicsData = null;
-            _currentComics.currentPage = 0;
+            _currentComics.currentPageIndex = 0;
+            _currentComics.currentTextIndex = 0;
+            
             onClose?.Invoke();
         }
         
@@ -58,15 +88,24 @@ namespace Ingame.Comics
         { 
             if(_currentComics.comicsData == null)
                 return;
+
+
+            if (TryToChangeText(1))
+            {
+                return;
+            }
             
-            if (_currentComics.comicsData.Pages.Count-1 <= _currentComics.currentPage)
+            if (_currentComics.comicsData.Pages.Count-1 <= _currentComics.currentPageIndex)
             {
                 onClose?.Invoke();
                 return;
             }
 
-            _currentComics.currentPage++;
+            _currentComics.currentPageIndex++;
+            _currentComics.currentTextIndex = 0;
+            
             onPageChanged?.Invoke();
+            onTextChanged?.Invoke();
         }
         
         public void Back()
@@ -74,20 +113,36 @@ namespace Ingame.Comics
             if(_currentComics.comicsData == null)
                 return;
             
-            if (_currentComics.currentPage <= 0)
+            if (TryToChangeText(-1))
+            {
+                return;
+            }
+
+            if (_currentComics.currentPageIndex <= 0)
             {
                 return;
             }
             
-            _currentComics.currentPage--;
+            _currentComics.currentPageIndex--;
+            _currentComics.currentTextIndex = 0;
+            
             onPageChanged?.Invoke();
+            onTextChanged?.Invoke();
         }
 
         public Sprite GetCurrentPage()
         {
-            return _currentComics.comicsData?.Pages[_currentComics.currentPage].Page;
+            return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].Page;
+        }
+        
+        public string GetCurrentText()
+        {
+            if (_currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions == null
+                || _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <= 0 )
+                return "";
+
+            return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex]
+                .TextsIntroductions[_currentComics.currentTextIndex];
         }
     }
-    
-   
 }

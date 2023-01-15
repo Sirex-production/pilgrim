@@ -1,7 +1,9 @@
 ﻿using System;
+using DG.Tweening;
 using NaughtyAttributes;
 using Support;
 using Support.Extensions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,7 +16,14 @@ namespace Ingame.Comics
         [Required]
         private Image comicsImage;
 
+        [SerializeField]
+        [Required]
+        private TextMeshProUGUI comicsText;
+        
         private ComicsService _comicsService;
+        private Tween _tweenTextWriter;
+        private string _currentText = "";
+        private float _frequencyOfLettersAppearance = 0.08f;
         
         [Inject]
         private void Construct(ComicsService comicsService )
@@ -27,10 +36,12 @@ namespace Ingame.Comics
             _comicsService.onClose -= HideComics;
             _comicsService.onOpen -= ExposeComics;
             _comicsService.onPageChanged -= UpdateComics;
+            _comicsService.onTextChanged -= UpdateText;
             
             _comicsService.onClose += HideComics;
             _comicsService.onOpen += ExposeComics;
             _comicsService.onPageChanged += UpdateComics;
+            _comicsService.onTextChanged += UpdateText;
             
             comicsImage.SetGameObjectInactive();
             
@@ -41,11 +52,24 @@ namespace Ingame.Comics
             _comicsService.onClose -= HideComics;
             _comicsService.onOpen -= ExposeComics;
             _comicsService.onPageChanged -= UpdateComics;
+            _comicsService.onTextChanged -= UpdateText;
         }
 
         private void UpdateComics()
         {
             comicsImage.sprite = _comicsService.GetCurrentPage();
+        }
+        
+        private void UpdateText()
+        {
+            _tweenTextWriter?.Kill();
+
+            var comicsCurrentText = _comicsService.GetCurrentText();
+            _currentText = "";
+            
+            _tweenTextWriter = DOTween
+                .To(() => _currentText, text => _currentText = text, comicsCurrentText,comicsCurrentText.Length*_frequencyOfLettersAppearance)
+                .OnUpdate(() => comicsText?.SetText(_currentText));
         }
         
         private void HideComics()
