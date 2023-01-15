@@ -20,10 +20,13 @@ namespace Ingame.Comics
         [Required]
         private TextMeshProUGUI comicsText;
         
+        [SerializeField]
+        [Min(0)]
+        private float frequencyOfLettersAppearance = 0.08f;
+        
         private ComicsService _comicsService;
         private Tween _tweenTextWriter;
         private string _currentText = "";
-        private float _frequencyOfLettersAppearance = 0.08f;
         private bool _isDoTweenOccupied = false;
         private string _comicsCurrentText = "";
         
@@ -71,7 +74,7 @@ namespace Ingame.Comics
             _isDoTweenOccupied = true;
             
             _tweenTextWriter = DOTween
-                .To(() => _currentText, text => _currentText = text, _comicsCurrentText,_comicsCurrentText.Length*_frequencyOfLettersAppearance)
+                .To(() => _currentText, text => _currentText = text, _comicsCurrentText,_comicsCurrentText.Length*frequencyOfLettersAppearance)
                 .OnUpdate(() => comicsText.SetText(_currentText))
                 .OnComplete(()=> _isDoTweenOccupied = false);
         }
