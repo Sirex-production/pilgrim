@@ -9,6 +9,9 @@ namespace Ingame.Comics
 {
     public class IntroductionComicsController : MonoBehaviour
     {
+        [SerializeField] 
+        [Required]
+        private UiComicsViewController uiComicsViewController;
 
         [SerializeField] 
         private string nameOfComics;
@@ -61,6 +64,9 @@ namespace Ingame.Comics
 
         private void PerformNextPageLogic(InputAction.CallbackContext callback)
         {
+           if(uiComicsViewController.TryToSpeedUpWriting())
+               return;
+           
             _comicsService.Next();
         }
         private void PerformBackPageLogic(InputAction.CallbackContext callback)
@@ -76,5 +82,7 @@ namespace Ingame.Comics
         {
             _levelManagementService.LoadLevel(indexOfScene);
         }
+        
+       
     }
 }
