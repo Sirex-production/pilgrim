@@ -49,7 +49,6 @@ namespace Ingame.Comics
             _comicsService.OnComicsTextChanged += OnComicsTextChanged;
             
             comicsImage.SetGameObjectInactive();
-            
         }
         
         private void OnDestroy()

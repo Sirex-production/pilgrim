@@ -123,7 +123,7 @@ namespace Ingame.Comics
             OnComicsTextChanged?.Invoke(GetCurrentText());
         }
         
-        public void OpenBackPage()
+        public void OpenPreviousPage()
         { 
             if(_currentComics.comicsData == null)
                 return;

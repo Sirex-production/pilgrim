@@ -71,7 +71,7 @@ namespace Ingame.Comics
         }
         private void PerformBackPageLogic(InputAction.CallbackContext callback)
         {
-            _comicsService.OpenBackPage();
+            _comicsService.OpenPreviousPage();
         }
         private void PerformSkipPageLogic(InputAction.CallbackContext callback)
         {
