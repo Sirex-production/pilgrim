@@ -38,15 +38,15 @@ namespace Ingame.Comics
 
         private void Awake()
         {
-            _comicsService.onClose -= HideComics;
-            _comicsService.onOpen -= ExposeComics;
-            _comicsService.onPageChanged -= UpdateComics;
-            _comicsService.onTextChanged -= UpdateText;
+            _comicsService.OnComicsClosed -= OnComicsClosed;
+            _comicsService.OnComicsOpened -= OnComicsOpened;
+            _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
+            _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
             
-            _comicsService.onClose += HideComics;
-            _comicsService.onOpen += ExposeComics;
-            _comicsService.onPageChanged += UpdateComics;
-            _comicsService.onTextChanged += UpdateText;
+            _comicsService.OnComicsClosed += OnComicsClosed;
+            _comicsService.OnComicsOpened += OnComicsOpened;
+            _comicsService.OnComicsPageChanged += OnComicsPageChanged;
+            _comicsService.OnComicsTextChanged += OnComicsTextChanged;
             
             comicsImage.SetGameObjectInactive();
             
@@ -54,53 +54,52 @@ namespace Ingame.Comics
         
         private void OnDestroy()
         {
-            _comicsService.onClose -= HideComics;
-            _comicsService.onOpen -= ExposeComics;
-            _comicsService.onPageChanged -= UpdateComics;
-            _comicsService.onTextChanged -= UpdateText;
+            _comicsService.OnComicsClosed -= OnComicsClosed;
+            _comicsService.OnComicsOpened -= OnComicsOpened;
+            _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
+            _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
         }
 
-        private void UpdateComics()
+        private void OnComicsPageChanged(Sprite sprite)
         {
-            comicsImage.sprite = _comicsService.GetCurrentPage();
+            comicsImage.sprite = sprite;
         }
         
-        private void UpdateText()
+        private void OnComicsTextChanged(string text)
         {
             _tweenTextWriter?.Kill();
 
-            _comicsCurrentText = _comicsService.GetCurrentText();
+            _comicsCurrentText = text;
             _currentText = "";
             _isDoTweenOccupied = true;
             
             _tweenTextWriter = DOTween
                 .To(() => _currentText, text => _currentText = text, _comicsCurrentText,_comicsCurrentText.Length*frequencyOfLettersAppearance)
                 .OnUpdate(() => comicsText.SetText(_currentText))
-                .OnComplete(()=> _isDoTweenOccupied = false);
+                .OnComplete(() => _isDoTweenOccupied = false);
         }
         
-        private void HideComics()
+        private void OnComicsClosed()
         {
             comicsImage.SetGameObjectInactive();
         }
         
-        private void ExposeComics()
+        private void OnComicsOpened()
         {
             comicsImage.SetGameObjectActive();
         }
 
         public bool TryToSpeedUpWriting()
         {
-            if (_isDoTweenOccupied)
-            {
-                _tweenTextWriter?.Kill();
-                comicsText.SetText(_comicsCurrentText);
-                _isDoTweenOccupied = false;
+            if (!_isDoTweenOccupied) 
+                return false;
+            
+            _tweenTextWriter?.Kill();
+            comicsText.SetText(_comicsCurrentText);
+            _isDoTweenOccupied = false;
                 
-                return true;
-            }
+            return true;
 
-            return false;
         }
     }
 }
