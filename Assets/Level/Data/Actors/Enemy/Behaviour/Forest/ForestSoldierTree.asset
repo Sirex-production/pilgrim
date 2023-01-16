@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Name: IsSafeDistanceNode
   m_EditorClassIdentifier: 
   Guid: d1ecaf19cdac52d48a834ffd7dbe44ec
-  Position: {x: -1726, y: 2707}
+  Position: {x: -1718.0004, y: 2715}
   Description: 
-  distance: 14.09
+  distance: 20
   type: 0
 --- !u!114 &-7887433265232841418
 MonoBehaviour:
@@ -399,9 +399,9 @@ MonoBehaviour:
   m_Name: TakeCoverActionNode
   m_EditorClassIdentifier: 
   Guid: 720d6c229319d8c4292da563fa9e6355
-  Position: {x: -2289, y: 2753}
+  Position: {x: -2243, y: 2832}
   Description: 
-  minDistanceBetweenEnemyAndPlayer: 6
+  minDistanceBetweenEnemyAndPlayer: 2
 --- !u!114 &-5083973720915188020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,9 +648,9 @@ MonoBehaviour:
   m_Name: RandomSetPositionActionNode
   m_EditorClassIdentifier: 
   Guid: a030c58d3df802f45812738fc43eb97a
-  Position: {x: -2943, y: 2842}
+  Position: {x: -2959.0625, y: 2950}
   Description: 
-  range: {x: 3.87, y: 3.2}
+  range: {x: 4.72, y: 3.53}
 --- !u!114 &-2429271529739031177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +921,7 @@ MonoBehaviour:
   - {fileID: -4773753794934584263}
   - {fileID: 9000931163518893675}
   - {fileID: -7948866044738885902}
+  - {fileID: 8729546964084107435}
 --- !u!114 &150103663152963899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,11 +984,12 @@ MonoBehaviour:
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
   Guid: e8ee53b3521ac854c926c285f3890fab
-  Position: {x: -2945.25, y: 2603.6008}
+  Position: {x: -3037.0005, y: 2606.2507}
   Description: 
   Children:
   - {fileID: 6370740522391846870}
   - {fileID: -2682624296246265318}
+  - {fileID: 8729546964084107435}
 --- !u!114 &1150244847076152628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,7 +1035,7 @@ MonoBehaviour:
   m_Name: InterruptObserveActionNode
   m_EditorClassIdentifier: 
   Guid: 88e9f2844d471be4b9f87cb05dd30fcc
-  Position: {x: -2018, y: 2753}
+  Position: {x: -1996, y: 2819}
   Description: 
   delayDuration: 8
   typeOfDetection: 0
@@ -1383,7 +1385,7 @@ MonoBehaviour:
   m_Name: StandActionNode
   m_EditorClassIdentifier: 
   Guid: ee7fd7035bdfe394f9040b42f367f7eb
-  Position: {x: -3118.153, y: 2850}
+  Position: {x: -3118.87, y: 2986}
   Description: 
 --- !u!114 &6384005280682141023
 MonoBehaviour:
@@ -1589,7 +1591,7 @@ MonoBehaviour:
   Description: 
   typeOfCover: 0
   typeOfCoverSpot: 0
-  maximumDistanceToFindCover: 15
+  maximumDistanceToFindCover: 8
 --- !u!114 &8634403642044168309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1610,22 @@ MonoBehaviour:
   Children:
   - {fileID: 8790215246248795618}
   - {fileID: -3130875441797585090}
+--- !u!114 &8729546964084107435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f83c5877ea4c59b51948155e452b48, type: 3}
+  m_Name: RepositionActionNode
+  m_EditorClassIdentifier: 
+  Guid: 1173306c67c53154b92262ce2e61d792
+  Position: {x: -2703.805, y: 2950}
+  Description: 
+  minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &8790215246248795618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,8 +1694,8 @@ MonoBehaviour:
   m_Name: FindCoverPointActionNode
   m_EditorClassIdentifier: 
   Guid: ff6e00777a6746642a24e8c33936c86b
-  Position: {x: -2585.8987, y: 2753}
+  Position: {x: -2521.1326, y: 2832}
   Description: 
   typeOfCover: 0
   typeOfCoverSpot: 0
-  maximumDistanceToFindCover: 6
+  maximumDistanceToFindCover: 15
