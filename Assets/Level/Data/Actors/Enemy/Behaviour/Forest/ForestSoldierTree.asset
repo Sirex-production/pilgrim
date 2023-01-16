@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: RandomSetPositionActionNode
   m_EditorClassIdentifier: 
   Guid: a030c58d3df802f45812738fc43eb97a
-  Position: {x: -2959.0625, y: 2950}
+  Position: {x: -2833.8918, y: 3119}
   Description: 
   range: {x: 4.72, y: 3.53}
 --- !u!114 &-2429271529739031177
@@ -922,6 +922,7 @@ MonoBehaviour:
   - {fileID: 9000931163518893675}
   - {fileID: -7948866044738885902}
   - {fileID: 8729546964084107435}
+  - {fileID: 2322291841299869586}
 --- !u!114 &150103663152963899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +988,7 @@ MonoBehaviour:
   Position: {x: -3037.0005, y: 2606.2507}
   Description: 
   Children:
+  - {fileID: 2322291841299869586}
   - {fileID: 6370740522391846870}
   - {fileID: -2682624296246265318}
   - {fileID: 8729546964084107435}
@@ -1076,6 +1078,22 @@ MonoBehaviour:
   Description: 
   angle: 80
   pointDirection: 2
+--- !u!114 &2322291841299869586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadbf726470247f7a5a79d45695041f7, type: 3}
+  m_Name: RandomFailureNode
+  m_EditorClassIdentifier: 
+  Guid: 0ace4e8fde318864499ba6b857f63c95
+  Position: {x: -3238, y: 3167}
+  Description: 
+  failureRate: 0.35
 --- !u!114 &2380520468482662117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,7 +1403,7 @@ MonoBehaviour:
   m_Name: StandActionNode
   m_EditorClassIdentifier: 
   Guid: ee7fd7035bdfe394f9040b42f367f7eb
-  Position: {x: -3118.87, y: 2986}
+  Position: {x: -3028.9995, y: 3167.0002}
   Description: 
 --- !u!114 &6384005280682141023
 MonoBehaviour:
@@ -1623,7 +1641,7 @@ MonoBehaviour:
   m_Name: RepositionActionNode
   m_EditorClassIdentifier: 
   Guid: 1173306c67c53154b92262ce2e61d792
-  Position: {x: -2703.805, y: 2950}
+  Position: {x: -2480.9995, y: 3103}
   Description: 
   minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &8790215246248795618
