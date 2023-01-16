@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Support;
 using UnityEngine;
 using Zenject;
@@ -13,15 +14,17 @@ namespace Ingame.Comics
         private sealed class CurrentComics
         {
             public ComicsData comicsData;
-            public int currentPage = 0;
+            public int currentPageIndex = 0;
+            public int currentTextIndex = 0;
         }
         
         [SerializeField]
         private ComicsHolderConfig comicsHolderConfig;
 
-        public event Action onPageChanged;
-        public event Action onClose;
-        public event Action onOpen;
+        public event Action<Sprite> OnComicsPageChanged;
+        public event Action<string> OnComicsTextChanged;
+        public event Action OnComicsClosed;
+        public event Action OnComicsOpened;
         
         private Dictionary<string, ComicsData> _comics;
         private CurrentComics _currentComics = new CurrentComics();
@@ -29,65 +32,115 @@ namespace Ingame.Comics
         private void Awake()
         {
             _comics = comicsHolderConfig.Pages.ToDictionary(i => i.Name);
-   
         }
         
-        public void Play(string name)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private Sprite GetCurrentPage()
         {
-          if(!_comics.ContainsKey(name))
+            return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].Page;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private string GetCurrentText()
+        {
+            if (_currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions == null
+                || _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <= 0 )
+                return "";
+
+            return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex]
+                .TextsIntroductions[_currentComics.currentTextIndex];
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private bool TryToChangeText(int pageIncremental)
+        {
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions == null)
+                return false;
+
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <= 0)
+            {
+                _currentComics.currentTextIndex = 0;
+                return false;
+            }
+
+            _currentComics.currentTextIndex += pageIncremental;
+            
+            if (_currentComics.comicsData.Pages[_currentComics.currentPageIndex].TextsIntroductions.Count <=
+                _currentComics.currentTextIndex || _currentComics.currentTextIndex < 0)
+            {
+                _currentComics.currentTextIndex = 0;
+                return false;
+            }
+
+            OnComicsTextChanged?.Invoke(GetCurrentText());
+            return true;
+        }
+        
+        public void Play(string comicsName)
+        {
+          if(!_comics.ContainsKey(comicsName))
               return;
           
-          _currentComics.comicsData = _comics[name];
-          _currentComics.currentPage = 0;
+          _currentComics.comicsData = _comics[comicsName];
+          _currentComics.currentPageIndex = 0;
+          _currentComics.currentTextIndex = 0;
           
-          onOpen?.Invoke();
-          onPageChanged?.Invoke();
+          OnComicsOpened?.Invoke();
+          OnComicsPageChanged?.Invoke(GetCurrentPage());
+          OnComicsTextChanged?.Invoke(GetCurrentText());
         }
         
-        public void Skip()
+        public void Close()
         {
             if(_currentComics.comicsData == null)
                 return;
             
             _currentComics.comicsData = null;
-            _currentComics.currentPage = 0;
-            onClose?.Invoke();
+            _currentComics.currentPageIndex = 0;
+            _currentComics.currentTextIndex = 0;
+            
+            OnComicsClosed?.Invoke();
         }
         
-        public void Next()
+        public void OpenNextPage()
         { 
             if(_currentComics.comicsData == null)
                 return;
             
-            if (_currentComics.comicsData.Pages.Count-1 <= _currentComics.currentPage)
+            if (TryToChangeText(1))
+                return;
+
+            if (_currentComics.comicsData.Pages.Count-1 <= _currentComics.currentPageIndex)
             {
-                onClose?.Invoke();
+                OnComicsClosed?.Invoke();
                 return;
             }
 
-            _currentComics.currentPage++;
-            onPageChanged?.Invoke();
+            _currentComics.currentPageIndex++;
+            _currentComics.currentTextIndex = 0;
+            
+            OnComicsPageChanged?.Invoke(GetCurrentPage());
+            OnComicsTextChanged?.Invoke(GetCurrentText());
         }
         
-        public void Back()
+        public void OpenPreviousPage()
         { 
             if(_currentComics.comicsData == null)
                 return;
             
-            if (_currentComics.currentPage <= 0)
-            {
+            if (TryToChangeText(-1))
                 return;
-            }
             
-            _currentComics.currentPage--;
-            onPageChanged?.Invoke();
-        }
-
-        public Sprite GetCurrentPage()
-        {
-            return _currentComics.comicsData?.Pages[_currentComics.currentPage].Page;
+            if (_currentComics.currentPageIndex <= 0)
+                return;
+            
+            _currentComics.currentPageIndex--;
+            
+            var sentences = _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].TextsIntroductions;
+            _currentComics.currentTextIndex = (sentences == null || sentences.Count <= 0) ? 0 : sentences.Count - 1;
+            
+            OnComicsPageChanged?.Invoke(GetCurrentPage());
+            OnComicsTextChanged?.Invoke(GetCurrentText());
         }
     }
-    
-   
 }
