@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiComicsViewController: {fileID: 2588283322113625044}
   nameOfComics: ComicsA
-  indexOfScene: 0
+  indexOfScene: 3
 --- !u!1 &870516443609080202
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comicsImage: {fileID: 7582590598902199255}
   comicsText: {fileID: 870516443609080204}
+  frequencyOfLettersAppearance: 0.08
 --- !u!1 &4082067706622443908
 GameObject:
   m_ObjectHideFlags: 0
