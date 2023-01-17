@@ -1,15 +1,21 @@
 ﻿using System.Runtime.CompilerServices;
+using Ingame.Extensions;
 using Ingame.Interaction.Common;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Support.Extensions;
+using UnityEngine;
 
 namespace Ingame.QuestInventory
 {
     public sealed class PutItemInBackpackSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
-        private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
+        private static readonly int HUD_LAYER = LayerMask.NameToLayer("HUD");
         
+        private readonly EcsWorld _world;
+        private readonly EcsFilter<PerformInteractionTag, TransformModel, ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
+        private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
+
         public void Run()
         {
             ProcessPickUpItem();
@@ -24,8 +30,8 @@ namespace Ingame.QuestInventory
 
                 ref var backpack = ref _backpackFilter.Get1(0);
                 
-                ref var entity = ref _pickItemFilter.GetEntity(i);
-                ref var transformModel = ref _pickItemFilter.Get2(i);
+                ref var itemEntity = ref _pickItemFilter.GetEntity(i);
+                ref var itemTransformModel = ref _pickItemFilter.Get2(i);
                 ref var itemModel = ref _pickItemFilter.Get3(i);
 
                 if (!backpack.slots.ContainsKey(itemModel.itemConfig))
@@ -33,25 +39,34 @@ namespace Ingame.QuestInventory
 #if UNITY_EDITOR
                     UnityEngine.Debug.LogWarning($"{backpack} does not have a slot that corresponds to the item :{itemModel.itemConfig}");
 #endif
-                    entity.Del<PerformInteractionTag>();
+                    itemEntity.Del<PerformInteractionTag>();
                     continue;
                 }
 
                 var slots = backpack.slots[itemModel.itemConfig];
-                foreach (var transform in slots)
+                foreach (var slotTransform in slots)
                 {
-                    if(!transform.TryGetComponent<EntityReference>(out var entityReference) 
-                       || entityReference.Entity.Has<OccupiedInventorySlotTag>())
+                    if(!slotTransform.TryGetComponent(out EntityReference slotEntityReference) 
+                       || slotEntityReference.Entity.Has<OccupiedInventorySlotTag>())
                         continue;
                     
-                    entityReference.Entity.Get<OccupiedInventorySlotTag>();
-                    transformModel.transform.position = transform.position;
-                    entity.Get<PickedUpItemTag>();
-                    entity.Del<PerformInteractionTag>();
-                    return;
+                    slotEntityReference.Entity.Get<OccupiedInventorySlotTag>();
+                    
+                    itemTransformModel.transform.SetParent(slotTransform);
+                    itemTransformModel.transform.localPosition = Vector3.zero;
+                    itemTransformModel.transform.localEulerAngles = Vector3.zero;
+                    itemTransformModel.transform.gameObject.SetLayerToAllChildrenAndSelf(HUD_LAYER);
+                    
+                    itemEntity.Get<PickedUpItemTag>();
+                    itemEntity.Del<PerformInteractionTag>();
+                    
+                    if(!itemEntity.Has<ConsumableItemTag>() && !itemTransformModel.transform.TryGetComponent(out UsableItem _))
+                        itemEntity.Del<InteractiveTag>();
+
+                    _world.SendSignal<InventoryIsUpdatedEvent>();
                 }
                 
-                entity.Del<PerformInteractionTag>();
+                itemEntity.Del<PerformInteractionTag>();
             }
         }
     }

@@ -12,10 +12,19 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/Playable/MainMenu.unity
     guid: 7606b2c060e1f314eb02d1764891bf94
   - enabled: 1
+    path: Assets/Level/Scenes/Playable/IntroComicsScene.unity
+    guid: 60a273b56ecda2746ac2c272f781779b
+  - enabled: 1
     path: Assets/Level/Scenes/Playable/Garage/Garage.unity
     guid: 0aee497e1ce08f147b1a9493bb41f6aa
   - enabled: 1
+    path: Assets/Level/Scenes/Playable/TutorialComicsScene.unity
+    guid: acc23c1a822623344988c66e7eb9016a
+  - enabled: 1
     path: Assets/Level/Scenes/Playable/Town/Town.unity
     guid: 2a48997621302c242865250d36ecd55d
+  - enabled: 1
+    path: Assets/Level/Scenes/Playable/Forest/Forest.unity
+    guid: 9d9252cfc1b86ae4cbde9f9de4e5862b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bf4ad0246b7633bd995eebad9bab1b04, type: 2}

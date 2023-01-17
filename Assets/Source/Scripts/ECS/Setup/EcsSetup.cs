@@ -21,6 +21,7 @@ using Ingame.Movement;
 using Ingame.Player;
 using Ingame.QuestInventory;
 using Ingame.Quests;
+using Ingame.Quests.QuestSpecific;
 using Ingame.Settings;
 using Ingame.Systems;
 using Ingame.UI;
@@ -208,6 +209,8 @@ namespace Ingame
                 .Add(new DeathSystem())
                 .Add(new DestroyDeadActorsSystem())
                 //Quests
+                .Add(new CompleteQuestStepsThatRequireInventoryItemsSystem())
+                .Add(new ChangeActiveQuestSystem())
                 .Add(new CompleteQuestStepSystem())
                 //Interaction
                 .Add(new InteractionSystem())
@@ -219,6 +222,7 @@ namespace Ingame
                 .Add(new DragObjectSystem())
                 .Add(new BreakableSystem())
                 .Add(new LadderSystem())
+                .Add(new OpenWithItemSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
                 .Add(new PlayMuzzleFlashEffectSystem())

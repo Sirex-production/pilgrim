@@ -131,16 +131,24 @@ namespace Ingame.UI
 			}
 		}
 
+		public void ClearActiveQuestData()
+		{
+			activeQuestTitleText.SetText("No active tasks");
+
+			foreach (var questStepLabel in activeQuestStepsLabels)
+			{
+				questStepLabel.SetText("");
+				questStepLabel.SetGameObjectInactive();
+			}
+		}
+
 		public void SetAllQuestsData(int[] questIds)
 		{
-			if(questIds == null || questIds.Length < 1)
-				return;
-			
 			for (int i = 0; i < allQuestTitlesLabels.Length; i++)
 			{
 				var titleLabel = allQuestTitlesLabels[i];
 
-				if (i >= questIds.Length)
+				if (questIds == null || i >= questIds.Length)
 				{
 					titleLabel.SetText("");
 					titleLabel.SetGameObjectInactive();

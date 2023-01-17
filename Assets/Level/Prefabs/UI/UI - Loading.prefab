@@ -111,7 +111,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2364075047697225051}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -150,8 +150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -103, y: 143}
-  m_SizeDelta: {x: 120.60919, y: 18.433716}
+  m_AnchoredPosition: {x: -104, y: 109}
+  m_SizeDelta: {x: 84.0262, y: 12.8424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2364075048433071519
 CanvasRenderer:

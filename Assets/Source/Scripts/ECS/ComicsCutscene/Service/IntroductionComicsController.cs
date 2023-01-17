@@ -38,12 +38,12 @@ namespace Ingame.Comics
             
             _input.Comics.Next.performed -= PerformNextPageLogic;
             _input.Comics.Back.performed -= PerformBackPageLogic;
-            _input.Comics.Skip.performed -= PerformSkipPageLogic;
+            // _input.Comics.Skip.performed -= PerformSkipPageLogic;
             _comicsService.OnComicsClosed -= OnComicsClosed;
             
             _input.Comics.Next.performed += PerformNextPageLogic;
             _input.Comics.Back.performed += PerformBackPageLogic;
-            _input.Comics.Skip.performed += PerformSkipPageLogic;
+            // _input.Comics.Skip.performed += PerformSkipPageLogic;
             _comicsService.OnComicsClosed += OnComicsClosed;
         }
 
@@ -56,7 +56,7 @@ namespace Ingame.Comics
         {
             _input.Comics.Next.performed -= PerformNextPageLogic;
             _input.Comics.Back.performed -= PerformBackPageLogic;
-            _input.Comics.Skip.performed -= PerformSkipPageLogic;
+            // _input.Comics.Skip.performed -= PerformSkipPageLogic;
             _comicsService.OnComicsClosed -= OnComicsClosed;
             
             _input.Comics.Disable();
@@ -67,7 +67,7 @@ namespace Ingame.Comics
            if(uiComicsViewController.TryToSpeedUpWriting())
                return;
            
-            _comicsService.OpenNextPage();
+           _comicsService.OpenNextPage();
         }
         private void PerformBackPageLogic(InputAction.CallbackContext callback)
         {

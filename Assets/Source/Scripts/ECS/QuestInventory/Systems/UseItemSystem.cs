@@ -9,7 +9,7 @@ namespace Ingame.QuestInventory
 {
     public sealed class UseItemSystem : IEcsRunSystem
     {
-        private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel,PickedUpItemTag> _useItemFilter;
+        private readonly EcsFilter<PerformInteractionTag, TransformModel, ItemModel, PickedUpItemTag> _useItemFilter;
         private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
         
         public void Run()
@@ -25,7 +25,7 @@ namespace Ingame.QuestInventory
                 ref var entity = ref _useItemFilter.GetEntity(i);
                 ref var transformModel = ref _useItemFilter.Get2(i);
 
-                if (transformModel.transform.TryGetComponent<UsableItem>(out var usableItem))
+                if (transformModel.transform.TryGetComponent(out UsableItem usableItem))
                 {
                     usableItem.Use();          
                 }
