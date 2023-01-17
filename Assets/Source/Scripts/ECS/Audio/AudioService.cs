@@ -61,13 +61,12 @@ namespace Ingame.Audio
         private Dictionary<string, Dictionary<string, RuntimeAudioData>> _storedAudios;
         private ObjectPool<AudioSource> _pool;
         
-        private Dictionary<(string, string, GameObject), Queue<AudioSource>> _played3dAudioSources = new();
-        private Dictionary<(string , string ), Queue<AudioSource>> _played2dAudioSources  = new();
+        private Dictionary<(string audioType, string audioName, GameObject container), Queue<AudioSource>> _played3dAudioSources = new();
+        private Dictionary<(string audioType, string audioName), Queue<AudioSource>> _played2dAudioSources  = new();
         
-        private Dictionary<(string , string , GameObject), Queue<AudioSource>> _paused3dAudioSources = new();
-        private Dictionary<(string, string), Queue<AudioSource>> _paused2dAudioSources = new();
+        private Dictionary<(string audioType, string audioName, GameObject container), Queue<AudioSource>> _paused3dAudioSources = new();
+        private Dictionary<(string audioType, string audioName), Queue<AudioSource>> _paused2dAudioSources = new();
         
-      
         public void Awake()
         {
             Dictionary<string, Dictionary<string, RuntimeAudioData>> dict = new ();
@@ -179,6 +178,7 @@ namespace Ingame.Audio
                 return;
             
             var audio = GetAndSetupAudioSource(type,name,parent);
+            audio.rolloffMode = AudioRolloffMode.Linear;
             audio.Play();
 
             if (!_played3dAudioSources.ContainsKey((type, name, parent.gameObject)))
@@ -186,7 +186,7 @@ namespace Ingame.Audio
                 _played3dAudioSources.Add((type, name, parent.gameObject),new Queue<AudioSource>()); 
             }
             
-            _played3dAudioSources[(type,name,gameObject)].Enqueue(audio);
+            _played3dAudioSources[(type,name,parent.gameObject)].Enqueue(audio);
         }
 
         public void Stop3D(string type, string name, Transform parent)

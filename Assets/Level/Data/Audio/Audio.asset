@@ -12,4 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102dc18f0d054d2d9fd25865a36a3d52, type: 3}
   m_Name: Audio
   m_EditorClassIdentifier: 
-  audios: []
+  audios:
+  - audioTypeName: nul
+    audioWrappers: []
+  - audioTypeName: environment
+    audioWrappers:
+    - name: null
+      audioClip: {fileID: 0}
+      audioSettings:
+        priority: 0
+        volume: 0
+        pitch: 0
+        spatialBlend: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0
+    - name: birds
+      audioClip: {fileID: 8300000, guid: 3702947cbaebdb7479b914a0918cb337, type: 3}
+      audioSettings:
+        priority: 30
+        volume: 0.177
+        pitch: 0.301
+        spatialBlend: 0
+        loop: 1
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0
+    - name: water
+      audioClip: {fileID: 8300000, guid: b028cc4b80a502b4e940a912c2c3212f, type: 3}
+      audioSettings:
+        priority: 30
+        volume: 0.179
+        pitch: 0.49
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 0.95
+        spread: 68.2
+        minDistance: 2
+        maxDistance: 70
+    - name: floating_boat
+      audioClip: {fileID: 8300000, guid: b1596edb51e317e418949a450c7ffb40, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.249
+        pitch: 0.301
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 5
+        spread: 38.5
+        minDistance: 3
+        maxDistance: 15
