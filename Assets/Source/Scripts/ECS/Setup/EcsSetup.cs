@@ -208,6 +208,8 @@ namespace Ingame
                 .Add(new DeathSystem())
                 .Add(new DestroyDeadActorsSystem())
                 //Quests
+                .Add(new CompleteQuestStepsThatRequireInventoryItemsSystem())
+                .Add(new ChangeActiveQuestSystem())
                 .Add(new CompleteQuestStepSystem())
                 //Interaction
                 .Add(new InteractionSystem())

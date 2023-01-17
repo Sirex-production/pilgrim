@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Ingame.Extensions;
 using Ingame.Interaction.Common;
 using Ingame.Movement;
 using Leopotam.Ecs;
@@ -7,6 +8,7 @@ namespace Ingame.QuestInventory
 {
     public sealed class PutItemInBackpackSystem : IEcsRunSystem
     {
+        private readonly EcsWorld _world;
         private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
         private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
         
@@ -24,8 +26,8 @@ namespace Ingame.QuestInventory
 
                 ref var backpack = ref _backpackFilter.Get1(0);
                 
-                ref var entity = ref _pickItemFilter.GetEntity(i);
-                ref var transformModel = ref _pickItemFilter.Get2(i);
+                ref var itemEntity = ref _pickItemFilter.GetEntity(i);
+                ref var itemTransformModel = ref _pickItemFilter.Get2(i);
                 ref var itemModel = ref _pickItemFilter.Get3(i);
 
                 if (!backpack.slots.ContainsKey(itemModel.itemConfig))
@@ -33,25 +35,26 @@ namespace Ingame.QuestInventory
 #if UNITY_EDITOR
                     UnityEngine.Debug.LogWarning($"{backpack} does not have a slot that corresponds to the item :{itemModel.itemConfig}");
 #endif
-                    entity.Del<PerformInteractionTag>();
+                    itemEntity.Del<PerformInteractionTag>();
                     continue;
                 }
 
                 var slots = backpack.slots[itemModel.itemConfig];
                 foreach (var transform in slots)
                 {
-                    if(!transform.TryGetComponent<EntityReference>(out var entityReference) 
+                    if(!transform.TryGetComponent(out EntityReference entityReference) 
                        || entityReference.Entity.Has<OccupiedInventorySlotTag>())
                         continue;
                     
                     entityReference.Entity.Get<OccupiedInventorySlotTag>();
-                    transformModel.transform.position = transform.position;
-                    entity.Get<PickedUpItemTag>();
-                    entity.Del<PerformInteractionTag>();
-                    return;
+                    itemTransformModel.transform.position = transform.position;
+                    itemEntity.Get<PickedUpItemTag>();
+                    itemEntity.Del<PerformInteractionTag>();
+                    
+                    _world.SendSignal<InventoryIsUpdatedEvent>();
                 }
                 
-                entity.Del<PerformInteractionTag>();
+                itemEntity.Del<PerformInteractionTag>();
             }
         }
     }
