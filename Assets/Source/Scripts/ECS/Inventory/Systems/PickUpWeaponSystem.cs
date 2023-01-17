@@ -42,8 +42,8 @@ namespace Ingame.Inventory
 				
 				if(!TryActivatingHands(weaponEntity))
 					continue;
-				
-				TryPlacingWeaponInHands(weaponEntity, hudItemTransform);
+
+				PlaceWeaponInHands(weaponEntity, hudItemTransform);
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace Ingame.Inventory
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private bool TryPlacingWeaponInHands(in EcsEntity weaponEntity, in TransformModel hudItemContainerTransformModel)
+		private void PlaceWeaponInHands(in EcsEntity weaponEntity, in TransformModel hudItemContainerTransformModel)
 		{
 			ref var weaponHudItemModel = ref weaponEntity.Get<HudItemModel>();
 			ref var weaponTransformModel = ref weaponEntity.Get<TransformModel>();
@@ -134,7 +134,15 @@ namespace Ingame.Inventory
 			weaponTransform.gameObject.SetLayerToAllChildrenAndSelf(hudLayerIndex);
 			weaponTransform.SetGameObjectInactive();
 
-			return true;
+			if (weaponEntity.Has<OverrideLayerOnPickupAndDropComponent>())
+			{
+				ref var overrideLayersComp = ref weaponEntity.Get<OverrideLayerOnPickupAndDropComponent>();
+				var gameObjectsWithOverridenLayer = overrideLayersComp.gameObjects;
+				int layerOnPickUp = overrideLayersComp.layerToAssignOnPickup;
+
+				foreach (var go in gameObjectsWithOverridenLayer) 
+					go.SetLayerToAllChildrenAndSelf(layerOnPickUp);
+			}
 		}
 	}
 }

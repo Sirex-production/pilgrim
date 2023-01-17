@@ -18,8 +18,20 @@ MonoBehaviour:
   - name: ComicsA
     pages:
     - page: {fileID: 21300000, guid: 4ac814b44eea50b4fa8bfe5f7089ede1, type: 3}
+      textsIntroductions: []
     - page: {fileID: 21300000, guid: 3a4a33130233f044cb5bf525dfd42abe, type: 3}
+      textsIntroductions:
+      - ...we didn't realize the missions is our death sentance...
+      - What a joke... the leader... the one who must take care of his crew has survived
+        this massacre
+      - I should have died... due to my mistake, everyone's dead
     - page: {fileID: 21300000, guid: 62d8ff85c593b924cba2bd29838f44ec, type: 3}
+      textsIntroductions:
+      - I hate myself for what i've done...
+      - If i had a chance to [...]...
     - page: {fileID: 21300000, guid: 6d746ff74b4240f4192ccdce31ee0a28, type: 3}
+      textsIntroductions: []
     - page: {fileID: 21300000, guid: 017a33893a6d95047bed6e27c5d69dce, type: 3}
+      textsIntroductions: []
     - page: {fileID: 21300000, guid: 7fe3f44bcc8ed5e4aa284313a4d459ee, type: 3}
+      textsIntroductions: []

@@ -7,7 +7,7 @@ namespace Ingame.UI.Pause
     {
         public event Action OnPauseMenuShowRequested;
         public event Action OnPauseMenuHideRequested;
-
+        
         private bool _isOpened = false;
 
         public bool IsOpened => _isOpened;

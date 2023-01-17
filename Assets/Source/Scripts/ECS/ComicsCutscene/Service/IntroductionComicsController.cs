@@ -7,8 +7,11 @@ using Zenject;
 
 namespace Ingame.Comics
 {
-    public class IntroductionComicsController : MonoBehaviour
+    public sealed class IntroductionComicsController : MonoBehaviour
     {
+        [SerializeField] 
+        [Required]
+        private UiComicsViewController uiComicsViewController;
 
         [SerializeField] 
         private string nameOfComics;
@@ -36,12 +39,12 @@ namespace Ingame.Comics
             _input.Comics.Next.performed -= PerformNextPageLogic;
             _input.Comics.Back.performed -= PerformBackPageLogic;
             _input.Comics.Skip.performed -= PerformSkipPageLogic;
-            _comicsService.onClose -= FinishComics;
+            _comicsService.OnComicsClosed -= OnComicsClosed;
             
             _input.Comics.Next.performed += PerformNextPageLogic;
             _input.Comics.Back.performed += PerformBackPageLogic;
             _input.Comics.Skip.performed += PerformSkipPageLogic;
-            _comicsService.onClose += FinishComics;
+            _comicsService.OnComicsClosed += OnComicsClosed;
         }
 
         private void Start()
@@ -54,25 +57,28 @@ namespace Ingame.Comics
             _input.Comics.Next.performed -= PerformNextPageLogic;
             _input.Comics.Back.performed -= PerformBackPageLogic;
             _input.Comics.Skip.performed -= PerformSkipPageLogic;
-            _comicsService.onClose -= FinishComics;
+            _comicsService.OnComicsClosed -= OnComicsClosed;
             
             _input.Comics.Disable();
         }
 
         private void PerformNextPageLogic(InputAction.CallbackContext callback)
         {
-            _comicsService.Next();
+           if(uiComicsViewController.TryToSpeedUpWriting())
+               return;
+           
+            _comicsService.OpenNextPage();
         }
         private void PerformBackPageLogic(InputAction.CallbackContext callback)
         {
-            _comicsService.Back();
+            _comicsService.OpenPreviousPage();
         }
         private void PerformSkipPageLogic(InputAction.CallbackContext callback)
         {
-            _comicsService.Skip();
+            _comicsService.Close();
         }
 
-        private void FinishComics()
+        private void OnComicsClosed()
         {
             _levelManagementService.LoadLevel(indexOfScene);
         }

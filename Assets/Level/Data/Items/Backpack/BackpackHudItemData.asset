@@ -13,22 +13,24 @@ MonoBehaviour:
   m_Name: BackpackHudItemData
   m_EditorClassIdentifier: 
   canBeUsedAsAim: 0
-  rotationSpeed: 4
+  rotationSpeed: 10
   minMaxRotationAngleX: {x: -5, y: 5}
   rotationAngleMultiplierX: 0
-  inverseRotationX: 1
+  inverseRotationX: 0
   minMaxRotationAngleY: {x: -20, y: 20}
   rotationAngleMultiplierY: 0
-  inverseRotationY: 1
+  inverseRotationY: 0
   minMaxRotationAngleZ: {x: -20, y: 10}
   rotationAngleMultiplierZ: 0
   inverseRotationZ: 0
   isItemMovedDueToRotation: 1
   isItemMovedBackToInitialPosition: 0
-  moveToInitialPosSpeed: 3
-  moveSpeed: 40
-  minMaxMovementOffsetY: {x: 0, y: 0}
-  minMaxMovementOffsetX: {x: -2, y: 2}
+  moveToInitialPosSpeed: 0
+  moveSpeed: 8
+  isMovedVertically: 1
+  minMaxMovementOffsetY: {x: -0.4, y: 1.2}
+  isMovedHorizontally: 1
+  minMaxMovementOffsetX: {x: 0.1, y: 0.8}
   aimRotationSpeed: 4
   minMaxAimRotationAngleX: {x: -5, y: 5}
   aimRotationAngleMultiplierX: 0.31
