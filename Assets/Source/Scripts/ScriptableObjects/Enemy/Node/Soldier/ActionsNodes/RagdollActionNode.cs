@@ -12,7 +12,10 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
+            ref var transformModel = ref Entity.Get<TransformModel>();
+            
             agentModel.Agent.enabled = false;
+            
             var weapon = Entity.Get<EnemyWeaponHolderModel>().weapon;
             
             if(weapon == null)
@@ -32,15 +35,35 @@ namespace Ingame.Enemy
             }
             
             Entity.Del<EnemyWeaponHolderModel>();
+            
+            var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
+            
+            if(colliders == null)
+                return;
+            
+            foreach (var collider in colliders)
+            {
+                collider.gameObject.AddComponent<Rigidbody>();
+            }
         }
-        
-        
-        
+
         protected override void ActOnStop()
         {
-            Entity.Get<HitBoxCapsuleColliderModel>().capsuleCollider.isTrigger = true;
-            base.ActOnStop();
+            ref var transformModel = ref Entity.Get<TransformModel>();
+            var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
+
+            if (colliders == null)
+                return;
+            
+            foreach (var collider in colliders)
+            {
+                collider.isTrigger = true;
+                
+                if(!collider.TryGetComponent<Rigidbody>(out var rb))
+                    continue;
+                
+                Destroy(rb);
+            }
         }
-        
     }
 }

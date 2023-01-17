@@ -53,6 +53,7 @@ namespace Ingame.Audio
         [Foldout("Settings")]
         [Range(0, 3)]
         private float pitch;
+        [SerializeField]
         [Foldout("Settings")]
         [Range(0, 1)]
         private float spatialBlend;

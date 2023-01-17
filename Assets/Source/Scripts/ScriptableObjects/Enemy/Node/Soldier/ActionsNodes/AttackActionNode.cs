@@ -14,7 +14,8 @@ namespace Ingame.Enemy
         enum TypeOfAttack
         {
             UnfairAccuracy,
-            ProgressiveAccuracy
+            ProgressiveAccuracy,
+            SimplifiedRayCast
         }
 
         [SerializeField] 
@@ -79,8 +80,17 @@ namespace Ingame.Enemy
                 }
             }
             
+            if (typeOfAttack == TypeOfAttack.SimplifiedRayCast)
+            {
+                if (chanceToHit < Random.Range(0f, 1f) || !enemyModel.isTargetVisible)
+                {
+                    return State.Failure;
+                }
+            }
+            
             if (!enemyModel.target.TryGetComponent(out EntityReference targetEntityReference))
                 return State.Failure;
+            
             targetEntityReference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
             return State.Success;
 

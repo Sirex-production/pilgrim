@@ -42,9 +42,7 @@ namespace Ingame.Enemy
                 }
                 enemy.lastRememberedNoises.RemoveAt(i);
             }
-           
-           
-            //Noise Detection
+            
             return State.Success;
         }
     }
