@@ -33,6 +33,11 @@ namespace Support
 			}
 		}
 
+		public override string ToString()
+		{
+			return $"Bitset: {Convert.ToString(_bitset, 2)}";
+		}
+
 		public static Bitset32 operator |(Bitset32 b1, Bitset32 b2)
 		{
 			b1._bitset |= b2._bitset;

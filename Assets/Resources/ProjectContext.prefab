@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfxSurfaceTypeConfig: {fileID: 11400000, guid: 669cefdd8e6464140b14ac593c83ae36, type: 2}
   cursorConfig: {fileID: 11400000, guid: f871ce1584228404184dc82c322b7f17, type: 2}
+  questsConfig: {fileID: 11400000, guid: e914c3b3d1afce04db1091c5940cdf7a, type: 2}
 --- !u!1 &5579493464018778790
 GameObject:
   m_ObjectHideFlags: 0

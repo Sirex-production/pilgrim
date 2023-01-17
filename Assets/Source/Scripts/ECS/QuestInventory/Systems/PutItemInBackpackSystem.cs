@@ -3,15 +3,19 @@ using Ingame.Extensions;
 using Ingame.Interaction.Common;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Support.Extensions;
+using UnityEngine;
 
 namespace Ingame.QuestInventory
 {
     public sealed class PutItemInBackpackSystem : IEcsRunSystem
     {
-        private readonly EcsWorld _world;
-        private readonly EcsFilter<PerformInteractionTag, TransformModel,ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
-        private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
+        private static readonly int HUD_LAYER = LayerMask.NameToLayer("HUD");
         
+        private readonly EcsWorld _world;
+        private readonly EcsFilter<PerformInteractionTag, TransformModel, ItemModel>.Exclude<PickedUpItemTag> _pickItemFilter;
+        private readonly EcsFilter<InventoryStorageModel> _backpackFilter;
+
         public void Run()
         {
             ProcessPickUpItem();
@@ -40,17 +44,25 @@ namespace Ingame.QuestInventory
                 }
 
                 var slots = backpack.slots[itemModel.itemConfig];
-                foreach (var transform in slots)
+                foreach (var slotTransform in slots)
                 {
-                    if(!transform.TryGetComponent(out EntityReference entityReference) 
-                       || entityReference.Entity.Has<OccupiedInventorySlotTag>())
+                    if(!slotTransform.TryGetComponent(out EntityReference slotEntityReference) 
+                       || slotEntityReference.Entity.Has<OccupiedInventorySlotTag>())
                         continue;
                     
-                    entityReference.Entity.Get<OccupiedInventorySlotTag>();
-                    itemTransformModel.transform.position = transform.position;
+                    slotEntityReference.Entity.Get<OccupiedInventorySlotTag>();
+                    
+                    itemTransformModel.transform.SetParent(slotTransform);
+                    itemTransformModel.transform.localPosition = Vector3.zero;
+                    itemTransformModel.transform.localEulerAngles = Vector3.zero;
+                    itemTransformModel.transform.gameObject.SetLayerToAllChildrenAndSelf(HUD_LAYER);
+                    
                     itemEntity.Get<PickedUpItemTag>();
                     itemEntity.Del<PerformInteractionTag>();
                     
+                    if(!itemEntity.Has<ConsumableItemTag>() && !itemTransformModel.transform.TryGetComponent(out UsableItem _))
+                        itemEntity.Del<InteractiveTag>();
+
                     _world.SendSignal<InventoryIsUpdatedEvent>();
                 }
                 

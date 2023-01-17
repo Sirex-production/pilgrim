@@ -6,7 +6,7 @@ namespace Ingame.UI
 {
 	public sealed class UpdateQuestUiSystem : IEcsRunSystem
 	{
-		private readonly EcsFilter<QuestComponent> _questsFilter;
+		private readonly EcsFilter<QuestComponent>.Exclude<CompletedQuestTag> _questsFilter;
 		private readonly EcsFilter<UiGameplayQuestViewModel> _questUiFilter;
 		private readonly EcsFilter<QuestsAreUpdatedEvent> _questUpdateFilter;
 
@@ -18,6 +18,13 @@ namespace Ingame.UI
 				return;
 
 			var gameplayQuestUiView = _questUiFilter.Get1(0).uiGameplayQuestView;
+			
+			if (_questsFilter.IsEmpty())
+			{
+				gameplayQuestUiView.SetAllQuestsData(null);
+				gameplayQuestUiView.ClearActiveQuestData();
+				return;
+			}
 			
 			_questIdsBuffer.Clear();
 
@@ -31,8 +38,9 @@ namespace Ingame.UI
 				if (questEntity.Has<ActiveQuestTag>())
 					gameplayQuestUiView.SetActiveQuestData(questComp.questId, questComp.completedSteps);
 			}
-			
+
 			gameplayQuestUiView.SetAllQuestsData(_questIdsBuffer.ToArray());
+			gameplayQuestUiView.TemporaryShowActiveQuest();
 		}
 	}
 }
