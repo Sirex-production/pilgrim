@@ -17,6 +17,21 @@ MonoBehaviour:
   Description: 
   child: {fileID: 629511999895346331}
   duration: 1.2
+--- !u!114 &-8533323952829302394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d251ec033bfe4b388fb932780331f2c0, type: 3}
+  m_Name: IsDestinationCloserThanPlayerNode
+  m_EditorClassIdentifier: 
+  Guid: 9be6052e210be874ab534c4dc0f98e22
+  Position: {x: -1451, y: 2657}
+  Description: 
 --- !u!114 &-8532181152842449072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1045,7 @@ MonoBehaviour:
   - {fileID: -7298778928909902019}
   - {fileID: -274157074014279038}
   - {fileID: 6107110827561436522}
+  - {fileID: -8533323952829302394}
 --- !u!114 &99420560264176434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1548,7 @@ MonoBehaviour:
   Description: TAKE COVER
   Children:
   - {fileID: 7439588013370015713}
+  - {fileID: -8533323952829302394}
   - {fileID: 9160257324339335971}
   - {fileID: -6776048723630099928}
   - {fileID: -3260628202132971735}
@@ -1976,7 +1993,7 @@ MonoBehaviour:
   m_Name: FindCoverPointActionNode
   m_EditorClassIdentifier: 
   Guid: 972cd1ac3125f6047a899c6fc7cc82c1
-  Position: {x: -1405.5, y: 2708}
+  Position: {x: -1478, y: 2477}
   Description: 
   typeOfCover: 0
   typeOfCoverSpot: 0
@@ -2173,7 +2190,7 @@ MonoBehaviour:
   m_Name: TakeCoverActionNode
   m_EditorClassIdentifier: 
   Guid: 36254cc6f2f8914418a63c830f3c6cd5
-  Position: {x: -1185.3997, y: 2708}
+  Position: {x: -1182, y: 2712}
   Description: 
   minDistanceBetweenEnemyAndPlayer: 6
 --- !u!114 &9177700881776079488
