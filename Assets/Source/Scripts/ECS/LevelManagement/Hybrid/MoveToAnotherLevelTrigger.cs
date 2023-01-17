@@ -1,4 +1,6 @@
-﻿using NaughtyAttributes;
+﻿using Ingame.Player;
+using Leopotam.Ecs;
+using NaughtyAttributes;
 using Support;
 using UnityEngine;
 using Zenject;
@@ -20,6 +22,15 @@ namespace Ingame.LevelManagement
 
 		private void OnTriggerEnter(Collider other)
 		{
+			if(!other.TryGetComponent(out EntityReference entityReference))
+				return;
+			
+			if(entityReference.Entity == EcsEntity.Null)
+				return;
+			
+			if(!entityReference.Entity.Has<PlayerModel>())
+				return;
+			
 			_levelManagementService.LoadLevel(sceneToLoadIndex);
 		}
 	}

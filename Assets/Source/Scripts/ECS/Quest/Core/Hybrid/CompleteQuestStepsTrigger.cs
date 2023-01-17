@@ -32,6 +32,9 @@ namespace Ingame.Quests
 			if(!other.TryGetComponent(out EntityReference entityReference))
 				return;
 			
+			if(entityReference.Entity == EcsEntity.Null)
+				return;
+			
 			if(!entityReference.Entity.Has<PlayerModel>())
 				return;
 
