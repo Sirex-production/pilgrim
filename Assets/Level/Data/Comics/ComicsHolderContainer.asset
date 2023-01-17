@@ -18,16 +18,38 @@ MonoBehaviour:
   - name: ComicsA
     pages:
     - page: {fileID: 21300000, guid: 4ac814b44eea50b4fa8bfe5f7089ede1, type: 3}
-      textsIntroductions: []
+      textsIntroductions:
+      - "\u2018It\u2019s just a regular patrolling mission\u2019 - they said. "
+      - " \u2018Nothing can go wrong\u2019... they said."
+      - At that time we really do believe in those words,  after all each of the
+        crew was experienced in that stuff.
+      - However...
     - page: {fileID: 21300000, guid: 3a4a33130233f044cb5bf525dfd42abe, type: 3}
       textsIntroductions:
-      - ...we didn't realize the missions is our death sentance...
-      - What a joke... the leader... the one who must take care of his crew has survived
-        this massacre
-      - I should have died... due to my mistake, everyone's dead
+      - "It wasn\u2019t enough to survive that massacre\u2026"
+      - 'Experience, intelligence, beauty are worthless against those MONSTERS that
+        people tend to call anomalies. '
+      - "Each night I have nightmares about the past incident\u2026"
+      - "Each night I see the corpses of my crew\u2026 "
+      - "Each night I wonder why I was the only survivor\u2026"
     - page: {fileID: 21300000, guid: 62d8ff85c593b924cba2bd29838f44ec, type: 3}
       textsIntroductions:
-      - I hate myself for what i've done...
-      - If i had a chance to [...]...
+      - "\u2026 what\u2019s even worse I couldn\u2019t understand what caused it. "
+      - "I thought as a leader I am the one who is responsible for their deaths\u2026 "
+      - "Every single day after the catastrophe I blame myself for everything that
+        happened that day and try to solve that mystery\u2026"
+      - "I know each day I am closer to the true answer\u2026"
     - page: {fileID: 21300000, guid: 6d746ff74b4240f4192ccdce31ee0a28, type: 3}
+      textsIntroductions:
+      - "Now I\u2019m even closer than ever before, the person who claimed to know
+        the secret behind that failure contacted me\u2026"
+      - Under the condition of completing his missions he promised to reveal the
+        secret.
+      - "He wants to keep all the information for himself and reveal them when they're
+        needed. \u2018The less I know,  the better for me\u2019 - he said\u2026"
+      - Neither know who he is, but I will do everything to solve that mystery even
+        if it leads to my death.
+  - name: Instruction
+    pages:
+    - page: {fileID: 21300000, guid: 9250ad62c0ac7664ea906476d50d63f9, type: 3}
       textsIntroductions: []
