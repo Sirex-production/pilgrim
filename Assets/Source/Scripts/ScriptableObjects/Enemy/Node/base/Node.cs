@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ingame.Audio;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -18,8 +19,6 @@ namespace Ingame.Behaviour
            //ForceStop
         }
         
-      
-        
         [HideInInspector]
         public string Guid;
         
@@ -29,6 +28,7 @@ namespace Ingame.Behaviour
         [TextArea] public string Description;
         
         public EcsEntity Entity;
+        public AudioService audioService;
         public EcsWorld World;
         
         private bool _isRunning = false;

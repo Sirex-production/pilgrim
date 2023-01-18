@@ -1,6 +1,7 @@
 using Client;
 using Ingame.Animation;
 using Ingame.Anomaly;
+using Ingame.Audio;
 using Ingame.Behaviour;
 using Ingame.Breakable;
 using Ingame.CameraWork;
@@ -49,6 +50,7 @@ namespace Ingame
         private EcsSystems _fixedUpdateSystem;
         private ConfigProviderService _configProviderService;
         private GameSettingsService _gameSettingsService;
+        private AudioService _audioService;
         
         [Inject]
         private void Construct
@@ -58,7 +60,8 @@ namespace Ingame
             [Inject(Id = "UpdateSystems")] EcsSystems updateSystem, 
             [Inject(Id = "FixedUpdateSystems")] EcsSystems fixedUpdateSystem,
             ConfigProviderService configProviderService, 
-            GameSettingsService gameSettingsService
+            GameSettingsService gameSettingsService,
+            AudioService audioService
         )
         {
             _stationaryInput = stationaryInputSystem;
@@ -67,6 +70,7 @@ namespace Ingame
             _fixedUpdateSystem = fixedUpdateSystem;
             _configProviderService = configProviderService;
             _gameSettingsService = gameSettingsService;
+            _audioService = audioService;
         }
 
 #if UNITY_EDITOR
@@ -125,7 +129,8 @@ namespace Ingame
                 .Inject(_stationaryInput)
                 .Inject(questsConfig)
                 .Inject(_configProviderService)
-                .Inject(_gameSettingsService);
+                .Inject(_gameSettingsService)
+                .Inject(_audioService);
         }
 
         private void AddOneFrames()
@@ -191,6 +196,7 @@ namespace Ingame
                 .Add(new HudItemRotatorDueDeltaRotationSystem())
                 .Add(new HudItemRotatorDueVelocitySystem())
                 .Add(new HudItemMoveSystem())
+                .Add(new PlaySoundOnPlayerMovement())
                 // .Add(new HudItemMoverDueSurfaceDetectionSystem())
                 //AI
                 .Add(new BehaviourSystem())
@@ -213,6 +219,7 @@ namespace Ingame
                 .Add(new ChangeActiveQuestSystem())
                 .Add(new CompleteQuestStepSystem())
                 //Interaction
+                .Add(new ShowHideInteractIconSystem())
                 .Add(new InteractionSystem())
                 .Add(new LongInteractionSystem())
                 .Add(new DoorRotationSystem())
@@ -260,7 +267,6 @@ namespace Ingame
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 .Add(new OpenHidePauseMenuSystem())
-                .Add(new ShowHideInteractIconSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new PutDecalsBackToPoolSystem())
