@@ -9,13 +9,13 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             base.ActOnStart();
-            Entity.Get<EnemyStateModel>().isReloading = true;
+            entity.Get<EnemyStateModel>().isReloading = true;
         }
 
         protected override void ActOnStop()
         {
             base.ActOnStop();
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             enemyModel.isReloading = false;
             enemyModel.currentAmmo = enemyModel.maxAmmo;
         }

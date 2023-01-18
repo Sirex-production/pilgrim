@@ -27,12 +27,12 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var target = ref Entity.Get<EnemyStateModel>().target;
-            ref var that = ref Entity.Get<TransformModel>().transform;
+            ref var target = ref entity.Get<EnemyStateModel>().target;
+            ref var that = ref entity.Get<TransformModel>().transform;
             if (target==null)
             {
                 #if UNITY_EDITOR
-                    UnityEngine.Debug.LogWarning($"The target is null in Node{this.name.ToString()} for Entity {this.Entity.ToString()}");
+                    UnityEngine.Debug.LogWarning($"The target is null in Node{this.name.ToString()} for entity {this.entity.ToString()}");
                 #endif
                 return State.Failure;
             }

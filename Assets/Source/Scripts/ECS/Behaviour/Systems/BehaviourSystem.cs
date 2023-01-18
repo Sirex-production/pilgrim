@@ -1,4 +1,5 @@
-﻿using Ingame.Enemy;
+﻿using Ingame.Audio;
+using Ingame.Enemy;
 using Ingame.Movement;
 using Leopotam.Ecs;
 
@@ -10,7 +11,9 @@ namespace Ingame.Behaviour
         private readonly EcsFilter<BehaviourAgentModel,BehaviourCheckerTag,TransformModel> _behaviorAgentBeforeInitFilter;
         private readonly EcsFilter<BehaviourAgentModel,BehaviourAgentActiveTag,TransformModel>.Exclude<BehaviourCheckerTag> _behaviorAgentFilter;
         private readonly EcsFilter<BehaviourAgentModel>.Exclude<BehaviourCheckerTag,BehaviourAgentActiveTag> _behaviorAgentRunFilter;
+        
         private EcsWorld _world;
+        private AudioService _audioService;
 
         public void Run()
         {
@@ -46,7 +49,7 @@ namespace Ingame.Behaviour
                 }
 
                 agent.tree.Entity = reference.Entity;
-                agent.tree.InjectEntity(reference.Entity);
+                agent.tree.Inject(reference.Entity,_audioService);
                 entity.Del<BehaviourAgentActiveTag>();
             }
 

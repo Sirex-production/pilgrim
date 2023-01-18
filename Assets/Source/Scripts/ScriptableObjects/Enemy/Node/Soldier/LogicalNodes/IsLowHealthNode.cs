@@ -23,10 +23,10 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var health = ref Entity.Get<HealthComponent>();
+            ref var health = ref entity.Get<HealthComponent>();
             if (health.currentHealth<=0)
             {
-                Entity.Get<EnemyStateModel>().isDying = true;
+                entity.Get<EnemyStateModel>().isDying = true;
             }
             return health.currentHealth > healthThreshold * health.initialHealth ? State.Failure : State.Success;
         }

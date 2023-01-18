@@ -65,3 +65,117 @@ MonoBehaviour:
         spread: 38.5
         minDistance: 3
         maxDistance: 15
+  - audioTypeName: town
+    audioWrappers:
+    - name: null
+      audioClip: {fileID: 0}
+      audioSettings:
+        priority: 0
+        volume: 0
+        pitch: 0
+        spatialBlend: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0
+    - name: canal
+      audioClip: {fileID: 8300000, guid: 74895044ab5381149a4705adc924928b, type: 3}
+      audioSettings:
+        priority: 76
+        volume: 0.177
+        pitch: 3
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 3.08
+        spread: 31.4
+        minDistance: 1
+        maxDistance: 10
+    - name: pipe
+      audioClip: {fileID: 8300000, guid: 2a57ff07d5e2d674ebe2796a8de143e1, type: 3}
+      audioSettings:
+        priority: 29
+        volume: 0.231
+        pitch: 3
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 0.95
+        spread: 68.2
+        minDistance: 2
+        maxDistance: 19.54
+    - name: shop
+      audioClip: {fileID: 8300000, guid: 488fc33acecec2542a8cbf9bb9156db0, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.661
+        pitch: 0.92
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 2.59
+        spread: 38.5
+        minDistance: 1
+        maxDistance: 5.5
+  - audioTypeName: gun
+    audioWrappers:
+    - name: null
+      audioClip: {fileID: 0}
+      audioSettings:
+        priority: 0
+        volume: 0
+        pitch: 0
+        spatialBlend: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0
+    - name: shoot
+      audioClip: {fileID: 8300000, guid: 7f26f2f3d46daf84caa6e6093f8f3637, type: 3}
+      audioSettings:
+        priority: 2
+        volume: 0.079
+        pitch: 1.044
+        spatialBlend: 1
+        loop: 0
+        dopplerLevel: 0.69
+        spread: 42.3
+        minDistance: 0.01
+        maxDistance: 50
+  - audioTypeName: player
+    audioWrappers:
+    - name: null
+      audioClip: {fileID: 0}
+      audioSettings:
+        priority: 0
+        volume: 0
+        pitch: 0
+        spatialBlend: 0
+        loop: 0
+        dopplerLevel: 0
+        spread: 0
+        minDistance: 0
+        maxDistance: 0
+    - name: walk
+      audioClip: {fileID: 8300000, guid: 722585483e9b3b74e9fe2150174d83d9, type: 3}
+      audioSettings:
+        priority: 62
+        volume: 0.172
+        pitch: 1.083
+        spatialBlend: 0.026
+        loop: 0
+        dopplerLevel: 0.34
+        spread: 31.4
+        minDistance: 0
+        maxDistance: 50
+    - name: empty
+      audioClip: {fileID: 8300000, guid: 5341f7733d1524645af3d3d6409638a9, type: 3}
+      audioSettings:
+        priority: 62
+        volume: 0.172
+        pitch: 1.083
+        spatialBlend: 1
+        loop: 0
+        dopplerLevel: 0.34
+        spread: 39.2
+        minDistance: 0
+        maxDistance: 5

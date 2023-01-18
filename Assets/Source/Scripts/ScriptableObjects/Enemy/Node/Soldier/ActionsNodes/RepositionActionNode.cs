@@ -14,8 +14,8 @@ namespace Ingame.Enemy
         private Transform _target;
         protected override void ActOnStart()
         {
-            _agent = Entity.Get<NavMeshAgentModel>().Agent;
-            _target = Entity.Get<EnemyStateModel>().target;
+            _agent = entity.Get<NavMeshAgentModel>().Agent;
+            _target = entity.Get<EnemyStateModel>().target;
             _agent.isStopped = false;
         }
 
@@ -23,7 +23,7 @@ namespace Ingame.Enemy
         {
             if (_agent == null)
             {
-                Entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
+                entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
             }
             else
             {

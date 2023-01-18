@@ -21,12 +21,12 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             
-            ref var waypoints = ref Entity.Get<WayPointsComponent>().WayPoints;
-            _agent = Entity.Get<NavMeshAgentModel>().Agent;
+            ref var waypoints = ref entity.Get<WayPointsComponent>().WayPoints;
+            _agent = entity.Get<NavMeshAgentModel>().Agent;
             
             if (waypoints == null || waypoints.Count <=0)
             {
-                Entity.Get<EnemyStateModel>().isPatrolling = false;
+                entity.Get<EnemyStateModel>().isPatrolling = false;
                 _stopPatrolling = true;
                 return;
             }
@@ -36,7 +36,7 @@ namespace Ingame.Enemy
           
             _agent.destination = _point.position;
             _agent.isStopped = false;
-            Entity.Get<EnemyStateModel>().isPatrolling = true;
+            entity.Get<EnemyStateModel>().isPatrolling = true;
 
         }
 
@@ -47,7 +47,7 @@ namespace Ingame.Enemy
                 return;
             }
 
-            Entity.Get<EnemyStateModel>().isPatrolling = false;
+            entity.Get<EnemyStateModel>().isPatrolling = false;
             _agent.isStopped = true;
         }
 

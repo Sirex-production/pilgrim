@@ -12,8 +12,8 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var transform = ref Entity.Get<TransformModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var transform = ref entity.Get<TransformModel>();
             
             var targetRotation = Quaternion.LookRotation(enemyModel.target.transform.position - transform.transform.position);
             targetRotation.x = 0; 

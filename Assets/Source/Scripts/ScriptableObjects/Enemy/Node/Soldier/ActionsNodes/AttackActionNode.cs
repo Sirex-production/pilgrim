@@ -5,12 +5,14 @@ using Ingame.Movement;
 using Leopotam.Ecs;
 using Unity.Mathematics;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Ingame.Enemy
 {
     public class AttackActionNode : ActionNode
     {
+        
         enum TypeOfAttack
         {
             UnfairAccuracy,
@@ -37,12 +39,12 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             _currentIntervalTime = shootIntervalTime;
-            Entity.Get<EnemyStateModel>().isAttacking = true;
+            entity.Get<EnemyStateModel>().isAttacking = true;
         }
 
         protected override void ActOnStop()
         {
-            Entity.Get<EnemyStateModel>().isAttacking = false;
+            entity.Get<EnemyStateModel>().isAttacking = false;
         }
         /// <summary>
         /// Try to attack after [shootIntervalTime] time
@@ -50,7 +52,8 @@ namespace Ingame.Enemy
         /// <returns>Return Success if hit target, Failure if not and Running if it's still on a cooldown</returns>
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
 
             //cooldown
             if (_currentIntervalTime>0)
@@ -62,6 +65,7 @@ namespace Ingame.Enemy
             enemyModel.currentAmmo -= 1;
             
             //hit chance - do miss
+            audioService.Play3D("gun","shoot",transformModel.transform, true);
             if (typeOfAttack == TypeOfAttack.UnfairAccuracy)
             {
                 if (chanceToHit < Random.Range(0f, 1f))

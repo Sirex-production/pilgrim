@@ -42,9 +42,9 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var navAgent = ref Entity.Get<NavMeshAgentModel>();
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
-            ref var transformModel = ref Entity.Get<TransformModel>();
+            ref var navAgent = ref entity.Get<NavMeshAgentModel>();
+            ref var enemy = ref entity.Get<EnemyStateModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
             float dotBetweenPlayerAndEnemy = Vector3.Dot(-enemy.target.forward,
                 (transformModel.transform.position - enemy.target.position).normalized);
             

@@ -25,7 +25,7 @@ namespace Ingame.Enemy
         {
 
             /*
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             var target = enemyModel.target.position;
             
             float distance = float.MaxValue;

@@ -25,7 +25,7 @@ namespace Ingame.Systems
                 {
                     continue;
                 }
-                //Entity Has PointerToGameObject
+                //entity Has PointerToGameObject
                 if(!entityReference.Entity.Has<PointerToParentGameObjectComponent>())
                     continue;
                 
@@ -86,7 +86,7 @@ namespace Ingame.Systems
                 {
                     continue;
                 }
-                //Entity Has PointerToGameObject
+                //entity Has PointerToGameObject
                 if(!entityReference.Entity.Has<PointerToParentGameObjectComponent>())
                     continue;
                 

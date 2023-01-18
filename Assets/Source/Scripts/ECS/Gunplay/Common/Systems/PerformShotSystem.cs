@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Ingame.Audio;
 using Ingame.Breakable;
 using Ingame.Enemy;
 using Ingame.Extensions;
@@ -13,8 +14,9 @@ namespace Ingame.Gunplay
     public sealed class PerformShotSystem : IEcsRunSystem
     {
         private readonly EcsWorld _world;
+        private readonly AudioService _audioService;
         private readonly EcsFilter<FirearmComponent, AwaitingShotTag> _shootingFirearmFilter;
-
+        
         public void Run()
         {
             foreach (var i in _shootingFirearmFilter)
@@ -28,6 +30,7 @@ namespace Ingame.Gunplay
                     continue;
                 
                 SendVfxRequest(hit.point, hit.normal, hit.transform.tag);
+                _audioService.Play3D("gun","shoot", firearmComponent.barrelOrigin);
                 
                 if(!TryApplyDamage(hit.collider.gameObject, firearmComponent.firearmConfig.Damage) && !TryApplyDamage(hit.transform.root.gameObject, firearmComponent.firearmConfig.Damage) )
                     continue;

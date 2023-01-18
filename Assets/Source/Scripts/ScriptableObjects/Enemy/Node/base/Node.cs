@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ingame.Audio;
 using Leopotam.Ecs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Behaviour 
 {
@@ -18,18 +20,19 @@ namespace Ingame.Behaviour
            //ForceStop
         }
         
-      
+        [FormerlySerializedAs("Guid")] [HideInInspector]
+        public string guid;
         
-        [HideInInspector]
-        public string Guid;
-        
-        [HideInInspector]
-        public Vector2 Position = Vector2.zero;
+        [FormerlySerializedAs("Position")] [HideInInspector]
+        public Vector2 position = Vector2.zero;
 
-        [TextArea] public string Description;
+        [TextArea] public string description;
         
-        public EcsEntity Entity;
-        public EcsWorld World;
+        [HideInInspector]
+        public AudioService audioService;
+        
+        public EcsEntity entity;
+        public EcsWorld world;
         
         private bool _isRunning = false;
         private State _state = State.Running;

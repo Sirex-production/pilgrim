@@ -20,8 +20,8 @@ namespace Ingame.Enemy
         
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var agentModel = ref  Entity.Get<NavMeshAgentModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var agentModel = ref  entity.Get<NavMeshAgentModel>();
             agentModel.Agent.destination = enemyModel.target.position;
 
             if (typeOfDetection == TypeOfDetection.PhotoScanning && enemyModel.visibleTargetPixels >= visibility)

@@ -7,12 +7,12 @@ namespace Ingame
     {
         public void OnEntityCreated(EcsEntity entity)
         {
-            // TemplateUtils.SafeDebug("Entity was created");
+            // TemplateUtils.SafeDebug("entity was created");
         }
 
         public void OnEntityDestroyed(EcsEntity entity)
         {
-            // TemplateUtils.SafeDebug("Entity was destroyed");
+            // TemplateUtils.SafeDebug("entity was destroyed");
         }
 
         public void OnFilterCreated(EcsFilter filter)
@@ -27,7 +27,7 @@ namespace Ingame
 
         public void OnWorldDestroyed(EcsWorld world)
         {
-            // TemplateUtils.SafeDebug("World was destroyed");
+            // TemplateUtils.SafeDebug("world was destroyed");
         }
     }
 }

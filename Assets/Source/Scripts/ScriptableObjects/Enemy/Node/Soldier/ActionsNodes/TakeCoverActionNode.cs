@@ -8,13 +8,13 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             base.ActOnStart();
-            Entity.Get<EnemyStateModel>().isHiding = true;
+            entity.Get<EnemyStateModel>().isHiding = true;
         }
 
         protected override void ActOnStop()
         {
             base.ActOnStop();
-            Entity.Get<EnemyStateModel>().isHiding = false;
+            entity.Get<EnemyStateModel>().isHiding = false;
         }
     }
 }

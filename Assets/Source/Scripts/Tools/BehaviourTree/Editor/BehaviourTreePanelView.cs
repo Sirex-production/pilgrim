@@ -64,7 +64,7 @@ namespace Ingame.Editor
         }
         private NodeView FindNode(Node node)
         {
-            return GetNodeByGuid(node.Guid) as NodeView;
+            return GetNodeByGuid(node.guid) as NodeView;
         }
         private GraphViewChange OnGraphViewChanged(GraphViewChange graphviewchange)
         {
@@ -158,7 +158,7 @@ namespace Ingame.Editor
         public void CreateNode(System.Type type,Vector2 pos)
         {
             var node = _tree.CreateNode(type);
-            node.Position = pos;
+            node.position = pos;
 #if UNITY_EDITOR
             UnityEngine.Debug.LogWarning($"New node {type.Name} has been created!");
 #endif

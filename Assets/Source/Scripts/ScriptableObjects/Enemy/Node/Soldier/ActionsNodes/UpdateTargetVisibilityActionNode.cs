@@ -15,7 +15,7 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             if(typeOfDetection == TypeOfDetection.PhotoScanning)
-                Entity.Get<EnemyUseCameraRequest>();
+                entity.Get<EnemyUseCameraRequest>();
         }
 
         protected override void ActOnStop()
@@ -26,7 +26,7 @@ namespace Ingame.Enemy
         protected override State ActOnTick()
         {
             if(typeOfDetection == TypeOfDetection.PhotoScanning)
-                return Entity.Has<EnemyUseCameraRequest>() ? State.Running : State.Success;
+                return entity.Has<EnemyUseCameraRequest>() ? State.Running : State.Success;
 
             if (typeOfDetection == TypeOfDetection.RayCast)
                 return ActOnRayeCasting();
@@ -36,8 +36,8 @@ namespace Ingame.Enemy
         
         private State ActOnRayeCasting( )
         {
-            ref var enemyStateModel = ref Entity.Get<EnemyStateModel>();
-            var enemy = Entity.Get<TransformModel>().transform;
+            ref var enemyStateModel = ref entity.Get<EnemyStateModel>();
+            var enemy = entity.Get<TransformModel>().transform;
             var target = enemyStateModel.target;
             var distance = Vector3.Distance(enemy.position, target.position);
 

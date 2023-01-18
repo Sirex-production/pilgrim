@@ -11,12 +11,12 @@ namespace Ingame.Enemy
     {
         protected override void ActOnStart()
         {
-            ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
-            ref var transformModel = ref Entity.Get<TransformModel>();
+            ref var agentModel = ref entity.Get<NavMeshAgentModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
             
             agentModel.Agent.enabled = false;
             
-            var weapon = Entity.Get<EnemyWeaponHolderModel>().weapon;
+            var weapon = entity.Get<EnemyWeaponHolderModel>().weapon;
             
             if(weapon == null)
                return;
@@ -34,7 +34,7 @@ namespace Ingame.Enemy
                 entityReference.Entity.Get<InteractiveTag>();
             }
             
-            Entity.Del<EnemyWeaponHolderModel>();
+            entity.Del<EnemyWeaponHolderModel>();
             
             var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
             
@@ -49,7 +49,7 @@ namespace Ingame.Enemy
 
         protected override void ActOnStop()
         {
-            ref var transformModel = ref Entity.Get<TransformModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
             var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
 
             if (colliders == null)

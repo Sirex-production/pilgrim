@@ -57,8 +57,8 @@ namespace Ingame.Enemy
         
         protected override State ActOnTick()
         {
-            ref var navAgent = ref Entity.Get<NavMeshAgentModel>();
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
+            ref var navAgent = ref entity.Get<NavMeshAgentModel>();
+            ref var enemy = ref entity.Get<EnemyStateModel>();
             
 
             switch ((typeOfCoverSpot,typeOfCover))

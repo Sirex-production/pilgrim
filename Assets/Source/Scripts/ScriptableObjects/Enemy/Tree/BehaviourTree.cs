@@ -1,6 +1,7 @@
  
 using System;
 using System.Collections.Generic;
+using Ingame.Audio;
 using Ingame.Enemy;
 using Leopotam.Ecs;
 using UnityEditor;
@@ -44,7 +45,7 @@ namespace Ingame.Behaviour{
             var node = ScriptableObject.CreateInstance(typeOfNode) as Node;
             
             node.name = typeOfNode.Name;
-            node.Guid = GUID.Generate().ToString();
+            node.guid = GUID.Generate().ToString();
             Nodes.Add(node);
             
             if (!Application.isPlaying)
@@ -154,14 +155,18 @@ namespace Ingame.Behaviour{
             children.ForEach((e) => Traverse(e, visiter));
         }
 
-        public void InjectEntity(EcsEntity entity)
+        public void Inject(EcsEntity entity, AudioService audioService)
         {
-            Traverse(root,(e)=>e.Entity = entity);
+            Traverse(root,(e)=>
+            {
+                e.entity = entity;
+                e.audioService = audioService;
+            });
         }
 
         public void InjectWorld(EcsWorld world)
         {
-            Traverse(root,(e)=>e.World = world);
+            Traverse(root,(e)=>e.world = world);
         }
     }
 }

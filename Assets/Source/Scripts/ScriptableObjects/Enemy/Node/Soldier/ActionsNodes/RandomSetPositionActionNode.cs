@@ -24,7 +24,7 @@ namespace Ingame.Enemy
             var x = Random.Range(-range.x,range.x);
             var z = Random.Range(-range.y,range.y);
             
-            ref var navAgent =ref Entity.Get<NavMeshAgentModel>();
+            ref var navAgent =ref entity.Get<NavMeshAgentModel>();
             var currentPosition = navAgent.Agent.transform.position;
 
             bool isMinRange = x * x + z * z > _minRange * _minRange;

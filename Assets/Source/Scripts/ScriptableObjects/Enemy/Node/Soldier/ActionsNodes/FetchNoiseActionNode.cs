@@ -18,13 +18,13 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             if (enemyModel.noisePosition == null)
             {
                 return State.Failure;
             }
 
-            ref var agentModel = ref Entity.Get<NavMeshAgentModel>();
+            ref var agentModel = ref entity.Get<NavMeshAgentModel>();
             agentModel.Agent.destination =  enemyModel.noisePosition.Value;
             enemyModel.noisePosition = null;
             return State.Success;
