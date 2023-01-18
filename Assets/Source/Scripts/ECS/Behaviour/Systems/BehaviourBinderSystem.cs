@@ -18,7 +18,7 @@ namespace Ingame.Behaviour
             }
             var player = GameObject.FindGameObjectWithTag("Player");
    
-            //Bind entity With tree
+            //Bind Entity With tree
             foreach (var i in _filter)
             {
                 
