@@ -55,6 +55,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3c64f7d166186f44fb05cfb6521dfaa4, type: 3}
   - {fileID: 21300000, guid: dedf5b528c7c13a45924571aa109f470, type: 3}
   - {fileID: 21300000, guid: e4a3399205364344baff4fbad4b7f953, type: 3}
+  - {fileID: 21300000, guid: 76f49704791231f4ca604058b3d2006c, type: 3}
   - {fileID: 21300000, guid: 69b35528e137cb840be16acd000fba95, type: 3}
   - {fileID: 21300000, guid: 96a23249e1e89be47bdd93c49bd35065, type: 3}
   - {fileID: 21300000, guid: 03bb0d5d6c7f1364cb16b5300ff1b366, type: 3}
@@ -65,6 +66,7 @@ SpriteAtlas:
   - gas
   - fire
   - injector
+  - keyboard_key_icon
   - ointment for burns
   - inhaler
   - wound
