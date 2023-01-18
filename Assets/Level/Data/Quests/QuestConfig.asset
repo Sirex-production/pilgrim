@@ -37,3 +37,9 @@ MonoBehaviour:
       isCompletedByFindingItem: 1
       item: {fileID: 11400000, guid: b944404919f1492488095755edf1997c, type: 2}
       isCompletedByEnteringTrigger: 0
+  - title: Break pipe grate
+    steps:
+    - description: Break pipe grate
+      isCompletedByFindingItem: 0
+      item: {fileID: 11400000, guid: b944404919f1492488095755edf1997c, type: 2}
+      isCompletedByEnteringTrigger: 0

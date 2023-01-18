@@ -34,6 +34,7 @@ namespace Ingame.Inventory
 
                 if (itemEntity.Has<AdrenalineTag>())
                 {
+                    playerHealthEntity.Get<HealComponent>().hpToRestore = MorphineTag.AMOUNT_OF_HP_RESTORED;
                     playerInventory.currentNumberOfAdrenaline--;
                 }
                 

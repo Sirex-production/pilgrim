@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level/Scenes/Playable/Forest/Forest.unity
     guid: 9d9252cfc1b86ae4cbde9f9de4e5862b
+  - enabled: 1
+    path: Assets/Level/Scenes/Playable/BoatComics.unity
+    guid: 2ff35c016a7bd5f44b33f9038897eb1d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bf4ad0246b7633bd995eebad9bab1b04, type: 2}

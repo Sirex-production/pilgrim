@@ -1,6 +1,7 @@
 ﻿using Ingame.Animation;
 using Ingame.Hud;
 using Ingame.Inventory;
+using Ingame.LevelManagement;
 using Ingame.Quests;
 using Ingame.SupportCommunication;
 using LeoEcsPhysics;
@@ -29,6 +30,8 @@ namespace Ingame.Utils
         private readonly EcsFilter<PerformShutterDelayAnimationCallbackEvent> _performShutterDelayCallbackFilter;
         //Quest
         private readonly EcsFilter<QuestsAreUpdatedEvent> _questsAreUpdatedEventFilter;
+        //Level management
+        private readonly EcsFilter<GameOverRequest> _gameOverComponentFilter;
 
         public void Run()
         {
@@ -110,6 +113,11 @@ namespace Ingame.Utils
                 eventEntity.Del<QuestsAreUpdatedEvent>();
             }
             
+            foreach (var i in _gameOverComponentFilter)
+            {
+                ref var eventEntity = ref _gameOverComponentFilter.GetEntity(i);
+                eventEntity.Del<GameOverRequest>();
+            }
         }
     }
 }

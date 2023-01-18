@@ -18,6 +18,7 @@ using Ingame.Interaction.Doors;
 using Ingame.Interaction.DraggableObject;
 using Ingame.Inventory;
 using Ingame.Ladder;
+using Ingame.LevelManagement;
 using Ingame.Movement;
 using Ingame.Player;
 using Ingame.QuestInventory;
@@ -176,6 +177,8 @@ namespace Ingame
             _updateSystems
                 .Add(new InitializeEntityReferenceSystem())
                 .Add(new BehaviourBinderSystem())
+                //Level management
+                .Add(new CheckGameOverConditionSystem())
                 //Input
                 .Add(new StationaryInputSystem())
                 .Add(new EnableOrDisableInputMapsSystem())
@@ -269,13 +272,15 @@ namespace Ingame
                 .Add(new DisplayAmountOfAmmoInMagazineSystem())
                 .Add(new DisplayQuestInfoSystem())
                 .Add(new OpenHidePauseMenuSystem())
+                .Add(new ShowGameOverScreenSystem())
                 //SupportCommunication
                 //Utils
                 .Add(new PutDecalsBackToPoolSystem())
                 .Add(new TimeSystem())
                 .Add(new DebugSystem())
                 .Add(new ExternalEventsRemoverSystem());
-            
+
+
             //FixedUpdate
             _fixedUpdateSystem
                 //Input   

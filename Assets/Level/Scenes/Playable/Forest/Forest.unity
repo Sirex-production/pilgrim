@@ -65918,7 +65918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineSmokeParticleSystem: {fileID: 153667397}
   delayInSecondsBeforeLoadingNextScene: 2
-  sceneIndexToLoad: 6
+  sceneIndexToLoad: 7
 --- !u!65 &1817129424
 BoxCollider:
   m_ObjectHideFlags: 0
