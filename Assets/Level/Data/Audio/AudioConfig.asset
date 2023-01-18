@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 102dc18f0d054d2d9fd25865a36a3d52, type: 3}
-  m_Name: Audio
+  m_Name: AudioConfig
   m_EditorClassIdentifier: 
   audios:
   - audioTypeName: nul
@@ -55,6 +55,18 @@ MonoBehaviour:
         maxDistance: 70
     - name: floating_boat
       audioClip: {fileID: 8300000, guid: b1596edb51e317e418949a450c7ffb40, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.249
+        pitch: 0.301
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 5
+        spread: 38.5
+        minDistance: 3
+        maxDistance: 15
+    - name: engine
+      audioClip: {fileID: 8300000, guid: 2ded3457a4cbde444b5c8e31d36ab8ef, type: 3}
       audioSettings:
         priority: 21
         volume: 0.249
@@ -110,6 +122,18 @@ MonoBehaviour:
         volume: 0.661
         pitch: 0.92
         spatialBlend: 1
+        loop: 1
+        dopplerLevel: 2.59
+        spread: 38.5
+        minDistance: 1
+        maxDistance: 5.5
+    - name: ambient
+      audioClip: {fileID: 8300000, guid: 131b20e3b241ce743b4fa80a45e2b5ea, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.05
+        pitch: 0.9
+        spatialBlend: 0
         loop: 1
         dopplerLevel: 2.59
         spread: 38.5

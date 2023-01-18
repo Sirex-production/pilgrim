@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5315ce7020a643a3959305a73bf29c75, type: 3}
   m_Name: CursorConfig
   m_EditorClassIdentifier: 
-  cursorVisibility: 0101000000
+  cursorVisibility: 01010000000000

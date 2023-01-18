@@ -27,7 +27,7 @@ namespace Ingame.Quests.QuestSpecific
 		public override void OnInteract()
 		{
 			engineSmokeParticleSystem.Play();
-			// _audioService.Play();
+			_audioService.Play3D("environment", "engine", transform, false);
 
 			this.WaitAndDoCoroutine(delayInSecondsBeforeLoadingNextScene, () => _levelManagementService.LoadLevel(sceneIndexToLoad));
 		}
