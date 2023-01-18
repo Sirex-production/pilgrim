@@ -35,8 +35,8 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var transformModel  = ref Entity.Get<TransformModel>();
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var transformModel  = ref entity.Get<TransformModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             var target = enemyModel.target;
             
             var dir = enemyModel.target.position - transformModel.transform.position;

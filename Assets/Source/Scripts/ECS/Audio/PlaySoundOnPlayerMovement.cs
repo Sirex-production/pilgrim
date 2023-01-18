@@ -1,9 +1,10 @@
 ﻿using Ingame.Audio;
 using Ingame.Movement;
+using Ingame.Player;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Ingame.Player
+namespace Ingame.Audio
 {
 
     public sealed class PlaySoundOnPlayerMovement : IEcsRunSystem

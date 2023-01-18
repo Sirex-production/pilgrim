@@ -45,7 +45,7 @@ namespace Ingame.Behaviour{
             var node = ScriptableObject.CreateInstance(typeOfNode) as Node;
             
             node.name = typeOfNode.Name;
-            node.Guid = GUID.Generate().ToString();
+            node.guid = GUID.Generate().ToString();
             Nodes.Add(node);
             
             if (!Application.isPlaying)
@@ -159,14 +159,14 @@ namespace Ingame.Behaviour{
         {
             Traverse(root,(e)=>
             {
-                e.Entity = entity;
+                e.entity = entity;
                 e.audioService = audioService;
             });
         }
 
         public void InjectWorld(EcsWorld world)
         {
-            Traverse(root,(e)=>e.World = world);
+            Traverse(root,(e)=>e.world = world);
         }
     }
 }

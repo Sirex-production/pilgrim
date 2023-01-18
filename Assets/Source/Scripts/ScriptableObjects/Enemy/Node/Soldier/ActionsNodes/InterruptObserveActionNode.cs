@@ -13,7 +13,7 @@ namespace Ingame.Enemy
         {
             var state = base.ActOnTick();
             
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             
             
             if (typeOfDetection == TypeOfDetection.PhotoScanning)

@@ -30,7 +30,7 @@ namespace Ingame.Enemy
                 _timer -= Time.deltaTime;
                 return State.Running;
             }
-            ref var health = ref Entity.Get<HealthComponent>();
+            ref var health = ref entity.Get<HealthComponent>();
             health.currentHealth += percentageOfHeal * health.initialHealth;
             return State.Success;
         }

@@ -19,8 +19,8 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var transformModel = ref Entity.Get<TransformModel>();
-            World.CreateNoiseEvent(transformModel.transform.position);
+            ref var transformModel = ref entity.Get<TransformModel>();
+            world.CreateNoiseEvent(transformModel.transform.position);
             return State.Success;
         }
     }

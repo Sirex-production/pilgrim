@@ -48,12 +48,12 @@ namespace Ingame.Enemy
 
         private State ActOnPhotoScanning()
         {
-            return thresholdOfVisibility <= Entity.Get<EnemyStateModel>().visibleTargetPixels ? State.Success : State.Failure; 
+            return thresholdOfVisibility <= entity.Get<EnemyStateModel>().visibleTargetPixels ? State.Success : State.Failure; 
         }
 
         private State ActOnRayeCasting()
         {
-            return Entity.Get<EnemyStateModel>().isTargetVisible ? State.Success : State.Failure; 
+            return entity.Get<EnemyStateModel>().isTargetVisible ? State.Success : State.Failure; 
         }
        
         private bool IsPhotoScanning() => type == VisibilityType.PhotoScanning;

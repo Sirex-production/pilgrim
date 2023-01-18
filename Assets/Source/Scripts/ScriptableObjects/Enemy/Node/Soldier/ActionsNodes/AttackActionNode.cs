@@ -39,12 +39,12 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             _currentIntervalTime = shootIntervalTime;
-            Entity.Get<EnemyStateModel>().isAttacking = true;
+            entity.Get<EnemyStateModel>().isAttacking = true;
         }
 
         protected override void ActOnStop()
         {
-            Entity.Get<EnemyStateModel>().isAttacking = false;
+            entity.Get<EnemyStateModel>().isAttacking = false;
         }
         /// <summary>
         /// Try to attack after [shootIntervalTime] time
@@ -52,8 +52,8 @@ namespace Ingame.Enemy
         /// <returns>Return Success if hit target, Failure if not and Running if it's still on a cooldown</returns>
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var transformModel = ref Entity.Get<TransformModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
 
             //cooldown
             if (_currentIntervalTime>0)

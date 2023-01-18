@@ -40,11 +40,11 @@ namespace Ingame.Enemy
     
         protected override State ActOnTick()
         {
-            var enemyTransform =  Entity.Get<TransformModel>().transform;
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
+            var enemyTransform =  entity.Get<TransformModel>().transform;
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
             var target =  enemyModel.target;
             
-            if (Entity.Get<EnemyStateModel>().isTargetDetected)
+            if (entity.Get<EnemyStateModel>().isTargetDetected)
             {
                 return State.Success;
             }
@@ -106,11 +106,11 @@ namespace Ingame.Enemy
         
         private State GetPlayerStateFromPhotoScanning()
         {
-            if ( Entity.Has<EnemyUseCameraRequest>())
+            if ( entity.Has<EnemyUseCameraRequest>())
             {
                 return State.Running;
             }
-            Entity.Get<EnemyUseCameraRequest>();
+            entity.Get<EnemyUseCameraRequest>();
             return State.Running;         
         }
 

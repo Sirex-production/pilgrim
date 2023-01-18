@@ -18,8 +18,8 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref  Entity.Get<EnemyStateModel>();
-            enemyModel.isDying =  Entity.Get<HealthComponent>().currentHealth<2;
+            ref var enemyModel = ref  entity.Get<EnemyStateModel>();
+            enemyModel.isDying =  entity.Get<HealthComponent>().currentHealth<2;
             return enemyModel.isDying ? State.Success : State.Failure;
         }
     }

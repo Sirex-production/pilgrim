@@ -14,7 +14,7 @@ namespace Ingame.Enemy
         private Transform _position;
         protected override void ActOnStart()
         {
-             _position = Entity.Get<TransformModel>().transform;
+             _position = entity.Get<TransformModel>().transform;
         }
 
         protected override void ActOnStop()
@@ -24,7 +24,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
+            ref var enemy = ref entity.Get<EnemyStateModel>();
             enemy.lastRememberedNoises ??= new List<Vector3>();
 
             for (int i = enemy.lastRememberedNoises.Count-1; i >=0 ; i--)

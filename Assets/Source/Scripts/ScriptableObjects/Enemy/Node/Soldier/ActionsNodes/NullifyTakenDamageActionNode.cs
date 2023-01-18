@@ -18,8 +18,8 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            Entity.Get<EnemyStateModel>().isTakingDamage = false;
-            ref var health = ref Entity.Get<HealthComponent>();
+            entity.Get<EnemyStateModel>().isTakingDamage = false;
+            ref var health = ref entity.Get<HealthComponent>();
             health.initialHealth = health.currentHealth;
             
             return State.Success;

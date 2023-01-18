@@ -18,8 +18,8 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var navmeshAgentModel = ref Entity.Get<NavMeshAgentModel>();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var navmeshAgentModel = ref entity.Get<NavMeshAgentModel>();
 
             navmeshAgentModel.Agent.speed = 5f;
             enemyModel.isCrouching = false;

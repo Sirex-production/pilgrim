@@ -7,7 +7,7 @@ namespace Ingame.Behaviour.Test
 {
     public class DebugActionNode : ActionNode
     {
-        [SerializeField] private string message = "Bye Bye World!!!";
+        [SerializeField] private string message = "Bye Bye world!!!";
         protected override void ActOnStart()
         {
            UnityEngine.Debug.Log($"Started:{message}");

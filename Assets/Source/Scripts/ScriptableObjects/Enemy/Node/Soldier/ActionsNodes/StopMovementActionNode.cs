@@ -17,7 +17,7 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            Entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
+            entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
             return State.Success;
         }
     }

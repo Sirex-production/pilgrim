@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Ingame.Audio;
 using Leopotam.Ecs;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Behaviour 
 {
@@ -19,17 +20,17 @@ namespace Ingame.Behaviour
            //ForceStop
         }
         
-        [HideInInspector]
-        public string Guid;
+        [FormerlySerializedAs("Guid")] [HideInInspector]
+        public string guid;
         
-        [HideInInspector]
-        public Vector2 Position = Vector2.zero;
+        [FormerlySerializedAs("Position")] [HideInInspector]
+        public Vector2 position = Vector2.zero;
 
-        [TextArea] public string Description;
+        [FormerlySerializedAs("Description")] [TextArea] public string description;
         
-        public EcsEntity Entity;
+        public EcsEntity entity;
         public AudioService audioService;
-        public EcsWorld World;
+        public EcsWorld world;
         
         private bool _isRunning = false;
         private State _state = State.Running;

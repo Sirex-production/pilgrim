@@ -232,6 +232,7 @@ namespace Ingame
                 .Add(new OpenWithItemSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
+                .Add(new PlaySoundOnShotPerformWithoutAmmo())
                 .Add(new PlayMuzzleFlashEffectSystem())
                 .Add(new CreateRecoilRequestSystem())
                 .Add(new PerformShotSystem())
