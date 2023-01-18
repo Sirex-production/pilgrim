@@ -2151,7 +2151,7 @@ MonoBehaviour:
   - {fileID: 3166551259874028522}
   - {fileID: 7251053970072820507}
   showHideAnimationDuration: 0.1
-  infoDisplayTime: 2
+  infoDisplayTime: 4
 --- !u!1 &6101986992237880704
 GameObject:
   m_ObjectHideFlags: 0
