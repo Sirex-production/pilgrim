@@ -38,6 +38,10 @@ namespace Ingame.Editor
         private void AdjustNodeWithNodeViewBinding()
         {
             var description = this.Q<Label>(_nameOfDescription);
+            
+            if(description == null)
+                return;
+            
             description.bindingPath = _nameOfDescription;
             description.Bind(new SerializedObject(Node));
         }

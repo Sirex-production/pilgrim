@@ -132,14 +132,14 @@ MonoBehaviour:
     - name: shoot
       audioClip: {fileID: 8300000, guid: 7f26f2f3d46daf84caa6e6093f8f3637, type: 3}
       audioSettings:
-        priority: 76
-        volume: 0.064
-        pitch: 3
+        priority: 2
+        volume: 0.079
+        pitch: 1.044
         spatialBlend: 1
         loop: 0
-        dopplerLevel: 0.32
-        spread: 31.4
-        minDistance: 0
+        dopplerLevel: 0.69
+        spread: 42.3
+        minDistance: 0.01
         maxDistance: 50
   - audioTypeName: player
     audioWrappers:

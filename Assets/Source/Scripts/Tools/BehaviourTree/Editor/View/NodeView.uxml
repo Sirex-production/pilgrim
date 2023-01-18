@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <Style src="project://database/Assets/Source/Scripts/Editor/View/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=11f4272746e9dc741930022397f0c222&amp;type=3#NodeViewStyle" />
+    <Style src="project://database/Assets/Source/Scripts/Tools/BehaviourTree/Editor/View/NodeViewStyle.uss?fileID=7433441132597879392&amp;guid=11f4272746e9dc741930022397f0c222&amp;type=3#NodeViewStyle" />
     <ui:VisualElement name="node-state" />
     <ui:VisualElement name="node-border" style="min-width: 100px; min-height: 0; background-color: rgb(70, 70, 70);">
         <ui:VisualElement name="contents" style="justify-content: center;">
@@ -15,7 +15,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label text="What is it?" display-tooltip-when-elided="true" name="Description" style="justify-content: center; align-items: auto; opacity: 0.32; font-size: 10px; -unity-text-align: upper-center; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
+                <ui:Label text="What is it?" display-tooltip-when-elided="true" name="description" style="justify-content: center; align-items: auto; opacity: 0.32; font-size: 10px; -unity-text-align: upper-center; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" />
                 <ui:VisualElement name="output" />
             </ui:VisualElement>
         </ui:VisualElement>

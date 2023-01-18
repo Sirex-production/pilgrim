@@ -26,10 +26,12 @@ namespace Ingame.Behaviour
         [FormerlySerializedAs("Position")] [HideInInspector]
         public Vector2 position = Vector2.zero;
 
-        [FormerlySerializedAs("Description")] [TextArea] public string description;
+        [TextArea] public string description;
+        
+        [HideInInspector]
+        public AudioService audioService;
         
         public EcsEntity entity;
-        public AudioService audioService;
         public EcsWorld world;
         
         private bool _isRunning = false;
