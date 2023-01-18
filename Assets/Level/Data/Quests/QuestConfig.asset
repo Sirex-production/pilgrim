@@ -25,3 +25,15 @@ MonoBehaviour:
       isCompletedByFindingItem: 1
       item: {fileID: 11400000, guid: acfbfe8f653b1ca40bd0b37c005bdf13, type: 2}
       isCompletedByEnteringTrigger: 0
+  - title: River transport
+    steps:
+    - description: Find the river boat
+      isCompletedByFindingItem: 0
+      item: {fileID: 0}
+      isCompletedByEnteringTrigger: 1
+  - title: Fuel for the boat
+    steps:
+    - description: Find fuel for the boat
+      isCompletedByFindingItem: 1
+      item: {fileID: 11400000, guid: b944404919f1492488095755edf1997c, type: 2}
+      isCompletedByEnteringTrigger: 0

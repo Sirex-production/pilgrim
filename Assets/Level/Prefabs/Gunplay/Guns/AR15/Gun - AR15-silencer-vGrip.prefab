@@ -8812,15 +8812,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4999980678496422, guid: 489aba68c9dfe9342accb1f3a0be4e5b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4999980678496422, guid: 489aba68c9dfe9342accb1f3a0be4e5b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4999980678496422, guid: 489aba68c9dfe9342accb1f3a0be4e5b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 198610676651546582, guid: 489aba68c9dfe9342accb1f3a0be4e5b, type: 3}
       propertyPath: playOnAwake

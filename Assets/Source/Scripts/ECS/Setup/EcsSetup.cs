@@ -229,6 +229,7 @@ namespace Ingame
                 .Add(new DragObjectSystem())
                 .Add(new BreakableSystem())
                 .Add(new LadderSystem())
+                .Add(new PerformInteractionWithItemSystem())
                 .Add(new OpenWithItemSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
