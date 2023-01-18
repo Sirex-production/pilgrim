@@ -914,6 +914,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870516443269045423, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: indexOfScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 870516443269045423, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: nameOfComics
+      value: ComicsB
+      objectReference: {fileID: 0}
     - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_overrideHtmlColors
       value: 0

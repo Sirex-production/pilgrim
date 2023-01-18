@@ -2,6 +2,7 @@
 using Ingame.Behaviour;
 using Ingame.Health;
 using Ingame.Movement;
+using Ingame.Player;
 using Leopotam.Ecs;
 using Unity.Mathematics;
 using UnityEngine;
@@ -29,12 +30,18 @@ namespace Ingame.Enemy
         private float chanceToHit = 0.9f;
         [SerializeField] 
         private float shootIntervalTime = 1.5f;
+        
         [SerializeField] 
-        private bool shouldIgnoreObstacles;
-
-        private float _minAccuracy = 0.15f;
-        private float _accurencyRate = 0.045f;
-        private float _currentIntervalTime;
+        [Range(0, 1)] 
+        private float chanceToInflictBleed  = 0.215f;
+        
+         [SerializeField] 
+         [Min(0)] 
+         private float damageOnBleed = 3.25f;
+         
+         private float _minAccuracy = 0.15f;
+         private float _accurencyRate = 0.045f;
+         private float _currentIntervalTime;
       
         protected override void ActOnStart()
         {
@@ -92,8 +99,14 @@ namespace Ingame.Enemy
                 }
             }
             
-            if (!enemyModel.target.TryGetComponent(out EntityReference targetEntityReference))
+            if (!enemyModel.target.TryGetComponent(out EntityReference targetEntityReference) || !targetEntityReference.Entity.Has<HealthComponent>())
                 return State.Failure;
+
+            if (Random.Range(0f, 1f) > chanceToInflictBleed && targetEntityReference.Entity.Has<PlayerModel>())
+            {
+                ref var bleedingComponent = ref targetEntityReference.Entity.Get<BleedingComponent>();
+                bleedingComponent.healthTakenPerSecond = damageOnBleed;
+            }
             
             targetEntityReference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
             return State.Success;
