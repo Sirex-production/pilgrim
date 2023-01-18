@@ -59,8 +59,10 @@ namespace Ingame.Behaviour{
         public void RemoveNode(Node node)
         {
             Nodes.Remove(node);
+#if UNITY_EDITOR
             AssetDatabase.RemoveObjectFromAsset(node);
             AssetDatabase.SaveAssets();
+#endif
         }
 
         public void AddChild(Node parent, Node child)

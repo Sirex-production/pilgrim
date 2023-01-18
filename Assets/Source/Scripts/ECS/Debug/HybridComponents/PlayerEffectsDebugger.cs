@@ -1,17 +1,14 @@
-﻿#if UNITY_EDITOR
-using UnityEngine;
+﻿using UnityEngine;
 using Ingame.Health;
 using Ingame.Player;
 using Leopotam.Ecs;
 using NaughtyAttributes;
 using Zenject;
-#endif
 
 namespace Ingame.Debug.HybridComponents
 {
     public sealed class PlayerEffectsDebugger : MonoBehaviour
     {
-#if UNITY_EDITOR
         [BoxGroup("Damage")] 
         [SerializeField] [Range(0, 100)] private float appliedDamage = 10f;
         [BoxGroup("Bleeding")] 
@@ -70,6 +67,5 @@ namespace Ingame.Debug.HybridComponents
             energyEffect.duration = duration;
             energyEffect.movingSpeedScale = movingSpeedScale;
         }
-#endif
     }
 }

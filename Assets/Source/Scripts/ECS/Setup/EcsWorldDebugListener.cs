@@ -1,5 +1,5 @@
-﻿using Leopotam.Ecs;
-using Support;
+﻿#if UNITY_EDITOR
+using Leopotam.Ecs;
 
 namespace Ingame
 {
@@ -31,3 +31,4 @@ namespace Ingame
         }
     }
 }
+#endif
