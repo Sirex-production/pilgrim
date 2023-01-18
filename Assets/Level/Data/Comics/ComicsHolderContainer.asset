@@ -59,5 +59,9 @@ MonoBehaviour:
       textsIntroductions:
       - 'I can''t belive I''m just blindly following a strager''s orders... '
       - Soon I will see where my destionation leads me.
+    - page: {fileID: 21300000, guid: 017a33893a6d95047bed6e27c5d69dce, type: 3}
+      textsIntroductions:
+      - I can't belive I blindly follow a strager's oders...
+      - Maybe... I think too much about it... My destination leads me...
     - page: {fileID: 21300000, guid: 7fe3f44bcc8ed5e4aa284313a4d459ee, type: 3}
       textsIntroductions: []
