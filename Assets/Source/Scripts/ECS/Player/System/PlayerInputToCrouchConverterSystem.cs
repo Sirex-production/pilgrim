@@ -1,4 +1,5 @@
-﻿using Ingame.Input;
+﻿using Ingame.Data.Player;
+using Ingame.Input;
 using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -7,11 +8,9 @@ namespace Ingame.Player
 {
     public sealed class PlayerInputToCrouchConverterSystem : IEcsRunSystem
     {
-        private const float ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE = 1.05f;
-        
         private readonly EcsFilter<PlayerModel, CharacterControllerModel> _playerFilter;
         private readonly EcsFilter<CrouchInputEvent> _crouchInputFilter;
-
+        
         public void Run()
         {
             if(_crouchInputFilter.IsEmpty())
@@ -24,8 +23,8 @@ namespace Ingame.Player
                 ref var playerCharacterControllerModel = ref _playerFilter.Get2(i);
                 ref var playerCrouchRequest = ref playerEntity.Get<ChangeCharacterControllerHeightRequest>();
                 var playerData = playerModel.playerMovementData;
-
-                if (playerModel.isCrouching && CheckIfPlayerCanStand(playerCharacterControllerModel))
+                
+                if (playerModel.isCrouching && CheckIfPlayerCanStand(playerCharacterControllerModel, playerModel.playerMovementData))
                     playerModel.isCrouching = false;
                 else
                     playerModel.isCrouching = true;
@@ -39,12 +38,12 @@ namespace Ingame.Player
             }
         }
 
-        private bool CheckIfPlayerCanStand(CharacterControllerModel playerCharacterControllerModel)
+        private bool CheckIfPlayerCanStand(CharacterControllerModel playerCharacterControllerModel, PlayerMovementData playerMovementData)
         {
             var characterController = playerCharacterControllerModel.characterController;
             var ray = new Ray(characterController.transform.position + characterController.center, Vector3.up);
             int layerMask = ~LayerMask.GetMask("PlayerStatic", "Ignore Raycast");
-            float freeSpaceToStandUp = playerCharacterControllerModel.initialHeight * ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE;
+            float freeSpaceToStandUp = playerCharacterControllerModel.initialHeight * playerMovementData.AdditionalHeightMultiplierToCheckObstaclesAbove;
 
             return !Physics.Raycast(ray, freeSpaceToStandUp, layerMask, QueryTriggerInteraction.Ignore);
         }

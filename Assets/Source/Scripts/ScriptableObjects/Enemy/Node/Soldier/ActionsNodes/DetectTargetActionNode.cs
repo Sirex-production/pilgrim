@@ -6,29 +6,30 @@ using UnityEngine;
 
 namespace Ingame.Enemy
 {
+    public enum TypeOfDetection
+    {
+        RayCast,
+        PhotoScanning
+    }
+    
     public class DetectTargetActionNode : ActionNode
     {
-        private enum TypeOfDetection
-        {
-            RayCast,
-            PhotoScanning
-        }
-
-        [SerializeField] private TypeOfDetection typeOfDetection;
-        [SerializeField] private float detectionRange = 45f;
-        [SerializeField] private float detectionAngle = 55;
-       
-        [ShowIf("IsRayCastDetectionUsed")]
-        [SerializeField] private LayerMask ignoredLayers;
+        [SerializeField] 
+        private TypeOfDetection typeOfDetection;
         
-        private Transform _transform;
-        private Transform _target;
+        [SerializeField] 
+        private float detectionRange = 45f;
+        
+        [SerializeField] 
+        private float detectionAngle = 55;
+        
+        [SerializeField] 
+        private Vector3 headPosition = new Vector3(0,0.4f,0);
+        
         private float _time;
         protected override void ActOnStart()
         { 
-            _transform =  Entity.Get<TransformModel>().transform;
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            _target =  enemyModel.Target;
+         
         
         }
 
@@ -39,58 +40,77 @@ namespace Ingame.Enemy
     
         protected override State ActOnTick()
         {
+            var enemyTransform =  entity.Get<TransformModel>().transform;
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            var target =  enemyModel.target;
             
-            if (Entity.Get<EnemyStateModel>().IsTargetDetected)
+            if (entity.Get<EnemyStateModel>().isTargetDetected)
             {
                 return State.Success;
             }
             
             //range
-            if ((_target.position - _transform.position).sqrMagnitude > detectionRange * detectionRange)
+            var distance = Vector3.Distance(target.position, enemyTransform.position);
+            if (distance > detectionRange)
             {
                 return State.Failure;
             }
 
             //Angle
-            var dir = _target.position - _transform.position;
+            var dir = target.position - enemyTransform.position;
             dir.y = 0;
-            var deltaAngle = Vector3.Angle(dir, _transform.forward);
+            var deltaAngle = Vector3.Angle(dir, enemyTransform.forward);
             if (deltaAngle >= detectionAngle || deltaAngle < 0)
             {
                 return State.Failure;
             }
 
             var state = State.Failure;
-            switch (typeOfDetection)
+            
+            if (typeOfDetection == TypeOfDetection.RayCast)
             {
-                case TypeOfDetection.RayCast:
-                    state = GetPlayerStateFromRayCast();
-                    break;
-                
-                case TypeOfDetection.PhotoScanning:
-                    state = GetPlayerStateFromPhotoScanning();
-                    break;
+                state = GetPlayerStateFromRayCast(target.position, enemyTransform, distance+1, ref enemyModel);
+                return state == State.Failure ? GetPlayerStateFromRayCast(target.position+ headPosition, enemyTransform, distance+1, ref enemyModel) : state;
             }
-      
-
+            
+            if (typeOfDetection == TypeOfDetection.PhotoScanning)
+            {
+                return GetPlayerStateFromPhotoScanning();
+            }
+              
+            
             return state;
         }
 
-        private State GetPlayerStateFromRayCast()
+        private State GetPlayerStateFromRayCast(Vector3 target, Transform enemy, float distance, ref EnemyStateModel enemyStateModel) 
         {
-            if (!Physics.Linecast(_transform.position, _target.position, out RaycastHit hit,ignoredLayers,QueryTriggerInteraction.Ignore))
+            var direction = (target - enemy.position).normalized;
+
+            var hits = Physics.RaycastAll(enemy.position, direction, distance);
+
+            if (hits.Length == 0)
                 return State.Failure;
-            Entity.Get<EnemyStateModel>().IsTargetDetected = true;
+            
+            foreach (var hit in hits)
+            {
+                var root = hit.collider.transform.root;
+                if (!root.CompareTag("Player") && root != enemy)
+                    return State.Failure;
+            }
+
+            enemyStateModel.isTargetDetected = true;
+            enemyStateModel.isTargetVisible = true;
+       
             return State.Success;
         }
         
         private State GetPlayerStateFromPhotoScanning()
         {
-            if ( Entity.Has<EnemyUseCameraRequest>())
+            if ( entity.Has<EnemyUseCameraRequest>())
             {
                 return State.Running;
             }
-            Entity.Get<EnemyUseCameraRequest>();
+            entity.Get<EnemyUseCameraRequest>();
             return State.Running;         
         }
 

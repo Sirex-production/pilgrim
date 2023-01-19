@@ -1,6 +1,10 @@
-﻿using Ingame.Enemy;
+﻿using System.Collections.Generic;
+using Ingame.Enemy;
 using Ingame.Movement;
 using Leopotam.Ecs;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
 using UnityEngine;
 
 namespace Ingame.Systems
@@ -8,106 +12,115 @@ namespace Ingame.Systems
     public sealed class SharedCameraDetectionSystem : IEcsRunSystem
     {   
         private const float ENEMY_HEIGHT = 1.55f;
+        private const int DETECTION_TEXTURE_WIDTH = 32;
+        private const int DETECTION_TEXTURE_HEIGHT = 32;
+        private const int DETECTION_THRESHOLD_IN_PIXELS = 4;
         
-        private readonly EcsFilter<EnemyStateModel,TransformModel,EnemyUseCameraRequest> _enemyFilter;
+        private readonly EcsFilter<EnemyStateModel, TransformModel, EnemyUseCameraRequest> _enemyFilter;
         //MUST BE only one shared camera!!!
-        private readonly EcsFilter<CameraComponent,SharedCameraModel> _cameraFilter;
+        private readonly EcsFilter<CameraComponent, SharedCameraModel> _cameraFilter;
+
+        private Dictionary<EcsEntity, Texture2D> _cashedTexturesForEnvironment = new ();
+        private Dictionary<EcsEntity, Texture2D> _cashedTexturesForAll = new ();
         
-        private int _width=32, _height=32;
-        private int _pixelDetectionThreshold = 10;
-        [Range(0,1)]
-        private float _percentageDetectionThreshold = 0.15f;
         public void Run()
         {
             if (_cameraFilter.IsEmpty() || _cameraFilter.IsEmpty())
-            {
                 return;
-            }
 
             ref var camera = ref _cameraFilter.Get1(0);
+            ref var cameraModel = ref _cameraFilter.Get2(0);
+            
             camera.Camera.backgroundColor = Color.black;
             
-            ref var cameraModel = ref _cameraFilter.Get2(0);
             foreach (var enemy in _enemyFilter)
             {
+                
+                ref var enemyEntity = ref _enemyFilter.GetEntity(enemy);
                 ref var model = ref _enemyFilter.Get1(enemy);
                 ref var transform = ref _enemyFilter.Get2(enemy);
+                var cameraTransform = camera.Camera.transform;
                 
                 //set camera position
-                camera.Camera.transform.parent = transform.transform;
-                camera.Camera.transform.localPosition = new Vector3(0, ENEMY_HEIGHT, 0);
-                camera.Camera.transform.localRotation = Quaternion.Euler(0,0,0);
+                cameraTransform.parent = transform.transform;
+                cameraTransform.localPosition = new Vector3(0, ENEMY_HEIGHT, 0);
+                camera.Camera.transform.LookAt(model.target);
            
-                var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment);
-                var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer);
-            
-                //1st phase of player recognition
-                var visibilityOfPlayer = GetNumberOfPixelsOfPLayer(camera.Camera, environment, all);
-                model.VisibleTagretPixels = visibilityOfPlayer;
-                if (visibilityOfPlayer>=_pixelDetectionThreshold)
-                {
-                    model.IsTargetDetected = true;
-                    _enemyFilter.GetEntity(enemy).Del<EnemyUseCameraRequest>();
-                    continue;
-                }
+               
+
+                if (!_cashedTexturesForEnvironment.ContainsKey(enemyEntity))
+                    _cashedTexturesForEnvironment.Add(enemyEntity, new Texture2D(DETECTION_TEXTURE_WIDTH, DETECTION_TEXTURE_HEIGHT, TextureFormat.RGBA32, false));
                 
-                //2nd phase of player recognition
-                var player = GetRenderTexture(camera.Camera,cameraModel.MaskForPlayer);
-                var percentageVision = GetPercentageVisibilityOfPixelsOfPLayer(camera.Camera, player, visibilityOfPlayer);
-                if (percentageVision >= _percentageDetectionThreshold)
-                {
-                    model.IsTargetDetected = true;
-                }
+                var environment = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironment, _cashedTexturesForEnvironment[enemyEntity]);
+                
+                if (!_cashedTexturesForAll.ContainsKey(enemyEntity))
+                    _cashedTexturesForAll.Add(enemyEntity, new Texture2D(DETECTION_TEXTURE_WIDTH, DETECTION_TEXTURE_HEIGHT, TextureFormat.RGBA32, false));
+                
+                var all = GetRenderTexture(camera.Camera,cameraModel.MaskForEnvironmentWithPlayer, _cashedTexturesForAll[enemyEntity]);
+                
+                var visibilityOfPlayer = GetNumberOfPixelsOfPLayer(environment, all);
+                
+                model.visibleTargetPixels = visibilityOfPlayer;
+                
                 _enemyFilter.GetEntity(enemy).Del<EnemyUseCameraRequest>();
+                
+                if (visibilityOfPlayer >= DETECTION_THRESHOLD_IN_PIXELS) 
+                    model.isTargetDetected = true;
             }
         }
 
-        private int GetNumberOfPixelsOfPLayer(Camera camera,Texture2D t1,Texture2D t2)
+        private int GetNumberOfPixelsOfPLayer(Texture2D t1, Texture2D t2)
         {
-            var enviroPixels = t1.GetPixels();
-            var allPixels = t2.GetPixels();
-            var displayedPlayersPixels = 0;
-            for (int i = 0; i < enviroPixels.Length ; i++)
-            {
-                if (enviroPixels[i] != allPixels[i])
-                {
-                    displayedPlayersPixels++;
-                }
-            }
+            var environmentPixels = new NativeArray<Color>(t1.GetPixels(), Allocator.TempJob);
+            var allPixels = new NativeArray<Color>(t2.GetPixels(), Allocator.TempJob);
+            var result = new NativeArray<int>(1, Allocator.TempJob);
 
-            return displayedPlayersPixels;
+            var jobHandle = new CountDifferentPixelsJob
+            {
+                pixels1 = environmentPixels,
+                pixels2 = allPixels,
+                result = result
+            }.Schedule(environmentPixels.Length, 64);
+            
+            jobHandle.Complete();
+
+            int amountOfDifferentPixels = result[0];
+
+            environmentPixels.Dispose();
+            allPixels.Dispose();
+            result.Dispose();
+
+            return amountOfDifferentPixels;
         }
 
-        private float GetPercentageVisibilityOfPixelsOfPLayer(Camera camera, Texture2D t,int numberOfVisiblePixels)
-        {    
-            var totalNumberOfPlayersPixels = 0f;
-            var bgc = camera.backgroundColor;
-            var playerPixels = t.GetPixels();
-            foreach (var c in playerPixels)
-            {
-                if (c!=bgc)
-                {
-                    totalNumberOfPlayersPixels ++;
-                }
-            }
-            if (totalNumberOfPlayersPixels == 0)
-            {
-                return 0;
-            }
-            return numberOfVisiblePixels/totalNumberOfPlayersPixels;
-        }
-        private Texture2D GetRenderTexture(Camera camera ,LayerMask mask)
+        private Texture2D GetRenderTexture(Camera camera, LayerMask mask, Texture2D texture)
         {
             camera.cullingMask = mask;
             camera.gameObject.SetActive(true);
             camera.Render();
             RenderTexture.active = camera.targetTexture;
-            var texture = new Texture2D(_width, _height, TextureFormat.RGBA32, false);
-            texture.ReadPixels(new(0,0,_width,_height),0,0);
+            
+            texture.ReadPixels(new(0,0,DETECTION_TEXTURE_WIDTH,DETECTION_TEXTURE_HEIGHT),0,0);
             texture.Apply();
             camera.gameObject.SetActive(false);     
+            
             return texture;
         }
+    }
+    
+    [BurstCompile]
+    internal struct CountDifferentPixelsJob : IJobParallelFor
+    {
+        [ReadOnly] public NativeArray<Color> pixels1;
+        [ReadOnly] public NativeArray<Color> pixels2;
+     
+        [NativeDisableParallelForRestriction] public NativeArray<int> result;
         
+        [BurstCompile]
+        public void Execute(int index)
+        {
+            if (pixels1[index] != pixels2[index])
+                result[0]++;
+        }
     }
 }

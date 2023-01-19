@@ -31,8 +31,12 @@ namespace Ingame.Enemy
 
         [SerializeField] 
         private TypeOfCover typeOfCover;
+        
         [SerializeField] 
         private TypeOfCoverSpot typeOfCoverSpot;
+
+        [SerializeField] 
+        private float maximumDistanceToFindCover = 5;
 
         private NavMeshPath _shortestPath ;
         private float _minDistance;
@@ -53,57 +57,57 @@ namespace Ingame.Enemy
         
         protected override State ActOnTick()
         {
-            ref var navAgent = ref Entity.Get<NavMeshAgentModel>();
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
+            ref var navAgent = ref entity.Get<NavMeshAgentModel>();
+            ref var enemy = ref entity.Get<EnemyStateModel>();
             
 
             switch ((typeOfCoverSpot,typeOfCover))
             {
                 case (TypeOfCoverSpot.Dynamic,TypeOfCover.Solid):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedCovers,false);
                     break;
                 
                 case (TypeOfCoverSpot.Dynamic,TypeOfCover.Transparent):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedTransparentCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedTransparentCovers,false);
                     break;
                 
                 case (TypeOfCoverSpot.Fixed,TypeOfCover.Solid):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.Covers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.covers,true);
                     break;
                 
                 case (TypeOfCoverSpot.Fixed,TypeOfCover.Transparent):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.TransparentCovers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.transparentCovers,true);
                     break;
                 //mixed
                 case (TypeOfCoverSpot.Both,TypeOfCover.Solid):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.Covers,true);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.covers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedCovers,false);
                     break;
                 
                 case (TypeOfCoverSpot.Both,TypeOfCover.Transparent):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedTransparentCovers,false);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.TransparentCovers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedTransparentCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.transparentCovers,true);
                     break;
                 
                 case (TypeOfCoverSpot.Fixed,TypeOfCover.Both):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.TransparentCovers,true);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.Covers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.transparentCovers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.covers,true);
                     break;
                 
                 case (TypeOfCoverSpot.Dynamic,TypeOfCover.Both):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedTransparentCovers,false);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedTransparentCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedCovers,false);
                     break;
                 
                 case (TypeOfCoverSpot.Both,TypeOfCover.Both):
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedCovers,false);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.UndefinedTransparentCovers,false);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.Covers,true);
-                    ComparePaths(ref enemy,navAgent.Agent,enemy.TransparentCovers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.undefinedTransparentCovers,false);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.covers,true);
+                    ComparePaths(ref enemy,navAgent.Agent,enemy.transparentCovers,true);
                     break;
             }
             //checks if cover is determined
-            if (_minDistance>=float.MaxValue)
+            if (_minDistance>=float.MaxValue || _minDistance<maximumDistanceToFindCover)
             {
                 return State.Failure;
             }
@@ -114,7 +118,7 @@ namespace Ingame.Enemy
 
         private void ComparePaths(ref EnemyStateModel enemy, NavMeshAgent navAgent,HashSet<Transform> transforms,bool hasDeterminedPoints)
         {
-            var shortestDistance = GetShortestPath(transforms, navAgent, enemy.Target,hasDeterminedPoints);
+            var shortestDistance = GetShortestPath(transforms, navAgent, enemy.target,hasDeterminedPoints);
             if (shortestDistance.Item1 && _minDistance> shortestDistance.Item2)
             {
                 _shortestPath = shortestDistance.Item4;
@@ -139,7 +143,6 @@ namespace Ingame.Enemy
                 //undefined cover
                 if (!hasDeterminedPoints)
                 {
-                    //var size = transform.GetComponent<Renderer>().bounds.size
                     points.Add(transform.position+(transform.position-target.position).normalized);
                 }
                 //defined cover

@@ -1,6 +1,7 @@
 ﻿using Ingame.Animation;
 using Ingame.Hud;
 using Ingame.Inventory;
+using Ingame.LevelManagement;
 using Ingame.Quests;
 using Ingame.SupportCommunication;
 using LeoEcsPhysics;
@@ -20,8 +21,6 @@ namespace Ingame.Utils
         private readonly EcsFilter<OnCollisionExitEvent> _collisionExitEventFilter;
         //Support messages
         private readonly EcsFilter<LevelEndRequest> _levelEndRequestFilter;
-        //Utils
-        private readonly EcsFilter<UpdateSettingsRequest> _updateSettingsRequestFilter;
         //Gunplay
         private readonly EcsFilter<RecoilRequest> _recoilRequestFilter;
         //Animation
@@ -31,6 +30,8 @@ namespace Ingame.Utils
         private readonly EcsFilter<PerformShutterDelayAnimationCallbackEvent> _performShutterDelayCallbackFilter;
         //Quest
         private readonly EcsFilter<QuestsAreUpdatedEvent> _questsAreUpdatedEventFilter;
+        //Level management
+        private readonly EcsFilter<GameOverRequest> _gameOverComponentFilter;
 
         public void Run()
         {
@@ -75,12 +76,6 @@ namespace Ingame.Utils
                 ref var eventEntity = ref _levelEndRequestFilter.GetEntity(i);
                 eventEntity.Del<LevelEndRequest>();
             }
-            
-            foreach (var i in _updateSettingsRequestFilter)
-            {
-                ref var eventEntity = ref _updateSettingsRequestFilter.GetEntity(i);
-                eventEntity.Del<UpdateSettingsRequest>();
-            }
 
             foreach (var i in _recoilRequestFilter)
             {
@@ -116,6 +111,12 @@ namespace Ingame.Utils
             {
                 ref var eventEntity = ref _questsAreUpdatedEventFilter.GetEntity(i);
                 eventEntity.Del<QuestsAreUpdatedEvent>();
+            }
+            
+            foreach (var i in _gameOverComponentFilter)
+            {
+                ref var eventEntity = ref _gameOverComponentFilter.GetEntity(i);
+                eventEntity.Del<GameOverRequest>();
             }
         }
     }

@@ -6,7 +6,7 @@ namespace Ingame.Movement
 {
     public sealed class CharacterControllerHeightChangingSystem : IEcsRunSystem
     {
-        private const float ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE = 1.05f;
+        private const float ADDITIONAL_HEIGHT_MULTIPLIER_TO_CHECK_OBSTACLES_ABOVE = 0.825f;
 
         private readonly EcsFilter<CharacterControllerModel, ChangeCharacterControllerHeightRequest> _crouchFilter;
 

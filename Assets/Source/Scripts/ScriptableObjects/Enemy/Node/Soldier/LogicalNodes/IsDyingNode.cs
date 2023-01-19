@@ -1,4 +1,5 @@
 ﻿using Ingame.Behaviour;
+using Ingame.Health;
 using Leopotam.Ecs;
 
 namespace Ingame.Enemy
@@ -17,7 +18,9 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            return Entity.Get<EnemyStateModel>().IsDying ? State.Success : State.Failure;
+            ref var enemyModel = ref  entity.Get<EnemyStateModel>();
+            enemyModel.isDying =  entity.Get<HealthComponent>().currentHealth<2;
+            return enemyModel.isDying ? State.Success : State.Failure;
         }
     }
 }

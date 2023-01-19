@@ -1,15 +1,28 @@
-﻿using Ingame.Behaviour;
+﻿using System;
+using Ingame.Behaviour;
 using Ingame.Health;
 using Ingame.Movement;
+using Ingame.Player;
 using Leopotam.Ecs;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Ingame.Enemy
 {
     public class AttackActionNode : ActionNode
     {
         
+        enum TypeOfAttack
+        {
+            UnfairAccuracy,
+            ProgressiveAccuracy,
+            SimplifiedRayCast
+        }
+
+        [SerializeField] 
+        private TypeOfAttack typeOfAttack;
         [SerializeField] 
         private float damageOnHit;
         [SerializeField] 
@@ -17,19 +30,28 @@ namespace Ingame.Enemy
         private float chanceToHit = 0.9f;
         [SerializeField] 
         private float shootIntervalTime = 1.5f;
+        
         [SerializeField] 
-        private LayerMask ignoredLayers;
-
-        [SerializeField] private bool shouldIgnoreObstacles;
-        private float _currentIntervalTime;
+        [Range(0, 1)] 
+        private float chanceToInflictBleed  = 0.215f;
+        
+         [SerializeField] 
+         [Min(0)] 
+         private float damageOnBleed = 3.25f;
+         
+         private float _minAccuracy = 0.15f;
+         private float _accurencyRate = 0.045f;
+         private float _currentIntervalTime;
+      
         protected override void ActOnStart()
         {
             _currentIntervalTime = shootIntervalTime;
+            entity.Get<EnemyStateModel>().isAttacking = true;
         }
 
         protected override void ActOnStop()
         {
-          
+            entity.Get<EnemyStateModel>().isAttacking = false;
         }
         /// <summary>
         /// Try to attack after [shootIntervalTime] time
@@ -37,13 +59,9 @@ namespace Ingame.Enemy
         /// <returns>Return Success if hit target, Failure if not and Running if it's still on a cooldown</returns>
         protected override State ActOnTick()
         {
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            ref var transform = ref Entity.Get<TransformModel>();
-            
-            var lookPos = enemyModel.Target.position - transform.transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, rotation, 1.5f);
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
+
             //cooldown
             if (_currentIntervalTime>0)
             {
@@ -51,30 +69,46 @@ namespace Ingame.Enemy
                 return State.Running;
             }
             
-            enemyModel.CurrentAmmo -= 1;
+            enemyModel.currentAmmo -= 1;
             
             //hit chance - do miss
-            if (chanceToHit < Random.Range(0f, 1f))
+            audioService.Play3D("gun","shoot",transformModel.transform, true);
+            if (typeOfAttack == TypeOfAttack.UnfairAccuracy)
             {
-                return State.Failure;
-            }
-            
-           
-
-            //shoot
-            if (shouldIgnoreObstacles)
-            {
-                
-            }
-            if (!Physics.Linecast(transform.transform.position, enemyModel.Target.position, out RaycastHit hit, ignoredLayers, QueryTriggerInteraction.Ignore))
-            {
-                return State.Failure;
+                if (chanceToHit < Random.Range(0f, 1f))
+                {
+                    return State.Failure;
+                }
             }
 
-            if (!hit.transform.root.CompareTag("Player")) return State.Failure;
+            if (typeOfAttack == TypeOfAttack.ProgressiveAccuracy)
+            {
+                float chanceToHit = enemyModel.visibleTargetPixels * _accurencyRate;
+                float totalAcc = Math.Clamp(chanceToHit,_minAccuracy,this.chanceToHit);
+                if (totalAcc < Random.Range(0f, 1f))
+                {
+                    return State.Failure;
+                }
+            }
             
-            hit.transform.root.TryGetComponent(out EntityReference reference);
-            reference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
+            if (typeOfAttack == TypeOfAttack.SimplifiedRayCast)
+            {
+                if (chanceToHit < Random.Range(0f, 1f) || !enemyModel.isTargetVisible)
+                {
+                    return State.Failure;
+                }
+            }
+            
+            if (!enemyModel.target.TryGetComponent(out EntityReference targetEntityReference) || !targetEntityReference.Entity.Has<HealthComponent>())
+                return State.Failure;
+
+            if (Random.Range(0f, 1f) > chanceToInflictBleed && targetEntityReference.Entity.Has<PlayerModel>())
+            {
+                ref var bleedingComponent = ref targetEntityReference.Entity.Get<BleedingComponent>();
+                bleedingComponent.healthTakenPerSecond = damageOnBleed;
+            }
+            
+            targetEntityReference.Entity.Get<HealthComponent>().currentHealth -= damageOnHit;
             return State.Success;
 
         }

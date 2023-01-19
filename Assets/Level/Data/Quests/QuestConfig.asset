@@ -13,16 +13,33 @@ MonoBehaviour:
   m_Name: QuestConfig
   m_EditorClassIdentifier: 
   quests:
-  - title: Quest 0
+  - title: A way out
     steps:
-    - description: Step 0-0
-    - description: Step 0-1
-    - description: Step 0-2
-  - title: Quest 1
+    - description: FInd  a way to pass the border wall
+      isCompletedByFindingItem: 0
+      item: {fileID: 0}
+      isCompletedByEnteringTrigger: 1
+  - title: Proper tool
     steps:
-    - description: Step 2-0
-    - description: Step 2-1
-  nameAliesToTreeIndex:
-    m_keys:
-    - FindTree
-    m_values: 00000000
+    - description: Find a way to break the pipe grates
+      isCompletedByFindingItem: 1
+      item: {fileID: 11400000, guid: acfbfe8f653b1ca40bd0b37c005bdf13, type: 2}
+      isCompletedByEnteringTrigger: 0
+  - title: River transport
+    steps:
+    - description: Find the river boat
+      isCompletedByFindingItem: 0
+      item: {fileID: 0}
+      isCompletedByEnteringTrigger: 1
+  - title: Fuel for the boat
+    steps:
+    - description: Find fuel for the boat
+      isCompletedByFindingItem: 1
+      item: {fileID: 11400000, guid: b944404919f1492488095755edf1997c, type: 2}
+      isCompletedByEnteringTrigger: 0
+  - title: Break pipe grate
+    steps:
+    - description: Break pipe grate
+      isCompletedByFindingItem: 0
+      item: {fileID: 11400000, guid: b944404919f1492488095755edf1997c, type: 2}
+      isCompletedByEnteringTrigger: 0

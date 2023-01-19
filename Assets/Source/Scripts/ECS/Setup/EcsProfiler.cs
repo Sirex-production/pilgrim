@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
@@ -45,3 +46,4 @@ namespace Ingame
         }
     }
 }
+#endif

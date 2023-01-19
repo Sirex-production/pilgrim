@@ -1,25 +1,24 @@
 ﻿using Ingame.Audio;
+using Ingame.SaveLoad;
 using Leopotam.Ecs;
+using NaughtyAttributes;
+using UnityEngine;
 using Zenject;
 
 namespace Ingame.DI.Installers
 {
     public class EcsInstaller : MonoInstaller
-    {
+    { 
+        
         public override void InstallBindings()
         {
             var world = new EcsWorld();
             var updateSystems = new EcsSystems(world);
             var fixedUpdateSystems = new EcsSystems(world);
-            var audioController = new AudioController(world);
-            
+     
+
             Container.Bind<EcsWorld>()
                 .FromInstance(world)
-                .AsSingle()
-                .NonLazy();
-
-            Container.Bind<AudioController>()
-                .FromInstance(audioController)
                 .AsSingle()
                 .NonLazy();
             
@@ -34,7 +33,6 @@ namespace Ingame.DI.Installers
                 .FromInstance(fixedUpdateSystems)
                 .AsCached()
                 .NonLazy();
-            
         }
     }
 }

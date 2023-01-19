@@ -25,12 +25,12 @@ namespace Ingame.Enemy
         {
 
             /*
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            var target = enemyModel.Target.position;
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            var target = enemyModel.target.position;
             
             float distance = float.MaxValue;
             Transform t = null;*/
-//enemyModel.Covers
+//enemyModel.covers
          
             
             

@@ -18,16 +18,16 @@ namespace Ingame.Editor
         public Port Input;
         public Port Output;
 
-        private string _nameOfDescription = "Description";
+        private string _nameOfDescription = "description";
         
         public NodeView(Node node) : base("Assets/Source/Scripts/Tools/BehaviourTree/Editor/View/NodeView.uxml")
         {
             Node = node;
             this.title = node.name;
-            this.viewDataKey = node.Guid;
+            this.viewDataKey = node.guid;
             
-            style.left = node.Position.x;
-            style.top = node.Position.y;
+            style.left = node.position.x;
+            style.top = node.position.y;
 
             CreateInputPorts();
             CreateOutputPorts();
@@ -38,6 +38,10 @@ namespace Ingame.Editor
         private void AdjustNodeWithNodeViewBinding()
         {
             var description = this.Q<Label>(_nameOfDescription);
+            
+            if(description == null)
+                return;
+            
             description.bindingPath = _nameOfDescription;
             description.Bind(new SerializedObject(Node));
         }
@@ -46,8 +50,8 @@ namespace Ingame.Editor
         {
             base.SetPosition(newPos);
            
-            Node.Position.x = newPos.xMin;
-            Node.Position.y = newPos.yMin;
+            Node.position.x = newPos.xMin;
+            Node.position.y = newPos.yMin;
         }
 
         public override void OnSelected()
@@ -98,7 +102,7 @@ namespace Ingame.Editor
             var comp = Node as CompositeNode;
             if (comp)
             {
-                comp.Children.Sort((a,b)=> a.Position.x < b.Position.x ? -1 : 1);
+                comp.Children.Sort((a,b)=> a.position.x < b.position.x ? -1 : 1);
             }
         }
         public void UpdateState()

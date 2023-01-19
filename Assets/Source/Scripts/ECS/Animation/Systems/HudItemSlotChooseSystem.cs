@@ -18,11 +18,16 @@ namespace Ingame.Animation
 
         public void Init()
         {
+            if(_itemsContainerFilter.IsEmpty())
+                return;
+            
             ref var itemsContainerComponent = ref _itemsContainerFilter.Get1(0);
             ref var itemsContainerAnimator = ref _itemsContainerFilter.Get2(0);
 
             itemsContainerComponent.isShown = true;
             itemsContainerAnimator.animator.SetBool("IsShown", itemsContainerComponent.isShown);
+
+            ShowFirstAvailableWeapon();
         }
 
         public void Run()
@@ -98,6 +103,26 @@ namespace Ingame.Animation
                     else
                         hudItemEntity.Get<AwaitsToBeHiddenTag>();
             }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ShowFirstAvailableWeapon()
+        {
+            ref var itemsContainerAnimator = ref _itemsContainerFilter.Get2(0);
+            
+            foreach (var i in _hudItemsFilter)
+            {
+                ref var hudItemEntity = ref _hudItemsFilter.GetEntity(i);
+                
+                if(hudItemEntity.Has<BackpackModel>())
+                    hudItemEntity.Get<AwaitsToBeHiddenTag>();
+                
+                if(hudItemEntity.Has<FirstHudItemSlotTag>())
+                    hudItemEntity.Get<AwaitsToBeShownTag>();
+            }
+            
+            itemsContainerAnimator.animator.ResetTrigger("Switch");
+            itemsContainerAnimator.animator.SetTrigger("Switch");
         }
     }
 }

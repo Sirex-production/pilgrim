@@ -14,7 +14,7 @@ namespace Ingame.Enemy
         private Transform _position;
         protected override void ActOnStart()
         {
-             _position = Entity.Get<TransformModel>().transform;
+             _position = entity.Get<TransformModel>().transform;
         }
 
         protected override void ActOnStop()
@@ -24,27 +24,25 @@ namespace Ingame.Enemy
 
         protected override State ActOnTick()
         {
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
-            enemy.LastRememberedNoises ??= new List<Vector3>();
+            ref var enemy = ref entity.Get<EnemyStateModel>();
+            enemy.lastRememberedNoises ??= new List<Vector3>();
 
-            for (int i = enemy.LastRememberedNoises.Count-1; i >=0 ; i--)
+            for (int i = enemy.lastRememberedNoises.Count-1; i >=0 ; i--)
             {
-                if (Vector3.Distance(_position.position, enemy.LastRememberedNoises[i]) > noiseDetectionRange)
+                if (Vector3.Distance(_position.position, enemy.lastRememberedNoises[i]) > noiseDetectionRange)
                 {
-                    enemy.LastRememberedNoises.RemoveAt(i);
+                    enemy.lastRememberedNoises.RemoveAt(i);
                     continue;
                 }
 
-                if (!enemy.IsTargetDetected)
+                if (!enemy.isTargetDetected)
                 {
-                    enemy.HasDetectedNoises = true;
-                    enemy.NoisePosition = enemy.LastRememberedNoises[i];
+                    enemy.hasDetectedNoises = true;
+                    enemy.noisePosition = enemy.lastRememberedNoises[i];
                 }
-                enemy.LastRememberedNoises.RemoveAt(i);
+                enemy.lastRememberedNoises.RemoveAt(i);
             }
-           
-           
-            //Noise Detection
+            
             return State.Success;
         }
     }

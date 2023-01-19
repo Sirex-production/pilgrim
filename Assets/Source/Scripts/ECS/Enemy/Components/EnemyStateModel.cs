@@ -1,54 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ingame.Enemy
 {
     [Serializable]
     public struct EnemyStateModel
     {
-        //hp
         [Header("Hp")]
-        public bool IsDying;
-        public bool IsDead;
-        public bool IsTakingDamage;
-        public float LastRememberedHP;
-        public float CurrentRememberedHP;
+        public bool isDying;
+        public bool isDead;
+        public bool isTakingDamage;
         
-        //attack
-        [Header("Ammo")] 
-        public int MaxAmmo;
-        public int CurrentAmmo;
+        [Header("Attack")] 
+        public bool isAttacking;
+        public bool isReloading;
+        public bool isPatrolling;
+        public bool isHiding;
+        public int maxAmmo;
+        public int currentAmmo;
         
-        //detection of player
         [Header("Detection")]
-        public bool IsTargetDetected;
-        public Transform Target;
+        public bool isTargetDetected;
+        public Transform target;
+        public int visibleTargetPixels;
+        public bool isTargetVisible;
+        public bool shouldSearchForTarget;
+        public bool hasDetectedNoises;
+        public bool hasLostTarget;
+        public Vector3? noisePosition;
+        public List<Vector3> lastRememberedNoises;
 
-        public int VisibleTagretPixels;
-        //special detections
-        public bool ShouldSearchForTarget;
-        public bool HasDetectedNoises;
-        public bool HasLostTarget;
+        [Header("Movement")] 
+        public bool isCrouching;
         
-        public Vector3? NoisePosition;
-        public List<Vector3> LastRememberedNoises;
-        
-        //public Vector3 Location;
-        
-        //Covers
-        public HashSet<Transform> Covers;
-        public HashSet<Transform> UndefinedCovers;
-
-        //Transparent Covers
-        public HashSet<Transform> TransparentCovers;
-        public HashSet<Transform> UndefinedTransparentCovers;
-        
-        //Occupied Covers
+        [Header("Covers")]
         public static HashSet<Transform> OccupiedUndefinedCovers;
         public static HashSet<Transform> OccupiedCovers;
         
-        public Vector3 Cover;
+        public HashSet<Transform> covers;
+        public HashSet<Transform> undefinedCovers;
+        
+        public HashSet<Transform> transparentCovers;
+        public HashSet<Transform> undefinedTransparentCovers;
+        public Vector3 cover;
 
     }
 }

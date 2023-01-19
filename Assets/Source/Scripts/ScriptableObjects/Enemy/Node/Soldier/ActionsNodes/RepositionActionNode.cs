@@ -1,6 +1,5 @@
 ﻿using System;
 using Ingame.Behaviour;
-using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,19 +9,13 @@ namespace Ingame.Enemy
     [Serializable]
     public class RepositionActionNode : ActionNode
     {
-        private enum TypeOfReposition
-        {
-            LookAtPoint,
-            LookAtTarget
-        }
-
-        [SerializeField] 
-        private TypeOfReposition _typeOfReposition;
-        
+        [SerializeField] private float minDistanceBetweenEnemyAndPlayer = 6;
         private NavMeshAgent _agent;
+        private Transform _target;
         protected override void ActOnStart()
         {
-            _agent = Entity.Get<NavMeshAgentModel>().Agent;
+            _agent = entity.Get<NavMeshAgentModel>().Agent;
+            _target = entity.Get<EnemyStateModel>().target;
             _agent.isStopped = false;
         }
 
@@ -30,7 +23,7 @@ namespace Ingame.Enemy
         {
             if (_agent == null)
             {
-                Entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
+                entity.Get<NavMeshAgentModel>().Agent.isStopped = true;
             }
             else
             {
@@ -43,19 +36,9 @@ namespace Ingame.Enemy
             #if UNITY_EDITOR
                 UnityEngine.Debug.DrawLine(_agent.transform.position,_agent.destination,Color.green);
             #endif
-            if (_agent != null && _agent.isStopped )
+            if (_agent != null && _agent.isStopped)
             {
                 _agent.isStopped = false;
-            }
-            if (_typeOfReposition == TypeOfReposition.LookAtTarget)
-            {
-                ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-                ref var transform = ref Entity.Get<TransformModel>();
-            
-                var lookPos = enemyModel.Target.position - transform.transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.transform.rotation = Quaternion.Slerp(transform.transform.rotation, rotation, 1.5f);
             }
             
             if (_agent.pathPending)
@@ -65,9 +48,14 @@ namespace Ingame.Enemy
             
             if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
+                _agent.velocity = Vector3.zero;
                 return State.Success;
             }
-            
+            if(_target !=null && Vector3.SqrMagnitude(_agent.transform.position-_target.position)<minDistanceBetweenEnemyAndPlayer*minDistanceBetweenEnemyAndPlayer)
+            {
+                _agent.velocity = Vector3.zero;
+                return State.Success;
+            }
             return _agent.pathStatus == NavMeshPathStatus.PathInvalid ? State.Failure : State.Running;
         }
     }

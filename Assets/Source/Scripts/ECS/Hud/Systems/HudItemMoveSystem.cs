@@ -55,8 +55,7 @@ namespace Ingame.Hud
                     
                     nextLocalPos += GetLocalPositionOffsetDueToPlayerRotation(itemData, deltaRotation);
                 }
-
-                nextLocalPos *= Time.deltaTime;
+                
                 nextLocalPos += itemTransform.localPosition;
                 
                 nextLocalPos.x = Mathf.Clamp(nextLocalPos.x, initialLocalPosX + itemData.MinMaxMovementOffsetX.x, initialLocalPosX + itemData.MinMaxMovementOffsetX.y);
@@ -121,10 +120,9 @@ namespace Ingame.Hud
         private Vector3 GetLocalPositionOffsetDueToPlayerRotation(HudItemData itemData, in Vector2 deltaRotation)
         {
             Vector3 positionOffset = Vector3.zero;
-            positionOffset.x += -deltaRotation.x * itemData.MoveSpeed * Time.deltaTime;
-
-            if (itemData.IsItemMovedBackToInitialPosition) 
-                positionOffset.x = Mathf.Lerp(positionOffset.x, 0, itemData.MoveToInitialPosSpeed * Time.deltaTime);
+            
+            positionOffset.x += itemData.IsMovedHorizontally ? -deltaRotation.x * itemData.MoveSpeed * Time.deltaTime : 0f;
+            positionOffset.y += itemData.IsMovedVertically ? -deltaRotation.y * itemData.MoveSpeed * Time.deltaTime : 0f;
 
             return positionOffset;
         }

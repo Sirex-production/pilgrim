@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ingame.Animation;
 using Ingame.Behaviour;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -11,9 +12,6 @@ namespace Ingame.Enemy
 {
     public sealed class PatrolActionNode : ActionNode
     {
-
-        [SerializeField] private float speed;
-        [SerializeField] private float stoppingDistance;
         
         private int _wayPointIndex = -1;
         private Transform _point;
@@ -23,11 +21,12 @@ namespace Ingame.Enemy
         protected override void ActOnStart()
         {
             
-            ref var waypoints = ref Entity.Get<WayPointsComponent>().WayPoints;
-            _agent = Entity.Get<NavMeshAgentModel>().Agent;
+            ref var waypoints = ref entity.Get<WayPointsComponent>().WayPoints;
+            _agent = entity.Get<NavMeshAgentModel>().Agent;
             
             if (waypoints == null || waypoints.Count <=0)
             {
+                entity.Get<EnemyStateModel>().isPatrolling = false;
                 _stopPatrolling = true;
                 return;
             }
@@ -36,10 +35,8 @@ namespace Ingame.Enemy
             
           
             _agent.destination = _point.position;
-            _agent.speed = speed;
-            _agent.stoppingDistance = stoppingDistance;
             _agent.isStopped = false;
-            _animator = Entity.Get<AnimatorModel>().Animator;
+            entity.Get<EnemyStateModel>().isPatrolling = true;
 
         }
 
@@ -49,6 +46,8 @@ namespace Ingame.Enemy
             {
                 return;
             }
+
+            entity.Get<EnemyStateModel>().isPatrolling = false;
             _agent.isStopped = true;
         }
 
@@ -58,8 +57,7 @@ namespace Ingame.Enemy
             {
                 return State.Failure;
             }
-      
-            // _animator.Play("WALK_FORWARD");
+            
             if (_agent.pathPending)
             {
                 return State.Running; 

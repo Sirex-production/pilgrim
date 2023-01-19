@@ -833,6 +833,102 @@ namespace Support
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""24cb0590-4ce8-47f5-a782-00ed4ccc7dd0"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9321e1cd-15ea-410d-8676-24c77ae2f96d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e4380344-905c-401e-b0eb-1758702eb1b0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Comics"",
+            ""id"": ""398d02fd-6084-4b40-a4fd-c94e04cf826b"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbe1b317-ebb4-44f1-b4c2-b9807a1d234f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e24c1ac-d3f3-4149-895c-515822b7270d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb6140ec-749b-46a1-b5b7-b7c1a83b2ae0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.35)"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f37d1c5f-44b9-4683-a4a1-afe2bb6afad1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1e4cc99-1394-4255-863f-033eb81fb962"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1443b45c-c6c3-4946-ae55-884bfbd45fd6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -862,6 +958,14 @@ namespace Support
             m_FPS_HideGun = m_FPS.FindAction("HideGun", throwIfNotFound: true);
             m_FPS_ShowActiveQuest = m_FPS.FindAction("ShowActiveQuest", throwIfNotFound: true);
             m_FPS_ShowAllQuests = m_FPS.FindAction("ShowAllQuests", throwIfNotFound: true);
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+            // Comics
+            m_Comics = asset.FindActionMap("Comics", throwIfNotFound: true);
+            m_Comics_Next = m_Comics.FindAction("Next", throwIfNotFound: true);
+            m_Comics_Back = m_Comics.FindAction("Back", throwIfNotFound: true);
+            m_Comics_Skip = m_Comics.FindAction("Skip", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1126,6 +1230,88 @@ namespace Support
             }
         }
         public FPSActions @FPS => new FPSActions(this);
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private IUIActions m_UIActionsCallbackInterface;
+        private readonly InputAction m_UI_Pause;
+        public struct UIActions
+        {
+            private @StationaryInput m_Wrapper;
+            public UIActions(@StationaryInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Pause => m_Wrapper.m_UI_Pause;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void SetCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterface != null)
+                {
+                    @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                }
+                m_Wrapper.m_UIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
+                }
+            }
+        }
+        public UIActions @UI => new UIActions(this);
+
+        // Comics
+        private readonly InputActionMap m_Comics;
+        private IComicsActions m_ComicsActionsCallbackInterface;
+        private readonly InputAction m_Comics_Next;
+        private readonly InputAction m_Comics_Back;
+        private readonly InputAction m_Comics_Skip;
+        public struct ComicsActions
+        {
+            private @StationaryInput m_Wrapper;
+            public ComicsActions(@StationaryInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Next => m_Wrapper.m_Comics_Next;
+            public InputAction @Back => m_Wrapper.m_Comics_Back;
+            public InputAction @Skip => m_Wrapper.m_Comics_Skip;
+            public InputActionMap Get() { return m_Wrapper.m_Comics; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ComicsActions set) { return set.Get(); }
+            public void SetCallbacks(IComicsActions instance)
+            {
+                if (m_Wrapper.m_ComicsActionsCallbackInterface != null)
+                {
+                    @Next.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Next.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Next.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnNext;
+                    @Back.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Back.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Back.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnBack;
+                    @Skip.started -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                    @Skip.performed -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                    @Skip.canceled -= m_Wrapper.m_ComicsActionsCallbackInterface.OnSkip;
+                }
+                m_Wrapper.m_ComicsActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Next.started += instance.OnNext;
+                    @Next.performed += instance.OnNext;
+                    @Next.canceled += instance.OnNext;
+                    @Back.started += instance.OnBack;
+                    @Back.performed += instance.OnBack;
+                    @Back.canceled += instance.OnBack;
+                    @Skip.started += instance.OnSkip;
+                    @Skip.performed += instance.OnSkip;
+                    @Skip.canceled += instance.OnSkip;
+                }
+            }
+        }
+        public ComicsActions @Comics => new ComicsActions(this);
         public interface IFPSActions
         {
             void OnMovementX(InputAction.CallbackContext context);
@@ -1151,6 +1337,16 @@ namespace Support
             void OnHideGun(InputAction.CallbackContext context);
             void OnShowActiveQuest(InputAction.CallbackContext context);
             void OnShowAllQuests(InputAction.CallbackContext context);
+        }
+        public interface IUIActions
+        {
+            void OnPause(InputAction.CallbackContext context);
+        }
+        public interface IComicsActions
+        {
+            void OnNext(InputAction.CallbackContext context);
+            void OnBack(InputAction.CallbackContext context);
+            void OnSkip(InputAction.CallbackContext context);
         }
     }
 }

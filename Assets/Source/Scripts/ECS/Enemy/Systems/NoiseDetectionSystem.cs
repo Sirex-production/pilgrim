@@ -19,9 +19,9 @@ namespace Ingame.Systems
                 foreach (var j in _enemyFilter)
                 {
                     ref var enemy = ref _enemyFilter.Get1(j);
-                    if (enemy.IsTargetDetected) continue;
-                    enemy.LastRememberedNoises ??= new List<Vector3>();
-                    enemy.LastRememberedNoises.Add(noise.Position);
+                    if (enemy.isTargetDetected) continue;
+                    enemy.lastRememberedNoises ??= new List<Vector3>();
+                    enemy.lastRememberedNoises.Add(noise.Position);
                 }
                 _noiseFilter.GetEntity(i).Destroy();
             }

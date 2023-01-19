@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826733d9b6d34b92bc285a1b02ce810d, type: 3}
+  m_Name: VfxSurfaceTypeConfig
+  m_EditorClassIdentifier: 
+  defaultSurfaceVfxData:
+    bulletHoleMaterials:
+    - {fileID: 2100000, guid: e5f79c7975393bd40bcf391b6e93471a, type: 2}
+    - {fileID: 2100000, guid: 3cdbc882206b64f4197772bd8d9281f7, type: 2}
+    - {fileID: 2100000, guid: 47480c37340f5bb4c9a29309ee81c345, type: 2}
+    - {fileID: 2100000, guid: 0e15b99481f076b45bd6f56742649773, type: 2}
+    - {fileID: 2100000, guid: fe5ecf4575d5d104fb692db2d940c4a4, type: 2}
+    - {fileID: 2100000, guid: 6053235f06bc81843b5ce5e715c10d53, type: 2}
+    - {fileID: 2100000, guid: 7de763c850f76cd4a8a159cd17498442, type: 2}
+    - {fileID: 2100000, guid: cb453a0e88d0e874d910deb1fe5f2ca7, type: 2}
+    - {fileID: 2100000, guid: 326ca049decea884a880f7fd7b786ce6, type: 2}
+    shotParticleSystemPrefabs: []
+  surfaceVfxDictionary:
+    m_keys: []
+    m_values: []

@@ -26,8 +26,10 @@ MonoBehaviour:
   isItemMovedDueToRotation: 1
   isItemMovedBackToInitialPosition: 1
   moveToInitialPosSpeed: 3
-  moveSpeed: 1
+  moveSpeed: 0.3
+  isMovedVertically: 0
   minMaxMovementOffsetY: {x: -2, y: 2}
+  isMovedHorizontally: 1
   minMaxMovementOffsetX: {x: -0.05, y: 0.05}
   aimRotationSpeed: 5
   minMaxAimRotationAngleX: {x: -10, y: 10}

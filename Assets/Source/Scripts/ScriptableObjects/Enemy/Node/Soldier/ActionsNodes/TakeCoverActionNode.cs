@@ -3,24 +3,18 @@ using Leopotam.Ecs;
 
 namespace Ingame.Enemy
 {
-    public class TakeCoverActionNode : ActionNode
+    public class TakeCoverActionNode : RepositionActionNode
     {
         protected override void ActOnStart()
         {
-             
+            base.ActOnStart();
+            entity.Get<EnemyStateModel>().isHiding = true;
         }
 
         protected override void ActOnStop()
         {
-           
-        }
-
-        protected override State ActOnTick()
-        {
-            ref var navAgent = ref Entity.Get<NavMeshAgentModel>();
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
-            
-            return State.Failure;
+            base.ActOnStop();
+            entity.Get<EnemyStateModel>().isHiding = false;
         }
     }
 }

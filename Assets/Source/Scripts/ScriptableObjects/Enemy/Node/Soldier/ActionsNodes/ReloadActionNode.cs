@@ -4,33 +4,21 @@ using UnityEngine;
 
 namespace Ingame.Enemy
 {
-    public class ReloadActionNode : ActionNode
+    public class ReloadActionNode : WaitNode
     {
-        [SerializeField] 
-        private float timeToReload;
-
-        private float _timer;
         protected override void ActOnStart()
         {
-            _timer = timeToReload;
+            base.ActOnStart();
+            entity.Get<EnemyStateModel>().isReloading = true;
         }
 
         protected override void ActOnStop()
         {
-          
+            base.ActOnStop();
+            ref var enemyModel = ref entity.Get<EnemyStateModel>();
+            enemyModel.isReloading = false;
+            enemyModel.currentAmmo = enemyModel.maxAmmo;
         }
-
-        protected override State ActOnTick()
-        {
-            if (_timer > 0)
-            {
-                _timer -= Time.deltaTime;
-                return State.Running;
-            }
-
-            ref var enemy = ref Entity.Get<EnemyStateModel>();
-            enemy.CurrentAmmo = enemy.MaxAmmo;
-            return State.Success;
-        }
+        
     }
 }

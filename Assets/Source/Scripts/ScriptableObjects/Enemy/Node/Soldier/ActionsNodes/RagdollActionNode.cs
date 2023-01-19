@@ -1,40 +1,69 @@
 ﻿using Ingame.Behaviour;
+using Ingame.Interaction.Common;
+using Ingame.Movement;
 using Leopotam.Ecs;
 using UnityEngine;
 using Support.Extensions;
 
 namespace Ingame.Enemy
 {
-    public sealed class RagdollActionNode : ActionNode
+    public sealed class RagdollActionNode : WaitNode
     {
-        private Animator _animator;
-        private const string ANIMATION_NAME = "RAGDOLL";
         protected override void ActOnStart()
         {
-            _animator = Entity.Get<AnimatorModel>().Animator;
-            _animator.Play(ANIMATION_NAME);
+            ref var agentModel = ref entity.Get<NavMeshAgentModel>();
+            ref var transformModel = ref entity.Get<TransformModel>();
+            
+            agentModel.Agent.enabled = false;
+            
+            var weapon = entity.Get<EnemyWeaponHolderModel>().weapon;
+            
+            if(weapon == null)
+               return;
+            
+            if ( weapon.TryGetComponent<Rigidbody>(out var rb))
+            {
+                weapon.GetComponent<Collider>().isTrigger = false;
+                weapon.transform.parent = null;
+                rb.useGravity = true;
+                rb.isKinematic = false;
+            }
+
+            if (weapon.TryGetComponent<EntityReference>(out var entityReference))
+            {
+                entityReference.Entity.Get<InteractiveTag>();
+            }
+            
+            entity.Del<EnemyWeaponHolderModel>();
+            
+            var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
+            
+            if(colliders == null)
+                return;
+            
+            foreach (var collider in colliders)
+            {
+                collider.gameObject.AddComponent<Rigidbody>();
+            }
         }
 
         protected override void ActOnStop()
         {
-             
-        }
+            ref var transformModel = ref entity.Get<TransformModel>();
+            var colliders = transformModel.transform.GetComponentsInChildren<CapsuleCollider>();
 
-        protected override State ActOnTick()
-        {
-            //is dying
-            _animator.Play(ANIMATION_NAME);
-            var animationState = _animator.IsAnimationPlaying(ANIMATION_NAME);
-            //animation has ended
-            if (!animationState)
+            if (colliders == null)
+                return;
+            
+            foreach (var collider in colliders)
             {
-                //is already dead
-                ref var enemyStateModel = ref Entity.Get<EnemyStateModel>();
-                enemyStateModel.IsDead = true;
-                enemyStateModel.IsDying = false;
-                return State.Success;
+                collider.isTrigger = true;
+                
+                if(!collider.TryGetComponent<Rigidbody>(out var rb))
+                    continue;
+                
+                Destroy(rb);
             }
-            return State.Running;
         }
     }
 }

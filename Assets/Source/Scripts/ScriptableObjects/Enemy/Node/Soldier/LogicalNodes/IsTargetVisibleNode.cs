@@ -25,10 +25,6 @@ namespace Ingame.Enemy
         [ShowIf("IsPhotoScanning")]
         private int thresholdOfVisibility;
         
-        [SerializeField]
-        [ShowIf("IsLineCasting")]
-        private LayerMask ignoredLayers;
-        
         protected override void ActOnStart()
         {
            
@@ -43,7 +39,7 @@ namespace Ingame.Enemy
         {
             return type switch
             {
-                VisibilityType.LineCast => ActOnLineCasting(),
+                VisibilityType.LineCast => ActOnRayeCasting(),
                 VisibilityType.PhotoScanning => ActOnPhotoScanning(),
                 _ => throw new InvalidOperationException()
             };
@@ -52,27 +48,14 @@ namespace Ingame.Enemy
 
         private State ActOnPhotoScanning()
         {
-          
-
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-            return thresholdOfVisibility <= enemyModel.VisibleTagretPixels ? State.Success : State.Failure; 
+            return thresholdOfVisibility <= entity.Get<EnemyStateModel>().visibleTargetPixels ? State.Success : State.Failure; 
         }
-        
-        private State ActOnLineCasting()
+
+        private State ActOnRayeCasting()
         {
-            ref var transformModel = ref Entity.Get<TransformModel>();
-            ref var enemyModel = ref Entity.Get<EnemyStateModel>();
-
-            if (!Physics.Linecast(transformModel.transform.position, enemyModel.Target.position, out var hit,
-                    ignoredLayers, QueryTriggerInteraction.Ignore)) return State.Success;
-
-            if (!hit.collider.transform.root.TryGetComponent<EntityReference>(out var entityReference))
-                return State.Failure;
-            
-            return entityReference.Entity.Has<PlayerModel>() ? State.Success : State.Failure;
+            return entity.Get<EnemyStateModel>().isTargetVisible ? State.Success : State.Failure; 
         }
-        
+       
         private bool IsPhotoScanning() => type == VisibilityType.PhotoScanning;
-        private bool IsLineCasting() => type == VisibilityType.LineCast;
     }
 }
