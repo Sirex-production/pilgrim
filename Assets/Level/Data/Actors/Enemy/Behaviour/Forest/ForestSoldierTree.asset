@@ -39,7 +39,8 @@ MonoBehaviour:
   damageOnHit: 45
   chanceToHit: 0.7
   shootIntervalTime: 1
-  shouldIgnoreObstacles: 1
+  chanceToInflictBleed: 0.215
+  damageOnBleed: 3.25
 --- !u!114 &-8454215549979247433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1569,8 @@ MonoBehaviour:
   damageOnHit: 35
   chanceToHit: 0.71
   shootIntervalTime: 0.3
-  shouldIgnoreObstacles: 1
+  chanceToInflictBleed: 0.215
+  damageOnBleed: 3.25
 --- !u!114 &7587523367064322814
 MonoBehaviour:
   m_ObjectHideFlags: 0
