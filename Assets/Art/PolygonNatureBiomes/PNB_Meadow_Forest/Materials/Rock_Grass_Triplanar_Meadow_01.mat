@@ -65,12 +65,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Top:
-        m_Texture: {fileID: 2800000, guid: 60c0fd4a5e813ac4a928e500f96b0fe9, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 2d4819af9ec7c8546b08ced7e326a466, type: 3}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _TopNormal:
-        m_Texture: {fileID: 2800000, guid: cab96a62a647e024a9868ca6bb815a34, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: f2982b39861ade74fa9c1907698657ef, type: 3}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
@@ -92,7 +92,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tiling: 0.2
+    - _Tiling: 0.5
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0

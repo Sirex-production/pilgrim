@@ -63,7 +63,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["MS_ConiferB01"],"padding":[33],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:

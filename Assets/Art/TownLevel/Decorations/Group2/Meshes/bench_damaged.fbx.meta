@@ -35,7 +35,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["broken bench"],"padding":[67],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:

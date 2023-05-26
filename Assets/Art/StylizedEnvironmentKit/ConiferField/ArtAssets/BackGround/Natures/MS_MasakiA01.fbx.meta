@@ -53,7 +53,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["MS_MasakiA01"],"padding":[243],"unwrapper":[0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
