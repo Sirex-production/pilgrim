@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 6bbf32c0d078be7489f8ddaf73bfb13c
-timeCreated: 1530050406
-licenseType: Store
+guid: 611d139ddc39a6648907f056a87ba881
 PluginImporter:
+  externalObjects: {}
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
-    data:
-      first:
-        Any: 
-      second:
-        enabled: 0
-        settings: {}
-    data:
-      first:
-        Editor: Editor
-      second:
-        enabled: 1
-        settings:
-          CPU: x86_64
-          DefaultValueInitialized: true
+  - first:
+      Any: 
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 1
+      settings:
+        CPU: x86_64
+        DefaultValueInitialized: true
   userData: 
   assetBundleName: 
   assetBundleVariant: 
