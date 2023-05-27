@@ -36,7 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["cafe sign"],"padding":[143],"unwrapper":[0]}'
+    - '#BAKERY{"meshName":["cafe sign"],"padding":[143],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

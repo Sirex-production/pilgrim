@@ -64,7 +64,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["MS_ShrubA01"],"padding":[93],"unwrapper":[0]}'
+    - '#BAKERY{"meshName":["MS_ShrubA01"],"padding":[93],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

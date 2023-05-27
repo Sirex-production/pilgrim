@@ -31,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["Cube.015","Cube.040","Cube.013","Cube.020","Cube.021","Cube","Cube.012","Cube.117","Cube.022","Cube.016","Cube.014","Plane.036"],"padding":[84,23,84,120,109,6,119,81,8,101,103,8],"unwrapper":[0,0,0,0,0,0,0,0,0,0,0,0]}'
+    - '#BAKERY{"meshName":["Cube.015","Cube.040","Cube.013","Cube.020","Cube.021","Cube","Cube.012","Cube.117","Cube.022","Cube.016","Cube.014","Plane.036"],"padding":[84,23,84,120,109,6,119,81,8,101,103,8],"unwrapper":[1,1,1,1,1,1,1,1,1,1,1,1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

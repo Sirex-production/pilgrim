@@ -31,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["SM_Env_Water_Plane_01"],"padding":[1],"unwrapper":[0]}'
+    - '#BAKERY{"meshName":["SM_Env_Water_Plane_01"],"padding":[1],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

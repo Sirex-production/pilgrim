@@ -169,7 +169,10 @@ MonoBehaviour:
   - Assets/Art/TownLevel/Buildings/wall_11/wall_11.fbx
   - Assets/Art/TownLevel/Decorations/Group2/big_step.fbx
   - Assets/Art/StylizedEnvironmentKit/ConiferField/ArtAssets/BackGround/Natures/MS_Harujion01.fbx
-  modifiedAssetPaddingHash: aaf8cc2eec37ed04bd4608c8ecc12491ecc12491f166e2a80cf43a06eddb894b1928c115cfc3a693d60aecc0ba4608c8133b8033ecc12491d2c124919050cf35ecc12491534ffff0ced15080a35031eeeec3a693ecc12491ecc12491ecc12491c208436c383fd3d9b95634b7d60aecc0b7f23a06ecc12491ecc12491fe27c115c44608c8f3bfee00ecc124910da3dddef537ed04eb37ed04033024c11638ed04ecc12491f437ed04d63188830da3ddde0aa3dddef839803392535972cbc124911c7e9363ee37ed048cdb894bf50aecc0ecc12491323b8033b7f23a062ca3dddec8d15080ecc12491c2d15080dd4608c89c09ecc0fcb209ceecc12491af67e2a8ecc12491465031ee717f93638109ecc0be4608c8ecc12491b05634b7d52564ebf927c115cedb894b363fd3d980c5d89007a3dddedc4608c8c04dfff0e5bcbb91377e936313a3dddecc3188831628c115ecc12491de09ecc04adc894b08a3dddeabdb894b6d67e2a8ecc12491d0c124913a901ac242dd894b323fd3d9af5634b7ecc12491e0843d66f227c115ce4437df2aa3ddde1928c115ecc12491fe4945beecc12491ecc1249100b9c42cfd7d9363d9398033fe27c1157fe0b5e8bebd18d9b4c2a693885031eeecc12491cb318883bb7d936375f23a06ecc12491f927c1157ffaaf259f398033343fd3d9ee37ed04353fd3d9ecc12491323fd3d9333fd3d9ecc1249109b309ce3c4efff0717f9363ecc1249114f33a063e3fd3d906a3ddde2aa3dddecbc124911328c115ecc12491ecc12491717f9363ecc124916209ecc0d1318883ecc12491ecc1249103911ac280c5d8908cdb894bffb209ce3c4efff0323fd3d9353fd3d9353fd3d9ecc12491
+  - Assets/Art/TownLevel/Decorations/Group1/Meshes/door_mettal_frame.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Cliff_Large_02.fbx
+  - Assets/Art/TownLevel/Buildings/wall_metal/metal_wall.fbx
+  modifiedAssetPaddingHash: d6a958ffec37ed04bd4608c8ecc12491ecc12491f166e2a80cf43a06eddb894b1928c115cfc3a693d60aecc0ba4608c8133b8033ecc12491d2c124919050cf35ecc12491534ffff0ecc12491a35031eeeec3a693ecc12491ecc12491ecc12491c208436c383fd3d9b95634b7d60aecc0b7f23a06ecc12491ecc12491fe27c115c44608c8f3bfee00ecc124910da3dddef537ed04eb37ed04033024c11638ed04ecc12491f437ed04d63188830da3ddde0aa3dddef839803392535972cbc124911c7e9363ee37ed048cdb894bf50aecc0ecc12491323b8033b7f23a062ca3dddec8d15080ecc12491c2d15080dd4608c89c09ecc0fcb209ceecc12491af67e2a8ecc12491465031ee717f93638109ecc0be4608c8ecc12491b05634b7d52564ebf927c115c04dfff0363fd3d980c5d89007a3ddded25634b7c04dfff0e5bcbb91377e936313a3dddecc3188831628c115ecc12491de09ecc04adc894b08a3dddeabdb894b8109ecc0ecc124912028c1153a901ac242dd894b323fd3d9af5634b7ecc12491e0843d66f227c115ce4437df2aa3ddde1928c115ecc12491fe4945beecc12491ecc1249100b9c42cfd7d9363d9398033fe27c1157fe0b5e8bebd18d9b4c2a693885031eeecc12491cb318883bb7d936375f23a06ecc12491f927c115319ec2759f398033343fd3d9ee37ed04353fd3d9ecc12491323fd3d9333fd3d9ecc1249109b309ce3c4efff0717f9363ecc1249114f33a063e3fd3d906a3ddde2aa3dddecbc124911328c115ecc12491ecc12491717f9363ecc124916209ecc0d1318883ecc12491ecc1249103911ac280c5d8908cdb894bffb209ce3c4efff0323fd3d9353fd3d9353fd3d9ecc1249123c5d890d7c2a6933e901ac2
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -555,95 +558,95 @@ MonoBehaviour:
   - meshName:
     - Icosphere
     padding: 78000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_BushA01
     padding: 70000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - beer
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - botle.001
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.012
     padding: 47000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_Rosemarry01
     padding: 5a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube__7_
     padding: 2e000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.089
     padding: c8000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.013
     padding: 63000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.051
     padding: 5c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.010
     padding: 75000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.015
     padding: 5f000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.076
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - garbage bag
     padding: 99000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - ivy-2
     padding: c3000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - _yv4q_Var2_LOD3
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.027
     padding: 58000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.005
-    padding: b3000000
-    unwrapper: 00000000
+    padding: 00010000
+    unwrapper: 01000000
   - meshName:
     - dry closet
     padding: 25000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.030
     padding: 59000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.008
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.083
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.023
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.024
     - Cube.016
@@ -686,227 +689,227 @@ MonoBehaviour:
     - Cylinder.001
     - Cube.002
     padding: 07000000310000007b0000002e00000097000000460000009700000046000000310000006700000046000000670000001e000000750000003100000097000000460000007b0000003900000067000000460000004600000046000000970000000c0000004600000046000000120000001e000000460000007b0000001e0000001a00000053000000380000007b000000970000000c000000670000001a000000
-    unwrapper: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    unwrapper: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   - meshName:
     - Plane_012.002
     padding: 03000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_WeedA01
     padding: 8a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - air conditioner
     padding: 5c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.152
     padding: 28000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - _9gbj_Var20_LOD3
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ShiraneaoiA01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.050
     padding: 6c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - tire.001
     padding: 77000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.002
     - Plane.006
     padding: 4f00000017000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.049
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.009
     padding: 8f000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube__14_
     padding: 81000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.028
     padding: 7f000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.129
     - Cube.046
     padding: 37000000da000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - brick
     padding: e5000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.016
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - hydrant
     padding: 80000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.021
     padding: bc000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - cafe sign
     padding: 8f000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.086
     padding: 8c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Object001
     padding: 19000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.063
     - Cube.073
     padding: 51000000e8000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - pole
     padding: 9a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.074
     padding: 2b000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - tire
     padding: 7a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder__1_.001
     padding: 4c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.026
     padding: 52000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.052
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.054
     padding: 55000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.013
     padding: 28000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.002
     padding: f1000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.030
     padding: ad000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ShiraneaoiC01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.027
     padding: af000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.037
     padding: d3000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.077
     padding: 20000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - electrical panel
     padding: a4000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.041
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.080
     padding: 0b000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.053
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - broken bench
     padding: 43000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.056
     padding: 5d000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ConiferB02
     padding: 2a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.031
     padding: 71000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.094
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.088
     padding: 89000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.062
     - Cube.038
     padding: 5300000070000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.103
     padding: 67000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.015
-    padding: 38000000
-    unwrapper: 00000000
+    padding: 3a000000
+    unwrapper: 01000000
   - meshName:
     - SM_Env_Water_Plane_01
     padding: 01000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.030
     padding: 0e000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.092
     padding: 91000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.055
-    padding: d4000000
-    unwrapper: 00000000
+    padding: e8000000
+    unwrapper: 01000000
   - meshName:
     - Cube.045
     padding: 3a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.011
     - Cylinder.016
@@ -917,85 +920,85 @@ MonoBehaviour:
     - Cylinder.018
     - Cylinder.012
     padding: 290000002a000000070000000a0000002a00000029000000290000002a000000
-    unwrapper: 0000000000000000000000000000000000000000000000000000000000000000
+    unwrapper: 0100000001000000010000000100000001000000010000000100000001000000
   - meshName:
     - MS_ConiferB01
     padding: 21000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - chair
     padding: 95000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.004
     padding: ba000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - ivy-3
     padding: cb000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - ivy-1
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ConiferA03
     padding: 0c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.015
     padding: 10000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.091
     padding: 92000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.003
     padding: 42000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - pillar
-    padding: 1f000000
-    unwrapper: 00000000
+    padding: 2a000000
+    unwrapper: 01000000
   - meshName:
     - Cube.037
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - bucket
-    padding: 97000000
-    unwrapper: 00000000
+    padding: d1000000
+    unwrapper: 01000000
   - meshName:
     - Cube.102
     - Cube.098
     padding: 0300000007000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.026
     padding: 60000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.010
     padding: 05000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.090
     padding: 88000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.097
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.036
     - Cube.044
     padding: 9800000030000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.082
     padding: 68000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.015
     - Cube.040
@@ -1010,245 +1013,258 @@ MonoBehaviour:
     - Cube.014
     - Plane.036
     padding: 540000001700000054000000780000006d00000006000000770000005100000008000000650000006700000008000000
-    unwrapper: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    unwrapper: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   - meshName:
     - Cube.093
     padding: f3000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.022
     padding: c8000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.085
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - injector_2
     - cap_1
     padding: 0001000000010000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - ivy-4
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.007
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.015
     - Plane.031
     padding: 0a0000000c000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - block
     padding: 35000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.002
     padding: 23000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Luke
     padding: 6c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.002
     - Plane.002
     padding: 2000000018000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.010
     - Cube.029
     - Cube.037
     padding: 1d0000000500000007000000
-    unwrapper: 000000000000000000000000
+    unwrapper: 010000000100000001000000
   - meshName:
     - Cube.001
     padding: 1d000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - broken bench.001
     padding: 2f000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.029
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.020
     padding: b9000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - chaine
     padding: 49000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.042
     padding: 3c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.084
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.087
     padding: 67000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.073
     - Cube.063
-    padding: ad0000003c000000
-    unwrapper: 0000000000000000
+    padding: c500000044000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.101
     padding: 37000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.019
     padding: 07000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.001
     padding: 7a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.008
     padding: 06000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.034
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.110
     padding: 05000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.018
     padding: 04000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.028
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_HiraginantenB01
     padding: a9000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.035
     padding: 12000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - bike
     padding: 5d000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_MasakiB01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.009
     padding: 0a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.029
     padding: 09000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_HiraginantenA01
     padding: 90000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_MasakiA01
     padding: f3000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.027
     padding: 9a000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.078
     padding: ce000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ChigoYuriA01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - defaultMaterial
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ShrubA01
     padding: 5d000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.029
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.100
     padding: 34000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.007
     padding: b7000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cube.032
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_ShiraneaoiB01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.030
     - Cube.109
     padding: 0900000006000000
-    unwrapper: 0000000000000000
+    unwrapper: 0100000001000000
   - meshName:
     - Cube.006
     padding: 0e000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - fence
     padding: 4c000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Cylinder.006
     padding: a7000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - 3
     padding: 12000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.005
     padding: 05000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.016
     padding: 06000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - Plane.035
     padding: 06000000
-    unwrapper: 00000000
+    unwrapper: 01000000
   - meshName:
     - MS_Harujion01
     padding: 00010000
-    unwrapper: 00000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.023
+    padding: 2c000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Ground_Cliff_Large_02
+    padding: 13000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.105
+    - Cube.112
+    padding: 0300000003000000
+    unwrapper: 0100000001000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
   uvOverlapAssetList: 00000000ffffffff
-  xatlasWarningShown: 0
+  xatlasWarningShown: 1
   foundCompatibleSetup: 1
-  gpuName: NVIDIA GeForce GTX 960M
+  gpuName: NVIDIA GeForce GTX 1070
   runsNonRTX: 1
   runsOptix5: 1
   runsOptix6: 1
@@ -1320,7 +1336,7 @@ MonoBehaviour:
   renderSettingsClientMode: 0
   renderSettingsServerAddress: 127.0.0.1
   renderSettingsUnwrapper: 0
-  renderSettingsDenoiserType: 100
+  renderSettingsDenoiserType: 5
   renderSettingsExportTerrainTrees: 0
   renderSettingsShowPerf: 1
   renderSettingsSampleDiv: 1
@@ -1331,5 +1347,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 06000000
-  modifiedMeshUnwrapperArray: 00000000
+  modifiedMeshPaddingArray: 00010000
+  modifiedMeshUnwrapperArray: 01000000

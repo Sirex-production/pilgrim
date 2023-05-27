@@ -36,7 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["air conditioner"],"padding":[92],"unwrapper":[0]}'
+    - '#BAKERY{"meshName":["air conditioner"],"padding":[92],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Env_Ground_Cliff_Large_02"],"padding":[19],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:
