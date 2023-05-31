@@ -1,0 +1,393 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8271311755563485883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48cdc332fa04a73a18623b855bcf7a8, type: 3}
+  m_Name: PatrolActionNode
+  m_EditorClassIdentifier: 
+  guid: 6d2a7fef32762b74b84a1fd07382b8a9
+  position: {x: -814, y: 516}
+  description: 
+  audioService: {fileID: 0}
+--- !u!114 &-7216184966238769662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018a8cc09297c084fbd29f69b3b54395, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  guid: 3a9eac101bc26f847ace64aa4ff977f5
+  position: {x: -279.00024, y: -1869.6337}
+  description: 
+  audioService: {fileID: 0}
+  child: {fileID: 3961247054021511787}
+--- !u!114 &-6815263246893166119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b5840557365954792bf635f7e039ab, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: d4854fa45e39f1943a91e340a2bf92b5
+  position: {x: -634.00006, y: 388}
+  description: 
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: -8271311755563485883}
+  - {fileID: -1141346905479706304}
+--- !u!114 &-5364367316484104109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0f780e8e1e45848e5f70d7c8e8646c, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  guid: 96d5791fa5e29cc4891ec4d62ec7ea2d
+  position: {x: -244, y: 380}
+  description: 
+  audioService: {fileID: 0}
+  delayDuration: 1
+--- !u!114 &-4163685507017967133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7094a4a31b742639cad23130e37477d, type: 3}
+  m_Name: RagdollActionNode
+  m_EditorClassIdentifier: 
+  guid: f5eaeb023d004524583f22dc015a51af
+  position: {x: -1454, y: -161.00014}
+  description: 
+  audioService: {fileID: 0}
+  delayDuration: 1
+--- !u!114 &-3545046794581427750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b5840557365954792bf635f7e039ab, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: b4eb204205f766d4caad4965b0a842f6
+  position: {x: -1816, y: -385.16745}
+  description: DEAD
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 4946914923887460841}
+  - {fileID: 2600209363293734597}
+--- !u!114 &-3130875441797585090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264fe8ca856544d499dbce602283f6ee, type: 3}
+  m_Name: ParallelNode
+  m_EditorClassIdentifier: 
+  guid: 5a07c5740b650ac4898e6c4170d34bc2
+  position: {x: -460, y: -829}
+  description: 
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 1693278040883172597}
+--- !u!114 &-1141346905479706304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0f780e8e1e45848e5f70d7c8e8646c, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  guid: 6fbe0be9cf150c14d9346f283b6d721f
+  position: {x: -547.49994, y: 620.55005}
+  description: 
+  audioService: {fileID: 0}
+  delayDuration: 1.15
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5fd61c90fa4ac8807fb8e6bfb07fb6, type: 3}
+  m_Name: Robot_dog
+  m_EditorClassIdentifier: 
+  root: {fileID: -7216184966238769662}
+  state: 0
+  Nodes:
+  - {fileID: -7216184966238769662}
+  - {fileID: 3961247054021511787}
+  - {fileID: 8790215246248795618}
+  - {fileID: -3545046794581427750}
+  - {fileID: 4946914923887460841}
+  - {fileID: 2600209363293734597}
+  - {fileID: 5476743354842694984}
+  - {fileID: 4968063578194382316}
+  - {fileID: -4163685507017967133}
+  - {fileID: -3130875441797585090}
+  - {fileID: 1693278040883172597}
+  - {fileID: 8634403642044168309}
+  - {fileID: 4935345085493845569}
+  - {fileID: -1141346905479706304}
+  - {fileID: 3250481166578125875}
+  - {fileID: 8050137880202632971}
+  - {fileID: -6815263246893166119}
+  - {fileID: -5364367316484104109}
+  - {fileID: -8271311755563485883}
+  - {fileID: 4670252257769128526}
+--- !u!114 &1693278040883172597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e0a9c4869b46aaacb5e7a2150543cd, type: 3}
+  m_Name: SuccessNode
+  m_EditorClassIdentifier: 
+  guid: 6394e431a0659f444a702570cc9586e6
+  position: {x: -505, y: -471}
+  description: 
+  audioService: {fileID: 0}
+  child: {fileID: 4935345085493845569}
+--- !u!114 &2600209363293734597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea4ff23d26e45509fcf9bdffd35552c, type: 3}
+  m_Name: ResetTreeNode
+  m_EditorClassIdentifier: 
+  guid: c6f04a7df7f212849a6c02bdb21e0931
+  position: {x: -1823.5245, y: -182.77716}
+  description: 
+  audioService: {fileID: 0}
+--- !u!114 &3250481166578125875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b5840557365954792bf635f7e039ab, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: 3fc8f5c5f0187a94982b1e5e64e7f44b
+  position: {x: -493, y: -47}
+  description: Patrol
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 8050137880202632971}
+--- !u!114 &3961247054021511787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1e807216e14de88b9532496e7d4e9f, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  guid: 5cf90672fd127de45b8c9d811932216a
+  position: {x: -287.18304, y: -1427.8589}
+  description: 
+  audioService: {fileID: 0}
+  child: {fileID: 4670252257769128526}
+  type: 0
+  loops: 1
+  stateOnResetState: 0
+  minLoops: 0
+  maxLoops: 0
+--- !u!114 &4670252257769128526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a0f780e8e1e45848e5f70d7c8e8646c, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  guid: 3288c36d3f7c78a448f9c0f8793ae88b
+  position: {x: -86.717285, y: -1074.7092}
+  description: 
+  audioService: {fileID: 0}
+  delayDuration: 1
+--- !u!114 &4935345085493845569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b668d9cc4a4d48b2038b4a966abc04, type: 3}
+  m_Name: InterruptSelectorNode
+  m_EditorClassIdentifier: 
+  guid: 80e460f47efd4f642aa4b54db3a2b250
+  position: {x: -531, y: -273}
+  description: 
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 3250481166578125875}
+--- !u!114 &4946914923887460841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b976181eb05d44899c21b3fd737c7b9f, type: 3}
+  m_Name: IsDeadNode
+  m_EditorClassIdentifier: 
+  guid: b747b0b21c774124fa4e947575f8ccd3
+  position: {x: -1979.5245, y: -270.77722}
+  description: 
+  audioService: {fileID: 0}
+--- !u!114 &4968063578194382316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6c47ca67e8499989d694788ba874fe, type: 3}
+  m_Name: IsDyingNode
+  m_EditorClassIdentifier: 
+  guid: b2f4f4d2783178a4fa40050c903f0e28
+  position: {x: -1638, y: -182.99994}
+  description: 
+  audioService: {fileID: 0}
+--- !u!114 &5476743354842694984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b5840557365954792bf635f7e039ab, type: 3}
+  m_Name: SequenceNode
+  m_EditorClassIdentifier: 
+  guid: c1b04bc94821557478a89e2f6bfa1eb3
+  position: {x: -1462.5, y: -426.99997}
+  description: DYING
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 4968063578194382316}
+  - {fileID: -4163685507017967133}
+--- !u!114 &8050137880202632971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38718032076f4d4a8392c57803294e11, type: 3}
+  m_Name: RandomSelectorNode
+  m_EditorClassIdentifier: 
+  guid: 3d43459c1e8937f449cee182c21b0840
+  position: {x: -515, y: 132}
+  description: 
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: -6815263246893166119}
+  - {fileID: -5364367316484104109}
+--- !u!114 &8634403642044168309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc9d025c1cc004469ee71dfa6bf0cbf, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  guid: 820239a2867b96c4899a7a4cff64bb0f
+  position: {x: -861.9999, y: -1018.6441}
+  description: 
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: 8790215246248795618}
+  - {fileID: -3130875441797585090}
+--- !u!114 &8790215246248795618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc9d025c1cc004469ee71dfa6bf0cbf, type: 3}
+  m_Name: SelectorNode
+  m_EditorClassIdentifier: 
+  guid: 7f7c23f6c83aea544813d26785978a82
+  position: {x: -1645.5245, y: -628.7771}
+  description: DIE
+  audioService: {fileID: 0}
+  Children:
+  - {fileID: -3545046794581427750}
+  - {fileID: 5476743354842694984}
