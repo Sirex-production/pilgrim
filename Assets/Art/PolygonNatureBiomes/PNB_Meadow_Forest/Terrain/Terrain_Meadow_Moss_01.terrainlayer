@@ -7,8 +7,8 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Terrain_Meadow_Moss_01
-  m_DiffuseTexture: {fileID: 2800000, guid: a4d531ce6ff28d84dbf93d2c580af911, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 75f512d017053d44f90cb20f807bbe0d, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 951c060e49a05474d806471eb73273e7, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: c8a655ca8c937f34cb75d5affd78be12, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}

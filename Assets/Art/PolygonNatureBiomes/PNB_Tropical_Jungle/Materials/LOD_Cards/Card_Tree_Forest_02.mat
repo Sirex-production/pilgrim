@@ -2,14 +2,17 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Card_Tree_Forest_02
   m_Shader: {fileID: 4800000, guid: 6697e1f185bc8b840a2f02567abf15b5, type: 3}
-  m_ShaderKeywords: _CARDTOGGLE_ON _FLATCOLOURSWITCH_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _CARDTOGGLE_ON
+  - _FLATCOLOURSWITCH_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -72,16 +75,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeafNormalMap:
-        m_Texture: {fileID: 2800000, guid: b422433d207dc7e469ee7b78310cb9fa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 50c26cda036380a4eaa8c4f9fd2fb329, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeafTex:
-        m_Texture: {fileID: 2800000, guid: 94602ded8fad32941b52faec83586a38, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3993d19759350744bcf3ba161b0bdd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Leaves_NoiseTexture2:
         m_Texture: {fileID: 2800000, guid: e0595e1df515fa64fa99e3017d4ace24, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 94602ded8fad32941b52faec83586a38, type: 3}
@@ -144,17 +147,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TrunkNormalMap:
-        m_Texture: {fileID: 2800000, guid: b422433d207dc7e469ee7b78310cb9fa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 50c26cda036380a4eaa8c4f9fd2fb329, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TunkTex:
-        m_Texture: {fileID: 2800000, guid: 94602ded8fad32941b52faec83586a38, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3993d19759350744bcf3ba161b0bdd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AO_Amount: 1
     - _AlphaCutoff: 0.5
@@ -173,30 +177,30 @@ Material:
     - _FlatColourSwitch: 1
     - _Float0: 0
     - _Float1: 0.05
-    - _FrostingFalloff: 1
-    - _FrostingHeight: 1
+    - _FrostingFalloff: 0.17
+    - _FrostingHeight: -0.4
     - _FrostingSwitch: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GustAmount: 0
     - _GustFreq: 0.224
-    - _GustLargeFreq: 0.289
-    - _GustScale: 0.596
-    - _GustSmallFreq: 0.409
-    - _JitterAmount: 0.241
-    - _JitterFreq: 0.093
+    - _GustLargeFreq: 0
+    - _GustScale: 0
+    - _GustSmallFreq: 0
+    - _JitterAmount: 0.003
+    - _JitterFreq: 0.003
     - _LOD_FADE_CROSSFADE: 1
     - _LOD_FADE_CROSSFADE_in: 0
     - _LOD_FADE_CROSSFADE_out: 0
-    - _LeafBigNoiseAmount: 0.5
-    - _LeafBigNoiseScale: 1
+    - _LeafBigNoiseAmount: 0.15
+    - _LeafBigNoiseScale: 0.1
     - _LeafFlatColourSwitch: 0
     - _LeafMetallic: 0
     - _LeafNoiseAmount: 0.2
     - _LeafNoiseScale: 1
-    - _LeafNormalAmount: 0.5
-    - _LeafSmoothness: 0
+    - _LeafNormalAmount: 1
+    - _LeafSmoothness: 0.08
     - _Metallic: 0.132
     - _Mode: 0
     - _NormalAmount: 1
@@ -214,7 +218,7 @@ Material:
     - _SrcBlend: 1
     - _Tiling: 1
     - _Tint_Tiling: 0.5
-    - _TotalWindAmount: 1
+    - _TotalWindAmount: 0
     - _TrunkFlatColourSwitch: 0
     - _TrunkMetallic: 0
     - _TrunkNormalAmount: 0.5
@@ -229,7 +233,7 @@ Material:
     - _WindNoiseScale2: 0.5
     - _WindWorldScale: 0.08
     - _WindWorldScale1: 0.001
-    - _Y_multiplier: -0.5
+    - _Y_multiplier: 0
     - _ZWrite: 1
     - __dirty: 0
     - _leafNoiseScale: 1
