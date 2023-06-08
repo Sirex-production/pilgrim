@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Prop_Meadow_Fence_Post_03","SM_Prop_Meadow_Fence_Gate_02_Latch_01"],"padding":[143,256],"unwrapper":[1,1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

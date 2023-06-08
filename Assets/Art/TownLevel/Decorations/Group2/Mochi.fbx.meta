@@ -35,7 +35,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["PolySphere2"],"padding":[105],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

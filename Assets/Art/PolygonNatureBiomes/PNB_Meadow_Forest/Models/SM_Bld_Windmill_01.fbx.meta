@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Bld_Windmill_01","SM_Bld_Windmill_01_Blades_01"],"padding":[9,15],"unwrapper":[1,1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

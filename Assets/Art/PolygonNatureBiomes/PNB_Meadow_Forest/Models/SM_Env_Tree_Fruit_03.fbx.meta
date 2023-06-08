@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Env_Tree_Fruit_03_LOD0","SM_Env_Tree_Fruit_03_LOD1","SM_Env_Tree_Fruit_03_LOD2"],"padding":[8,8,22],"unwrapper":[1,1,1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

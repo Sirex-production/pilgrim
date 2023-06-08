@@ -172,7 +172,98 @@ MonoBehaviour:
   - Assets/Art/TownLevel/Decorations/Group1/Meshes/door_mettal_frame.fbx
   - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Cliff_Large_02.fbx
   - Assets/Art/TownLevel/Buildings/wall_metal/metal_wall.fbx
-  modifiedAssetPaddingHash: d6a958ffec37ed04bd4608c8ecc12491ecc12491f166e2a80cf43a06eddb894b1928c115cfc3a693d60aecc0ba4608c8133b8033ecc12491d2c124919050cf35ecc12491534ffff0ecc12491a35031eeeec3a693ecc12491ecc12491ecc12491c208436c383fd3d9b95634b7d60aecc0b7f23a06ecc12491ecc12491fe27c115c44608c8f3bfee00ecc124910da3dddef537ed04eb37ed04033024c11638ed04ecc12491f437ed04d63188830da3ddde0aa3dddef839803392535972cbc124911c7e9363ee37ed048cdb894bf50aecc0ecc12491323b8033b7f23a062ca3dddec8d15080ecc12491c2d15080dd4608c89c09ecc0fcb209ceecc12491af67e2a8ecc12491465031ee717f93638109ecc0be4608c8ecc12491b05634b7d52564ebf927c115c04dfff0363fd3d980c5d89007a3ddded25634b7c04dfff0e5bcbb91377e936313a3dddecc3188831628c115ecc12491de09ecc04adc894b08a3dddeabdb894b8109ecc0ecc124912028c1153a901ac242dd894b323fd3d9af5634b7ecc12491e0843d66f227c115ce4437df2aa3ddde1928c115ecc12491fe4945beecc12491ecc1249100b9c42cfd7d9363d9398033fe27c1157fe0b5e8bebd18d9b4c2a693885031eeecc12491cb318883bb7d936375f23a06ecc12491f927c115319ec2759f398033343fd3d9ee37ed04353fd3d9ecc12491323fd3d9333fd3d9ecc1249109b309ce3c4efff0717f9363ecc1249114f33a063e3fd3d906a3ddde2aa3dddecbc124911328c115ecc12491ecc12491717f9363ecc124916209ecc0d1318883ecc12491ecc1249103911ac280c5d8908cdb894bffb209ce3c4efff0323fd3d9353fd3d9353fd3d9ecc1249123c5d890d7c2a6933e901ac2
+  - Assets/Art/ForestLevel/Meshes/frence_iron.fbx
+  - Assets/Art/ForestLevel/Meshes/village_house.fbx
+  - Assets/Art/ForestLevel/Meshes/rock.fbx
+  - Assets/Art/ForestLevel/Meshes/fance.fbx
+  - Assets/Art/ForestLevel/Meshes/pallet.fbx
+  - Assets/Art/ForestLevel/Meshes/dockyard.fbx
+  - Assets/Art/ForestLevel/Meshes/barrel.fbx
+  - Assets/Art/StylizedEnvironmentKit/ConiferField/ArtAssets/BackGround/Trees/MS_ConiferA01.fbx
+  - Assets/Art/ForestLevel/Meshes/Container_1.fbx
+  - Assets/Art/ForestLevel/Meshes/boat.fbx
+  - Assets/Art/ForestLevel/Meshes/fallen tree.fbx
+  - Assets/Art/ForestLevel/Meshes/fance_1.fbx
+  - Assets/Art/ForestLevel/Meshes/stump.fbx
+  - Assets/Art/ForestLevel/Meshes/Container_2.fbx
+  - Assets/Art/StylizedEnvironmentKit/ConiferField/ArtAssets/BackGround/Trees/MS_ConiferA04.fbx
+  - Assets/Art/ForestLevel/Meshes/ambar.fbx
+  - Assets/Art/ForestLevel/Meshes/Container.fbx
+  - Assets/Art/ForestLevel/Meshes/wall_3.fbx
+  - Assets/Art/ForestLevel/Meshes/radio tower.fbx
+  - Assets/Art/ForestLevel/Meshes/well.fbx
+  - Assets/Art/TownLevel/Decorations/Group2/car/1.fbx
+  - Assets/Art/ForestLevel/Meshes/frence_iron_2.fbx
+  - Assets/Art/StylizedEnvironmentKit/ConiferField/ArtAssets/BackGround/Natures/MS_TreeBoardA02.fbx
+  - Assets/Art/TownLevel/Decorations/Group2/Mochi.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Crate_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_05.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Cliff_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Small_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_06.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Cliff_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Mound_Large_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Cliff_01.fbx
+  - Assets/Art/TownLevel/Decorations/Group2/Meshes/antena.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Leaves_Pile_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Small_Pile_01.fbx
+  - Assets/Art/ForestLevel/Meshes/stump_1.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_07.fbx
+  - Assets/Art/ForestLevel/Meshes/plank.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Round_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Fire_Tripod_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_03.fbx
+  - Assets/Art/ForestLevel/Meshes/electricity_converter.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Fireplace_Stones_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Grass_Med_Clump_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Grass_Med_Clump_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_04.fbx
+  - Assets/Art/ForestLevel/Meshes/mini_rock.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Tent_01.fbx
+  - Assets/Art/TownLevel/Decorations/Group2/Meshes/petard2.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_05.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_07.fbx
+  - Assets/Art/ForestLevel/Meshes/bucket.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Bucket_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Small_Pile_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_Post_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_04.fbx
+  - Assets/Art/TownLevel/Decorations/Group2/Meshes/rabbish4.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Mushroom_Group_04.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Wagon_Broken_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Fireplace_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_06.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Can_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Mound_Large_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Bld_Windmill_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_Gate_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Mushroom_Group_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_04.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Sign_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Ground_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Pouch_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Camp_Fireplace_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_SciFiCable_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Mushroom_Group_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Leaves_Branch_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Rock_Pile_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Bld_Stone_Cabin_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Meadow_Fence_Railing_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Bush_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Grass_Tall_Clump_05.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Cover_02.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Ground_Cover_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Tree_Meadow_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Stonewall_Long_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Grass_Tall_Clump_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Stonewall_Pillar_01.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Env_Tree_Fruit_03.fbx
+  - Assets/Art/PolygonNatureBiomes/PNB_Meadow_Forest/Models/SM_Prop_Stonewall_End_01.fbx
+  modifiedAssetPaddingHash: d6a958ff2bf43a06bd4608c8ecc12491ecc12491fd7d93630cf43a063ec5d8900cf43a06cfc3a693df4dfff0ba4608c8133b8033ecc12491b84608c842dd894becc12491abdb894bc4d15080194efff07c398033ecc124919150cf35ecc12491c208436c383fd3d9b95634b73ec5d890194efff0ecc12491ecc12491fe27c115eec3a693f3bfee00ecc12491abdb894b9d4dfff0b15634b7939f44e8c6d15080ecc12491f437ed040ba3ddde0da3dddef327c115f839803392535972b84608c89c09ecc0eec3a6938cdb894b1067e2a8ecc12491e1c4d890d2f23a062ca3dddeeb37ed04ecc12491c2d15080dd4608c89c09ecc0ef37ed04ecc124913e3fd3d9d2c12491465031ee56f23a068109ecc0be4608c8344ffff0f827c1154415c6325267e2a85bc2a693363fd3d980c5d890ff27c11578c6d890695031eee5bcbb91f8398033bd4608c8ba5634b7ff27c115323b8033de09ecc04adc894bff27c1157ac2a693567e9363ecc124912028c1153a901ac27c398033323fd3d9f827c115d35634b7e0843d667e4dfff0ce4437df2aa3ddde1928c115d45634b7fe4945bef227c115ecc1249100b9c42c04c5d89027dc894bfe27c1157fe0b5e8bebd18d9bb09ecc0885031eeecc12491e937ed04bb7d936375f23a061728c115275031ee319ec2753f09ecc0343fd3d99b50cf35353fd3d9ecc12491323fd3d9333fd3d9ecc1249109b309ce3c4efff004c5d890ecc1249114f33a063e3fd3d906a3ddde2aa3ddde3367e2a8cbc12491ecc12491ecc12491717f9363ecc1249195c2a693b05634b7da4608c8ecc1249103911ac280c5d8908cdb894be937ed043c4efff0323fd3d9353fd3d9353fd3d9ecc1249123c5d890d7c2a6933e901ac223c5d890353fd3d9f227c115f166e2a8b4c2a69314f33a06abdb894be55031ee2009ecc04adc894b3367e2a800b309ce0da3dddeda7d936314f33a06383fd3d9343fd3d9c25031ee333fd3d9567e93633c4efff0ad5634b780c5d890f327c115907f9363fc5131ee1b3a8033ecc12491f1f23a06f1f23a061b3a8033567e93631728c115ca3188839450cf35c6d150806d67e2a8b74608c85d398033b35634b7f166e2a83c4efff0fa4dfff0f927c115fa4dfff0f527c1158427fa0fdc44708b23c5d890ecc12491fa4dfff00938ed047ac2a6937e4dfff0ff27c115fcb209cecd31888397d8ddb3907f9363907f9363ecc12491d7c2a693133b8033d9398033ecc124914adc894beddb894b7de288717e4dfff0ecc12491bb09ecc0f627c1154adc894becc12491da7d93639f398033ecc124919350cf35797e9363343fd3d9ffb209ce508dbc8b0fc0bb938fa76d6e1f012026974dc737432cfa4912f05f0c63e1ba1adb1889b135d1ae88
   modifiedMeshList: []
   modifiedMeshPaddingList: 
   modifiedAssets:
@@ -557,7 +648,7 @@ MonoBehaviour:
     unwrapper: 
   - meshName:
     - Icosphere
-    padding: 78000000
+    padding: 50000000
     unwrapper: 01000000
   - meshName:
     - MS_BushA01
@@ -573,7 +664,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cylinder.012
-    padding: 47000000
+    padding: 35000000
     unwrapper: 01000000
   - meshName:
     - MS_Rosemarry01
@@ -581,11 +672,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube__7_
-    padding: 2e000000
+    padding: 22000000
     unwrapper: 01000000
   - meshName:
     - Cube.089
-    padding: c8000000
+    padding: 5a000000
     unwrapper: 01000000
   - meshName:
     - Plane.013
@@ -593,7 +684,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.051
-    padding: 5c000000
+    padding: 30000000
     unwrapper: 01000000
   - meshName:
     - Plane.010
@@ -609,11 +700,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - garbage bag
-    padding: 99000000
+    padding: 73000000
     unwrapper: 01000000
   - meshName:
     - ivy-2
-    padding: c3000000
+    padding: 60000000
     unwrapper: 01000000
   - meshName:
     - _yv4q_Var2_LOD3
@@ -621,19 +712,19 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Plane.027
-    padding: 58000000
+    padding: 42000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.005
-    padding: 00010000
+    padding: b1000000
     unwrapper: 01000000
   - meshName:
     - dry closet
-    padding: 25000000
+    padding: 1c000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.030
-    padding: 59000000
+    padding: 41000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.008
@@ -641,7 +732,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.083
-    padding: 00010000
+    padding: c4000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.023
@@ -700,11 +791,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - air conditioner
-    padding: 5c000000
+    padding: 22000000
     unwrapper: 01000000
   - meshName:
     - Cube.152
-    padding: 28000000
+    padding: 1c000000
     unwrapper: 01000000
   - meshName:
     - _9gbj_Var20_LOD3
@@ -720,7 +811,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - tire.001
-    padding: 77000000
+    padding: 59000000
     unwrapper: 01000000
   - meshName:
     - Plane.002
@@ -733,24 +824,24 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Plane.009
-    padding: 8f000000
+    padding: 42000000
     unwrapper: 01000000
   - meshName:
     - Cube__14_
-    padding: 81000000
+    padding: 44000000
     unwrapper: 01000000
   - meshName:
     - Cube.028
-    padding: 7f000000
+    padding: 82000000
     unwrapper: 01000000
   - meshName:
     - Cube.129
     - Cube.046
-    padding: 37000000da000000
+    padding: 1400000051000000
     unwrapper: 0100000001000000
   - meshName:
     - brick
-    padding: e5000000
+    padding: ab000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.016
@@ -762,7 +853,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.021
-    padding: bc000000
+    padding: 8d000000
     unwrapper: 01000000
   - meshName:
     - cafe sign
@@ -770,7 +861,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.086
-    padding: 8c000000
+    padding: 69000000
     unwrapper: 01000000
   - meshName:
     - Object001
@@ -783,15 +874,15 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - pole
-    padding: 9a000000
+    padding: 73000000
     unwrapper: 01000000
   - meshName:
     - Cube.074
-    padding: 2b000000
+    padding: 20000000
     unwrapper: 01000000
   - meshName:
     - tire
-    padding: 7a000000
+    padding: 59000000
     unwrapper: 01000000
   - meshName:
     - Cylinder__1_.001
@@ -799,7 +890,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cylinder.026
-    padding: 52000000
+    padding: 3d000000
     unwrapper: 01000000
   - meshName:
     - Cube.052
@@ -807,11 +898,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.054
-    padding: 55000000
+    padding: 40000000
     unwrapper: 01000000
   - meshName:
     - Plane.013
-    padding: 28000000
+    padding: 1e000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.002
@@ -819,7 +910,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.030
-    padding: ad000000
+    padding: 7f000000
     unwrapper: 01000000
   - meshName:
     - MS_ShiraneaoiC01
@@ -839,7 +930,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - electrical panel
-    padding: a4000000
+    padding: 7b000000
     unwrapper: 01000000
   - meshName:
     - Cube.041
@@ -847,11 +938,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.080
-    padding: 0b000000
+    padding: 09000000
     unwrapper: 01000000
   - meshName:
     - Cube.053
-    padding: 00010000
+    padding: 99000000
     unwrapper: 01000000
   - meshName:
     - broken bench
@@ -859,7 +950,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.056
-    padding: 5d000000
+    padding: 46000000
     unwrapper: 01000000
   - meshName:
     - MS_ConiferB02
@@ -871,24 +962,24 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.094
-    padding: 00010000
+    padding: 62000000
     unwrapper: 01000000
   - meshName:
     - Cube.088
-    padding: 89000000
+    padding: 66000000
     unwrapper: 01000000
   - meshName:
     - Cube.062
     - Cube.038
-    padding: 5300000070000000
+    padding: 3200000043000000
     unwrapper: 0100000001000000
   - meshName:
     - Cube.103
-    padding: 67000000
+    padding: 29000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.015
-    padding: 3a000000
+    padding: 3b000000
     unwrapper: 01000000
   - meshName:
     - SM_Env_Water_Plane_01
@@ -900,15 +991,15 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.092
-    padding: 91000000
+    padding: 6d000000
     unwrapper: 01000000
   - meshName:
     - Cube.055
-    padding: e8000000
+    padding: 5e000000
     unwrapper: 01000000
   - meshName:
     - Cube.045
-    padding: 3a000000
+    padding: 39000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.011
@@ -923,23 +1014,23 @@ MonoBehaviour:
     unwrapper: 0100000001000000010000000100000001000000010000000100000001000000
   - meshName:
     - MS_ConiferB01
-    padding: 21000000
+    padding: 19000000
     unwrapper: 01000000
   - meshName:
     - chair
-    padding: 95000000
+    padding: 70000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.004
-    padding: ba000000
+    padding: 8b000000
     unwrapper: 01000000
   - meshName:
     - ivy-3
-    padding: cb000000
+    padding: 6d000000
     unwrapper: 01000000
   - meshName:
     - ivy-1
-    padding: 00010000
+    padding: 55000000
     unwrapper: 01000000
   - meshName:
     - MS_ConiferA03
@@ -951,15 +1042,15 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.091
-    padding: 92000000
+    padding: 6d000000
     unwrapper: 01000000
   - meshName:
     - Cube.003
-    padding: 42000000
+    padding: 31000000
     unwrapper: 01000000
   - meshName:
     - pillar
-    padding: 2a000000
+    padding: 17000000
     unwrapper: 01000000
   - meshName:
     - Cube.037
@@ -976,7 +1067,7 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - Cube.026
-    padding: 60000000
+    padding: 41000000
     unwrapper: 01000000
   - meshName:
     - Plane.010
@@ -984,11 +1075,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.090
-    padding: 88000000
+    padding: 66000000
     unwrapper: 01000000
   - meshName:
     - Cube.097
-    padding: 00010000
+    padding: e7000000
     unwrapper: 01000000
   - meshName:
     - Cube.036
@@ -997,7 +1088,7 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - Cube.082
-    padding: 68000000
+    padding: 4e000000
     unwrapper: 01000000
   - meshName:
     - Cube.015
@@ -1024,7 +1115,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.085
-    padding: 00010000
+    padding: e6000000
     unwrapper: 01000000
   - meshName:
     - injector_2
@@ -1033,7 +1124,7 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - ivy-4
-    padding: 00010000
+    padding: 68000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.007
@@ -1046,11 +1137,11 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - block
-    padding: 35000000
+    padding: 36000000
     unwrapper: 01000000
   - meshName:
     - Cube.002
-    padding: 23000000
+    padding: 1a000000
     unwrapper: 01000000
   - meshName:
     - Luke
@@ -1069,7 +1160,7 @@ MonoBehaviour:
     unwrapper: 010000000100000001000000
   - meshName:
     - Cube.001
-    padding: 1d000000
+    padding: 16000000
     unwrapper: 01000000
   - meshName:
     - broken bench.001
@@ -1081,7 +1172,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.020
-    padding: b9000000
+    padding: 7d000000
     unwrapper: 01000000
   - meshName:
     - chaine
@@ -1093,11 +1184,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.084
-    padding: 00010000
+    padding: ca000000
     unwrapper: 01000000
   - meshName:
     - Cube.087
-    padding: 67000000
+    padding: 4d000000
     unwrapper: 01000000
   - meshName:
     - Cube.073
@@ -1106,7 +1197,7 @@ MonoBehaviour:
     unwrapper: 0100000001000000
   - meshName:
     - Cube.101
-    padding: 37000000
+    padding: 3e000000
     unwrapper: 01000000
   - meshName:
     - Plane.019
@@ -1114,7 +1205,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cylinder.001
-    padding: 7a000000
+    padding: c6000000
     unwrapper: 01000000
   - meshName:
     - Plane.008
@@ -1146,7 +1237,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - bike
-    padding: 5d000000
+    padding: 36000000
     unwrapper: 01000000
   - meshName:
     - MS_MasakiB01
@@ -1170,11 +1261,11 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cylinder.027
-    padding: 9a000000
+    padding: 33000000
     unwrapper: 01000000
   - meshName:
     - Cube.078
-    padding: ce000000
+    padding: 9a000000
     unwrapper: 01000000
   - meshName:
     - MS_ChigoYuriA01
@@ -1194,15 +1285,15 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cube.100
-    padding: 34000000
+    padding: 27000000
     unwrapper: 01000000
   - meshName:
     - Cylinder.007
-    padding: b7000000
+    padding: 89000000
     unwrapper: 01000000
   - meshName:
     - Cube.032
-    padding: 00010000
+    padding: d6000000
     unwrapper: 01000000
   - meshName:
     - MS_ShiraneaoiB01
@@ -1223,7 +1314,7 @@ MonoBehaviour:
     unwrapper: 01000000
   - meshName:
     - Cylinder.006
-    padding: a7000000
+    padding: 7d000000
     unwrapper: 01000000
   - meshName:
     - 3
@@ -1258,6 +1349,400 @@ MonoBehaviour:
     - Cube.112
     padding: 0300000003000000
     unwrapper: 0100000001000000
+  - meshName:
+    - Cylinder.003
+    padding: 2c000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.005
+    padding: 06000000
+    unwrapper: 01000000
+  - meshName:
+    - Sphere
+    padding: 68000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.006
+    padding: 47000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.011
+    padding: 1d000000
+    unwrapper: 01000000
+  - meshName:
+    - dockyard
+    padding: 0a000000
+    unwrapper: 01000000
+  - meshName:
+    - Cylinder
+    padding: 42000000
+    unwrapper: 01000000
+  - meshName:
+    - MS_ConiferA01
+    padding: 11000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.013
+    padding: 48000000
+    unwrapper: 01000000
+  - meshName:
+    - boat
+    padding: 10000000
+    unwrapper: 01000000
+  - meshName:
+    - Cylinder.002
+    padding: 33000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.007
+    padding: a0000000
+    unwrapper: 01000000
+  - meshName:
+    - Plane.002
+    padding: 8f000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.010
+    padding: 3f000000
+    unwrapper: 01000000
+  - meshName:
+    - MS_ConiferA04
+    padding: 0a000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.009
+    padding: 03000000
+    unwrapper: 01000000
+  - meshName:
+    - container
+    padding: 07000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.004
+    padding: 1b000000
+    unwrapper: 01000000
+  - meshName:
+    - radio tower
+    padding: 04000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube.008
+    padding: 17000000
+    unwrapper: 01000000
+  - meshName:
+    - 1
+    padding: 12000000
+    unwrapper: 01000000
+  - meshName:
+    - Cylinder.004
+    padding: 86000000
+    unwrapper: 01000000
+  - meshName:
+    - MS_TreeBoardA02
+    padding: 0e000000
+    unwrapper: 01000000
+  - meshName:
+    - PolySphere2
+    padding: 69000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Crate_01
+    padding: 53000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_05
+    padding: 57000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Cliff_03
+    padding: 0f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Small_01
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_06
+    padding: 14000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Cliff_02
+    padding: 14000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Ground_Mound_Large_01
+    padding: 0f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Cliff_01
+    padding: 17000000
+    unwrapper: 01000000
+  - meshName:
+    - antenna
+    padding: ca000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Leaves_Pile_02
+    padding: b8000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Small_Pile_01
+    padding: bf000000
+    unwrapper: 01000000
+  - meshName:
+    - Plane
+    padding: ab000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Pile_07
+    padding: 1f000000
+    unwrapper: 01000000
+  - meshName:
+    - Cube
+    padding: 72000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Round_01
+    padding: 4b000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Fire_Tripod_01
+    padding: 84000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_03
+    padding: 47000000
+    unwrapper: 01000000
+  - meshName:
+    - transformer
+    padding: 12000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Pile_01
+    padding: 26000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_03
+    padding: 67000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_02
+    padding: 26000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Fireplace_Stones_01
+    padding: 6b000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Grass_Med_Clump_02_LOD0
+    - SM_Env_Grass_Med_Clump_02_LOD1
+    padding: 4500000075000000
+    unwrapper: 0100000001000000
+  - meshName:
+    - SM_Env_Grass_Med_Clump_03_LOD0
+    - SM_Env_Grass_Med_Clump_03_LOD1
+    - SM_Env_Grass_Med_Clump_03_LOD2
+    padding: 3a0000004c00000066000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Rock_Pile_04
+    padding: 2c000000
+    unwrapper: 01000000
+  - meshName:
+    - Sphere.001
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Tent_01
+    padding: 26000000
+    unwrapper: 01000000
+  - meshName:
+    - Cylinder.010
+    padding: e2000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Pile_05
+    padding: 31000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_07
+    padding: 4e000000
+    unwrapper: 01000000
+  - meshName:
+    - Cylinder.001
+    padding: 6d000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Bucket_01
+    padding: a4000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Small_Pile_02
+    padding: bb000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_Post_03
+    - SM_Prop_Meadow_Fence_Gate_02_Latch_01
+    padding: 8f00000000010000
+    unwrapper: 0100000001000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_04
+    padding: 53000000
+    unwrapper: 01000000
+  - meshName:
+    - pile of leaves
+    padding: 53000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Mushroom_Group_04
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Wagon_Broken_01
+    padding: 13000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Fireplace_01
+    padding: 5f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Pile_06
+    padding: 23000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Can_02
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Ground_Mound_Large_03
+    padding: 10000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_01
+    padding: 2e000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Bld_Windmill_01
+    - SM_Bld_Windmill_01_Blades_01
+    padding: 090000000f000000
+    unwrapper: 0100000001000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_Gate_01
+    padding: 4e000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Mushroom_Group_02
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_04
+    padding: 16000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Sign_03
+    padding: 64000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Ground_02
+    padding: 10000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Pouch_01
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Camp_Fireplace_02
+    padding: 3f000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_SciFiCable_02
+    padding: 37000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Mushroom_Group_03
+    padding: 00010000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Leaves_Branch_01
+    padding: be000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Rock_Pile_02
+    padding: 0d000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Bld_Stone_Cabin_01
+    padding: 07000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Prop_Meadow_Fence_Railing_01
+    padding: a7000000
+    unwrapper: 01000000
+  - meshName:
+    - SM_Env_Bush_03_LOD0
+    - SM_Env_Bush_03_Branches_LOD0
+    - SM_Env_Bush_03_LOD1
+    - SM_Env_Bush_03_LOD2
+    padding: 160000005f0000001700000019000000
+    unwrapper: 01000000010000000100000001000000
+  - meshName:
+    - SM_Env_Grass_Tall_Clump_05_LOD0
+    - SM_Env_Grass_Tall_Clump_05_LOD1
+    - SM_Env_Grass_Tall_Clump_05_LOD2
+    padding: 0d0000000f00000018000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Ground_Cover_02_LOD0
+    - SM_Env_Ground_Cover_02_LOD1
+    - SM_Env_Ground_Cover_02_LOD2
+    padding: 370000005000000096000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Ground_Cover_03_LOD0
+    - SM_Env_Ground_Cover_03_LOD1
+    - SM_Env_Ground_Cover_03_LOD2
+    padding: 270000003e00000052000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Tree_Meadow_01_Branches_LOD0
+    - SM_Env_Tree_Meadow_01_LOD0
+    - SM_Env_Tree_Meadow_01_LOD1
+    - SM_Env_Tree_Meadow_01_Branches_LOD1
+    - SM_Env_Tree_Meadow_01_LOD2
+    - SM_Env_Tree_Meadow_01_Branches_LOD2
+    - SM_Env_Tree_Meadow_01_LOD3
+    padding: 07000000020000000200000007000000020000000700000005000000
+    unwrapper: 01000000010000000100000001000000010000000100000001000000
+  - meshName:
+    - SM_Prop_Stonewall_Long_01_LOD0
+    - SM_Prop_Stonewall_Long_01_LOD1
+    - SM_Prop_Stonewall_Long_01_LOD2
+    padding: 1a0000002300000023000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Grass_Tall_Clump_03_LOD0
+    - SM_Env_Grass_Tall_Clump_03_LOD1
+    - SM_Env_Grass_Tall_Clump_03_LOD2
+    padding: 290000002f00000048000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Prop_Stonewall_Pillar_01_LOD0
+    - SM_Prop_Stonewall_Pillar_01_LOD1
+    - SM_Prop_Stonewall_Pillar_01_LOD2
+    padding: 3d0000004b0000004c000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Env_Tree_Fruit_03_LOD0
+    - SM_Env_Tree_Fruit_03_LOD1
+    - SM_Env_Tree_Fruit_03_LOD2
+    padding: 080000000800000016000000
+    unwrapper: 010000000100000001000000
+  - meshName:
+    - SM_Prop_Stonewall_End_01_LOD0
+    - SM_Prop_Stonewall_End_01_LOD1
+    - SM_Prop_Stonewall_End_01_LOD2
+    padding: 240000002f00000030000000
+    unwrapper: 010000000100000001000000
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
@@ -1347,5 +1832,5 @@ MonoBehaviour:
   renderSettingsRTPVSceneView: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  modifiedMeshPaddingArray: 00010000
+  modifiedMeshPaddingArray: 41000000
   modifiedMeshUnwrapperArray: 01000000

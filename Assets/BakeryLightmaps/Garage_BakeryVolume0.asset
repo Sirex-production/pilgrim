@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!117 &11700000
+Texture3D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Garage_BakeryVolume0
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_ColorSpace: 0
+  m_Format: 48
+  m_Width: 5
+  m_Height: 2
+  m_Depth: 6
+  m_MipCount: 1
+  m_DataSize: 480
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_UsageMode: 0
+  m_IsReadable: 1
+  image data: 480
+  _typelessdata: cd25f42450222f261c2cae2bb728ac2c762c252bba28622dee10440e20026401d925762597237b26fb1fe91f801d5a9d572a1a2abd270d2cb12c952cbf29332d212c182c1629de2c782954295327fd2aa61cb11cfc19a918302e192eaf2b6c2ec430b030282de3312f11d70c850b3f0f561419160b11a70870291c29b1260729002ed12d6a2b3e2f41303430562d6532fb2ff62f2b2dd5313c2d142db12a9d2e1c2db62c202a1d28953410348b300432d9385138ae34df374936bf3517327b3400218f1fb51c971cfc2cb52cef29ff28933264320e30733254384938a735633ab6379937f2346a392431fc30852e7730e72faf2fff2c40ab9135ec3405318fac7039e0381535aeb1073a6f39cf359eb1c7307f30d12c96a4a52c5a2c5629fca0173501357f321ab1bb40b640403ee9c0fa3ff63f453d07c0dd31ac31792fcaaaca2e7f2eff2b2bacae321232132f15b20f368a35ff31e3b63a35cd345f31b8b55e31fa30142e80af8d2d3d2dcb2ac2abaa308430eb2d4db12f341b34573178b61c3407343e314bb6583033309a2da1b0bb2aab2a3a286aaa632d1d2d792a81ae382fde2e442cc4b0d72e8d2e2b2c3ab0d12c662cab29eeac9f298c292d275ba9c02c972ced2977ad002ed82d992b2cb0f72dd12d942b26b0622c3e2c8e29fbac
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 

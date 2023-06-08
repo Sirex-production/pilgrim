@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Prop_Camp_Fireplace_Stones_01"],"padding":[107],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

@@ -30,7 +30,8 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["SM_Env_Grass_Med_Clump_02_LOD0","SM_Env_Grass_Med_Clump_02_LOD1"],"padding":[69,117],"unwrapper":[1,1]}'
     clipAnimations: []
     isReadable: 0
   meshes:
