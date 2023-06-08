@@ -2,14 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tree_Mat_01
   m_Shader: {fileID: 4800000, guid: 6697e1f185bc8b840a2f02567abf15b5, type: 3}
-  m_ShaderKeywords: _FLATCOLOURSWITCH_ON _FROSTINGSWITCH_ON _LEAFFLATCOLOURSWITCH_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _FLATCOLOURSWITCH_ON
+  - _FROSTINGSWITCH_ON
+  - _LEAFFLATCOLOURSWITCH_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -167,6 +171,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
     - _Big_Wave: 10
@@ -262,12 +267,12 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive2Colour: {r: 0, g: 0, b: 0, a: 0}
     - _EmissiveColour: {r: 0, g: 0, b: 0, a: 0}
-    - _FrostingColour: {r: 0.5060455, g: 0.638, b: 0.045297988, a: 0}
+    - _FrostingColour: {r: 0.3657866, g: 0.4433962, b: 0.09871841, a: 0}
     - _GustHighlight: {r: 0.1132075, g: 0.1132075, b: 0.1132075, a: 0}
     - _GustSmoothing: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _LeafBaseColour: {r: 0.35894927, g: 0.5764706, b: 0.07843136, a: 0}
-    - _LeafNoiseColour: {r: 0.1677404, g: 0.254717, b: 0, a: 0}
-    - _LeafNoiseLargeColour: {r: 0.4282872, g: 0.4901961, b: 0.007843124, a: 0}
+    - _LeafBaseColour: {r: 0.26171234, g: 0.3679245, b: 0.120096125, a: 0}
+    - _LeafNoiseColour: {r: 0.17118165, g: 0.2264151, b: 0.06322536, a: 0}
+    - _LeafNoiseLargeColour: {r: 0.3998576, g: 0.4528302, b: 0.0025632067, a: 0}
     - _LeafTint: {r: 0.07843138, g: 0.02015968, b: 0, a: 0}
     - _SnowColour: {r: 0.7718434, g: 1, b: 0.1839623, a: 0}
     - _Tint: {r: 0, g: 0, b: 0, a: 0}
