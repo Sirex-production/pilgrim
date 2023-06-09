@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveMask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: bb0414df2aa125142adc42205374a184, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveNoiseMap:
@@ -173,7 +173,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissiveAmount: 0
+    - _EmissiveAmount: 0.8
     - _FlatColourSwitch: 1
     - _Float0: 0
     - _Float1: 0.05
@@ -250,7 +250,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive2Colour: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissiveColour: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColour: {r: 0.9433962, g: 0.85646135, b: 0.21893916, a: 0}
     - _FrostingColour: {r: 1, g: 1, b: 1, a: 0}
     - _GustHighlight: {r: 0, g: 0, b: 0, a: 0}
     - _GustSmoothing: {r: 0.5, g: 0.5, b: 0.5, a: 0}
