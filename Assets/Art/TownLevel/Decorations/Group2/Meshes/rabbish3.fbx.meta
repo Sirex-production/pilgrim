@@ -36,7 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["ivy-2"],"padding":[195],"unwrapper":[1]}'
+    - '#BAKERY{"meshName":["ivy-2"],"padding":[96],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:

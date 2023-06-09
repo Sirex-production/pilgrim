@@ -36,7 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["electrical panel"],"padding":[164],"unwrapper":[1]}'
+    - '#BAKERY{"meshName":["electrical panel"],"padding":[123],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:
