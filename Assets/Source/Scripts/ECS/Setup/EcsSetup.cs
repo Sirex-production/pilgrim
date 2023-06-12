@@ -144,6 +144,7 @@ namespace Ingame
                 .OneFrame<LeanInputRequest>()
                 .OneFrame<MoveInputRequest>()
                 .OneFrame<RotateInputRequest>()
+                .OneFrame<RunInputEvent>()
                 .OneFrame<ShootInputEvent>()
                 .OneFrame<AimInputEvent>()
                 .OneFrame<MagazineSwitchInputEvent>()
@@ -243,6 +244,7 @@ namespace Ingame
                 .Add(new PlaceBulletEffectsOnTheSurfaceSystem())
                 .Add(new HudRecoilSystem())
                 .Add(new HudItemAnimationSystem())
+                .Add(new ChangeHudDueToRunningSystem())
                 .Add(new Ar15ReloadSystem())
                 .Add(new M14EbrReloadSystem())
                 .Add(new Mp5ReloadSystem())
@@ -285,6 +287,7 @@ namespace Ingame
             _fixedUpdateSystem
                 //Input   
                 .Add(new PlayerInputToMovementConvertSystem())
+                .Add(new PlayerInputToRunConverterSystem())
                 //Utils
                 .Add(new DeltaMovementCalculationSystem())
                 //Hud

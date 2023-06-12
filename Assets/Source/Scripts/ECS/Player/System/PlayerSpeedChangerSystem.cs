@@ -22,6 +22,9 @@ namespace Ingame.Player
 
                 if (playerModel.currentLeanDirection != LeanDirection.None && playerData.LeanWalkSpeed < actualPlayerSpeed)
                     actualPlayerSpeed = playerData.LeanWalkSpeed;
+                
+                if(playerModel is { isRunning: true, isCrouching: false })
+                    actualPlayerSpeed = playerModel.playerMovementData.RunningSpeed;
 
                 playerModel.currentSpeed = actualPlayerSpeed;
             }

@@ -11,6 +11,7 @@ namespace Ingame.Player
 
         public float currentSpeed;
         public bool isCrouching;
+        public bool isRunning;
         public LeanDirection currentLeanDirection;
     }
 }
