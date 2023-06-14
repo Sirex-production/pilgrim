@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Ingame.Events
 {
-    public sealed class AppearTrain : MonoBehaviour
+    public sealed class AppearTrainMonoEvent : MonoBehaviour
     {
         [SerializeReference] private Transform train;
         [SerializeReference] private Transform destination;
