@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 94914155218739015, guid: 712446df5f39f8c4597b19681d51efe6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 94914155218739015, guid: 712446df5f39f8c4597b19681d51efe6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -237,6 +237,10 @@ PrefabInstance:
     - target: {fileID: 94914155218739016, guid: 712446df5f39f8c4597b19681d51efe6, type: 3}
       propertyPath: m_Name
       value: EcsProvider - Service - UI - PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 94914155218739016, guid: 712446df5f39f8c4597b19681d51efe6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3016375911316761951, guid: 712446df5f39f8c4597b19681d51efe6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -391,11 +395,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 633218398}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_LocalScale.y
@@ -403,15 +407,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -108.99
+      value: -210.69614
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.52
+      value: 19.91134
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.31
+      value: -400.3625
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -459,6 +463,11 @@ MeshRenderer:
 --- !u!1 &152985891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
+  m_PrefabInstance: {fileID: 152985889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &152985892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cdf465a7dee61a34487eb15932cd379d, type: 3}
   m_PrefabInstance: {fileID: 152985889}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &169723266
@@ -1800,7 +1809,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &212065276
 MeshCollider:
@@ -2068,7 +2077,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &307488691 stripped
 Transform:
@@ -2278,7 +2287,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 41.207, y: 0, z: 0}
 --- !u!64 &351228227
 MeshCollider:
@@ -2503,7 +2512,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &569707931
 MeshCollider:
@@ -2613,10 +2622,11 @@ Transform:
   - {fileID: 1118581838}
   - {fileID: 309873142}
   - {fileID: 307488691}
+  - {fileID: 152985892}
   - {fileID: 543450653550760749}
   - {fileID: 1312141453}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &655196164
 GameObject:
@@ -3168,9 +3178,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EcsProvider - Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2167057582685060770, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2167057582685060782, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2167057582685060782, guid: e9699a0e7eea9584da93151fa2109b24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3456,7 +3470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6101986991017239211, guid: dd38ed2e33c1fdf4eafd49c22024879b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6101986991017239211, guid: dd38ed2e33c1fdf4eafd49c22024879b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3533,6 +3547,10 @@ PrefabInstance:
     - target: {fileID: 6101986991017239215, guid: dd38ed2e33c1fdf4eafd49c22024879b, type: 3}
       propertyPath: m_Name
       value: EcsProvider - UI - Gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101986991017239215, guid: dd38ed2e33c1fdf4eafd49c22024879b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6101986991203448443, guid: dd38ed2e33c1fdf4eafd49c22024879b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3721,7 +3739,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1019389875
 MeshCollider:
@@ -4382,7 +4400,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1258381173
 PrefabInstance:
@@ -4393,7 +4411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4128991696746922634, guid: 61e6a5a105a53254e87917d7dd872f1d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4128991696746922634, guid: 61e6a5a105a53254e87917d7dd872f1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4438,6 +4456,10 @@ PrefabInstance:
     - target: {fileID: 7594228530533716516, guid: 61e6a5a105a53254e87917d7dd872f1d, type: 3}
       propertyPath: m_Name
       value: EcsRuntime
+      objectReference: {fileID: 0}
+    - target: {fileID: 7594228530533716516, guid: 61e6a5a105a53254e87917d7dd872f1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61e6a5a105a53254e87917d7dd872f1d, type: 3}
@@ -4636,7 +4658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 633218398}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1312141454
 MonoBehaviour:
@@ -5038,7 +5060,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!64 &1448170159
 MeshCollider:
@@ -5141,9 +5163,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EcsProvider - Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 4986152298849439595, guid: 5cb4ce31ae2ec884cbb98b926c6cb8ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4986152298849439597, guid: 5cb4ce31ae2ec884cbb98b926c6cb8ae, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4986152298849439597, guid: 5cb4ce31ae2ec884cbb98b926c6cb8ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5383,7 +5409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7230219650809584938, guid: 5d11b4b3f3ec83e47a9c310ec911e5f3, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7230219650809584938, guid: 5d11b4b3f3ec83e47a9c310ec911e5f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5614,9 +5640,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EcsProvider - VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 2044203285125826765, guid: 2ffe8411d38eca344a6cf9f0f41bb08f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4043991922897998172, guid: 2ffe8411d38eca344a6cf9f0f41bb08f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4043991922897998172, guid: 2ffe8411d38eca344a6cf9f0f41bb08f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6072,7 +6102,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1980753367
 MeshCollider:
@@ -6135,7 +6165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2008535460
 MeshCollider:
@@ -6806,7 +6836,7 @@ Transform:
   - {fileID: 2277145675002882751}
   - {fileID: 1494714303}
   m_Father: {fileID: 633218398}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &549860787317342579
 MeshFilter:
@@ -13038,7 +13068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8218082824388084707}
   m_LocalRotation: {x: -0.044284444, y: 0.9879974, z: -0.10490849, w: -0.104375556}
-  m_LocalPosition: {x: -4.5977, y: 1.4857, z: -5.1072006}
+  m_LocalPosition: {x: -4.593, y: 1.486, z: -5.108}
   m_LocalScale: {x: 0.114328764, y: 0.11432881, z: 0.11432877}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -6,7 +6,7 @@ Texture3D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Town_BakeryVolume0
+  m_Name: 
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -32,7 +32,7 @@ Texture3D:
   m_UsageMode: 0
   m_IsReadable: 1
   image data: 8
-  _typelessdata: fc309f30053015a8
+  _typelessdata: f031723171303128
   m_StreamData:
     serializedVersion: 2
     offset: 0
