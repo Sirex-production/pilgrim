@@ -139,6 +139,18 @@ MonoBehaviour:
         spread: 38.5
         minDistance: 1
         maxDistance: 5.5
+    - name: train
+      audioClip: {fileID: 8300000, guid: b3c4b17805a5aee488298b186275a842, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.102
+        pitch: 0.9
+        spatialBlend: 0
+        loop: 0
+        dopplerLevel: 2.59
+        spread: 38.5
+        minDistance: 1
+        maxDistance: 75.53
   - audioTypeName: gun
     audioWrappers:
     - name: null
