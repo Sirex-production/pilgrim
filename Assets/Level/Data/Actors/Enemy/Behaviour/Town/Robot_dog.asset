@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PatrolActionNode
   m_EditorClassIdentifier: 
   guid: 6d2a7fef32762b74b84a1fd07382b8a9
-  position: {x: -814, y: 516}
+  position: {x: -831, y: 659}
   description: 
   audioService: {fileID: 0}
 --- !u!114 &-7216184966238769662
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: SequenceNode
   m_EditorClassIdentifier: 
   guid: d4854fa45e39f1943a91e340a2bf92b5
-  position: {x: -634.00006, y: 388}
+  position: {x: -618, y: 397}
   description: 
   audioService: {fileID: 0}
   Children:
@@ -68,7 +68,7 @@ MonoBehaviour:
   position: {x: -244, y: 380}
   description: 
   audioService: {fileID: 0}
-  delayDuration: 1
+  delayDuration: 2
 --- !u!114 &-4163685507017967133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: WaitNode
   m_EditorClassIdentifier: 
   guid: 6fbe0be9cf150c14d9346f283b6d721f
-  position: {x: -547.49994, y: 620.55005}
+  position: {x: -538, y: 707}
   description: 
   audioService: {fileID: 0}
   delayDuration: 1.15
@@ -239,10 +239,10 @@ MonoBehaviour:
   m_Name: RepeatNode
   m_EditorClassIdentifier: 
   guid: 5cf90672fd127de45b8c9d811932216a
-  position: {x: -287.18304, y: -1427.8589}
+  position: {x: -603, y: -1308.91}
   description: 
   audioService: {fileID: 0}
-  child: {fileID: 4670252257769128526}
+  child: {fileID: 8634403642044168309}
   type: 0
   loops: 1
   stateOnResetState: 0
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: RandomSelectorNode
   m_EditorClassIdentifier: 
   guid: 3d43459c1e8937f449cee182c21b0840
-  position: {x: -515, y: 132}
+  position: {x: -501.49994, y: 140.00006}
   description: 
   audioService: {fileID: 0}
   Children:

@@ -53,13 +53,16 @@ namespace Ingame.Animation
            
             SmoothIKLeftHand(ref entity,ref animatorModel);
             var indexDie = animatorModel.animator.GetLayerIndex("DIE");
-            animatorModel.animator.SetLayerWeight(indexDie, 1f);
+            
+            if(indexDie != -1)
+                animatorModel.animator.SetLayerWeight(indexDie, 1f);
+            
             animatorModel.animator.SetBool(_isDying,enemyStateModel.isDying);
                 
             var indexAim = animatorModel.animator.GetLayerIndex("Aim Layer");
-            animatorModel.animator.SetLayerWeight(indexAim, 0f);
-
-          
+            
+            if(indexAim != -1)
+                animatorModel.animator.SetLayerWeight(indexAim, 0f);
         }
         
         private void PerformMovementAnimations(ref EcsEntity entity,ref NavMeshAgentModel navMeshAgentModel,ref EnemyStateModel enemyStateModel, ref AnimatorModel animatorModel)
@@ -99,6 +102,9 @@ namespace Ingame.Animation
         private void SmoothIKLeftHand(ref EcsEntity entity ,ref AnimatorModel animatorModel)
         {
             var weight = animatorModel.animator.GetFloat(_iKLeftHandWeight);
+            if (!entity.Has<RigModel>())
+                return;
+            
             entity.Get<RigModel>().rig.weight = Mathf.Clamp(weight, 0f, _rigWeight);
         }
     }
