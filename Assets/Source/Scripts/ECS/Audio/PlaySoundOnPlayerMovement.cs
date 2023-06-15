@@ -9,7 +9,7 @@ namespace Ingame.Audio
 
     public sealed class PlaySoundOnPlayerMovement : IEcsRunSystem
     {
-        private static readonly float STEP_INTERVAL = 0.65f;
+        private static readonly float STEP_INTERVAL = 0.5f;
         private readonly EcsFilter<VelocityComponent, CharacterControllerModel, PlayerModel>.Exclude<BlockMovementRequest> _velocityFilter;
         private AudioService _audioService;
         
@@ -23,8 +23,9 @@ namespace Ingame.Audio
             
             ref var velocityComponent = ref _velocityFilter.Get1(0);
 
-            if (velocityComponent.velocity.magnitude <= 1)
+            if (velocityComponent.velocity.magnitude <= 1.5f)
             {
+      
                 _currentInterval = STEP_INTERVAL;
                 return;
             }
