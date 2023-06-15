@@ -151,6 +151,18 @@ MonoBehaviour:
         spread: 38.5
         minDistance: 1
         maxDistance: 75.53
+    - name: crow
+      audioClip: {fileID: 8300000, guid: 94f0e1045e831ef42974b2a0896c9573, type: 3}
+      audioSettings:
+        priority: 21
+        volume: 0.232
+        pitch: 0.865
+        spatialBlend: 1
+        loop: 1
+        dopplerLevel: 2.733
+        spread: 84.3
+        minDistance: 1
+        maxDistance: 45
   - audioTypeName: gun
     audioWrappers:
     - name: null

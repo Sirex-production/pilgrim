@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ingame.Audio;
 using UnityEngine;
+using Zenject;
 
 namespace Ingame.Events
 {
@@ -9,9 +11,21 @@ namespace Ingame.Events
         [SerializeReference]
         private List<FleeingBirdWrapper> birds;
 
-  
-
+        private AudioService _audioService;
         private bool _wasTriggered;
+        
+        [Inject] 
+        public void Construct(AudioService audioService)
+        {
+            _audioService = audioService;
+        }
+        
+        private void Start()
+        {
+            _audioService.Play3D("town","crow",transform);
+        }
+
+ 
         private void OnTriggerEnter(Collider other)
         {
             if(_wasTriggered)
@@ -24,6 +38,7 @@ namespace Ingame.Events
                 bird.Flee();
             
             _wasTriggered = true;
+            _audioService.Stop3D("town","crow",transform);
         }
     }
 }
