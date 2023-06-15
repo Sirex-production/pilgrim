@@ -26,9 +26,13 @@ namespace Ingame.Gunplay
                 
                 firearmEntity.Del<AwaitingShotTag>();
                 _world.CreateNoiseEvent(firearmComponent.barrelOrigin.position);
-                if (!TryPerformRaycast(firearmComponent.barrelOrigin.position, firearmComponent.barrelOrigin.forward, out RaycastHit hit))
+                if (!TryPerformRaycast(firearmComponent.barrelOrigin.position, firearmComponent.barrelOrigin.forward,
+                        out RaycastHit hit))
+                {
+                    _audioService.Play3D("gun","shoot", firearmComponent.barrelOrigin);
                     continue;
-                
+                }
+
                 SendVfxRequest(hit.point, hit.normal, hit.transform.tag);
                 _audioService.Play3D("gun","shoot", firearmComponent.barrelOrigin);
                 
