@@ -36,7 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["Cube.020"],"padding":[125],"unwrapper":[1]}'
+    - '#BAKERY{"meshName":["Cube.020"],"padding":[185],"unwrapper":[1]}'
     clipAnimations: []
     isReadable: 0
   meshes:
