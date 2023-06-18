@@ -33,7 +33,13 @@ namespace Ingame.Enemy
             
             AdjustWayPoints(waypoints);
             
-          
+            if (_point == null)
+            {
+                entity.Get<EnemyStateModel>().isPatrolling = false;
+                _stopPatrolling = true;
+                return;
+            }
+            
             _agent.destination = _point.position;
             _agent.isStopped = false;
             entity.Get<EnemyStateModel>().isPatrolling = true;
