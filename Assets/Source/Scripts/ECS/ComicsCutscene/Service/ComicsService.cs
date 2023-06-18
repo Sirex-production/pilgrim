@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Support;
 using UnityEngine;
+using UnityEngine.Video;
 using Zenject;
 
 
@@ -22,6 +23,7 @@ namespace Ingame.Comics
         private ComicsHolderConfig comicsHolderConfig;
 
         public event Action<Sprite> OnComicsPageChanged;
+        public event Action<VideoClip> OnComicsVideoChanged;
         public event Action<string> OnComicsTextChanged;
         public event Action OnComicsClosed;
         public event Action OnComicsOpened;
@@ -38,6 +40,11 @@ namespace Ingame.Comics
         private Sprite GetCurrentPage()
         {
             return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].Page;
+        }
+        
+        private VideoClip GetCurrenVideo()
+        {
+            return _currentComics.comicsData?.Pages[_currentComics.currentPageIndex].VideoClip;
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -87,6 +94,7 @@ namespace Ingame.Comics
           
           OnComicsOpened?.Invoke();
           OnComicsPageChanged?.Invoke(GetCurrentPage());
+          OnComicsVideoChanged?.Invoke(GetCurrenVideo());
           OnComicsTextChanged?.Invoke(GetCurrentText());
         }
         
@@ -107,8 +115,8 @@ namespace Ingame.Comics
             if(_currentComics.comicsData == null)
                 return;
             
-            if (TryToChangeText(1))
-                return;
+            /*if (TryToChangeText(1))
+                return;*/
 
             if (_currentComics.comicsData.Pages.Count-1 <= _currentComics.currentPageIndex)
             {
@@ -120,6 +128,7 @@ namespace Ingame.Comics
             _currentComics.currentTextIndex = 0;
             
             OnComicsPageChanged?.Invoke(GetCurrentPage());
+            OnComicsVideoChanged?.Invoke(GetCurrenVideo());
             OnComicsTextChanged?.Invoke(GetCurrentText());
         }
         
@@ -140,6 +149,7 @@ namespace Ingame.Comics
             _currentComics.currentTextIndex = (sentences == null || sentences.Count <= 0) ? 0 : sentences.Count - 1;
             
             OnComicsPageChanged?.Invoke(GetCurrentPage());
+            OnComicsVideoChanged?.Invoke(GetCurrenVideo());
             OnComicsTextChanged?.Invoke(GetCurrentText());
         }
     }

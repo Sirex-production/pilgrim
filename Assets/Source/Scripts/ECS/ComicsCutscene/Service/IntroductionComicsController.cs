@@ -1,4 +1,5 @@
 ﻿using System;
+using Ingame.Audio;
 using NaughtyAttributes;
 using Support;
 using UnityEngine;
@@ -45,13 +46,14 @@ namespace Ingame.Comics
             _input.Comics.Back.performed += PerformBackPageLogic;
             // _input.Comics.Skip.performed += PerformSkipPageLogic;
             _comicsService.OnComicsClosed += OnComicsClosed;
+
         }
 
         private void Start()
         {
-           _comicsService.Play(nameOfComics);
+            _comicsService.Play(nameOfComics);
         }
-
+        
         private void OnDestroy()
         {
             _input.Comics.Next.performed -= PerformNextPageLogic;
@@ -60,14 +62,21 @@ namespace Ingame.Comics
             _comicsService.OnComicsClosed -= OnComicsClosed;
             
             _input.Comics.Disable();
+            
         }
 
         private void PerformNextPageLogic(InputAction.CallbackContext callback)
         {
-           if(uiComicsViewController.TryToSpeedUpWriting())
+            if (uiComicsViewController.UseVideo && uiComicsViewController.IsVideoPlayerRunning)
+            {
+                uiComicsViewController.FinishVideoClip();
+                return;
+            }
+            
+            if(!uiComicsViewController.UseVideo && uiComicsViewController.TryToSpeedUpWriting())
                return;
-           
-           _comicsService.OpenNextPage();
+            
+            _comicsService.OpenNextPage();
         }
         private void PerformBackPageLogic(InputAction.CallbackContext callback)
         {

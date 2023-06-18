@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace Ingame.Comics
 {
@@ -31,14 +32,19 @@ namespace Ingame.Comics
     [Serializable]
     public sealed class ComicsPage
     {
-        [SerializeField] 
-        [Required]
+        [SerializeField]
         private Sprite page;
+        
+        [SerializeField]
+        private VideoClip videoClip;
+
+        [SerializeField] private bool useVideo = true;
 
         [SerializeField] 
         private List<string> textsIntroductions;
 
         public ReadOnlyCollection<string> TextsIntroductions => textsIntroductions.AsReadOnly();
         public Sprite Page => page;
+        public VideoClip VideoClip => videoClip;
     }
 }

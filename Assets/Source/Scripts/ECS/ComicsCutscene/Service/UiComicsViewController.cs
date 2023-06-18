@@ -6,15 +6,23 @@ using Support.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using Zenject;
 
 namespace Ingame.Comics
 {
     public sealed class UiComicsViewController : MonoBehaviour
     {
+        [SerializeField] private bool useVideo;
+        
         [SerializeField]
-        [Required]
+        private RawImage comicsVideoImage;
+        
+        [SerializeField]
         private Image comicsImage;
+        
+        [SerializeField]
+        private VideoPlayer comicsVideoPlayer;
 
         [SerializeField]
         [Required]
@@ -29,7 +37,10 @@ namespace Ingame.Comics
         private string _currentText = "";
         private bool _isDoTweenOccupied = false;
         private string _comicsCurrentText = "";
-        
+
+        public bool UseVideo => useVideo;
+        public bool IsVideoPlayerRunning => comicsVideoPlayer.isPlaying;
+
         [Inject]
         private void Construct(ComicsService comicsService )
         {
@@ -40,13 +51,27 @@ namespace Ingame.Comics
         {
             _comicsService.OnComicsClosed -= OnComicsClosed;
             _comicsService.OnComicsOpened -= OnComicsOpened;
-            _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
-            _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
-            
-            _comicsService.OnComicsClosed += OnComicsClosed;
+        
+
+           if (!useVideo)
+           {
+               _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
+               _comicsService.OnComicsPageChanged += OnComicsPageChanged;
+               
+               _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
+               _comicsService.OnComicsTextChanged += OnComicsTextChanged;
+               comicsVideoImage.gameObject.SetActive(false);
+           }else
+           {
+               _comicsService.OnComicsVideoChanged -= OnComicsVideoClipChanged;
+               _comicsService.OnComicsVideoChanged += OnComicsVideoClipChanged;
+               comicsImage.gameObject.SetActive(false);
+           }
+
+
+           _comicsService.OnComicsClosed += OnComicsClosed;
             _comicsService.OnComicsOpened += OnComicsOpened;
-            _comicsService.OnComicsPageChanged += OnComicsPageChanged;
-            _comicsService.OnComicsTextChanged += OnComicsTextChanged;
+          
             
             comicsImage.SetGameObjectInactive();
         }
@@ -55,10 +80,24 @@ namespace Ingame.Comics
         {
             _comicsService.OnComicsClosed -= OnComicsClosed;
             _comicsService.OnComicsOpened -= OnComicsOpened;
-            _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
-            _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
-        }
 
+            if (!useVideo)
+            {
+                _comicsService.OnComicsPageChanged -= OnComicsPageChanged;
+                _comicsService.OnComicsTextChanged -= OnComicsTextChanged;
+            }else
+                _comicsService.OnComicsVideoChanged -= OnComicsVideoClipChanged;
+        }
+        
+
+        private void OnComicsVideoClipChanged(VideoClip clip)
+        {
+            comicsVideoPlayer.Pause();
+            comicsVideoPlayer.clip = clip;
+            comicsVideoPlayer.time = 0;
+            comicsVideoPlayer.Play();
+        }
+        
         private void OnComicsPageChanged(Sprite sprite)
         {
             comicsImage.sprite = sprite;
@@ -99,6 +138,11 @@ namespace Ingame.Comics
                 
             return true;
 
+        }
+
+        public void FinishVideoClip()
+        {
+            comicsVideoPlayer.time += comicsVideoPlayer.clip.length;
         }
     }
 }

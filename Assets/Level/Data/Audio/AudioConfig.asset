@@ -227,3 +227,17 @@ MonoBehaviour:
         spread: 39.2
         minDistance: 0
         maxDistance: 5
+  - audioTypeName: menu
+    audioWrappers:
+    - name: comics
+      audioClip: {fileID: 8300000, guid: 76790a8e76f1f164fad88e3bb1bef10f, type: 3}
+      audioSettings:
+        priority: 56
+        volume: 0.172
+        pitch: 1.083
+        spatialBlend: 0.069
+        loop: 1
+        dopplerLevel: 0.34
+        spread: 31.4
+        minDistance: 0
+        maxDistance: 50

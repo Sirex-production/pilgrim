@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -199,6 +200,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &396944718
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +916,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870516443269045423, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: indexOfScene
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 870516443269045423, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: nameOfComics
+      value: ComicsA
+      objectReference: {fileID: 0}
     - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_overrideHtmlColors
       value: 0
@@ -921,6 +931,10 @@ PrefabInstance:
     - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_enableVertexGradient
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588283322113625044, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: useVideo
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4082067706622443908, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_Name
