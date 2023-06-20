@@ -20,6 +20,9 @@ namespace Ingame.Data.Player
         [BoxGroup("Movement")]
         [SerializeField][Min(0)] private float movementFriction = 10;
         
+        [BoxGroup("Movement (Running)")]
+        [SerializeField][Min(0)] private float runningSpeed = 18;
+        
         [BoxGroup("Movement (Jumping)"), Space]
         [SerializeField][Min(0)] private float jumpForce = 5;
         [BoxGroup("Movement (Jumping)")]
@@ -62,7 +65,9 @@ namespace Ingame.Data.Player
         public float EnterCrouchStateSpeed => enterCrouchStateSpeed;
         public float MovementAcceleration => movementAcceleration;
         public float MovementFriction => movementFriction;
-        
+
+        public float RunningSpeed => runningSpeed;
+
         public float JumpForce => jumpForce;
         public float PauseBetweenJumps => pauseBetweenJumps;
 

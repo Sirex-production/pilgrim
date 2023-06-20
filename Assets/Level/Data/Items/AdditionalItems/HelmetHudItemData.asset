@@ -13,19 +13,24 @@ MonoBehaviour:
   m_Name: HelmetHudItemData
   m_EditorClassIdentifier: 
   canBeUsedAsAim: 0
-  rotationSpeed: 3
-  minMaxRotationAngleX: {x: -50, y: 50}
+  rotationSpeed: 2.5
+  minMaxRotationAngleX: {x: -20, y: 20}
   rotationAngleMultiplierX: 10
   inverseRotationX: 0
-  minMaxRotationAngleY: {x: -50, y: 50}
+  minMaxRotationAngleY: {x: -15, y: 15}
   rotationAngleMultiplierY: 20
   inverseRotationY: 1
   minMaxRotationAngleZ: {x: 0, y: 0}
   rotationAngleMultiplierZ: 0
   inverseRotationZ: 0
   isItemMovedDueToRotation: 1
-  minMaxMovementOffsetY: {x: -0.1, y: 0.1}
+  isItemMovedBackToInitialPosition: 0
+  moveToInitialPosSpeed: 3
   moveSpeed: 5
+  isMovedVertically: 0
+  minMaxMovementOffsetY: {x: -0.1, y: 0.1}
+  isMovedHorizontally: 0
+  minMaxMovementOffsetX: {x: 0, y: 0}
   aimRotationSpeed: 3
   minMaxAimRotationAngleX: {x: -5, y: 5}
   aimRotationAngleMultiplierX: 2
@@ -48,6 +53,14 @@ MonoBehaviour:
   minMaxAimRotationMovementAngleY: {x: -5, y: 5}
   aimRotationMovementAngleMultiplierY: 5
   inverseAimRotationMovementY: 0
+  initialInstability: 0.2
+  instabilityBobbingSpeed: 0
+  instabilityAimStabilizationSpeed: 10
+  instabilityMovementOffset: 0
+  minMaxInstabilityOffsetY: {x: 0, y: 0}
+  minMaxInstabilityOffsetX: {x: 0, y: 0}
+  recoilOffsetZ: 0.1
+  recoilStabilizationSpeed: 3
   maximumClippingOffset: 0.8
   maximumAimClippingOffset: 0.1
   clippingMovementSpeed: 3
