@@ -244,6 +244,15 @@ namespace Support
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Helmet"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1d74c52-bffd-412e-ac26-1afc82f4c402"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -851,6 +860,17 @@ namespace Support
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f002f04-6184-4137-92d5-42ba428d05b5"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Helmet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -979,6 +999,7 @@ namespace Support
             m_FPS_ShowActiveQuest = m_FPS.FindAction("ShowActiveQuest", throwIfNotFound: true);
             m_FPS_ShowAllQuests = m_FPS.FindAction("ShowAllQuests", throwIfNotFound: true);
             m_FPS_Run = m_FPS.FindAction("Run", throwIfNotFound: true);
+            m_FPS_Helmet = m_FPS.FindAction("Helmet", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -1072,6 +1093,7 @@ namespace Support
         private readonly InputAction m_FPS_ShowActiveQuest;
         private readonly InputAction m_FPS_ShowAllQuests;
         private readonly InputAction m_FPS_Run;
+        private readonly InputAction m_FPS_Helmet;
         public struct FPSActions
         {
             private @StationaryInput m_Wrapper;
@@ -1100,6 +1122,7 @@ namespace Support
             public InputAction @ShowActiveQuest => m_Wrapper.m_FPS_ShowActiveQuest;
             public InputAction @ShowAllQuests => m_Wrapper.m_FPS_ShowAllQuests;
             public InputAction @Run => m_Wrapper.m_FPS_Run;
+            public InputAction @Helmet => m_Wrapper.m_FPS_Helmet;
             public InputActionMap Get() { return m_Wrapper.m_FPS; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1181,6 +1204,9 @@ namespace Support
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @Helmet.started += instance.OnHelmet;
+                @Helmet.performed += instance.OnHelmet;
+                @Helmet.canceled += instance.OnHelmet;
             }
 
             private void UnregisterCallbacks(IFPSActions instance)
@@ -1257,6 +1283,9 @@ namespace Support
                 @Run.started -= instance.OnRun;
                 @Run.performed -= instance.OnRun;
                 @Run.canceled -= instance.OnRun;
+                @Helmet.started -= instance.OnHelmet;
+                @Helmet.performed -= instance.OnHelmet;
+                @Helmet.canceled -= instance.OnHelmet;
             }
 
             public void RemoveCallbacks(IFPSActions instance)
@@ -1408,6 +1437,7 @@ namespace Support
             void OnShowActiveQuest(InputAction.CallbackContext context);
             void OnShowAllQuests(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
+            void OnHelmet(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

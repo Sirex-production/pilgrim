@@ -155,6 +155,7 @@ namespace Ingame
                 .OneFrame<LongInteractionInputEvent>()
                 .OneFrame<DropWeaponInputEvent>()
                 .OneFrame<OpenInventoryInputEvent>()
+                .OneFrame<HelmetInputEvent>()
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
                 .OneFrame<HideGunInputEvent>()
@@ -201,6 +202,7 @@ namespace Ingame
                 .Add(new HudItemRotatorDueVelocitySystem())
                 .Add(new HudItemMoveSystem())
                 .Add(new PlaySoundOnPlayerMovement())
+                .Add(new PutOnOrOffHelmetSystem())
                 // .Add(new HudItemMoverDueSurfaceDetectionSystem())
                 //AI
                 .Add(new BehaviourSystem())
