@@ -6974,10 +6974,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5097809792766177813, guid: 4a64f015354fab14ba8ac5fbfc38eaa4, type: 3}
-      propertyPath: value.HealthTakenPerTimeFrame
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5097809792766177814, guid: 4a64f015354fab14ba8ac5fbfc38eaa4, type: 3}
       propertyPath: m_Name
       value: Acid_water

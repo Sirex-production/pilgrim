@@ -237,6 +237,7 @@ namespace Ingame
                 .Add(new LadderSystem())
                 .Add(new PerformInteractionWithItemSystem())
                 .Add(new OpenWithItemSystem())
+                .Add(new PickUpHelmetSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
                 .Add(new PlaySoundOnShotPerformWithoutAmmo())

@@ -28,7 +28,7 @@ namespace Ingame.Inventory
 				else
 					entity.Get<HudIsInHandsTag>();
 
-				animatorModel.animator.SetBool("IsOn", isHelmetOn);
+				animatorModel.animator.SetBool("IsOn", !isHelmetOn);
 			}
 		}
 	}

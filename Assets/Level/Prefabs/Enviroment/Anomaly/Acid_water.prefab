@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    HealthTakenPerTimeFrame: 2
+    HealthTakenPerTimeFrame: 200
     TimeFrame: 1.03
 --- !u!114 &5097809792766177805
 MonoBehaviour:
