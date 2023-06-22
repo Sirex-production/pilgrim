@@ -59,7 +59,7 @@ MonoBehaviour:
         if it leads to my death.
   - name: Instruction
     pages:
-    - page: {fileID: 21300000, guid: 8fc1f74fca98585478336676e8f18966, type: 3}
+    - page: {fileID: 21300000, guid: 9250ad62c0ac7664ea906476d50d63f9, type: 3}
       videoClip: {fileID: 0}
       useVideo: 0
       textsIntroductions: []

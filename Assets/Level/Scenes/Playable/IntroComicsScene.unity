@@ -925,6 +925,10 @@ PrefabInstance:
       value: ComicsA
       objectReference: {fileID: 0}
     - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_overrideHtmlColors
       value: 0
       objectReference: {fileID: 0}
