@@ -3,7 +3,12 @@ guid: ad3d364d15457e54c8236b1e9b9b048d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TexturesCom_Trains0071_2_M
+    second: {fileID: 2100000, guid: 6b7f21ee82d019b468764b3ad6a406bb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

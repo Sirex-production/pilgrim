@@ -10,7 +10,7 @@ namespace Ingame.Player
     {
         private readonly EcsFilter<PlayerModel, VelocityComponent, CharacterControllerModel> _playerInputFilter;
         private readonly EcsFilter<MoveInputRequest> _moveRequestFilter;
-        
+
         public void Run()
         {
             if(_moveRequestFilter.IsEmpty())
@@ -18,7 +18,7 @@ namespace Ingame.Player
             
             ref var moveRequest = ref _moveRequestFilter.Get1(0);
             var inputVector = moveRequest.movementInput;
-            
+                
             foreach (var i in _playerInputFilter)
             {
                 ref var playerEntity = ref _playerInputFilter.GetEntity(i);
@@ -40,7 +40,7 @@ namespace Ingame.Player
                     var speedBoost = playerEntity.Get<EnergyEffectComponent>().movingSpeedScale;
                     targetVelocity *= speedBoost;
                 }
-                
+
                 targetVelocity.y = playerVelocity.y;
 
                 playerVelocityComponent.velocity = Vector3.Lerp(playerVelocity, targetVelocity, movementPower);

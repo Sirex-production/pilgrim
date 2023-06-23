@@ -2622,6 +2622,10 @@ PrefabInstance:
       value: Instruction
       objectReference: {fileID: 0}
     - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 870516443609080204, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_overrideHtmlColors
       value: 0
       objectReference: {fileID: 0}
@@ -2688,7 +2692,7 @@ PrefabInstance:
     - target: {fileID: 7582590598902199255, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8fc1f74fca98585478336676e8f18966, type: 3}
+      objectReference: {fileID: 21300000, guid: 9250ad62c0ac7664ea906476d50d63f9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45dad6ba3f8c29f4eacf6b32d80b6d9f, type: 3}
 --- !u!114 &4111826207036748807 stripped

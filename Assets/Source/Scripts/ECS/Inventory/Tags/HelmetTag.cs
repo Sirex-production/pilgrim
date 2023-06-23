@@ -1,4 +1,7 @@
 ﻿namespace Ingame.Inventory
 {
-    public struct HelmetTag { }
+    public struct HelmetTag
+    {
+        
+    }
 }

@@ -1,5 +1,6 @@
-﻿using System;
-using Ingame.Health;
+﻿using Ingame.Health;
+using Ingame.Hud;
+using Ingame.Inventory;
 using LeoEcsPhysics;
 using Leopotam.Ecs;
 using UnityEngine;
@@ -8,12 +9,18 @@ namespace Ingame.Anomaly
 {
     public sealed class AcidWaterSystem : IEcsRunSystem
     {
-        private EcsFilter<OnTriggerEnterEvent> _filterEnter;
-        private EcsFilter<OnTriggerExitEvent> _filterExit;
-        private EcsFilter<OnAcidWaterEffectComponent> _filterEffect;
+        private readonly EcsFilter<OnTriggerEnterEvent> _filterEnter;
+        private readonly EcsFilter<OnTriggerExitEvent> _filterExit;
+        private readonly EcsFilter<OnAcidWaterEffectComponent> _filterEffect;
+        private readonly EcsFilter<HelmetTag, InInventoryTag, HudIsInHandsTag> _helmetInInventoryFilter;
+        
         public void Run()
         {
-          
+            if(!_helmetInInventoryFilter.IsEmpty())
+                return;
+            
+            UnityEngine.Debug.Log("AAAAAAAAA");
+            
             foreach (var i in _filterEnter)
             { 
                 ref var collisionEvent = ref _filterEnter.Get1(i);

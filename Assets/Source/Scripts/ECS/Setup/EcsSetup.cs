@@ -144,6 +144,7 @@ namespace Ingame
                 .OneFrame<LeanInputRequest>()
                 .OneFrame<MoveInputRequest>()
                 .OneFrame<RotateInputRequest>()
+                .OneFrame<RunInputEvent>()
                 .OneFrame<ShootInputEvent>()
                 .OneFrame<AimInputEvent>()
                 .OneFrame<MagazineSwitchInputEvent>()
@@ -154,6 +155,7 @@ namespace Ingame
                 .OneFrame<LongInteractionInputEvent>()
                 .OneFrame<DropWeaponInputEvent>()
                 .OneFrame<OpenInventoryInputEvent>()
+                .OneFrame<HelmetInputEvent>()
                 .OneFrame<InteractWithFirstSlotInputEvent>()
                 .OneFrame<InteractWithSecondSlotInputEvent>()
                 .OneFrame<HideGunInputEvent>()
@@ -200,6 +202,7 @@ namespace Ingame
                 .Add(new HudItemRotatorDueVelocitySystem())
                 .Add(new HudItemMoveSystem())
                 .Add(new PlaySoundOnPlayerMovement())
+                .Add(new PutOnOrOffHelmetSystem())
                 // .Add(new HudItemMoverDueSurfaceDetectionSystem())
                 //AI
                 .Add(new BehaviourSystem())
@@ -234,6 +237,7 @@ namespace Ingame
                 .Add(new LadderSystem())
                 .Add(new PerformInteractionWithItemSystem())
                 .Add(new OpenWithItemSystem())
+                .Add(new PickUpHelmetSystem())
                 //Gun play
                 .Add(new RifleShootSystem())
                 .Add(new PlaySoundOnShotPerformWithoutAmmo())
@@ -243,6 +247,7 @@ namespace Ingame
                 .Add(new PlaceBulletEffectsOnTheSurfaceSystem())
                 .Add(new HudRecoilSystem())
                 .Add(new HudItemAnimationSystem())
+                .Add(new ChangeHudDueToRunningSystem())
                 .Add(new Ar15ReloadSystem())
                 .Add(new M14EbrReloadSystem())
                 .Add(new Mp5ReloadSystem())
@@ -285,6 +290,7 @@ namespace Ingame
             _fixedUpdateSystem
                 //Input   
                 .Add(new PlayerInputToMovementConvertSystem())
+                .Add(new PlayerInputToRunConverterSystem())
                 //Utils
                 .Add(new DeltaMovementCalculationSystem())
                 //Hud

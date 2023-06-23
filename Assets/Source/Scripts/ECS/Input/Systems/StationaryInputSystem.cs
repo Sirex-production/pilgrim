@@ -21,6 +21,7 @@ namespace Ingame.Input
 
         private InputAction _movementInputX;
         private InputAction _movementInputY;
+        private InputAction _runInput;
         private InputAction _rotationInputX;
         private InputAction _rotationInputY;
         private InputAction _jumpInput;
@@ -37,6 +38,7 @@ namespace Ingame.Input
         private InputAction _dropGunInput;
         private InputAction _hideGunInput;
         private InputAction _openInventoryInput;
+        private InputAction _helmetInput;
         private InputAction _firstSlotInteraction;
         private InputAction _secondSlotInteraction;
         private InputAction _showActiveQuestInput;
@@ -51,6 +53,7 @@ namespace Ingame.Input
         {
             _movementInputX = _stationaryInputSystem.FPS.MovementX;
             _movementInputY = _stationaryInputSystem.FPS.MovementY;
+            _runInput = _stationaryInputSystem.FPS.Run;
 
             _rotationInputX = _stationaryInputSystem.FPS.RotationX;
             _rotationInputY = _stationaryInputSystem.FPS.RotationY;
@@ -73,6 +76,7 @@ namespace Ingame.Input
             _hideGunInput = _stationaryInputSystem.FPS.HideGun;
 
             _openInventoryInput = _stationaryInputSystem.FPS.OpenInventory;
+            _helmetInput = _stationaryInputSystem.FPS.Helmet;
 
             _firstSlotInteraction = _stationaryInputSystem.FPS.FirstSlotInteraction;
             _secondSlotInteraction = _stationaryInputSystem.FPS.SecondSlotInteraction;
@@ -133,6 +137,7 @@ namespace Ingame.Input
         {
             var movementInputVector = new Vector2(_movementInputX.ReadValue<float>(), _movementInputY.ReadValue<float>());
             var rotationInputVector = new Vector2(_rotationInputX.ReadValue<float>(), _rotationInputY.ReadValue<float>());
+            bool runInput = _runInput.IsPressed();
             bool jumpInput = _jumpInput.ReadValue<float>() > 0;
             bool crouchInput = _crouchInput.WasPressedThisFrame();
             bool shootInput = _shootInput.IsPressed();
@@ -142,6 +147,7 @@ namespace Ingame.Input
             bool interactInput = _interactionInput.WasPressedThisFrame();
             bool hideGunInput = _hideGunInput.WasPressedThisFrame();
             bool openInventoryInput = _openInventoryInput.WasPressedThisFrame();
+            bool helmetInput = _helmetInput.WasPressedThisFrame();
             bool interactWithFirstSlot = _firstSlotInteraction.WasPressedThisFrame();
             bool interactWithSecondSlot = _secondSlotInteraction.WasPressedThisFrame();
             bool showActiveQuests = _showActiveQuestInput.WasPressedThisFrame();
@@ -171,6 +177,14 @@ namespace Ingame.Input
                 inputEntity.Get<RotateInputRequest>().rotationInput = rotationInputVector;
             }
 
+            if (runInput)
+            {
+                if (inputEntity == EcsEntity.Null)
+                    inputEntity = _world.NewEntity();
+
+                inputEntity.Get<RunInputEvent>();
+            }
+            
             if (jumpInput)
             {
                 if (inputEntity == EcsEntity.Null)
@@ -255,6 +269,14 @@ namespace Ingame.Input
                 inputEntity.Get<OpenInventoryInputEvent>();
             }
 
+            if (helmetInput)
+            {
+                if (inputEntity == EcsEntity.Null)
+                    inputEntity = _world.NewEntity();
+
+                inputEntity.Get<HelmetInputEvent>();
+            }
+            
             if (interactWithFirstSlot)
             {
                 if (inputEntity == EcsEntity.Null)
