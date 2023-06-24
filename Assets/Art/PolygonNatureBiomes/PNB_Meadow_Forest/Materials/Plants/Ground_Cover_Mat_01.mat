@@ -202,11 +202,11 @@ Material:
     - _LeafBigNoiseAmount: 0.21
     - _LeafBigNoiseScale: 1
     - _LeafFlatColourSwitch: 0
-    - _LeafMetallic: 0
+    - _LeafMetallic: 0.81
     - _LeafNoiseAmount: 0.371
     - _LeafNoiseScale: 1
     - _LeafNormalAmount: 0.5
-    - _LeafSmoothness: 0.2
+    - _LeafSmoothness: 0.47
     - _Metallic: 0.132
     - _Mode: 0
     - _NormalAmount: 0.5
